@@ -1,17 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maya Hazarika</title>
   <link rel="stylesheet" href="css-styles/main.css">
 </head>
 
 <body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="subpages/timeline.html">Timeline</a></li>
+      <li><a href="subpages/code-projects.html">Projects</a></li>
+      <li><a href="subpages/writing.html">Writing</a></li>
+      <li><a href="subpages/art.html">Art</a></li>
+      <li><a href="subpages/photos.html">Photos</a></li>
+      <li><a href="subpages/favorites.html">Favorites</a></li>
+      <li><a href="subpages/contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
   <section id="about-section"></section>
 
-  <script src="js/loadContent.js"></script>
+  <footer>
+    <p>&copy; 2024 Maya Hazarika</p>
+  </footer>
 
+  <script src="js/loadContent.js"></script>
   <script>
     insertJSON("content/about.json", "about-section", data => `
       <div class="about">
