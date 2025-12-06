@@ -22,8 +22,12 @@
   </nav>
 
   <div class="container">
-    <h1>Writing</h1>
-    <div id="writing-section" class="card-grid"></div>
+    <div class="about">
+      <h1>Writing</h1>
+      <p id="intro-text"></p>
+    </div>
+    
+    <div id="writing-section"></div>
   </div>
 
   <footer>
@@ -32,13 +36,24 @@
 
   <script src="../js/loadContent.js"></script>
   <script>
+    insertJSON("../content/writing.json", "intro-text", data => data.intro);
+    
     insertJSON("../content/writing.json", "writing-section", data => 
-      data.pieces.map(piece => `
-        <div class="card">
-          <h3>${piece.title}</h3>
-          <p>${piece.description}</p>
-          <p><small>${piece.date}</small></p>
-          <a href="${piece.link}" class="btn" target="_blank">Read More</a>
+      data.categories.map(category => `
+        <div class="section">
+          <h2>${category.category}</h2>
+          <p><em>${category.description}</em></p>
+          <div class="card-grid">
+            ${category.pieces.map(piece => `
+              <div class="card">
+                <h3>${piece.title}</h3>
+                ${piece.publication ? `<p><strong>${piece.publication}</strong></p>` : ''}
+                ${piece.description ? `<p>${piece.description}</p>` : ''}
+                <p><small>${piece.date}</small></p>
+                ${piece.link !== '#' ? `<a href="${piece.link}" class="btn" target="_blank">Read Article</a>` : ''}
+              </div>
+            `).join('')}
+          </div>
         </div>
       `).join('')
     );
