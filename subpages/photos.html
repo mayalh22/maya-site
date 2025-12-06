@@ -11,8 +11,12 @@
   <div id="header-container"></div>
 
   <div class="container">
-    <h1>Photos</h1>
-    <div id="photos-section" class="gallery"></div>
+    <div class="about">
+      <h1>Photos</h1>
+      <p id="intro-text"></p>
+    </div>
+    
+    <div id="photos-section"></div>
   </div>
 
   <footer>
@@ -23,12 +27,20 @@
   <script>
     loadHeader(true);
     
+    insertJSON("../content/photos.json", "intro-text", data => data.intro);
+    
     insertJSON("../content/photos.json", "photos-section", data => 
-      data.photos.map(photo => `
-        <div>
-          <img src="../${photo.image}" alt="${photo.caption}">
-          <p><strong>${photo.caption}</strong></p>
-          <p><small>${photo.location} • ${photo.date}</small></p>
+      data.categories.map(category => `
+        <div class="section">
+          <h2>${category.category}</h2>
+          <div class="gallery">
+            ${category.photos.map(photo => `
+              <div>
+                <img src="../${photo.image}" alt="${photo.caption}">
+                <p><small>${photo.date}</small></p>
+              </div>
+            `).join('')}
+          </div>
         </div>
       `).join('')
     );
