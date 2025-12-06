@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writing - Maya Hazarika</title>
+  <link rel="stylesheet" href="../css-styles/main.css">
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="code-projects.html">Projects</a></li>
+      <li><a href="writing.html">Writing</a></li>
+      <li><a href="art.html">Art</a></li>
+      <li><a href="photos.html">Photos</a></li>
+      <li><a href="favorites.html">Favorites</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Writing</h1>
+    <div id="writing-section" class="card-grid"></div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Maya Hazarika</p>
+  </footer>
+
+  <script src="../js/loadContent.js"></script>
+  <script>
+    insertJSON("../content/writing.json", "writing-section", data => 
+      data.pieces.map(piece => `
+        <div class="card">
+          <h3>${piece.title}</h3>
+          <p>${piece.description}</p>
+          <p><small>${piece.date}</small></p>
+          <a href="${piece.link}" class="btn" target="_blank">Read More</a>
+        </div>
+      `).join('')
+    );
+  </script>
+
+</body>
+</html>

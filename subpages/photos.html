@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photos - Maya Hazarika</title>
+  <link rel="stylesheet" href="../css-styles/main.css">
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="code-projects.html">Projects</a></li>
+      <li><a href="writing.html">Writing</a></li>
+      <li><a href="art.html">Art</a></li>
+      <li><a href="photos.html">Photos</a></li>
+      <li><a href="favorites.html">Favorites</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Photos</h1>
+    <div id="photos-section" class="gallery"></div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Maya Hazarika</p>
+  </footer>
+
+  <script src="../js/loadContent.js"></script>
+  <script>
+    insertJSON("../content/photos.json", "photos-section", data => 
+      data.photos.map(photo => `
+        <div>
+          <img src="../${photo.image}" alt="${photo.caption}">
+          <p><strong>${photo.caption}</strong></p>
+          <p><small>${photo.location} • ${photo.date}</small></p>
+        </div>
+      `).join('')
+    );
+  </script>
+
+</body>
+</html>
