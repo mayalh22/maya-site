@@ -5,9 +5,7 @@
     "repository": "",
     "playable": "https://www.canva.com/design/DAGujcyfxRY/aSteTfDUOw23NujtUe2CuQ/view",
     "images": [
-      "/assets/projectimages/game_table_1.png",
-      "/assets/projectimages/game_table_2.png",
-      "/assets/projectimages/game_table_3.png"
+      "/assets/projectimages/game_table.png"
     ]
   },
   {
@@ -16,9 +14,7 @@
     "repository": "https://github.com/mayalh22/mayalh22.github.io",
     "playable": "https://mayalh22.github.io/",
     "images": [
-      "/assets/projectimages/personal_website_1.png",
-      "/assets/projectimages/personal_website_2.png",
-      "/assets/projectimages/personal_website_3.png"
+      "/assets/projectimages/personal_website.png"
     ]
   },
   {
@@ -27,9 +23,7 @@
     "repository": "https://github.com/mayalh22/personal-d",
     "playable": "https://mayalh22.github.io/personal-d/",
     "images": [
-      "/assets/projectimages/digital_dashboard_1.png",
-      "/assets/projectimages/digital_dashboard_2.png",
-      "/assets/projectimages/digital_dashboard_3.png"
+      "/assets/projectimages/digital_dashboard.png"
     ]
   },
   {
@@ -38,9 +32,7 @@
     "repository": "https://github.com/mayalh22/calendar",
     "playable": "https://mayalh22.github.io/calendar/",
     "images": [
-      "/assets/projectimages/hourly_planner_1.png",
-      "/assets/projectimages/hourly_planner_2.png",
-      "/assets/projectimages/hourly_planner_3.png"
+      "/assets/projectimages/hourly_planner.png"
     ]
   },
   {
@@ -49,9 +41,7 @@
     "repository": "https://github.com/mayalh22/recipe",
     "playable": "https://mayalh22.github.io/recipe/",
     "images": [
-      "/assets/projectimages/recipe_1.png",
-      "/assets/projectimages/recipe_2.png",
-      "/assets/projectimages/recipe_3.png"
+      "/assets/projectimages/recipe.png"
     ]
   },
   {
@@ -60,9 +50,7 @@
     "repository": "https://github.com/mayalh22/bst-map",
     "playable": "https://mayalh22.github.io/bst-map/",
     "images": [
-      "/assets/projectimages/boston_game_1.png",
-      "/assets/projectimages/boston_game_2.png",
-      "/assets/projectimages/boston_game_3.png"
+      "/assets/projectimages/boston_game.png"
     ]
   },
   {
@@ -71,9 +59,7 @@
     "repository": "https://github.com/mayalh22/precalc-calculator",
     "playable": "https://mayalh22.github.io/precalc-calculator/",
     "images": [
-      "/assets/projectimages/unit_circle_1.png",
-      "/assets/projectimages/unit_circle_2.png",
-      "/assets/projectimages/unit_circle_3.png"
+      "/assets/projectimages/unit_circle.png"
     ]
   },
   {
@@ -82,9 +68,7 @@
     "repository": "https://github.com/mayalh22/python-projects",
     "playable": "",
     "images": [
-      "/assets/projectimages/python_projects_1.png",
-      "/assets/projectimages/python_projects_2.png",
-      "/assets/projectimages/python_projects_3.png"
+      "/assets/projectimages/python_projects.png"
     ]
   },
   {
@@ -93,9 +77,7 @@
     "repository": "https://github.com/mayalh22/timetree",
     "playable": "https://mayalh22.github.io/timetree/",
     "images": [
-      "/assets/projectimages/timetree_1.png",
-      "/assets/projectimages/timetree_2.png",
-      "/assets/projectimages/timetree_3.png"
+      "/assets/projectimages/timetree.png"
     ]
   },
   {
@@ -104,9 +86,7 @@
     "repository": "https://github.com/mayalh22/periodic-table",
     "playable": "https://mayalh22.github.io/periodic-table/",
     "images": [
-      "/assets/projectimages/periodic_table_1.png",
-      "/assets/projectimages/periodic_table_2.png",
-      "/assets/projectimages/periodic_table_3.png"
+      "/assets/projectimages/periodic_table.png"
     ]
   },
   {
@@ -115,9 +95,7 @@
     "repository": "https://github.com/mayalh22/actual-dashboard-tauri",
     "playable": "https://mayalh22.github.io/actual-dashboard-tauri/",
     "images": [
-      "/assets/projectimages/tauri_dashboard_1.png",
-      "/assets/projectimages/tauri_dashboard_2.png",
-      "/assets/projectimages/tauri_dashboard_3.png"
+      "/assets/projectimages/tauri_dashboard.png"
     ]
   }
 ]
