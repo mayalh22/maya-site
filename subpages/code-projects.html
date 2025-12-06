@@ -22,17 +22,21 @@
   <script src="../js/loadContent.js"></script>
   <script>
     loadHeader(true);
-    
-    insertJSON("../content/projects.json", "projects-section", data => 
-      data.projects.map(project => `
+
+    insertJSON("../content/projects.json", "projects-section", data =>
+      data.map(project => `
         <div class="card">
           <h3>${project.title}</h3>
-          <p>${project.description}</p>
-          <div>
-            ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+          <div class="project-images">
+            <img src="${project.images[0]}" alt="${project.title} image 1">
+            <img src="${project.images[1]}" alt="${project.title} image 2">
+            <img src="${project.images[2]}" alt="${project.title} image 3">
           </div>
-          <p><small>${project.date}</small></p>
-          <a href="${project.link}" class="btn" target="_blank">View Project</a>
+          <p>${project.description}</p>
+          <div class="project-links">
+            ${project.repository ? `<a href="${project.repository}" class="btn" target="_blank">Repository</a>` : ''}
+            ${project.playable ? `<a href="${project.playable}" class="btn" target="_blank">Live Demo</a>` : ''}
+          </div>
         </div>
       `).join('')
     );
