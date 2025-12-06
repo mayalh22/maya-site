@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<div id="header-container"></div>
+  <div id="header-container"></div>
 
   <div class="container">
     <div class="about">
@@ -20,11 +20,13 @@
   </div>
 
   <footer>
-    <p>&copy; 2025 Maya Hazarika</p>
+    <p>&copy; 2024 Maya Hazarika</p>
   </footer>
 
   <script src="../js/loadContent.js"></script>
   <script>
+    loadHeader(true);
+    
     insertJSON("../content/favorites.json", "intro-text", data => data.intro);
     
     insertJSON("../content/favorites.json", "favorites-section", data => `
