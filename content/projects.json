@@ -2,7 +2,7 @@
   {
     "title": "Electronic Game Table",
     "description": "At MIT's Engineering Design Workshop, I collaborated with two others to build an electronic game table featuring nine games including Wordle, Backgammon, and DnD. I coded the interface using Python and Pygame, which handled touchscreen input and game outputs. The table was built with 2x4s, combining software and hardware into a tangible, interactive device. Features include multiple integrated games, responsive touch controls, and visual feedback on the display. This project emphasized teamwork, coding for physical devices, and iterative problem-solving. It was a challenging and rewarding experience that strengthened my interest in making and programming.",
-    "repository": "https://github.com/mayalh22/game-table",
+    "repository": "",
     "playable": "https://www.canva.com/design/DAGujcyfxRY/aSteTfDUOw23NujtUe2CuQ/view",
     "images": [
       "/assets/projectimages/game_table_1.png",
@@ -90,7 +90,7 @@
   {
     "title": "Time Tree",
     "description": "Time Tree is a productivity tool that visualizes a growing tree as you focus and work, built with HTML, CSS, and JavaScript. It provides a calming, visual method to track productivity and encourage staying on task. Inputs are time and user focus actions; outputs are tree growth animations and visual feedback. Features include incremental growth visualization and reminders to maintain focus. This project taught me how design can support good habits and motivation. It demonstrates combining interactivity with behavioral reinforcement to create engaging productivity tools.",
-    "repository": "",
+    "repository": "https://github.com/mayalh22/timetree",
     "playable": "https://mayalh22.github.io/timetree/",
     "images": [
       "/assets/projectimages/timetree_1.png",
