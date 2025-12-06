@@ -1,25 +1,6 @@
 {
   "name": "Maya Hazarika",
-  "tagline": "High school sophomore near Boston",
-  "bio": "Hi! I'm Maya. I'm a tenth grader mixing art, writing, and code to make small projects. I enjoy painting, volunteering, writing, math and squash. I learn by building and sharing what I make.",
-  "interests": ["STEM education", "applied data science", "product design", "painting", "writing", "math", "squash"],
-  "photo": "assets/profile.png",
-  "languages": [
-    {
-      "name": "English",
-      "proficiency": "Native"
-    },
-    {
-      "name": "Assamese",
-      "proficiency": "Limited working proficiency"
-    },
-    {
-      "name": "French",
-      "proficiency": "Limited working proficiency"
-    },
-    {
-      "name": "Hindi",
-      "proficiency": "Limited working proficiency"
-    }
-  ]
+  "tagline": "High school sophomore from Greater Boston",
+  "bio": "Hi! I'm Maya. I'm a tenth grader who enjoys art, writing, and code and making small projects. I made this website to share what I do!",
+  "photo": "assets/profile.png"
 }
