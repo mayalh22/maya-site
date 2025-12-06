@@ -1,0 +1,31 @@
+{
+  "email": "maya.l.hazarika@gmail.com",
+  "message": "Feel free to reach out! Here are the best ways to connect with me:",
+  "social": [
+    {
+      "platform": "Email",
+      "url": "mailto:maya.l.hazarika@gmail.com",
+      "username": "maya.l.hazarika@gmail.com",
+      "description": "Email is the fastest way to reach me. I check it regularly and try to reply within a few days, sometimes sooner."
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://instagram.com/maya.l2h",
+      "username": "@maya.l2h",
+      "description": "I don't post much on Instagram, but it's a good place to follow along if you want to see some of my interests and things I like."
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/in/maya-hazarika",
+      "username": "maya-hazarika",
+      "description": "LinkedIn is where I share more current updates about school projects, volunteering, and clubs I'm involved in. It's a good place to get a snapshot of what I'm busy with."
+    },
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/mayalh22",
+      "username": "mayalh22",
+      "description": "On GitHub, I share some of my coding projects and experiments. If you're curious about what I've built or am working on, you can find more details there."
+    }
+  ],
+  "closingMessage": "Thanks for stopping by! If you reach out, I'll get back to you as soon as I can."
+}

@@ -1,0 +1,65 @@
+{
+  "intro": "Here are some of my favorite books, albums, and movies that inspire and entertain me.",
+  "books": [
+    "High Fidelity by Nick Hornby",
+    "White Teeth by Zadie Smith",
+    "Paradise by Toni Morrison",
+    "City of Girls by Elizabeth Gilbert",
+    "Mythology by Edith Hamilton",
+    "The House of Mirth by Edith Wharton",
+    "HOPE by Andrew Idler",
+    "Six Feet Over by Mary Roach",
+    "The Marriage Plot by Jeffrey Eugenides",
+    "The Absolutely True Diary of a Part-Time Indian by Sherman Alexie",
+    "The Only Good Indians by Stephen Graham Jones",
+    "The Pandora Room by Christopher Golden",
+    "The Chill by Scott Carson",
+    "A Streetcar Named Desire by Tennessee Williams",
+    "Death of a Salesman by Arthur Miller",
+    "Cat on a Hot Tin Roof by Edward Albee",
+    "Leslie F***ing Jones by Leslie Jones",
+    "The Yellow House by Sarah Broom",
+    "The Masterplan by Oasis",
+    "Minas by Yoko Ogawa",
+    "You Are Here by David Nicholls",
+    "Heaven and Earth Grocery Store by James McBride",
+    "Manila Takes Manhattan",
+    "Glorious Exploits by Ferdia Lennon",
+    "The Bullet That Missed by Richard Osman",
+    "Bronshtein in the Bronx by Robert Littell",
+    "Marble Hall Murders by Anthony Horowitz",
+    "Eve by Cat Bohannon"
+  ],
+  "music": {
+    "albums": [
+      "The Miseducation of Lauryn Hill by Lauryn Hill",
+      "Skin by Joy Crookes",
+      "Ella Fitzgerald Sings the Duke Ellington Songbook by Ella Fitzgerald"
+    ],
+    "artists": [
+      "Red Hot Chili Peppers",
+      "The Beatles",
+      "Ella Fitzgerald",
+      "Laundry Day",
+      "Addison Rae",
+      "Erykah Badu"
+    ],
+    "songs": [
+      "Can't Stop by Red Hot Chili Peppers",
+      "Creep by TLC",
+      "Crazy Stupid Love by Laundry Day",
+      "Dani California by Red Hot Chili Peppers"
+    ]
+  },
+  "movies": [
+    "Emma (2020)",
+    "Bachelorette (2012)",
+    "Obvious Child (2014)",
+    "May (2002)",
+    "Star Wars: The Empire Strikes Back",
+    "Star Wars: Episode II - Attack of the Clones",
+    "Star Wars: A New Hope",
+    "Black Panther",
+    "Iron Man"
+  ]
+}
