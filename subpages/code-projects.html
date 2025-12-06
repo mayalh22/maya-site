@@ -27,15 +27,15 @@
       data.map(project => `
         <div class="card">
           <h3>${project.title}</h3>
-          <div class="project-images">
-            <img src="${project.images[0]}" alt="${project.title} image 1">
-            <img src="${project.images[1]}" alt="${project.title} image 2">
-            <img src="${project.images[2]}" alt="${project.title} image 3">
-          </div>
+          ${project.images && project.images.length > 0 ? `
+            <div class="project-images">
+              <img src=".${project.images[0]}" alt="${project.title}">
+            </div>
+          ` : ''}
           <p>${project.description}</p>
           <div class="project-links">
             ${project.repository ? `<a href="${project.repository}" class="btn" target="_blank">Repository</a>` : ''}
-            ${project.playable ? `<a href="${project.playable}" class="btn" target="_blank">Playable</a>` : ''}
+            ${project.playable ? `<a href="${project.playable}" class="btn" target="_blank">View Project</a>` : ''}
           </div>
         </div>
       `).join('')
