@@ -12,11 +12,11 @@
       "platform": "Instagram",
       "url": "https://instagram.com/maya.l2h",
       "username": "@maya.l2h",
-      "description": "I don't post much on Instagram, but it's a good place to follow along if you want to see some of my interests and things I like."
+      "description": "I do post on Instagram, so feel free to message me! It's also a good place to follow along if you want to see some of my interests and things I like."
     },
     {
       "platform": "LinkedIn",
-      "url": "www.linkedin.com/in/maya-hazarika-39a609320",
+      "url": "https://www.linkedin.com/in/maya-hazarika-39a609320",
       "username": "maya-hazarika",
       "description": "LinkedIn is where I share more current updates about school projects, volunteering, and clubs I'm involved in. It's a good place to get a snapshot of what I'm busy with."
     },
@@ -25,6 +25,12 @@
       "url": "https://github.com/mayalh22",
       "username": "mayalh22",
       "description": "On GitHub, I share some of my coding projects and experiments. If you're curious about what I've built or am working on, you can find more details there."
+    },
+    {
+      "platform": "Pinterest",
+      "url": "https://pin.it/5hWeW1uSa",
+      "username": "maya.l.hazarika",
+      "description": "Check out my Pinterest for inspiration and boards that reflect my interests and projects."
     }
   ],
   "closingMessage": "Thanks for stopping by! If you reach out, I'll get back to you as soon as I can."
