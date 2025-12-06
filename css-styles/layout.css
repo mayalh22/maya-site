@@ -48,7 +48,10 @@ nav a:hover {
 }
 
 .section {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
 }
 
 footer {
@@ -67,4 +70,8 @@ footer {
   .container {
     padding: 0 0.5rem;
   }
+}
+
+.section:not(:last-child) {
+  margin-bottom: 5rem;
 }
