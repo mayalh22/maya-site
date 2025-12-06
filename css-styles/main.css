@@ -1,0 +1,17 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.about {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+.profile {
+  width: 200px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}

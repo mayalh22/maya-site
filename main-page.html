@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Maya Hazarika</title>
+  <link rel="stylesheet" href="css-styles/main.css">
+</head>
+
+<body>
+
+  <section id="about-section"></section>
+
+  <script src="js/loadContent.js"></script>
+
+  <script>
+    insertJSON("content/about.json", "about-section", data => `
+      <div class="about">
+        <img src="${data.photo}" alt="Maya" class="profile">
+        <h1>${data.name}</h1>
+        <h3>${data.tagline}</h3>
+        <p>${data.bio}</p>
+      </div>
+    `);
+  </script>
+
+</body>
+</html>
