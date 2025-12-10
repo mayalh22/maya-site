@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding: 20px;
   line-height: 1.6;
   color: var(--text-dark);
@@ -177,9 +177,16 @@ footer {
 
 .section img,
 .container img {
-  max-width: 600px;  /* or whatever size you want */
+  max-width: 600px; 
   width: 100%;
   height: auto;
   display: block;
   margin: 1rem auto;
+}
+
+.photo-grid img,
+.photos img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
 }
