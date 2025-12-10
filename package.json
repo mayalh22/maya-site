@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "cleaner personal website / updated mayalh22.github.io",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

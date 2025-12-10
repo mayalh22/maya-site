@@ -1,214 +1,54 @@
 {
-  "intro": "A collection of photos I've taken - flowers, food, and moments I wanted to capture.",
+  "intro": "A collection of photos I've taken - flowers, food.",
   "categories": [
     {
       "category": "Flowers",
       "photos": [
-        {
-          "image": "assets/flower pics/flower1.png",
-          "caption": "Flower 1",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower2.png",
-          "caption": "Flower 2",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower3.png",
-          "caption": "Flower 3",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower4.png",
-          "caption": "Flower 4",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower5.png",
-          "caption": "Flower 5",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower6.png",
-          "caption": "Flower 6",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower7.png",
-          "caption": "Flower 7",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower8.png",
-          "caption": "Flower 8",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower9.png",
-          "caption": "Flower 9",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower10.png",
-          "caption": "Flower 10",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower11.png",
-          "caption": "Flower 11",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower12.png",
-          "caption": "Flower 12",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower13.png",
-          "caption": "Flower 13",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower14.png",
-          "caption": "Flower 14",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower15.png",
-          "caption": "Flower 15",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower16.png",
-          "caption": "Flower 16",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower17.png",
-          "caption": "Flower 17",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower18.png",
-          "caption": "Flower 18",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower19.png",
-          "caption": "Flower 19",
-          "date": "2025"
-        },
-        {
-          "image": "assets/flower pics/flower20.png",
-          "caption": "Flower 20",
-          "date": "2025"
-        }
+        { "image": "flowers/flower1.png", "caption": "Flower 1", "date": "2025" },
+        { "image": "flowers/flower2.png", "caption": "Flower 2", "date": "2025" },
+        { "image": "flowers/flower3.png", "caption": "Flower 3", "date": "2025" },
+        { "image": "flowers/flower4.png", "caption": "Flower 4", "date": "2025" },
+        { "image": "flowers/flower5.png", "caption": "Flower 5", "date": "2025" },
+        { "image": "flowers/flower6.png", "caption": "Flower 6", "date": "2025" },
+        { "image": "flowers/flower7.png", "caption": "Flower 7", "date": "2025" },
+        { "image": "flowers/flower8.png", "caption": "Flower 8", "date": "2025" },
+        { "image": "flowers/flower9.png", "caption": "Flower 9", "date": "2025" },
+        { "image": "flowers/flower10.png", "caption": "Flower 10", "date": "2025" },
+        { "image": "flowers/flower11.png", "caption": "Flower 11", "date": "2025" },
+        { "image": "flowers/flower12.png", "caption": "Flower 12", "date": "2025" },
+        { "image": "flowers/flower13.png", "caption": "Flower 13", "date": "2025" },
+        { "image": "flowers/flower14.png", "caption": "Flower 14", "date": "2025" },
+        { "image": "flowers/flower15.png", "caption": "Flower 15", "date": "2025" },
+        { "image": "flowers/flower16.png", "caption": "Flower 16", "date": "2025" },
+        { "image": "flowers/flower17.png", "caption": "Flower 17", "date": "2025" },
+        { "image": "flowers/flower18.png", "caption": "Flower 18", "date": "2025" },
+        { "image": "flowers/flower19.png", "caption": "Flower 19", "date": "2025" },
+        { "image": "flowers/flower20.png", "caption": "Flower 20", "date": "2025" }
       ]
     },
     {
       "category": "Food",
       "photos": [
-        {
-          "image": "assets/food pics/food1.png",
-          "caption": "Food 1",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food2.png",
-          "caption": "Food 2",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food3.png",
-          "caption": "Food 3",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food4.png",
-          "caption": "Food 4",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food5.png",
-          "caption": "Food 5",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food6.png",
-          "caption": "Food 6",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food7.png",
-          "caption": "Food 7",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food8.png",
-          "caption": "Food 8",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food9.png",
-          "caption": "Food 9",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food10.png",
-          "caption": "Food 10",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food11.png",
-          "caption": "Food 11",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food12.png",
-          "caption": "Food 12",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food13.png",
-          "caption": "Food 13",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food14.png",
-          "caption": "Food 14",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food15.png",
-          "caption": "Food 15",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food16.png",
-          "caption": "Food 16",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food17.png",
-          "caption": "Food 17",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food18.png",
-          "caption": "Food 18",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food19.png",
-          "caption": "Food 19",
-          "date": "2025"
-        },
-        {
-          "image": "assets/food pics/food20.png",
-          "caption": "Food 20",
-          "date": "2025"
-        }
+        { "image": "food/food1.png", "caption": "Food 1", "date": "2025" },
+        { "image": "food/food2.png", "caption": "Food 2", "date": "2025" },
+        { "image": "food/food3.png", "caption": "Food 3", "date": "2025" },
+        { "image": "food/food4.png", "caption": "Food 4", "date": "2025" },
+        { "image": "food/food5.png", "caption": "Food 5", "date": "2025" },
+        { "image": "food/food6.png", "caption": "Food 6", "date": "2025" },
+        { "image": "food/food7.png", "caption": "Food 7", "date": "2025" },
+        { "image": "food/food8.png", "caption": "Food 8", "date": "2025" },
+        { "image": "food/food9.png", "caption": "Food 9", "date": "2025" },
+        { "image": "food/food10.png", "caption": "Food 10", "date": "2025" },
+        { "image": "food/food11.png", "caption": "Food 11", "date": "2025" },
+        { "image": "food/food12.png", "caption": "Food 12", "date": "2025" },
+        { "image": "food/food13.png", "caption": "Food 13", "date": "2025" },
+        { "image": "food/food14.png", "caption": "Food 14", "date": "2025" },
+        { "image": "food/food15.png", "caption": "Food 15", "date": "2025" },
+        { "image": "food/food16.png", "caption": "Food 16", "date": "2025" },
+        { "image": "food/food17.png", "caption": "Food 17", "date": "2025" },
+        { "image": "food/food18.png", "caption": "Food 18", "date": "2025" },
+        { "image": "food/food19.png", "caption": "Food 19", "date": "2025" },
+        { "image": "food/food20.png", "caption": "Food 20", "date": "2025" }
       ]
     }
   ]

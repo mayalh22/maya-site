@@ -1,101 +1,79 @@
 [
   {
     "title": "Electronic Game Table",
-    "description": "At MIT's Engineering Design Workshop, I collaborated with two others to build an electronic game table featuring nine games including Wordle, Backgammon, and DnD. I coded the interface using Python and Pygame, which handled touchscreen input and game outputs. The table was built with 2x4s, combining software and hardware into a tangible, interactive device. Features include multiple integrated games, responsive touch controls, and visual feedback on the display. This project emphasized teamwork, coding for physical devices, and iterative problem-solving. It was a challenging and rewarding experience that strengthened my interest in making and programming.",
+    "description": "At MIT's Engineering Design Workshop, I collaborated with two others to build an electronic game table featuring nine games including Wordle, Backgammon, and DnD. I coded the interface using Python and Pygame for touchscreen input and game outputs. The table was built with 2x4s, combining software and hardware into a tangible, interactive device. Features include multiple integrated games, responsive touch controls, and visual feedback on the display. This project emphasized teamwork, coding for physical devices, and iterative problem-solving.",
     "repository": "",
     "playable": "https://www.canva.com/design/DAGujcyfxRY/aSteTfDUOw23NujtUe2CuQ/view",
-    "images": [
-      "/assets/projectimages/game_table.png"
-    ]
+    "images": ["/assets/projectimages/game_table.png"]
   },
   {
     "title": "Personal Website",
-    "description": "This is my first personal website, created using HTML, CSS, and JavaScript. It was designed as a simple portfolio to showcase my projects and learn web development fundamentals. Features include navigation between pages, responsive layouts, and organized project displays. Inputs are user clicks and navigation, and outputs are dynamically rendered sections of the site. This project taught me how to structure content, style it effectively, and create a functional interactive experience. While simple, it was foundational for more advanced web projects I built later.",
+    "description": "My first personal website, created using HTML, CSS, and JavaScript. It was designed as a simple portfolio to showcase projects and learn web development fundamentals. Features include navigation between pages, responsive layouts, and organized project displays. Inputs are user clicks and navigation; outputs are dynamically rendered sections of the site. This foundational project taught me how to structure content, style effectively, and create a functional interactive experience.",
     "repository": "https://github.com/mayalh22/mayalh22.github.io",
     "playable": "https://mayalh22.github.io/",
-    "images": [
-      "/assets/projectimages/personal_website.png"
-    ]
+    "images": ["/assets/projectimages/personal_website.png"]
   },
   {
     "title": "Digital Dashboard (Updated)",
-    "description": "This updated Digital Dashboard centralizes bookmarks, a calendar, and class management for personal use. Built with JavaScript, HTML, and CSS, it focuses on clarity, efficiency, and usability. Features include a dynamic, interactive interface that organizes tasks and events in one place. Inputs include user interactions and data entries, while outputs are updated views and organized content. This project allowed me to improve frontend development skills and create tools that simplify daily organization. It demonstrates the power of modern web tools for enhancing productivity.",
+    "description": "This updated Digital Dashboard centralizes bookmarks, a calendar, and class management for personal use. Built with JavaScript, HTML, and CSS, it focuses on clarity, efficiency, and usability. Features include a dynamic, interactive interface that organizes tasks and events in one place. Inputs include user interactions and data entries; outputs are updated views and organized content. This project improved my frontend development skills and demonstrates the power of modern web tools for enhancing productivity.",
     "repository": "https://github.com/mayalh22/personal-d",
     "playable": "https://mayalh22.github.io/personal-d/",
-    "images": [
-      "/assets/projectimages/digital_dashboard.png"
-    ]
+    "images": ["/assets/projectimages/digital_dashboard.png"]
   },
   {
     "title": "Hourly Planner",
-    "description": "I built a personalized hourly planner using JavaScript, HTML, and CSS to manage my schedule from 6 AM to 10 PM. It allows users to add events to time slots with color-coded categories for work, personal, study, and other tasks. Features include a live clock, a to-do list, duration tracking, and navigation through days. Inputs are clicks and form entries, while outputs are dynamically updated schedules and visual cues. This project emphasized designing intuitive, functional interfaces for daily productivity. It combines practicality with interactivity, reflecting my focus on creating useful tools.",
+    "description": "A personalized hourly planner built with JavaScript, HTML, and CSS to manage my schedule from 6 AM to 10 PM. Users can add events to time slots with color-coded categories for work, personal, study, and other tasks. Features include a live clock, to-do list, duration tracking, and navigation through days. Inputs are clicks and form entries; outputs are dynamically updated schedules and visual cues. This project emphasized designing intuitive, functional interfaces for daily productivity.",
     "repository": "https://github.com/mayalh22/calendar",
     "playable": "https://mayalh22.github.io/calendar/",
-    "images": [
-      "/assets/projectimages/hourly_planner.png"
-    ]
+    "images": ["/assets/projectimages/hourly_planner.png"]
   },
   {
     "title": "Recipe Website",
-    "description": "I created a fall-themed recipe website using HTML, CSS, and JavaScript to showcase about 70 of my favorite recipes. Users can search for ingredients, view measurements, notes, and add-ons, and leave comments. A random recipe feature helps indecisive users find something to cook. Inputs are searches and clicks, while outputs are interactive recipe displays. The project emphasized coding style, organization, and documentation, with detailed comments in every file. It strengthened my front-end skills and attention to user experience.",
+    "description": "A fall-themed recipe website using HTML, CSS, and JavaScript to showcase ~70 of my favorite recipes. Users can search for ingredients, view measurements, notes, add-ons, and leave comments. A random recipe feature helps indecisive users find something to cook. Inputs are searches and clicks; outputs are interactive recipe displays. The project emphasized coding style, organization, and documentation with detailed comments in every file.",
     "repository": "https://github.com/mayalh22/recipe",
     "playable": "https://mayalh22.github.io/recipe/",
-    "images": [
-      "/assets/projectimages/recipe.png"
-    ]
+    "images": ["/assets/projectimages/recipe.png"]
   },
   {
     "title": "Boston Adventure Game",
-    "description": "This is a choose-your-own-adventure game set in Boston, built using Rust and compiled to WebAssembly. Rust handles all game logic, and communication with the browser occurs via alerts and prompts. Features include branching storylines and player choices that affect the outcome. Inputs are player responses; outputs are prompts, alerts, and story progression. This project taught me Rust and WebAssembly integration while focusing on text-based game mechanics. It demonstrates programming for interactive browser experiences and managing complex logic.",
+    "description": "A choose-your-own-adventure game set in Boston, built using Rust and compiled to WebAssembly. Rust handles all game logic, and communication with the browser occurs via alerts and prompts. Features include branching storylines and player choices that affect the outcome. Inputs are player responses; outputs are prompts, alerts, and story progression. This project taught me Rust and WebAssembly integration while focusing on text-based game mechanics.",
     "repository": "https://github.com/mayalh22/bst-map",
     "playable": "https://mayalh22.github.io/bst-map/",
-    "images": [
-      "/assets/projectimages/boston_game.png"
-    ]
+    "images": ["/assets/projectimages/boston_game.png"]
   },
   {
     "title": "Unit Circle Calculator",
-    "description": "I built a unit circle calculator to speed up my precalculus homework using HTML, CSS, and JavaScript. Users can input angles in degrees or radians and see sine, cosine, and cotangent values. The SVG diagram updates dynamically to show radius projections, sine, cosine, tangent, and cotangent. Inputs are user angle entries; outputs are calculated values and visual diagrams. The calculator handles special cases like undefined tangent or cotangent values. This project strengthened my interactive visualization skills and mathematical coding abilities.",
+    "description": "A unit circle calculator built with HTML, CSS, and JavaScript to speed up precalculus homework. Users input angles in degrees or radians to see sine, cosine, and cotangent values. The SVG diagram updates dynamically to show radius projections, sine, cosine, tangent, and cotangent. Inputs are angle entries; outputs are calculated values and visual diagrams. This project strengthened my interactive visualization and mathematical coding skills.",
     "repository": "https://github.com/mayalh22/precalc-calculator",
     "playable": "https://mayalh22.github.io/precalc-calculator/",
-    "images": [
-      "/assets/projectimages/unit_circle.png"
-    ]
+    "images": ["/assets/projectimages/unit_circle.png"]
   },
   {
     "title": "Python Projects Collection",
-    "description": "This collection includes multiple Python projects ranging from calculators and text-based games to machine learning tools. Projects include Wordle and Hangman clones, the Equity Advisor Bot, an Economic Analysis tool, the MCAS Analyzer, the Binary Logic Learner, and a Reality TV Predictor. Features include input processing, calculations, interactive responses, and data analysis. Languages used include Python, with libraries for data handling and basic ML. Each project demonstrates coding concepts applied to practical and playful scenarios. It helped me understand programming logic, data processing, and real-world applications.",
+    "description": "A collection of multiple Python projects ranging from calculators and text-based games to machine learning tools. Projects include Wordle and Hangman clones, the Equity Advisor Bot, an Economic Analysis tool, the MCAS Analyzer, the Binary Logic Learner, and a Reality TV Predictor. Features include input processing, calculations, interactive responses, and data analysis. This collection demonstrates programming logic applied to practical and playful scenarios.",
     "repository": "https://github.com/mayalh22/python-projects",
     "playable": "",
-    "images": [
-      "/assets/projectimages/python_projects.png"
-    ]
+    "images": ["/assets/projectimages/python_projects.png"]
   },
   {
     "title": "Time Tree",
-    "description": "Time Tree is a productivity tool that visualizes a growing tree as you focus and work, built with HTML, CSS, and JavaScript. It provides a calming, visual method to track productivity and encourage staying on task. Inputs are time and user focus actions; outputs are tree growth animations and visual feedback. Features include incremental growth visualization and reminders to maintain focus. This project taught me how design can support good habits and motivation. It demonstrates combining interactivity with behavioral reinforcement to create engaging productivity tools.",
+    "description": "Time Tree is a productivity tool that visualizes a growing tree as you focus and work, built with HTML, CSS, and JavaScript. Inputs are time and user focus actions; outputs are tree growth animations and visual feedback. Features include incremental growth visualization and reminders to maintain focus. This project demonstrates combining interactivity with behavioral reinforcement to create engaging productivity tools.",
     "repository": "https://github.com/mayalh22/timetree",
     "playable": "https://mayalh22.github.io/timetree/",
-    "images": [
-      "/assets/projectimages/timetree.png"
-    ]
+    "images": ["/assets/projectimages/timetree.png"]
   },
   {
     "title": "Interactive Periodic Table",
-    "description": "I developed an interactive periodic table using HTML, CSS, and JavaScript to explore elements and their properties. Users can click elements to view detailed information, with color coding highlighting different categories. Inputs are user clicks; outputs are element data and visual highlights. Features include sorting by group and period, interactive exploration, and responsive design. The project helped me combine data organization with intuitive interface design. It is both an educational tool and an example of effective visual coding for scientific content.",
+    "description": "An interactive periodic table built using HTML, CSS, and JavaScript to explore elements and their properties. Users can click elements to view detailed information, with color coding highlighting categories. Features include sorting by group and period, interactive exploration, and responsive design. Inputs are clicks; outputs are element data and visual highlights. This project combines data organization with intuitive interface design for education and visualization.",
     "repository": "https://github.com/mayalh22/periodic-table",
     "playable": "https://mayalh22.github.io/periodic-table/",
-    "images": [
-      "/assets/projectimages/periodic_table.png"
-    ]
+    "images": ["/assets/projectimages/periodic_table.png"]
   },
   {
     "title": "Digital Dashboard (Tauri Version)",
-    "description": "This Digital Dashboard was built with React, Tauri, and JavaScript/TypeScript to organize tasks, calendar events, and notes in a single application. Inputs include user entries for tasks and events; outputs are clearly displayed and updated on one screen. Features include desktop app functionality, modern web frameworks, and responsive design. The project solved the problem of switching between multiple apps and tabs. It taught me how to integrate web technologies into desktop applications. Using it improves my workflow and focus through efficient organization.",
+    "description": "A Digital Dashboard built with React, Tauri, and JavaScript/TypeScript to organize tasks, calendar events, and notes in a single desktop application. Inputs include user entries for tasks and events; outputs are displayed clearly on one screen. Features include desktop app functionality, modern web frameworks, and responsive design. This project integrates web technologies into desktop applications, improving workflow and focus through efficient organization.",
     "repository": "https://github.com/mayalh22/actual-dashboard-tauri",
     "playable": "https://mayalh22.github.io/actual-dashboard-tauri/",
-    "images": [
-      "/assets/projectimages/tauri_dashboard.png"
-    ]
+    "images": ["/assets/projectimages/tauri_dashboard.png"]
   }
 ]
