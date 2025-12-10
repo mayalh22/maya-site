@@ -1,6 +1,6 @@
 {
   "intro": "Here are some of my favorite books, albums, and movies.",
-  "Books": [
+  "books": [
     "High Fidelity by Nick Hornby",
     "White Teeth by Zadie Smith",
     "Paradise by Toni Morrison",
@@ -30,13 +30,13 @@
     "Marble Hall Murders by Anthony Horowitz",
     "Eve by Cat Bohannon"
   ],
-  "Music": {
-    "Albums": [
+  "music": {
+    "albums": [
       "The Miseducation of Lauryn Hill by Lauryn Hill",
       "Skin by Joy Crookes",
       "Ella Fitzgerald Sings the Duke Ellington Songbook by Ella Fitzgerald"
     ],
-    "Artists": [
+    "artists": [
       "Red Hot Chili Peppers",
       "The Beatles",
       "Ella Fitzgerald",
@@ -44,14 +44,14 @@
       "Addison Rae",
       "Erykah Badu"
     ],
-    "Songs": [
+    "songs": [
       "Can't Stop by Red Hot Chili Peppers",
       "Creep by TLC",
       "Crazy Stupid Love by Laundry Day",
       "Dani California by Red Hot Chili Peppers"
     ]
   },
-  "Movies": [
+  "movies": [
     "Emma (2020)",
     "Bachelorette (2012)",
     "Obvious Child (2014)",

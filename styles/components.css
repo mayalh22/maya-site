@@ -276,3 +276,94 @@ ul.star-list li::before {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* Add these to the END of your components.css file */
+
+/* Art Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+/* Timeline Styles */
+.timeline-item {
+  border-left: 3px solid var(--accent);
+  padding-left: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "✦";
+  position: absolute;
+  left: -0.7rem;
+  top: 0;
+  color: var(--secondary);
+  font-size: 1.2rem;
+}
+
+.timeline-date {
+  font-weight: 600;
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-item h3 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-item em {
+  color: var(--olive);
+}
+
+.timeline-item p {
+  line-height: 1.7;
+  margin-top: 0.75rem;
+}
+
+/* Tag styling */
+.tag {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  background-color: var(--mint);
+  color: var(--primary);
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+/* About section */
+.about {
+  text-align: center;
+  margin: 3rem 0;
+  padding: 2rem;
+}
+
+.about h1 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.about h3 {
+  color: var(--secondary);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.about p {
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.profile {
+  border-radius: 50%;
+  border: 4px solid var(--accent);
+  margin-bottom: 1.5rem;
+  max-width: 280px;
+  height: auto;
+}
