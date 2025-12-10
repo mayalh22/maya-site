@@ -15,7 +15,7 @@ export default function ProjectsPage() {
             <h3>{project.title}</h3>
             {project.images && project.images.length > 0 && (
               <div className="project-images">
-                <img src={`/assets/${project.images[0]}`} alt={project.title} />
+                <Image src={`/assets/${project.images[0]}`} alt={project.title} />
               </div>
             )}
             <p>{project.description}</p>

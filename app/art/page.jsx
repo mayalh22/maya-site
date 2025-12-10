@@ -12,7 +12,7 @@ export default function ArtPage() {
       <section id="art-section" className="gallery">
         {artData.pieces.map((piece, index) => (
           <div key={index} className="card">
-            <img src={`/assets/${piece.image}`} alt={piece.title} />
+            <Image src={`/assets/${piece.image}`} alt={piece.title} />
             <h3>{piece.title}</h3>
             <p>{piece.description}</p>
             <p><small>{piece.date}</small></p>

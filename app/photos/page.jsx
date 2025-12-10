@@ -19,7 +19,7 @@ export default function PhotosPage() {
           <div className="photo-grid">
             {category.photos.map((photo, idx) => (
               <div key={idx} className="photo-item">
-                <img src={`/assets/${photo.image}`} alt={photo.caption} />
+                <Image src={`/assets/${photo.image}`} alt={photo.caption} />
                 <p className="photo-caption">{photo.caption}</p>
                 <p className="photo-date">{photo.date}</p>
               </div>
