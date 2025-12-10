@@ -3,7 +3,6 @@ export const metadata = {
   description: 'Personal website of Maya Hazarika',
 };
 
-import '../styles/main.css';
 import '../styles/colors.css';
 import '../styles/components.css';
 import '../styles/layout.css';
