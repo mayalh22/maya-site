@@ -1,3 +1,8 @@
+export const metadata = {
+  title: 'Maya Hazarika',
+  description: 'Maya Hazarika’s personal website.',
+};
+
 import Header from '@/components/Header';
 import aboutData from '@/lib/content/about.json';
 

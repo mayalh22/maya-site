@@ -1,3 +1,8 @@
+export const metadata = {
+  title: 'Code Projects - Maya Hazarika',
+  description: 'Maya Hazarika’s coding projects and portfolio.',
+};
+
 import Header from '@/components/Header';
 import projectsData from '@/lib/content/projects.json';
 
