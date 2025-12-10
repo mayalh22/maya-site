@@ -16,7 +16,7 @@ export default function FavoritesPage() {
       <div className="starline">✦</div>
 
       <section className="section">
-        <h2 className="section-title">books</h2>
+        <h2 className="section-title">Books</h2>
         <div className="grid-cards">
           {favoritesData.books.map((book, index) => (
             <div key={index} className="card-mini">
@@ -30,10 +30,10 @@ export default function FavoritesPage() {
       <div className="starline">✦</div>
 
       <section className="section">
-        <h2 className="section-title">music</h2>
+        <h2 className="section-title">Music</h2>
         
         <div className="feature-block">
-          <h3>albums</h3>
+          <h3>Albums</h3>
           <ul className="star-list">
             {favoritesData.music.albums.map((album, index) => (
               <li key={index}>{album}</li>
@@ -42,7 +42,7 @@ export default function FavoritesPage() {
         </div>
 
         <div className="feature-block">
-          <h3>artists</h3>
+          <h3>Artists</h3>
           <ul className="star-list">
             {favoritesData.music.artists.map((artist, index) => (
               <li key={index}>{artist}</li>
@@ -51,7 +51,7 @@ export default function FavoritesPage() {
         </div>
 
         <div className="feature-block">
-          <h3>songs</h3>
+          <h3>Songs</h3>
           <ul className="star-list">
             {favoritesData.music.songs.map((song, index) => (
               <li key={index}>{song}</li>
@@ -63,7 +63,7 @@ export default function FavoritesPage() {
       <div className="starline">✦</div>
 
       <section className="section">
-        <h2 className="section-title">movies & shows</h2>
+        <h2 className="section-title">Movies & Shows</h2>
         <div className="grid-cards">
           {favoritesData.movies.map((movie, index) => (
             <div key={index} className="card-mini">

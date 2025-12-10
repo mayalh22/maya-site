@@ -1,40 +1,27 @@
 {
   "intro": "Here are some of my favorite books, albums, and movies.",
   "books": [
-    "High Fidelity by Nick Hornby",
-    "White Teeth by Zadie Smith",
-    "Paradise by Toni Morrison",
-    "City of Girls by Elizabeth Gilbert",
-    "Mythology by Edith Hamilton",
-    "The House of Mirth by Edith Wharton",
-    "HOPE by Andrew Idler",
-    "Six Feet Over by Mary Roach",
-    "The Marriage Plot by Jeffrey Eugenides",
-    "The Absolutely True Diary of a Part-Time Indian by Sherman Alexie",
-    "The Only Good Indians by Stephen Graham Jones",
-    "The Pandora Room by Christopher Golden",
-    "The Chill by Scott Carson",
-    "A Streetcar Named Desire by Tennessee Williams",
-    "Death of a Salesman by Arthur Miller",
-    "Cat on a Hot Tin Roof by Edward Albee",
-    "Leslie F***ing Jones by Leslie Jones",
-    "The Yellow House by Sarah Broom",
-    "The Masterplan by Oasis",
-    "Minas by Yoko Ogawa",
-    "You Are Here by David Nicholls",
-    "Heaven and Earth Grocery Store by James McBride",
-    "Manila Takes Manhattan",
-    "Glorious Exploits by Ferdia Lennon",
-    "The Bullet That Missed by Richard Osman",
-    "Bronshtein in the Bronx by Robert Littell",
-    "Marble Hall Murders by Anthony Horowitz",
-    "Eve by Cat Bohannon"
+    "High Fidelity by Nick Hornby (1995)",
+    "White Teeth by Zadie Smith (2000)",
+    "Paradise by Toni Morrison (1997)",
+    "City of Girls by Elizabeth Gilbert (2019)",
+    "The House of Mirth by Edith Wharton (1905)",
+    "The Marriage Plot by Jeffrey Eugenides (2011)",
+    "The Absolutely True Diary of a Part-Time Indian by Sherman Alexie (2007)",
+    "The Only Good Indians by Stephen Graham Jones (2020)",
+    "A Streetcar Named Desire by Tennessee Williams (1947)",
+    "Death of a Salesman by Arthur Miller (1949)"
   ],
   "music": {
     "albums": [
-      "The Miseducation of Lauryn Hill by Lauryn Hill",
-      "Skin by Joy Crookes",
-      "Ella Fitzgerald Sings the Duke Ellington Songbook by Ella Fitzgerald"
+      "The Miseducation of Lauryn Hill by Lauryn Hill (1998)",
+      "Skin by Joy Crookes (2021)",
+      "Ella Fitzgerald Sings the Duke Ellington Songbook by Ella Fitzgerald (1957)",
+      "Stadium Arcadium by Red Hot Chili Peppers (2006)",
+      "Abbey Road by The Beatles (1969)",
+      "Mama's Gun by Erykah Badu (2000)",
+      "Homesick by Joy Crookes (2024)",
+      "Blood Sugar Sex Magik by Red Hot Chili Peppers (1991)"
     ],
     "artists": [
       "Red Hot Chili Peppers",
@@ -42,24 +29,35 @@
       "Ella Fitzgerald",
       "Laundry Day",
       "Addison Rae",
-      "Erykah Badu"
+      "Erykah Badu",
+      "Joy Crookes",
+      "Lauryn Hill",
+      "SZA",
+      "Arlo Parks"
     ],
     "songs": [
-      "Can't Stop by Red Hot Chili Peppers",
-      "Creep by TLC",
-      "Crazy Stupid Love by Laundry Day",
-      "Dani California by Red Hot Chili Peppers"
+      "Can't Stop by Red Hot Chili Peppers (2002)",
+      "Creep by TLC (1994)",
+      "Crazy Stupid Love by Laundry Day (2023)",
+      "Dani California by Red Hot Chili Peppers (2006)",
+      "Lovely Day by Bill Withers (1977)",
+      "Softly by Arlo Parks (2021)",
+      "Julia by SZA (2024)",
+      "Ex-Factor by Lauryn Hill (1998)",
+      "I Say a Little Prayer by Aretha Franklin (1968)",
+      "Feet Don't Fail Me Now by Joy Crookes (2019)"
     ]
   },
   "movies": [
-    "Emma (2020)",
-    "Bachelorette (2012)",
-    "Obvious Child (2014)",
-    "May (2002)",
-    "Star Wars: The Empire Strikes Back",
-    "Star Wars: Episode II - Attack of the Clones",
-    "Star Wars: A New Hope",
-    "Black Panther",
-    "Iron Man"
+    "Emma directed by Autumn de Wilde (2020)",
+    "Bachelorette directed by Leslye Headland (2012)",
+    "Obvious Child directed by Gillian Robespierre (2014)",
+    "May directed by Lucky McKee (2002)",
+    "Star Wars: The Empire Strikes Back directed by Irvin Kershner (1980)",
+    "Star Wars: Episode II - Attack of the Clones directed by George Lucas (2002)",
+    "Star Wars: A New Hope directed by George Lucas (1977)",
+    "Black Panther directed by Ryan Coogler (2018)",
+    "Iron Man directed by Jon Favreau (2008)",
+    "Election directed by Alexander Payne (1999)"
   ]
 }
