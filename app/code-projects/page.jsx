@@ -9,7 +9,6 @@ import projectsData from '@/lib/content/projects.json';
 export default function ProjectsPage() {
   return (
     <>
-      <Header />
 
       <main className="container">
         <h1>Code Projects</h1>
@@ -44,9 +43,7 @@ export default function ProjectsPage() {
         </section>
       </main>
 
-      <footer>
-        <p>&copy; 2025 Maya Hazarika</p>
-      </footer>
+
     </>
   );
 }

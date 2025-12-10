@@ -9,7 +9,6 @@ import timelineData from '@/lib/content/timeline.json';
 export default function TimelinePage() {
   return (
     <>
-      <Header />
 
       <main className="container">
         {/* Intro */}
@@ -52,9 +51,6 @@ export default function TimelinePage() {
         </div>
       </main>
 
-      <footer>
-        <p>&copy; 2025 Maya Hazarika</p>
-      </footer>
     </>
   );
 }

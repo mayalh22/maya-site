@@ -8,7 +8,6 @@ import Header from '@/components/Header';
 export default function NotFound() {
   return (
     <>
-      <Header />
 
       <main className="container">
         <div className="about">

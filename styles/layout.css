@@ -148,8 +148,8 @@ footer {
 }
 
 .image-nav img {
-  width: 85px;
-  height: 85px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
   margin-bottom: 0.4rem;
   transition: transform 0.2s ease;
@@ -165,7 +165,20 @@ footer {
   }
 
   .image-nav img {
-    width: 64px;
-    height: 64px;
+    width: 48px;
+    height: 48px;
   }
+
+  img {
+  max-width: 100%;
+  height: auto;
 }
+
+.section img,
+.container img {
+  max-width: 600px;  /* or whatever size you want */
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+}}

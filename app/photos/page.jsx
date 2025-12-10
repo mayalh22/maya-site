@@ -9,7 +9,6 @@ import photosData from '@/lib/content/photos.json';
 export default function PhotosPage() {
   return (
     <>
-      <Header />
 
       <main className="container">
         {/* Intro */}
@@ -34,9 +33,6 @@ export default function PhotosPage() {
         ))}
       </main>
 
-      <footer>
-        <p>&copy; 2025 Maya Hazarika</p>
-      </footer>
     </>
   );
 }

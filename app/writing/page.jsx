@@ -9,7 +9,7 @@ import writingData from '@/lib/content/writing.json';
 export default function WritingPage() {
   return (
     <>
-      <Header />
+
 
       <main className="container">
         {/* Intro */}
@@ -48,9 +48,6 @@ export default function WritingPage() {
         ))}
       </main>
 
-      <footer>
-        <p>&copy; 2025 Maya Hazarika</p>
-      </footer>
     </>
   );
 }

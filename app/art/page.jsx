@@ -9,7 +9,6 @@ import artData from '@/lib/content/art.json';
 export default function ArtPage() {
   return (
     <>
-      <Header />
 
       <main className="container">
         <h1>Art</h1>
@@ -25,9 +24,6 @@ export default function ArtPage() {
         </section>
       </main>
 
-      <footer>
-        <p>&copy; 2025 Maya Hazarika</p>
-      </footer>
     </>
   );
 }
