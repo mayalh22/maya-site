@@ -1,0 +1,29 @@
+{
+  "name": "maya-site",
+  "version": "1.0.0",
+  "description": "cleaner personal website / updated mayalh22.github.io",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mayalh22/maya-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mayalh22/maya-site/issues"
+  },
+  "homepage": "https://github.com/mayalh22/maya-site#readme",
+  "dependencies": {
+    "next": "^16.0.8",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
+  }
+}
