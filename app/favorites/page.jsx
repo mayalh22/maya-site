@@ -1,67 +1,78 @@
 import favoritesData from '@/lib/content/favorites.json';
+
 export const metadata = {
   title: 'Favorites - Maya Hazarika',
-  description: 'Maya Hazarika’s favorite books, music, movies, and more.',
+  description: "Maya Hazarika's favorite books, music, movies, and more.",
 };
-
-import Header from '@/components/Header';
 
 export default function FavoritesPage() {
   return (
-    <>
+    <main className="container">
+      <div className="about">
+        <h1>my favorites</h1>
+        <p>{favoritesData.intro}</p>
+      </div>
 
-      <main className="container">
-        <div className="about">
-          <h1>my favorites</h1>
-          <p>{favoritesData.intro}</p>
+      <div className="starline">✦</div>
+
+      <section className="section">
+        <h2 className="section-title">books</h2>
+        <div className="grid-cards">
+          {favoritesData.books.map((book, index) => (
+            <div key={index} className="card-mini">
+              <h4>#{index + 1}</h4>
+              <p>{book}</p>
+            </div>
+          ))}
         </div>
+      </section>
 
-        <div className="section">
-          <h2>books</h2>
-          <ul>
-            {favoritesData.books.map((book, index) => (
-              <li key={index}>{book}</li>
-            ))}
-          </ul>
-        </div>
+      <div className="starline">✦</div>
 
-
-        <div className="section">
-          <h2>music</h2>
-
+      <section className="section">
+        <h2 className="section-title">music</h2>
+        
+        <div className="feature-block">
           <h3>albums</h3>
-          <ul>
+          <ul className="star-list">
             {favoritesData.music.albums.map((album, index) => (
               <li key={index}>{album}</li>
             ))}
           </ul>
+        </div>
 
+        <div className="feature-block">
           <h3>artists</h3>
-          <ul>
+          <ul className="star-list">
             {favoritesData.music.artists.map((artist, index) => (
               <li key={index}>{artist}</li>
             ))}
           </ul>
+        </div>
 
+        <div className="feature-block">
           <h3>songs</h3>
-          <ul>
+          <ul className="star-list">
             {favoritesData.music.songs.map((song, index) => (
               <li key={index}>{song}</li>
             ))}
           </ul>
         </div>
+      </section>
 
+      <div className="starline">✦</div>
 
-        <div className="section">
-          <h2>movies and shows</h2>
-          <ul>
-            {favoritesData.movies.map((movie, index) => (
-              <li key={index}>{movie}</li>
-            ))}
-          </ul>
+      <section className="section">
+        <h2 className="section-title">movies & shows</h2>
+        <div className="grid-cards">
+          {favoritesData.movies.map((movie, index) => (
+            <div key={index} className="card-mini">
+              <h4>★</h4>
+              <p>{movie}</p>
+            </div>
+          ))}
         </div>
-      </main>
-
-    </>
+      </section>
+    </main>
   );
 }
