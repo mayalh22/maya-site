@@ -10,7 +10,9 @@
     "The Absolutely True Diary of a Part-Time Indian by Sherman Alexie (2007)",
     "The Only Good Indians by Stephen Graham Jones (2020)",
     "A Streetcar Named Desire by Tennessee Williams (1947)",
-    "Death of a Salesman by Arthur Miller (1949)"
+    "Death of a Salesman by Arthur Miller (1949)",
+    "The Westing Game by Ellen Raskin (1978)",
+    "Trainspotting by Irvine Welsh (1993)"
   ],
   "music": {
     "albums": [
@@ -48,16 +50,18 @@
       "Feet Don't Fail Me Now by Joy Crookes (2019)"
     ]
   },
-  "movies": [
-    "Emma directed by Autumn de Wilde (2020)",
-    "Bachelorette directed by Leslye Headland (2012)",
-    "Obvious Child directed by Gillian Robespierre (2014)",
-    "May directed by Lucky McKee (2002)",
-    "Star Wars: The Empire Strikes Back directed by Irvin Kershner (1980)",
-    "Star Wars: Episode II - Attack of the Clones directed by George Lucas (2002)",
-    "Star Wars: A New Hope directed by George Lucas (1977)",
-    "Black Panther directed by Ryan Coogler (2018)",
-    "Iron Man directed by Jon Favreau (2008)",
-    "Election directed by Alexander Payne (1999)"
-  ]
+"movies": [
+  "Emma directed by Autumn de Wilde (2020)",
+  "Bachelorette directed by Leslye Headland (2012)",
+  "Obvious Child directed by Gillian Robespierre (2014)",
+  "May directed by Lucky McKee (2002)",
+  "Star Wars: The Empire Strikes Back directed by Irvin Kershner (1980)",
+  "Star Wars: Episode II - Attack of the Clones directed by George Lucas (2002)",
+  "Star Wars: A New Hope directed by George Lucas (1977)",
+  "Black Panther directed by Ryan Coogler (2018)",
+  "Iron Man directed by Jon Favreau (2008)",
+  "Election directed by Alexander Payne (1999)",
+  "The Witch directed by Robert Eggers (2015)",
+  "Pontypool directed by Bruce McDonald (2008)"
+]
 }
