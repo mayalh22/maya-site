@@ -1,9 +1,10 @@
+import Image from 'next/image';
+import projectsData from '@/lib/content/projects.json';
+
 export const metadata = {
   title: 'Code Projects - Maya Hazarika',
-  description: 'Maya Hazarika\'s coding projects and portfolio.',
+  description: "Maya Hazarika's coding projects and portfolio.",
 };
-
-import projectsData from '@/lib/content/projects.json';
 
 export default function ProjectsPage() {
   return (
@@ -13,20 +14,39 @@ export default function ProjectsPage() {
         {projectsData.map((project, index) => (
           <div key={index} className="card">
             <h3>{project.title}</h3>
+
             {project.images && project.images.length > 0 && (
               <div className="project-images">
-                <Image src={`/assets/${project.images[0]}`} alt={project.title} />
+                <Image
+                  src={`/assets/${project.images[0]}`}
+                  alt={project.title}
+                  width={400}
+                  height={300}
+                  loading="lazy"
+                />
               </div>
             )}
+
             <p>{project.description}</p>
+
             <div className="project-links">
               {project.repository && (
-                <a href={project.repository} className="btn" target="_blank" rel="noopener noreferrer">
+                <a
+                  href={project.repository}
+                  className="btn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Repository
                 </a>
               )}
               {project.playable && (
-                <a href={project.playable} className="btn" target="_blank" rel="noopener noreferrer">
+                <a
+                  href={project.playable}
+                  className="btn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   View Project
                 </a>
               )}
