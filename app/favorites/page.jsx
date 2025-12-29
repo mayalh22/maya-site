@@ -1,3 +1,4 @@
+
 import favoritesData from '@/lib/content/favorites.json';
 
 export const metadata = {
