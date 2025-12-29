@@ -9,7 +9,7 @@ export default function FavoritesPage() {
   return (
     <main className="container">
       <div className="about">
-        <h1>my favorites</h1>
+        <h1>My Favorites</h1>
         <p>{favoritesData.intro}</p>
       </div>
 
