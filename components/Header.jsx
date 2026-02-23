@@ -5,16 +5,14 @@ export default function Header() {
   return (
     <header className="site-header">
       <Link href="/">
-        <a>
-          <Image 
-            src="/assets/name-title.png" 
-            alt="Maya Hazarika" 
-            width={280} 
-            height={80}
-            className="name-title"
-            priority
-          />
-        </a>
+        <Image 
+          src="/assets/name-title.png" 
+          alt="Maya Hazarika" 
+          width={280} 
+          height={80}
+          className="name-title"
+          priority
+        />
       </Link>
       
       <nav className="image-nav">
