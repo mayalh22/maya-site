@@ -1,11 +1,7 @@
-"use client";
+
+'use client';
 import { useState } from "react";
 import favoritesData from '@/lib/content/favorites.json';
-
-export const metadata = {
-  title: 'Favorites',
-  description: "My favorite books, music, and movies.",
-};
 
 export default function FavoritesPage() {
   const [openSections, setOpenSections] = useState({
@@ -19,7 +15,6 @@ export default function FavoritesPage() {
     setOpenSections(prev => ({ ...prev, [type]: !prev[type] }));
   };
 
-  // group items by type dynamically
   const grouped = favoritesData.top.reduce((acc, item) => {
     acc[item.type] = acc[item.type] || [];
     acc[item.type].push(item);
