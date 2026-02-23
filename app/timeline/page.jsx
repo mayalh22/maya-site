@@ -4,6 +4,7 @@ export const metadata = {
 };
 
 import timelineData from '@/lib/content/timeline.json';
+import Section from '@/components/Section';
 
 export default function TimelinePage() {
   return (
@@ -13,37 +14,40 @@ export default function TimelinePage() {
         <p>{timelineData.intro}</p>
       </div>
 
-      {timelineData.sections.map((section, index) => (
-        <div key={index} className="section">
-          <h2>{section.year}</h2>
-          <h3>{section.title}</h3>
-          {section.events.map((event, idx) => (
-            <div key={idx} className="timeline-item">
-              <div className="timeline-date">{event.date}</div>
-              <h3>
-                {event.role} {event.organization ? `at ${event.organization}` : ''}
-              </h3>
-              {event.location && <p><em>{event.location}</em></p>}
-              <p>{event.description}</p>
-            </div>
-          ))}
-        </div>
-      ))}
+      {timelineData.sections.map((section, index) => {
+        const sectionColors = ['var(--teal)', 'var(--orange)', 'var(--mint)', 'var(--yellow)'];
+        return (
+          <Section key={index} title={`${section.year} — ${section.title}`} colorVar={sectionColors[index % sectionColors.length]}>
+            {section.events.map((event, idx) => (
+              <div key={idx} className="timeline-item" style={{ backgroundColor: 'transparent' }}>
+                <div className="timeline-date">{event.date}</div>
+                <h3>
+                  {event.role} {event.organization ? `at ${event.organization}` : ''}
+                </h3>
+                {event.location && <p><em>{event.location}</em></p>}
+                <p>{event.description}</p>
+              </div>
+            ))}
+          </Section>
+        );
+      })}
 
-      <div className="section">
-        <h2>{timelineData.volunteering.title}</h2>
+      <Section title={timelineData.volunteering.title} colorVar="var(--pink)">
         <div className="card-grid">
-          {timelineData.volunteering.roles.map((role, index) => (
-            <div key={index} className="card">
-              <h3>{role.role}</h3>
-              <p><strong>{role.organization}</strong></p>
-              {role.category && <span className="tag">{role.category}</span>}
-              <p><small>{role.date}</small></p>
-              <p>{role.description}</p>
-            </div>
-          ))}
+          {timelineData.volunteering.roles.map((role, index) => {
+            const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
+            return (
+              <div key={index} className="card" style={{ backgroundColor: cardColors[index % cardColors.length], borderRadius: '8px' }}>
+                <h3>{role.role}</h3>
+                <p><strong>{role.organization}</strong></p>
+                {role.category && <span className="tag">{role.category}</span>}
+                <p><small>{role.date}</small></p>
+                <p>{role.description}</p>
+              </div>
+            );
+          })}
         </div>
-      </div>
+      </Section>
     </main>
   );
 }

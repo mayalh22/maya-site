@@ -163,6 +163,14 @@ ul.star-list li::before {
   margin-bottom: 3rem;
 }
 
+/* Section component styles */
+.section-wrapper h2 {
+  margin: 0;
+}
+.section-text-light h2, .section-text-light small { color: var(--text-light); }
+.section-text-dark h2, .section-text-dark small { color: var(--text-dark); }
+
+
 
 .card-grid {
   display: grid;
