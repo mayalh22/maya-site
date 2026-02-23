@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: Trebuchet MS, Verdana, Tahoma, sans-serif;
+  font-family: Georgia, 'Times New Roman', serif;
   padding: 0;
   line-height: 1.6;
   color: var(--text-dark);
@@ -15,6 +15,29 @@ body {
     linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
   background-size: 20px 20px;
   letter-spacing: 0.2px;
+  font-weight: normal;
+}
+
+/* ── KEYFRAME ANIMATIONS ── */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes subtle-spin {
+  0% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+  100% { transform: rotate(-1deg); }
+}
+
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(-2px); }
+  50% { transform: translateY(2px); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.85; }
 }
 
 /* ── NAV ── */
@@ -39,11 +62,10 @@ nav ul li a {
   display: block;
   color: var(--text-light);
   text-decoration: none;
-  font-weight: bold;
-  font-family: Trebuchet MS, Verdana, sans-serif;
+  font-weight: normal;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 0.9rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  letter-spacing: 0.5px;
   padding: 0.75rem 1.25rem;
   border-right: 1px solid rgba(255,255,255,0.15);
 }
@@ -62,10 +84,11 @@ nav ul li a:hover {
 
 /* ── SECTIONS ── */
 .section {
-  margin-bottom: 4rem;
-  padding: 2rem;
+  margin-bottom: 3rem;
+  padding: 2rem 1.5rem;
   border: 2px solid var(--primary);
   background-color: #fff;
+  position: relative;
 }
 
 .section-title {
@@ -73,10 +96,9 @@ nav ul li a:hover {
   margin-bottom: 2rem;
   font-size: 1.6rem;
   color: var(--primary);
-  letter-spacing: 1px;
-  font-weight: bold;
+  letter-spacing: 0.5px;
+  font-weight: normal;
   font-family: Georgia, 'Times New Roman', serif;
-  text-transform: uppercase;
   border-bottom: 2px solid var(--secondary);
   padding-bottom: 0.5rem;
 }
@@ -96,7 +118,7 @@ nav ul li a:hover {
   color: var(--olive);
 }
 
-/* ── FOOTER ── */
+/* ── Footer ── */
 footer {
   text-align: center;
   padding: 1.5rem 2rem;
@@ -105,7 +127,8 @@ footer {
   margin-top: 4rem;
   border-top: 4px solid var(--secondary);
   font-size: 0.85rem;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  font-weight: normal;
 }
 
 /* ── HEADER / SITE TITLE ── */
@@ -146,10 +169,10 @@ footer {
   align-items: center;
   text-decoration: none;
   color: var(--primary);
-  font-size: 0.8rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 0.75rem;
+  font-weight: normal;
+  letter-spacing: 0.3px;
+  padding: 0.25rem;
 }
 
 .image-nav img {
@@ -164,6 +187,7 @@ footer {
 
 .image-nav img:hover {
   border-color: var(--secondary);
+  background-color: var(--yellow);
 }
 
 /* ── IMAGES ── */
@@ -183,7 +207,13 @@ img {
 
 .photo-grid img,
 .photos img {
-  max-width: 400px;
+  max-width: 150px;
+  width: 100%;
+  height: auto;
+}
+
+.gallery img {
+  max-width: 150px;
   width: 100%;
   height: auto;
 }
