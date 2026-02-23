@@ -1,17 +1,22 @@
 import Link from 'next/link';
+import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Header() {
   return (
     <header className="site-header">
-      <Image 
-        src="/assets/name-title.png" 
-        alt="Maya Hazarika" 
-        width={280} 
-        height={80}
-        className="name-title"
-        priority
-      />
+      <Link href="/">
+        <a>
+          <Image 
+            src="/assets/name-title.png" 
+            alt="Maya Hazarika" 
+            width={280} 
+            height={80}
+            className="name-title"
+            priority
+          />
+        </a>
+      </Link>
       
       <nav className="image-nav">
         <ul>

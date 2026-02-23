@@ -177,7 +177,6 @@ ul.star-list li::before {
   border-radius: 6px;
   background-color: white;
   box-shadow: 0 3px 0 var(--accent);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
@@ -223,7 +222,6 @@ ul.star-list li::before {
   text-decoration: none;
   border-radius: 4px;
   font-weight: 500;
-  transition: background-color 0.3s ease;
 }
 
 .btn:hover {
@@ -243,7 +241,6 @@ ul.star-list li::before {
   border-radius: 6px;
   padding: 1rem;
   box-shadow: 0 2px 0 var(--accent);
-  transition: all 0.2s ease;
 }
 
 .photo-item:hover {

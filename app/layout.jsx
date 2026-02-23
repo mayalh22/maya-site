@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
         <Header />
         <main>{children}</main>
         <footer>
-          <p>&copy; 2025 Maya Hazarika</p>
+          <p>&copy; 2026 Maya Hazarika</p>
         </footer>
       </body>
     </html>

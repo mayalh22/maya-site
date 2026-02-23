@@ -2,171 +2,136 @@
   "intro": "Work, volunteering, and extracurricular activities.",
   "sections": [
     {
-      "year": "2025 - Present",
+      "year": "2026 - Present",
       "title": "Current Activities & Roles",
       "events": [
         {
-          "date": "September 2025 - Present",
+          "date": "Jan 2026 - Present",
+          "organization": "Medium",
+          "role": "Writer",
+          "location": "Remote",
+          "description": "I publish essays and long-form writing on Medium covering topics across arts, CS, and culture."
+        }
+      ]
+    },
+    {
+      "year": "2025 - Present",
+      "title": "Recent Roles",
+      "events": [
+        {
+          "date": "Sep 2025 - Present",
           "organization": "Museum of Science",
           "role": "In Gallery Learning Member",
           "location": "Boston, MA",
-          "description": "I assist with in-gallery learning experiences in the Hall of Human Life, Engineering Design Workshop, and Charles River Yawkey Gallery. I lead experiments for all ages."
+          "description": "Lead experiments and learning plans for visitors in the Charles River Yawkey Gallery and Engineering Design Workshop."
         },
         {
-          "date": "September 2025 - December 2025",
-          "organization": "Girls Who Code",
-          "role": "Pathways Program Member",
-          "description": "I participate in the Girls Who Code Pathways Program to develop coding skills and connect with other young women in tech. I received certificates in Neural Networks and Machine Learning, Data Science, and Artificial Intelligence."
-        },
-        {
-          "date": "July 2025 - Present",
-          "organization": "cherielle",
-          "role": "Outreach Officer",
-          "location": "Remote",
-          "description": "I help draft grant proposals, plan community events, and collaborate with team members to identify strategic growth opportunities."
-        },
-        {
-          "date": "June 2025 - Present",
-          "organization": "Wellesley College",
-          "role": "Research Assistant",
-          "description": "I assist professors with data science research focusing on algorithms affecting youth on social media platforms, analyzing large datasets to understand their impact."
-        },
-        {
-          "date": "June 2025 - Present",
-          "organization": "Ballotpedia",
-          "role": "Community Researcher",
-          "description": "I contribute to ongoing research projects on local, state, and federal elections in support of non-partisan political coverage."
-        },
-        {
-          "date": "June 2025 - August 2025",
-          "organization": "MIT Edgerton Center",
-          "role": "Summer Student & EDW Participant",
-          "location": "Cambridge, MA",
-          "description": "I collaborated on engineering challenges by working on hardware projects involving soldering and Raspberry Pi. I developed and optimized embedded systems in machine code and built prototypes using woodworking and advanced design techniques."
-        },
-        {
-          "date": "June 2025 - August 2025",
-          "organization": "MIT Edgerton Center",
-          "role": "EDW Research Helper",
-          "location": "Cambridge, MA",
-          "description": "I am currently organizing a group to prepare a proposal for the American Society for Engineering Education (ASEE) conference in Charlotte, NC, June 21-24, 2026, to present student experiences in engineering project activities."
-        },
-        {
-          "date": "June 2025 - August 2025",
-          "organization": "The Academies by Harvard Student Agencies",
-          "role": "Student",
-          "location": "Cambridge, MA",
-          "description": "I participated in mock consulting projects by analyzing cases, presenting team solutions, and building skills through hands-on practice and remote collaboration in financial consulting."
+          "date": "Feb 2025 - Present",
+          "organization": "The Swellesley Report",
+          "role": "Writer",
+          "location": "Wellesley, MA",
+          "description": "Research and write local journalism pieces covering community events and school news."
         },
         {
           "date": "May 2025 - Present",
           "organization": "Mathnasium - The Math Learning Center",
           "role": "Instructor",
           "location": "Wellesley, MA",
-          "description": "I tutor students in math concepts across grades K-9. I adjust to students' needs and write detailed session reports for families."
+          "description": "Tutor K-9 students in math concepts, adapting lessons and writing session reports for families."
+        },
+        {
+          "date": "Nov 2025 - Present",
+          "organization": "Hack Club",
+          "role": "Hackathon Organizer",
+          "location": "Boston, MA",
+          "description": "Assist planning Campfire Boston (Game Jam) for high school students: venues, sponsors, and marketing."
+        },
+        {
+          "date": "Jan 2026 - Present",
+          "organization": "Medium",
+          "role": "Writer",
+          "location": "Remote",
+          "description": "Publish cross-disciplinary essays and creative writing on Medium."
+        },
+        {
+          "date": "Sep 2025 - Present",
+          "organization": "Girls Who Code",
+          "role": "Pathways Program Member",
+          "description": "Completed certificates in Data Science and AI-related coursework; collaborate with peers on projects."
+        },
+        {
+          "date": "Jun 2025 - Present",
+          "organization": "Wellesley College",
+          "role": "Research Assistant",
+          "description": "Support professors analyzing algorithmic effects on youth social media datasets using Jupyter notebooks."
+        },
+        {
+          "date": "Jun 2025 - Present",
+          "organization": "Ballotpedia",
+          "role": "Community Researcher",
+          "description": "Contribute to non-partisan election research and data projects."
         },
         {
           "date": "May 2025 - Present",
           "organization": "The Congressional Award",
           "role": "Participant",
-          "location": "Remote",
-          "description": "I demonstrate personal goal-setting and time management through volunteer service, personal development, physical fitness, and exploration. I was awarded the Congressional Award Gold Certificate in December 2025."
+          "description": "Pursue service and personal-development goals; awarded Congressional Award Gold Certificate in Dec 2025."
         },
         {
-          "date": "February 2025 - Present",
-          "organization": "The Swellesley Report",
-          "role": "Writer",
-          "location": "Wellesley, MA",
-          "description": "I research, write, and collaborate on articles focusing on town events and local news while meeting deadlines. I have published more than ten articles covering community events, school productions, and local initiatives."
+          "date": "Jun 2025 - Present",
+          "organization": "MIT Edgerton Center",
+          "role": "Summer Student",
+          "location": "Cambridge, MA",
+          "description": "Worked on hardware projects involving soldering, Raspberry Pi, and prototype builds."
+        },
+        {
+          "date": "Jun 2025 - Present",
+          "organization": "The Academies by Harvard Student Agencies",
+          "role": "Student",
+          "description": "Participated in mock consulting projects and team-based case analyses."
+        },
+        {
+          "date": "Jul 2025 - Present",
+          "organization": "cherielle",
+          "role": "Outreach Officer",
+          "description": "Draft grant proposals and plan community engagement strategies."
+        },
+        {
+          "date": "May 2025 - Present",
+          "organization": "High School Democrats of America",
+          "role": "Fellow",
+          "description": "Engage in civic education and political organizing."
+        },
+        {
+          "date": "Nov 2024 - Present",
+          "organization": "Junior Economic Club of Boston",
+          "role": "Member",
+          "location": "Boston, MA",
+          "description": "Attend seminars and discussions on economic policy and practice."
         }
       ]
     },
     {
       "year": "2024 - 2025",
-      "title": "Recent Experiences",
+      "title": "Recent & Past",
       "events": [
         {
-          "date": "November 2024 - Present",
-          "organization": "Junior Economic Club of Boston",
-          "role": "Member",
-          "location": "Boston, MA",
-          "description": "I attend seminars and discussions on economic issues. I engage with professionals and peers and stay informed on policy impacts through expert-led sessions."
-        },
-        {
-          "date": "October 2025",
+          "date": "Oct 2025",
           "organization": "Kode With Klossy",
           "role": "Code-A-Bration Participant",
-          "description": "I participated in a coding celebration event through Kode With Klossy."
+          "description": "Participated in a program promoting coding for girls."
         },
         {
-          "date": "October 2025",
-          "organization": "Hack Club",
-          "role": "Athena Award Recipient",
-          "description": "I received the Athena Award for completing thirty hours of coding and engineering work."
-        },
-        {
-          "date": "September 2024 - Present",
-          "organization": "Wellesley High School",
-          "role": "Student (Class of 2028)",
-          "location": "Wellesley, MA",
-          "description": "I am currently a sophomore with a 4.0 unweighted GPA and 5.0 weighted GPA. I am active in Girls Who Code, DECA, Key Club, Ceramics Club, Model U.N., and Quiz Bowl. I qualified for DECA State in Financial Team Decision Making in December 2024, placing top six out of thirty teams. I participate in the math team and art history club and take AP Computer Science Principles and AP Modern World History."
-        },
-        {
-          "date": "July 2025 - September 2025",
+          "date": "Jul 2025 - Sep 2025",
           "organization": "Ctrl Alt Policy",
           "role": "Managing Editor",
-          "location": "Remote",
-          "description": "I reviewed, edited, and wrote policy articles that address social, political, and economic issues tailored for youth audiences for clarity and accessibility."
-        },
-        {
-          "date": "July 2025",
-          "organization": "MASCO",
-          "role": "Finalist",
-          "description": "I qualified for the Massachusetts Computer Science Olympiad (MASCO) In-Person Finals for excellence in a series of Python coding problems."
-        },
-        {
-          "date": "June 2024 - August 2024",
-          "organization": "Boston University - Artemis Program",
-          "role": "Program Member",
-          "location": "Boston, MA",
-          "description": "I completed an intensive summer program focused on foundational computer science concepts for girls. I gained hands-on experience with programming, algorithms, and problem-solving while collaborating on projects and developing technical skills. I finished the program with a C++ project."
+          "description": "Reviewed and edited policy articles for youth audiences."
         },
         {
           "date": "Summer 2024",
-          "organization": "360 Squash & Fessenden Squash",
-          "role": "Participant",
-          "description": "I participated in two squash programs that improved my game skills and taught teamwork and discipline through competitive play."
-        }
-      ]
-    },
-    {
-      "year": "2023",
-      "title": "Earlier Experiences",
-      "events": [
-        {
-          "date": "Summer 2023",
-          "organization": "Weston Drama Workshop",
-          "role": "Cast Member - Grease",
-          "description": "I learned about acting, stage production, and ensemble collaboration. I participated in the production of Grease, discovering the creative process of putting on a show."
-        }
-      ]
-    },
-    {
-      "year": "2022",
-      "title": "Middle School Years",
-      "events": [
-        {
-          "date": "Summer 2022",
-          "organization": "ECO Camp Wellesley",
-          "role": "Camper",
-          "location": "Wellesley, MA",
-          "description": "I attended an environmental camp focused on nature, ecology, and conservation. I spent time outdoors learning about ways to help the planet and developed an appreciation for environmental stewardship."
-        },
-        {
-          "date": "Summer 2022",
-          "organization": "Linx Theater",
-          "role": "Cast Member - Descendants",
-          "description": "I participated in a middle-school theater production of Descendants, enjoying the creative collaboration and energy of youth theater."
+          "organization": "Boston University - Artemis Program",
+          "role": "Program Member",
+          "description": "Completed an intensive foundational computer science program and a C++ project."
         }
       ]
     }
@@ -179,40 +144,21 @@
         "role": "Digital Volunteer",
         "date": "June 2025 - Present",
         "category": "Education",
-        "description": "I contribute to educational projects through digital volunteering."
+        "description": "Contribute to educational digitization and enrichment projects."
       },
       {
         "organization": "Museum of Science",
         "role": "Volunteer",
         "date": "February 2025 - Present",
         "category": "Science and Technology",
-        "description": "I volunteer to support museum programs and engage visitors in science activities."
+        "description": "Support museum programs and engage visitors in hands-on science activities."
       },
       {
         "organization": "Library of Congress",
         "role": "Transcriber",
         "date": "June 2025 - Present",
         "category": "Education",
-        "description": "I transcribe historical documents to make them accessible for research and learning."
-      },
-      {
-        "organization": "Key Club International",
-        "role": "Student Volunteer",
-        "date": "September 2024 - Present",
-        "description": "I participate in community service projects through Key Club."
-      },
-      {
-        "organization": "Boston Cares",
-        "role": "Community Volunteer",
-        "date": "January 2025 - Present",
-        "description": "I volunteer in community service projects organized by Boston Cares."
-      },
-      {
-        "organization": "Zooniverse",
-        "role": "Research Volunteer",
-        "date": "June 2025 - Present",
-        "category": "Science and Technology",
-        "description": "I assist in research projects by classifying data for scientific studies."
+        "description": "Transcribe historical documents for research accessibility."
       }
     ]
   }
