@@ -20,10 +20,10 @@ export default function PhotosPage() {
         const sectionColors = ['var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)', 'var(--yellow)'];
         const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
         return (
-          <Section key={index} title={category.category} colorVar={sectionColors[index % sectionColors.length]}>
+          <Section key={index} title={category.category}>
             <div className="photo-grid">
               {category.photos.map((photo, idx) => (
-                <div key={idx} className="photo-item" style={{ backgroundColor: cardColors[idx % cardColors.length], borderRadius: '8px' }}>
+                <div key={idx} className="photo-item" style={{ backgroundColor: cardColors[idx % cardColors.length] }}>
                   <Image src={`/assets/${photo.image}`} alt={photo.caption} width={400} height={300} sizes="(max-width: 768px) 100vw, 33vw" loading="lazy" />
                   <p className="photo-caption">{photo.caption}</p>
                   <p className="photo-date">{photo.date}</p>

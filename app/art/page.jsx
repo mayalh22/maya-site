@@ -13,10 +13,10 @@ export default function ArtPage() {
   return (
     <main className="container">
       <h1>Art</h1>
-      <Section title="Gallery" subtitle="Selected pieces" colorVar="var(--mint)">
+      <Section title="Gallery" subtitle="Selected pieces">
         <section id="art-section" className="gallery">
           {artData.pieces.map((piece, index) => (
-            <div key={index} className="card" style={{ backgroundColor: cardColors[index % cardColors.length], borderRadius: '8px' }}>
+            <div key={index} className="card" style={{ backgroundColor: cardColors[index % cardColors.length] }}>
               <Image
                 src={`/assets/${piece.image}`}
                 alt={piece.title}

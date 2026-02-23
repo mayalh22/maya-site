@@ -45,7 +45,7 @@ export default function FavoritesPage() {
           style={{
             backgroundColor: sectionColors[type],
             padding: '1rem',
-            borderRadius: '12px',
+            borderRadius: '0px',
             marginBottom: '2rem',
           }}
         >
@@ -92,12 +92,9 @@ export default function FavoritesPage() {
                     style={{
                       minWidth: '150px',
                       backgroundColor: cardColors[index % cardColors.length],
-                      borderRadius: '8px',
                       padding: '0.5rem',
                       textAlign: 'center',
                       flexShrink: 0,
-                      boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
-                      transition: 'transform 0.2s',
                     }}
                     onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
                     onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}

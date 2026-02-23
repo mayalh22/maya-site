@@ -12,7 +12,7 @@ export default function ProjectsPage() {
     <main className="container" style={{ padding: '2rem 1rem' }}>
       <h1 style={{ marginBottom: '1.5rem', textAlign: 'center', color: 'var(--text-dark)' }}>Code Projects</h1>
 
-      <Section title="Projects" subtitle="Code & experiments" colorVar="var(--teal)">
+      <Section title="Projects" subtitle="Code & experiments">
         <section
           id="projects-section"
           style={{
@@ -28,11 +28,8 @@ export default function ProjectsPage() {
             className="card"
             style={{
               backgroundColor: cardColors[index % cardColors.length],
-              borderRadius: '12px',
               padding: '1rem',
               width: '300px',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-              transition: 'transform 0.2s, box-shadow 0.2s',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-5px)';

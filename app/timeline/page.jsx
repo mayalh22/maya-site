@@ -17,7 +17,7 @@ export default function TimelinePage() {
       {timelineData.sections.map((section, index) => {
         const sectionColors = ['var(--teal)', 'var(--orange)', 'var(--mint)', 'var(--yellow)'];
         return (
-          <Section key={index} title={`${section.year} — ${section.title}`} colorVar={sectionColors[index % sectionColors.length]}>
+          <Section key={index} title={`${section.year} — ${section.title}`}>
             {section.events.map((event, idx) => (
               <div key={idx} className="timeline-item" style={{ backgroundColor: 'transparent' }}>
                 <div className="timeline-date">{event.date}</div>
@@ -32,12 +32,12 @@ export default function TimelinePage() {
         );
       })}
 
-      <Section title={timelineData.volunteering.title} colorVar="var(--pink)">
+      <Section title={timelineData.volunteering.title}>
         <div className="card-grid">
           {timelineData.volunteering.roles.map((role, index) => {
             const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
             return (
-              <div key={index} className="card" style={{ backgroundColor: cardColors[index % cardColors.length], borderRadius: '8px' }}>
+              <div key={index} className="card" style={{ backgroundColor: cardColors[index % cardColors.length] }}>
                 <h3>{role.role}</h3>
                 <p><strong>{role.organization}</strong></p>
                 {role.category && <span className="tag">{role.category}</span>}

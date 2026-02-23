@@ -14,12 +14,12 @@ export default function ContactPage() {
         <p>{contactData.message}</p>
       </div>
 
-      <Section title="Social & Contact" subtitle="Ways to reach me" colorVar="var(--orange)">
+      <Section title="Social & Contact" subtitle="Ways to reach me">
         <div className="card-grid">
           {contactData.social.map((link, index) => {
             const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
             return (
-              <div key={index} className="card" style={{ backgroundColor: cardColors[index % cardColors.length], borderRadius: '8px' }}>
+              <div key={index} className="card" style={{ backgroundColor: cardColors[index % cardColors.length] }}>
                 <h3>{link.platform}</h3>
                 <p><strong>{link.username}</strong></p>
                 <p>{link.description}</p>
