@@ -1,9 +1,8 @@
-
 import favoritesData from '@/lib/content/favorites.json';
 
 export const metadata = {
-  title: 'Favorites - Maya Hazarika',
-  description: "Maya Hazarika's favorite books, music, movies, and more.",
+  title: 'Favorites',
+  description: "My favorite books, music, and movies.",
 };
 
 export default function FavoritesPage() {
@@ -17,59 +16,14 @@ export default function FavoritesPage() {
       <div className="starline">✦</div>
 
       <section className="section">
-        <h2 className="section-title">Books</h2>
+        <h2 className="section-title">Top 8</h2>
         <div className="grid-cards">
-          {favoritesData.books.map((book, index) => (
+          {favoritesData.top.map((item, index) => (
             <div key={index} className="card-mini">
-              <h4>#{index + 1}</h4>
-              <p>{book}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <div className="starline">✦</div>
-
-      <section className="section">
-        <h2 className="section-title">Music</h2>
-        
-        <div className="feature-block">
-          <h3>Albums</h3>
-          <ul className="star-list">
-            {favoritesData.music.albums.map((album, index) => (
-              <li key={index}>{album}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="feature-block">
-          <h3>Artists</h3>
-          <ul className="star-list">
-            {favoritesData.music.artists.map((artist, index) => (
-              <li key={index}>{artist}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="feature-block">
-          <h3>Songs</h3>
-          <ul className="star-list">
-            {favoritesData.music.songs.map((song, index) => (
-              <li key={index}>{song}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <div className="starline">✦</div>
-
-      <section className="section">
-        <h2 className="section-title">Movies & Shows</h2>
-        <div className="grid-cards">
-          {favoritesData.movies.map((movie, index) => (
-            <div key={index} className="card-mini">
-              <h4>★</h4>
-              <p>{movie}</p>
+              <img src={item.image} alt={item.title} width="150" />
+              <h4>{item.title}</h4>
+              <p>{item.subtitle}</p>
+              <span>{item.type}</span>
             </div>
           ))}
         </div>
