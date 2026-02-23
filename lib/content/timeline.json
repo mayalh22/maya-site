@@ -10,7 +10,7 @@
           "organization": "Medium",
           "role": "Writer",
           "location": "Remote",
-          "description": "I publish essays and long-form writing on Medium covering topics across arts, CS, and culture."
+          "description": "I write articles on a variety of topics, sharing insights and experiences with a broader audience. My Medium profile features pieces on technology, education, and personal growth, reflecting my diverse interests and commitment to accessible content creation."
         }
       ]
     },
@@ -23,91 +23,84 @@
           "organization": "Museum of Science",
           "role": "In Gallery Learning Member",
           "location": "Boston, MA",
-          "description": "Lead experiments and learning plans for visitors in the Charles River Yawkey Gallery and Engineering Design Workshop."
+          "description": "Every Sunday, I lead experiments and learning plans for visitors ranging from young children to adults in the Charles River Yawkey Gallery and the Engineering Design Workshop."
         },
         {
           "date": "Feb 2025 - Present",
           "organization": "The Swellesley Report",
           "role": "Writer",
           "location": "Wellesley, MA",
-          "description": "Research and write local journalism pieces covering community events and school news."
+          "description": "I research, write, and collaborate on local journalism pieces covering town events and school news. Meeting deadlines for hyperlocal coverage is its own particular discipline!"
         },
         {
           "date": "May 2025 - Present",
           "organization": "Mathnasium - The Math Learning Center",
           "role": "Instructor",
           "location": "Wellesley, MA",
-          "description": "Tutor K-9 students in math concepts, adapting lessons and writing session reports for families."
+          "description": "I tutor K–9 students in math, adjusting lessons to individual needs and writing detailed session reports for families. I'm certified in Mathnasium Methods, which sounds more impressive than it probably is (a test on addition and subtraction), but the tutoring itself I take seriously."
         },
         {
           "date": "Nov 2025 - Present",
           "organization": "Hack Club",
           "role": "Hackathon Organizer",
           "location": "Boston, MA",
-          "description": "Assist planning Campfire Boston (Game Jam) for high school students: venues, sponsors, and marketing."
-        },
-        {
-          "date": "Jan 2026 - Present",
-          "organization": "Medium",
-          "role": "Writer",
-          "location": "Remote",
-          "description": "Publish cross-disciplinary essays and creative writing on Medium."
+          "description": "I’m helping plan Campfire Boston, a game jam hackathon for high schoolers interested in CS. My responsibilities include contacting venues, coordinating sponsors, and handling marketing."
         },
         {
           "date": "Sep 2025 - Present",
           "organization": "Girls Who Code",
           "role": "Pathways Program Member",
-          "description": "Completed certificates in Data Science and AI-related coursework; collaborate with peers on projects."
+          "description": "I completed five certificates focused on Data Science and AI, working on projects that spotlighted women in STEM and deepened my understanding of AI's errors and useful applications across careers."
         },
         {
           "date": "Jun 2025 - Present",
           "organization": "Wellesley College",
           "role": "Research Assistant",
-          "description": "Support professors analyzing algorithmic effects on youth social media datasets using Jupyter notebooks."
+          "description": "I work with Computer Science professors using Jupyter notebooks to analyze large datasets on how algorithms affect youth behavior across Instagram and Facebook. The data is unsurprising in the bad ways and surprising in the good ways!"
         },
         {
           "date": "Jun 2025 - Present",
           "organization": "Ballotpedia",
           "role": "Community Researcher",
-          "description": "Contribute to non-partisan election research and data projects."
+          "description": "I contribute to ongoing research on local, state, and federal elections in support of non-partisan political coverage. I'm in high school doing this, which I guess I find impressive enough to mention."
         },
         {
           "date": "May 2025 - Present",
           "organization": "The Congressional Award",
           "role": "Participant",
-          "description": "Pursue service and personal-development goals; awarded Congressional Award Gold Certificate in Dec 2025."
+          "description": "I pursue goals across volunteer service, personal development, physical fitness, and exploration under the Congressional Award framework. In December 2025, I was awarded the Gold Certificate for reaching requirements across all four pillars."
         },
         {
           "date": "Jun 2025 - Present",
           "organization": "MIT Edgerton Center",
           "role": "Summer Student",
           "location": "Cambridge, MA",
-          "description": "Worked on hardware projects involving soldering, Raspberry Pi, and prototype builds."
+          "description": "I collaborated on engineering projects involving soldering, Raspberry Pi, embedded systems in machine code, and prototype building using woodworking and advanced design techniques. I came in not knowing exactly how to solder. I left knowing exactly how to solder!"
         },
         {
           "date": "Jun 2025 - Present",
           "organization": "The Academies by Harvard Student Agencies",
           "role": "Student",
-          "description": "Participated in mock consulting projects and team-based case analyses."
+          "description": "I participated in mock consulting projects, analyzing cases, presenting team solutions, and building skills through hands-on practice. It's essentially a simulation of something that will one day have much higher stakes."
         },
         {
           "date": "Jul 2025 - Present",
           "organization": "cherielle",
           "role": "Outreach Officer",
-          "description": "Draft grant proposals and plan community engagement strategies."
+          "description": "I draft grant proposals, plan community events, and identify strategic growth opportunities with the team!"
         },
         {
           "date": "May 2025 - Present",
           "organization": "High School Democrats of America",
           "role": "Fellow",
-          "description": "Engage in civic education and political organizing."
+          "description": "I participate in civic education, political organizing, and peer collaboration on democratic issues at the high school level. I show up, which already puts me ahead of most eligible voters."
         },
         {
           "date": "Nov 2024 - Present",
           "organization": "Junior Economic Club of Boston",
           "role": "Member",
           "location": "Boston, MA",
-          "description": "Attend seminars and discussions on economic policy and practice."
+          "description": "I attend seminars and discussions on economic policy, engaging with professionals and staying informed on policy impacts through expert-led sessions. A lot of it goes over my head, which is precisely the point."
         }
       ]
     },
@@ -119,19 +112,19 @@
           "date": "Oct 2025",
           "organization": "Kode With Klossy",
           "role": "Code-A-Bration Participant",
-          "description": "Participated in a program promoting coding for girls."
+          "description": "I participated in Kode With Klossy's Code-A-Bration, an event celebrating women and girls in coding and technology."
         },
         {
           "date": "Jul 2025 - Sep 2025",
           "organization": "Ctrl Alt Policy",
           "role": "Managing Editor",
-          "description": "Reviewed and edited policy articles for youth audiences."
+          "description": "I reviewed, edited, and wrote policy articles addressing social, political, and economic issues, tailoring content for clarity and accessibility for youth audiences. Three months of this taught me that 'accessible' is harder to write than 'technical.'"
         },
         {
           "date": "Summer 2024",
           "organization": "Boston University - Artemis Program",
           "role": "Program Member",
-          "description": "Completed an intensive foundational computer science program and a C++ project."
+          "description": "I completed an intensive summer program in foundational computer science, gaining hands-on experience with programming, algorithms, and problem-solving through team-based projects. It was the summer I decided I actually liked coding!"
         }
       ]
     }
@@ -144,22 +137,58 @@
         "role": "Digital Volunteer",
         "date": "June 2025 - Present",
         "category": "Education",
-        "description": "Contribute to educational digitization and enrichment projects."
+        "description": "I contribute to educational digitization and enrichment projects remotely. It's quieter than my other commitments, which I appreciate."
       },
       {
         "organization": "Museum of Science",
         "role": "Volunteer",
         "date": "February 2025 - Present",
         "category": "Science and Technology",
-        "description": "Support museum programs and engage visitors in hands-on science activities."
+        "description": "I support museum programs and engage visitors in hands-on science activities."
       },
       {
         "organization": "Library of Congress",
         "role": "Transcriber",
         "date": "June 2025 - Present",
         "category": "Education",
-        "description": "Transcribe historical documents for research accessibility."
+        "description": "I transcribe historical documents to make them accessible for researchers."
+      }
+    ]
+  },
+  "honors": {
+    "title": "Honors & Awards",
+    "awards": [
+      {
+        "title": "Congressional Award Gold Certificate",
+        "issuer": "Congressional Award",
+        "date": "Feb 2026",
+        "description": "I was awarded for reaching requirements in Personal Development, Physical Development, Exploration, and Volunteership."
+      },
+      {
+        "title": "DECA State Qualifier (1st place)",
+        "issuer": "DECA",
+        "date": "Dec 2025",
+        "description": "I placed 1st out of roughly 40 individuals in MA District 10 in the Business Finance Series event. I scored an 84/100 on the exam and a 93/100 on the roleplay. The roleplay is the part I'm more willing to brag about."
+      },
+      {
+        "title": "Athena Award",
+        "issuer": "Hack Club",
+        "date": "Oct 2025",
+        "description": "I was awarded for completing the Athena Award Program, held in collaboration with MIT, the U.S. Congressional App Challenge, Girls Who Code, and GitHub. I shipped 7 projects representing 30 hours of work. The certificate recognizes independent project development and contributions to Hack Club's global community of young creators."
+      },
+      {
+        "title": "MASCO Finalist (4th place)",
+        "issuer": "MASCO",
+        "date": "Jul 2025",
+        "description": "I qualified for the Massachusetts Computer Science Olympiad in-person finals. 4th place is not 1st place, but I did make it to finals, which is its own thing."
+      },
+      {
+        "title": "DECA State Qualifier (5th place)",
+        "issuer": "DECA",
+        "date": "Dec 2024",
+        "description": "I placed top 5 out of roughly 30 teams in MA District 10 in the Financial Team Decision Making event. Our team scored a composite 72/100 on the exam and an 87/100 on the roleplay. Again, the roleplay."
       }
     ]
   }
 }
+
