@@ -3,12 +3,8 @@ import Image from 'next/image';
 import projectsData from '@/lib/content/projects.json';
 import Section from '@/components/Section';
 
-export const metadata = {
-  title: 'Code Projects',
-  description: "My coding projects and portfolio.",
-};
-
 export default function ProjectsPage() {
+
   // Define a set of colors for alternating cards
   const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
 
