@@ -1,13 +1,200 @@
 {
-  "intro": "Top 8 favorites (placeholders). Add images to /public/assets/favorites/ and update paths as needed.",
+  "intro": "My top 8 favorites across movies, shows, books, and albums.",
   "top": [
-    { "title": "High Fidelity", "type": "book", "subtitle": "Nick Hornby (1995)", "image": "/assets/favorites/placeholder1.png" },
-    { "title": "The Miseducation of Lauryn Hill", "type": "album", "subtitle": "Lauryn Hill (1998)", "image": "/assets/favorites/placeholder2.png" },
-    { "title": "Emma", "type": "movie", "subtitle": "dir. Autumn de Wilde (2020)", "image": "/assets/favorites/placeholder3.png" },
-    { "title": "White Teeth", "type": "book", "subtitle": "Zadie Smith (2000)", "image": "/assets/favorites/placeholder4.png" },
-    { "title": "Skin", "type": "album", "subtitle": "Joy Crookes (2021)", "image": "/assets/favorites/placeholder5.png" },
-    { "title": "Black Panther", "type": "movie", "subtitle": "dir. Ryan Coogler (2018)", "image": "/assets/favorites/placeholder6.png" },
-    { "title": "Paradise", "type": "book", "subtitle": "Toni Morrison (1997)", "image": "/assets/favorites/placeholder7.png" },
-    { "title": "Abbey Road", "type": "album", "subtitle": "The Beatles (1969)", "image": "/assets/favorites/placeholder8.png" }
+    {
+      "title": "Emma",
+      "type": "movie",
+      "subtitle": "dir. Autumn de Wilde (2020)",
+      "image": "/assets/favorites/emma.png"
+    },
+    {
+      "title": "The Empire Strikes Back",
+      "type": "movie",
+      "subtitle": "dir. Irvin Kershner (1980)",
+      "image": "/assets/favorites/empire_strikes_back.png"
+    },
+    {
+      "title": "The Social Network",
+      "type": "movie",
+      "subtitle": "dir. David Fincher (2010)",
+      "image": "/assets/favorites/social_network.png"
+    },
+    {
+      "title": "Marie Antoinette",
+      "type": "movie",
+      "subtitle": "dir. Sofia Coppola (2006)",
+      "image": "/assets/favorites/marie_antoinette.png"
+    },
+    {
+      "title": "21",
+      "type": "movie",
+      "subtitle": "dir. Robert Luketic (2008)",
+      "image": "/assets/favorites/21.png"
+    },
+    {
+      "title": "Indiana Jones and the Kingdom of the Crystal Skull",
+      "type": "movie",
+      "subtitle": "dir. Steven Spielberg (2008)",
+      "image": "/assets/favorites/indiana_jones.png"
+    },
+    {
+      "title": "Laapataa Ladies",
+      "type": "movie",
+      "subtitle": "dir. Unknown (2020s)",
+      "image": "/assets/favorites/laapataa_ladies.png"
+    },
+    {
+      "title": "Monte Carlo",
+      "type": "movie",
+      "subtitle": "dir. Thomas Bezucha (2011)",
+      "image": "/assets/favorites/monte_carlo.png"
+    },
+
+    {
+      "title": "Survivor",
+      "type": "show",
+      "subtitle": "2000–present, reality series",
+      "image": "/assets/favorites/survivor.png"
+    },
+    {
+      "title": "Community",
+      "type": "show",
+      "subtitle": "2009–2015, dir. Various",
+      "image": "/assets/favorites/community.png"
+    },
+    {
+      "title": "Big Brother",
+      "type": "show",
+      "subtitle": "2000–present, reality series",
+      "image": "/assets/favorites/big_brother.png"
+    },
+    {
+      "title": "The Challenge",
+      "type": "show",
+      "subtitle": "1998–present, reality series",
+      "image": "/assets/favorites/the_challenge.png"
+    },
+    {
+      "title": "Arrested Development",
+      "type": "show",
+      "subtitle": "2003–2019, dir. Mitchell Hurwitz",
+      "image": "/assets/favorites/arrested_development.png"
+    },
+    {
+      "title": "New Girl",
+      "type": "show",
+      "subtitle": "2011–2018, dir. Various",
+      "image": "/assets/favorites/new_girl.png"
+    },
+    {
+      "title": "The Great British Baking Show",
+      "type": "show",
+      "subtitle": "2010–present, dir. Various",
+      "image": "/assets/favorites/great_british_baking_show.png"
+    },
+    {
+      "title": "Somebody Feed Phil",
+      "type": "show",
+      "subtitle": "2018–present, dir. Phil Rosenthal",
+      "image": "/assets/favorites/somebody_feed_phil.png"
+    },
+
+    {
+      "title": "High Fidelity",
+      "type": "book",
+      "subtitle": "Nick Hornby (1995)",
+      "image": "/assets/favorites/high_fidelity.png"
+    },
+    {
+      "title": "White Teeth",
+      "type": "book",
+      "subtitle": "Zadie Smith (2000)",
+      "image": "/assets/favorites/white_teeth.png"
+    },
+    {
+      "title": "The Corrections",
+      "type": "book",
+      "subtitle": "Jonathan Franzen (2001)",
+      "image": "/assets/favorites/the_corrections.png"
+    },
+    {
+      "title": "Paradise",
+      "type": "book",
+      "subtitle": "Toni Morrison (1997)",
+      "image": "/assets/favorites/paradise.png"
+    },
+    {
+      "title": "The Stars My Destination",
+      "type": "book",
+      "subtitle": "Alfred Bester (1956)",
+      "image": "/assets/favorites/stars_my_destination.png"
+    },
+    {
+      "title": "A Princess of Mars",
+      "type": "book",
+      "subtitle": "Edgar Rice Burroughs (1912)",
+      "image": "/assets/favorites/princess_of_mars.png"
+    },
+    {
+      "title": "The Apple in the Dark",
+      "type": "book",
+      "subtitle": "José Donoso (1961)",
+      "image": "/assets/favorites/apple_in_the_dark.png"
+    },
+    {
+      "title": "A Streetcar Named Desire",
+      "type": "book",
+      "subtitle": "Tennessee Williams (1947)",
+      "image": "/assets/favorites/streetcar_named_desire.png"
+    },
+
+    {
+      "title": "London Calling",
+      "type": "album",
+      "subtitle": "The Clash (1979)",
+      "image": "/assets/favorites/london_calling.png"
+    },
+    {
+      "title": "Californication",
+      "type": "album",
+      "subtitle": "Red Hot Chili Peppers (1999)",
+      "image": "/assets/favorites/californication.png"
+    },
+    {
+      "title": "Stadium Arcadium",
+      "type": "album",
+      "subtitle": "Red Hot Chili Peppers (2006)",
+      "image": "/assets/favorites/stadium_arcadium.png"
+    },
+    {
+      "title": "Oasis (What's the Story) Morning Glory?",
+      "type": "album",
+      "subtitle": "Oasis (1995)",
+      "image": "/assets/favorites/oasis_morning_glory.png"
+    },
+    {
+      "title": "Toto",
+      "type": "album",
+      "subtitle": "Toto (1978)",
+      "image": "/assets/favorites/toto.png"
+    },
+    {
+      "title": "CrazySexyCool",
+      "type": "album",
+      "subtitle": "TLC (1994)",
+      "image": "/assets/favorites/crazysexycool.png"
+    },
+    {
+      "title": "The Blueprint",
+      "type": "album",
+      "subtitle": "Jay-Z (2001)",
+      "image": "/assets/favorites/the_blueprint.png"
+    },
+    {
+      "title": "Yoshimi Battles the Pink Robots",
+      "type": "album",
+      "subtitle": "The Flaming Lips (2002)",
+      "image": "/assets/favorites/yoshimi_battles.png"
+    }
   ]
 }
