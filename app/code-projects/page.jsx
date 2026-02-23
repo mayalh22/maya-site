@@ -2,8 +2,8 @@ import Image from 'next/image';
 import projectsData from '@/lib/content/projects.json';
 
 export const metadata = {
-  title: 'Code Projects - Maya Hazarika',
-  description: "Maya Hazarika's coding projects and portfolio.",
+  title: 'Code Projects',
+  description: "My coding projects and portfolio.",
 };
 
 export default function ProjectsPage() {
