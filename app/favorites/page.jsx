@@ -20,7 +20,6 @@ export default function FavoritesPage() {
     return acc;
   }, {});
 
-  // Define colors for sections
   const sectionColors = {
     movie: 'var(--orange)',
     show: 'var(--teal)',
@@ -28,52 +27,72 @@ export default function FavoritesPage() {
     album: 'var(--olive)',
   };
 
-  // Define colors for cards (cycling through)
   const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
 
   return (
-    <main className="container">
-      <div className="about">
+    <main style={{ padding: '1rem', fontFamily: 'sans-serif', backgroundColor: 'var(--bg-light)' }}>
+      <div className="about" style={{ textAlign: 'center', marginBottom: '1rem' }}>
         <h1>My Favorites</h1>
         <p>{favoritesData.intro}</p>
       </div>
 
-      <div className="starline">✦</div>
+      <div className="starline" style={{ textAlign: 'center', fontSize: '1.5rem', margin: '1rem 0' }}>✦</div>
 
       {Object.entries(grouped).map(([type, items]) => (
-        <section
-          key={type}
-          className="section"
-          style={{ backgroundColor: sectionColors[type], padding: '1rem', borderRadius: '12px', marginBottom: '2rem' }}
-        >
-          <h2
-            className="section-title"
-            style={{ cursor: "pointer", color: 'var(--text-light)' }}
+        <section key={type} style={{ marginBottom: '2rem' }}>
+          {/* Section header */}
+          <div
             onClick={() => toggleSection(type)}
+            style={{
+              backgroundColor: sectionColors[type],
+              color: 'var(--text-light)',
+              padding: '0.5rem 1rem',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              display: 'inline-block',
+              marginBottom: '0.5rem',
+              fontSize: '1rem',
+              fontWeight: 'bold',
+            }}
           >
-            {type.charAt(0).toUpperCase() + type.slice(1)} ({items.length}){" "}
-            {openSections[type] ? "▼" : "►"}
-          </h2>
+            {type.charAt(0).toUpperCase() + type.slice(1)} ({items.length}) {openSections[type] ? "▼" : "►"}
+          </div>
 
           {openSections[type] && (
-            <div className="grid-cards" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '1rem' }}>
+            <div
+              className="carousel"
+              style={{
+                display: 'flex',
+                overflowX: 'auto',
+                gap: '1rem',
+                padding: '0.5rem 0',
+              }}
+            >
               {items.map((item, index) => (
                 <div
                   key={index}
-                  className="card-mini"
                   style={{
+                    minWidth: '150px',
                     backgroundColor: cardColors[index % cardColors.length],
-                    padding: '0.5rem',
                     borderRadius: '8px',
-                    width: '150px',
+                    padding: '0.5rem',
                     textAlign: 'center',
-                    boxShadow: '0 2px 6px rgba(0,0,0,0.15)'
+                    flexShrink: 0,
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
+                    transition: 'transform 0.2s',
                   }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                 >
-                  <img src={item.image} alt={item.title} width="150" style={{ borderRadius: '6px' }} />
-                  <h4 style={{ margin: '0.5rem 0 0 0', color: 'var(--text-dark)' }}>{item.title}</h4>
-                  <p style={{ fontSize: '0.8rem', margin: '0.25rem 0' }}>{item.subtitle}</p>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--text-dark)' }}>{item.type}</span>
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    width="150"
+                    style={{ borderRadius: '6px', display: 'block', marginBottom: '0.5rem' }}
+                  />
+                  <h4 style={{ margin: '0.25rem 0', fontSize: '0.85rem', color: 'var(--text-dark)' }}>{item.title}</h4>
+                  <p style={{ margin: '0.25rem 0', fontSize: '0.7rem' }}>{item.subtitle}</p>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 'bold', color: 'var(--text-dark)' }}>{item.type}</span>
                 </div>
               ))}
             </div>
