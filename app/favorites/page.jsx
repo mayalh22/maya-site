@@ -25,7 +25,7 @@ export default function FavoritesPage() {
     movie: 'var(--orange)',
     show: 'var(--teal)',
     book: 'var(--mint)',
-    album: 'var(--olive)',
+    album: 'var(--pink)',
   };
 
   const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
@@ -52,18 +52,20 @@ export default function FavoritesPage() {
           <div
             onClick={() => toggleSection(type)}
             style={{
-              backgroundColor: 'rgba(0,0,0,0.2)',
+              backgroundColor: 'rgba(0,0,0,0.15)',
               color: 'var(--text-light)',
-              padding: '0.25rem 0.75rem',
-              borderRadius: '6px',
+              padding: '0.5rem 1rem',
               cursor: 'pointer',
               display: 'inline-block',
-              fontSize: '0.95rem',
-              fontWeight: 'bold',
+              fontSize: '0.9rem',
+              fontWeight: 'normal',
               marginBottom: '0.75rem',
+              border: '2px solid rgba(255,255,255,0.3)',
+              fontFamily: 'Georgia, serif',
+              letterSpacing: '0.3px',
             }}
           >
-            {type.charAt(0).toUpperCase() + type.slice(1)} ({items.length}) {openSections[type] ? "▼" : "►"}
+            {type.charAt(0).toUpperCase() + type.slice(1)}s ({items.length}) {openSections[type] ? "▼" : "►"}
           </div>
 
           {openSections[type] && (
@@ -96,8 +98,8 @@ export default function FavoritesPage() {
                       textAlign: 'center',
                       flexShrink: 0,
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--yellow)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = cardColors[index % cardColors.length])}
                   >
                     <img
                       src={item.image}

@@ -203,17 +203,17 @@ ul.star-list li::before {
 /* ── CARD GRID ── */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
   color: var(--text-dark);
-  margin: 2rem 0;
-  padding: 1rem;
+  margin: 1rem 0;
+  padding: 0.5rem;
 }
 
 /* ── Cards ── */
 .card {
   border: 2px solid var(--primary);
-  padding: 1.5rem;
+  padding: 0.75rem;
   background-color: white;
   color: var(--text-dark) !important;
   border-radius: 0 !important;
@@ -225,12 +225,12 @@ ul.star-list li::before {
 }
 
 .card h3 {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.4rem;
   color: var(--primary);
   font-family: Georgia, serif;
   letter-spacing: 0.3px;
   font-weight: normal;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .card p {
@@ -373,16 +373,16 @@ ul.star-list li::before {
 /* ── TIMELINE ── */
 .timeline-item {
   border-left: 4px solid var(--secondary);
-  padding-left: 2rem;
-  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
   position: relative;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .timeline-item:hover {
   background-color: var(--yellow);
-  padding-left: 2.2rem;
+  padding-left: 1.7rem;
 }
 
 .timeline-item::before {
@@ -398,18 +398,18 @@ ul.star-list li::before {
 .timeline-date {
   font-weight: normal;
   color: var(--secondary);
-  margin-bottom: 0.4rem;
-  font-size: 0.85rem;
+  margin-bottom: 0.2rem;
+  font-size: 0.75rem;
   letter-spacing: 0.5px;
   font-family: Georgia, serif;
 }
 
 .timeline-item h3 {
   color: var(--primary);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.2rem;
   font-family: Georgia, serif;
   font-weight: normal;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
 }
 
 .timeline-item em {
@@ -418,9 +418,9 @@ ul.star-list li::before {
 }
 
 .timeline-item p {
-  line-height: 1.6;
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
   font-family: Georgia, serif;
   font-weight: normal;
 }
@@ -479,11 +479,11 @@ a:hover {
 /* ── CARD GRID ── */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
   color: var(--text-dark);
-  margin: 2rem 0;
-  padding: 1rem;
+  margin: 1rem 0;
+  padding: 0.5rem;
 }
 
 .section-wrapper {
