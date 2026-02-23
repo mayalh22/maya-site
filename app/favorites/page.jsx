@@ -9,6 +9,7 @@ export default function FavoritesPage() {
     book: true,
     album: true,
   });
+  const [hoveredSection, setHoveredSection] = useState(null);
 
   const toggleSection = (type) => {
     setOpenSections(prev => ({ ...prev, [type]: !prev[type] }));
@@ -42,17 +43,16 @@ export default function FavoritesPage() {
         <section
           key={type}
           style={{
-            backgroundColor: sectionColors[type], // full section background
+            backgroundColor: sectionColors[type],
             padding: '1rem',
             borderRadius: '12px',
             marginBottom: '2rem',
           }}
         >
-          {/* Section header */}
           <div
             onClick={() => toggleSection(type)}
             style={{
-              backgroundColor: 'rgba(0,0,0,0.2)', // subtle overlay so header text pops
+              backgroundColor: 'rgba(0,0,0,0.2)',
               color: 'var(--text-light)',
               padding: '0.25rem 0.75rem',
               borderRadius: '6px',
@@ -74,13 +74,16 @@ export default function FavoritesPage() {
                 width: '100%',
                 marginTop: '0.5rem',
               }}
+              onMouseEnter={() => setHoveredSection(type)}
+              onMouseLeave={() => setHoveredSection(null)}
             >
-              {/* Carousel track */}
               <div
                 style={{
                   display: 'flex',
                   gap: '1rem',
-                  animation: 'scroll 20s linear infinite',
+                  animation: hoveredSection === type
+                    ? 'scroll 6s linear infinite'
+                    : 'none',
                 }}
               >
                 {[...items, ...items].map((item, index) => (
@@ -106,7 +109,7 @@ export default function FavoritesPage() {
                       style={{ borderRadius: '6px', display: 'block', marginBottom: '0.5rem' }}
                     />
                     <h4 style={{ margin: '0.25rem 0', fontSize: '0.85rem', color: 'var(--text-dark)' }}>{item.title}</h4>
-                    <p style={{ margin: '0.25rem 0', fontSize: '0.7rem' }}>{item.subtitle}</p>
+                    <p style={{ margin: '0.25rem 0', fontSize: '0.7rem', color: 'var(--text-dark)' }}>{item.subtitle}</p>
                     <span style={{ fontSize: '0.7rem', fontWeight: 'bold', color: 'var(--text-dark)' }}>{item.type}</span>
                   </div>
                 ))}
