@@ -1,9 +1,9 @@
 'use client';
 import { useState } from "react";
 import favoritesData from '@/lib/content/favorites.json';
+import Grid from '../../components/Grid';
 
 export default function FavoritesPage() {
-  // simplified: always show each section (no dropdown)
 
   const grouped = favoritesData.top.reduce((acc, item) => {
     acc[item.type] = acc[item.type] || [];
@@ -72,7 +72,6 @@ export default function FavoritesPage() {
         </section>
       ))}
 
-      {/* cleaned animations and simplified layout */}
     </main>
   );
 }

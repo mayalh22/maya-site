@@ -1,6 +1,3 @@
-// REUSABLE GRID COMPONENT
-// Usage: <Grid columns={4} rowHeight="220px">...</Grid>
-// To change grid layout sitewide, edit this file only.
 import React from 'react';
 
 export default function Grid({ columns = 3, rows, rowHeight = '200px', children }) {

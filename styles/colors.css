@@ -1,13 +1,11 @@
 :root {
   --orange: #F7B24A;
-  /* --teal and --mint removed */
   --olive: #93BF47;
   --yellow: #D4D85D;
   --pink: #F9AFAB;
   --light-yellow: #f2cd84;
-  /* --dark-blue removed */
   
-  --primary: #1a3d2f; /* dark green as new primary */
+  --primary: #1a3d2f; 
   --secondary: var(--orange);
   --accent: #ffb6e6; /* pink accent */
   --text-dark: #2c3e50;

@@ -3,6 +3,7 @@ export const metadata = {
   description: 'Maya Hazarika\'s social links and email.',
 };
 
+import Grid from '../../components/Grid';
 import contactData from '@/lib/content/contact.json';
 import Section from '@/components/Section';
 
@@ -16,13 +17,10 @@ export default function ContactPage() {
 
       <Section title="Social & Contact" subtitle="Ways to reach me">
           <div className="contact-grid">
-            {/* Render contact cards here. To change card height, edit rowHeight prop. */}
-            {/* Example: <Card title="Email" fixOverflow /> */}
-            {/* Use different connect text for each card. */}
+
             <Grid columns={3} rows={2} rowHeight="180px">
               {contactData.social.map((link, index) => {
             const baseColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
-            // special colors for Email and Spotify
             let bg = baseColors[index % baseColors.length];
             if ((/email/i).test(link.platform)) bg = 'var(--light-yellow)';
             if ((/spotify/i).test(link.platform)) bg = 'var(--pink)';

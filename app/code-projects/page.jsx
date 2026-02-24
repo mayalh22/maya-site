@@ -25,8 +25,6 @@ export default function ProjectsPage() {
         Code Projects
       </h1>
 
-      {/* CODE PROJECTS PAGE */}
-      {/* To change grid/card layout, edit Grid and Card components below. */}
       <Section title="Projects" subtitle="Code & experiments">
         <section className="code-section">
           <div className="starline-horizontal">
@@ -35,7 +33,6 @@ export default function ProjectsPage() {
             <span>✦</span>
           </div>
 
-          {/* Projects Grid */}
           <div
             style={{
               display: 'flex',
