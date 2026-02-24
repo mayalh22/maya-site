@@ -8,15 +8,35 @@ export default function Header() {
   return (
     <header className="site-header">
 <div className="star-container">
-  {Array.from({ length: starCount }).map((_, i) => (
-    <span
-      key={i}
-      className="star"
-      style={{ color: colors[i % colors.length] }}
-    >
-      ★
-    </span>
-  ))}
+  {Array.from({ length: starCount }).map((_, i) => {
+    const top = Math.random() * 100;
+    const left = Math.random() * 100;
+
+    const imageArea = { top: 50, left: 50, width: 20, height: 10 }; 
+    if (
+      top > imageArea.top &&
+      top < imageArea.top + imageArea.height &&
+      left > imageArea.left - imageArea.width / 2 &&
+      left < imageArea.left + imageArea.width / 2
+    ) {
+      return null;
+    }
+
+    return (
+      <span
+        key={i}
+        className="star"
+        style={{
+          top: `${top}%`,
+          left: `${left}%`,
+          color: colors[i % colors.length],
+          fontSize: `${Math.random() * 1.5 + 0.8}rem`,
+        }}
+      >
+        ★
+      </span>
+    );
+  })}
 </div>
 
       <Link href="/">

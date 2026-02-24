@@ -599,12 +599,26 @@ h1, h2, h3 {
 }
 
 .star-container {
-  text-align: center;
-  margin-bottom: 1rem;
+  position: relative;
+  width: 100%;
+  height: 200px; 
+  overflow: hidden;
 }
 
 .star {
-  font-size: 1.2rem;
-  margin: 0 2px;
-  display: inline-block;
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+  animation: spin 6s linear infinite;
+}
+
+.star:hover {
+  transform: scale(2) rotate(180deg); 
+  pointer-events: auto; 
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
