@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import photosData from '@/lib/content/photos.json';
+import Grid from '../../components/Grid';
+
 
 export default function PhotosPage() {
   const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
