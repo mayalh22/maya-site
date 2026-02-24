@@ -55,7 +55,7 @@ export default function FavoritesPage() {
             {type.charAt(0).toUpperCase() + type.slice(1)}s ({items.length})
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', marginTop: '0.75rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)',gap: '1rem', marginTop: '0.75rem' }}>
             {items.map((item, index) => (
               <div key={index} style={{ backgroundColor: cardColors[index % cardColors.length], padding: '0.5rem', textAlign: 'left' }}>
 <img
