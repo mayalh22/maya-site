@@ -597,25 +597,30 @@ h1, h2, h3 {
 .btn:active {
   transform: scale(0.95);
 }
+.site-header {
+  position: relative; 
+  height: 120px;
+}
 
 .star-container {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 200px; 
-  overflow: hidden;
+  height: 100%;
+  pointer-events: none;
 }
 
 .star {
   position: absolute;
-  display: block;
-  pointer-events: none;
+  font-size: 1.2rem;
+  color: var(--yellow);
+  animation: spin 2s linear infinite;
   transition: transform 0.3s ease;
-  animation: spin 6s linear infinite;
 }
 
 .star:hover {
-  transform: scale(2) rotate(180deg); 
-  pointer-events: auto; 
+  transform: scale(2) rotate(360deg);
 }
 
 @keyframes spin {
