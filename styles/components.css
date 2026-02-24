@@ -106,7 +106,6 @@ ul.star-list li::before {
   font-size: 0.9rem;
 }
 
-/* ── Callout ── */
 .callout {
   padding: 1.25rem 1.75rem;
   border-left: 4px solid var(--secondary);

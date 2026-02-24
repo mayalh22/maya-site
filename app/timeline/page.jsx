@@ -14,7 +14,6 @@ export default function TimelinePage() {
         <p>{timelineData.intro}</p>
       </div>
 
-      {/* Combined timeline: show all events together, not separated by year */}
       <Section title="Timeline">
         {timelineData.sections.flatMap(s => s.events).map((event, idx) => (
           <div key={idx} className="timeline-item" style={{ backgroundColor: 'transparent' }}>
