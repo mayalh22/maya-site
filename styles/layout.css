@@ -44,7 +44,7 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 4px solid var(--secondary);
+  border-bottom: 5px solid var(--olive);
 }
 
 nav ul {
@@ -68,7 +68,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  background-color: var(--accent);
+  background-color: var(--yellow);
   color: var(--primary);
 }
 
@@ -144,7 +144,7 @@ footer {
 .image-nav {
   background-color: var(--orange);
   padding: 0.5rem 0;
-  border-bottom: 2px solid var(--accent);
+  border-bottom: 2px solid var(--yellow);
 }
 
 .image-nav ul {
@@ -179,8 +179,8 @@ footer {
 }
 
 .image-nav img:hover {
-  border-color: var(--accent);
-  background-color: var(--primary);
+  border-color: var(--orange);
+  background-color: var(--yellow);
 }
 
 

@@ -20,7 +20,7 @@ export default function ContactPage() {
 
             <Grid columns={3} rows={2} rowHeight="180px">
               {contactData.social.map((link, index) => {
-            const baseColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
+            const baseColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-yellow)'];
             let bg = baseColors[index % baseColors.length];
             if ((/email/i).test(link.platform)) bg = 'var(--light-yellow)';
             if ((/spotify/i).test(link.platform)) bg = 'var(--pink)';

@@ -5,13 +5,7 @@ import Section from '@/components/Section';
 
 export default function ProjectsPage() {
   // Define a set of colors for alternating cards
-  const cardColors = [
-    'var(--yellow)',
-    'var(--pink)',
-    'var(--mint)',
-    'var(--teal)',
-    'var(--orange)',
-  ];
+  const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-yellow)'];
 
   return (
     <main className="container" style={{ padding: '2rem 1rem' }}>

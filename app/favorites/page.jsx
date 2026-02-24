@@ -18,7 +18,7 @@ export default function FavoritesPage() {
     album: 'var(--pink)',
   };
 
-  const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
+  const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-yellow)'];
 
   return (
     <main style={{ padding: '1rem', fontFamily: 'Inter, sans-serif', backgroundColor: 'var(--text-light)' }}>

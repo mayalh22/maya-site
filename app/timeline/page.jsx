@@ -31,7 +31,7 @@ export default function TimelinePage() {
       <Section title={timelineData.volunteering.title}>
         <div className="card-grid">
           {timelineData.volunteering.roles.map((role, index) => {
-            const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
+            const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-yellow)'];
             return (
               <div key={index} className="card" style={{ backgroundColor: cardColors[index % cardColors.length] }}>
                 <h3>{role.role}</h3>

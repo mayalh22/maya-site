@@ -6,8 +6,8 @@ import Grid from '../../components/Grid';
 
 
 export default function PhotosPage() {
-  const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
-  const sectionColors = ['var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)', 'var(--yellow)'];
+  const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-yellow)'];
+  const sectionColors = ['var(--pink)', 'var(--orange)', 'var(--yellow)', 'var(--light-yellow)'];
 
   return (
     <main style={{ padding: '1rem' }}>
