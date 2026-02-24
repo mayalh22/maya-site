@@ -19,6 +19,7 @@ export default function Home() {
       <h1>{aboutData.name}</h1>
       <h3>{aboutData.tagline}</h3>
       <p>{aboutData.bio}</p>
+      <p style={{marginTop: '1.2rem', fontSize: '1.05rem', color: 'var(--primary)'}}>Click the tabs above to learn more.</p>
     </section>
   );
 }

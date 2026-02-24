@@ -1,3 +1,12 @@
+/* ── Profile Image ── */
+.profile {
+  display: block;
+  margin: 0 auto 1.5rem auto;
+  border-radius: 50%;
+  background: var(--accent);
+  padding: 0.5rem;
+  box-shadow: 0 2px 16px rgba(255,182,230,0.15);
+}
 /* ── TYPOGRAPHY ── */
 body {
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -16,26 +25,14 @@ p {
   font-weight: normal;
 }
 
-/* ── DARK TEAL SECTIONS TEXT ── */
-[style*="background-color: var(--teal)"],
-[style*="background-color: var(--primary)"],
-.section-wrapper[style*="background: var(--teal)"],
-.section-wrapper[style*="background: var(--primary)"] {
-  color: var(--text-light) !important;
-}
-
-[style*="background-color: var(--teal)"] h1,
-[style*="background-color: var(--teal)"] h2,
-[style*="background-color: var(--teal)"] h3,
-[style*="background-color: var(--teal)"] h4,
-[style*="background-color: var(--teal)"] p,
-[style*="background-color: var(--teal)"] span,
-[style*="background-color: var(--primary)"] h1,
-[style*="background-color: var(--primary)"] h2,
-[style*="background-color: var(--primary)"] h3,
-[style*="background-color: var(--primary)"] h4,
-[style*="background-color: var(--primary)"] p,
-[style*="background-color: var(--primary)"] span {
+/* ── DARK GREEN SECTIONS TEXT ── */
+.section-dark-green,
+.section-dark-green h1,
+.section-dark-green h2,
+.section-dark-green h3,
+.section-dark-green h4,
+.section-dark-green p,
+.section-dark-green span {
   color: var(--text-light);
 }
 
@@ -67,8 +64,10 @@ p {
   text-align: center;
 }
 
+/* On hover, use accent if yellow is already background */
 .feature-block:hover {
-  background-color: var(--yellow);
+  background-color: var(--accent);
+}
 }
 
 .feature-block h3 {
@@ -139,8 +138,9 @@ ul.star-list li::before {
 }
 
 .subtle-link:hover {
-  color: var(--secondary);
-  background-color: var(--yellow);
+  color: var(--primary);
+  background-color: var(--accent);
+}
 }
 
 /* ── QUOTE ── */
@@ -150,7 +150,7 @@ ul.star-list li::before {
   margin: 2rem 0;
   padding: 1rem 1.5rem;
   border-left: 4px solid var(--olive);
-  background-color: var(--mint);
+  background-color: var(--accent);
   color: var(--text-dark);
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
@@ -251,8 +251,9 @@ ul.star-list li::before {
 }
 
 .btn:hover {
-  background-color: var(--secondary);
-  color: var(--text-dark);
+  background-color: var(--accent);
+  color: var(--primary);
+}
   border-color: var(--secondary);
 }
 
@@ -265,8 +266,10 @@ ul.star-list li::before {
 }
 
 .photo-item:hover {
-  border-color: var(--secondary);
-  background-color: var(--yellow);
+  border-color: var(--accent);
+  background-color: var(--primary);
+  color: var(--text-light);
+}
 }
 
 .photo-item img {
@@ -411,8 +414,10 @@ ul.star-list li::before {
 }
 
 .tag:hover {
-  background-color: var(--yellow);
-  border-color: var(--secondary);
+  background-color: var(--accent);
+  border-color: var(--primary);
+  color: var(--text-light);
+}
 }
 
 /* ── GRID CARDS ── */
@@ -431,9 +436,10 @@ ul.star-list li::before {
   text-align: center;
 }
 
+/* Removed mint hover and jiggle animation */
 .grid-cards .card-mini:hover {
-  background-color: var(--mint);
-  animation: jiggle 0.3s;
+  background-color: var(--accent);
+}
 }
 
 /* ── LINK STYLES ── */
@@ -442,9 +448,10 @@ a {
 }
 
 a:hover {
-  color: var(--secondary);
-  background-color: var(--yellow);
+  color: var(--accent);
+  background-color: var(--primary);
   text-decoration: underline;
+}
 }
 
 /* ── CARD GRID ── */
@@ -483,10 +490,9 @@ a:hover {
   position: relative;
 }
 
-.section-header h2 {
   margin: 0;
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  color: var(--dark-blue);
+  color: var(--primary);
   letter-spacing: 0.5px;
   font-size: 1.2rem;
   font-weight: normal;
