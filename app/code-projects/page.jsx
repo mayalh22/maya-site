@@ -111,7 +111,6 @@ export default function ProjectsPage() {
                         borderRadius: '6px',
                         textDecoration: 'none',
                         fontSize: '0.85rem',
-                        fontWeight: 'bold',
                         transition: 'background-color 0.2s',
                       }}
                     >
@@ -132,7 +131,6 @@ export default function ProjectsPage() {
                         borderRadius: '6px',
                         textDecoration: 'none',
                         fontSize: '0.85rem',
-                        fontWeight: 'bold',
                         transition: 'background-color 0.2s',
                       }}
                     >
