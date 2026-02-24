@@ -4,115 +4,154 @@ import projectsData from '@/lib/content/projects.json';
 import Section from '@/components/Section';
 
 export default function ProjectsPage() {
-
   // Define a set of colors for alternating cards
-  const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
+  const cardColors = [
+    'var(--yellow)',
+    'var(--pink)',
+    'var(--mint)',
+    'var(--teal)',
+    'var(--orange)',
+  ];
 
   return (
     <main className="container" style={{ padding: '2rem 1rem' }}>
-      <h1 style={{ marginBottom: '1.5rem', textAlign: 'center', color: 'var(--text-dark)' }}>Code Projects</h1>
+      <h1
+        style={{
+          marginBottom: '1.5rem',
+          textAlign: 'center',
+          color: 'var(--text-dark)',
+        }}
+      >
+        Code Projects
+      </h1>
 
-        // CODE PROJECTS PAGE
-        // To change grid/card layout, edit Grid and Card components below.
-        <Section title="Projects" subtitle="Code & experiments">
-          <section className="code-section">
-            {/* No section hover/jiggle. */}
-            <div className="starline-horizontal">
-              <span>✦</span>
-              <span style={{ flex: 1 }}></span>
-              <span>✦</span>
-            </div>
-            <Grid columns={4} rowHeight="220px">
-              {/* Render code project cards here. To change card height, edit rowHeight prop. */}
-              {/* Example: <Card title="Hourly Planner" textColor="var(--text-light)" /> */}
-              {/* Example: <Card title="Time Tree" textColor="var(--text-light)" /> */}
-            </Grid>
-          </section>
-        {projectsData.map((project, index) => (
+      {/* CODE PROJECTS PAGE */}
+      {/* To change grid/card layout, edit Grid and Card components below. */}
+      <Section title="Projects" subtitle="Code & experiments">
+        <section className="code-section">
+          <div className="starline-horizontal">
+            <span>✦</span>
+            <span style={{ flex: 1 }}></span>
+            <span>✦</span>
+          </div>
+
+          {/* Projects Grid */}
           <div
-            key={index}
-            className="card"
             style={{
-              backgroundColor: cardColors[index % cardColors.length],
-              padding: '1rem',
-              width: '300px',
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '1.5rem',
+              justifyContent: 'center',
             }}
           >
-            <h3 style={{ marginBottom: '0.75rem', color: 'var(--text-dark)' }}>{project.title}</h3>
-
-            {project.images && project.images.length > 0 && (
+            {projectsData.map((project, index) => (
               <div
-                className="project-images"
+                key={index}
+                className="card"
                 style={{
-                  borderRadius: '8px',
-                  overflow: 'hidden',
-                  marginBottom: '0.75rem',
+                  backgroundColor:
+                    cardColors[index % cardColors.length],
+                  padding: '1rem',
+                  width: '300px',
                 }}
               >
-                <Image
-                  src={`/assets/${project.images[0]}`}
-                  alt={project.title}
-                  width={400}
-                  height={250}
-                  style={{ width: '100%', height: 'auto', display: 'block' }}
-                  loading="lazy"
-                />
+                <h3
+                  style={{
+                    marginBottom: '0.75rem',
+                    color: 'var(--text-dark)',
+                  }}
+                >
+                  {project.title}
+                </h3>
+
+                {project.images && project.images.length > 0 && (
+                  <div
+                    className="project-images"
+                    style={{
+                      borderRadius: '8px',
+                      overflow: 'hidden',
+                      marginBottom: '0.75rem',
+                    }}
+                  >
+                    <Image
+                      src={`/assets/${project.images[0]}`}
+                      alt={project.title}
+                      width={400}
+                      height={250}
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        display: 'block',
+                      }}
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+
+                <p
+                  style={{
+                    fontSize: '0.9rem',
+                    marginBottom: '0.75rem',
+                    color: 'var(--text-dark)',
+                  }}
+                >
+                  {project.description}
+                </p>
+
+                <div
+                  className="project-links"
+                  style={{
+                    display: 'flex',
+                    gap: '0.5rem',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {project.repository && (
+                    <a
+                      href={project.repository}
+                      className="btn"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        backgroundColor: 'var(--secondary)',
+                        color: 'var(--text-light)',
+                        padding: '0.4rem 0.8rem',
+                        borderRadius: '6px',
+                        textDecoration: 'none',
+                        fontSize: '0.85rem',
+                        fontWeight: 'bold',
+                        transition: 'background-color 0.2s',
+                      }}
+                    >
+                      Repository
+                    </a>
+                  )}
+
+                  {project.playable && (
+                    <a
+                      href={project.playable}
+                      className="btn"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        backgroundColor: 'var(--primary)',
+                        color: 'var(--text-light)',
+                        padding: '0.4rem 0.8rem',
+                        borderRadius: '6px',
+                        textDecoration: 'none',
+                        fontSize: '0.85rem',
+                        fontWeight: 'bold',
+                        transition: 'background-color 0.2s',
+                      }}
+                    >
+                      View Project
+                    </a>
+                  )}
+                </div>
               </div>
-            )}
-
-            <p style={{ fontSize: '0.9rem', marginBottom: '0.75rem', color: 'var(--text-dark)' }}>
-              {project.description}
-            </p>
-
-            <div
-              className="project-links"
-              style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'center' }}
-            >
-              {project.repository && (
-                <a
-                  href={project.repository}
-                  className="btn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    backgroundColor: 'var(--secondary)',
-                    color: 'var(--text-light)',
-                    padding: '0.4rem 0.8rem',
-                    borderRadius: '6px',
-                    textDecoration: 'none',
-                    fontSize: '0.85rem',
-                    fontWeight: 'bold',
-                    transition: 'background-color 0.2s',
-                  }}
-                  
-                >
-                  Repository
-                </a>
-              )}
-              {project.playable && (
-                <a
-                  href={project.playable}
-                  className="btn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    backgroundColor: 'var(--primary)',
-                    color: 'var(--text-light)',
-                    padding: '0.4rem 0.8rem',
-                    borderRadius: '6px',
-                    textDecoration: 'none',
-                    fontSize: '0.85rem',
-                    fontWeight: 'bold',
-                    transition: 'background-color 0.2s',
-                  }}
-                  
-                >
-                  View Project
-                </a>
-              )}
-            </div>
+            ))}
           </div>
-        ))}
         </section>
       </Section>
     </main>
