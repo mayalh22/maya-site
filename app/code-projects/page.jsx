@@ -31,14 +31,6 @@ export default function ProjectsPage() {
               padding: '1rem',
               width: '300px',
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-5px)';
-              e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.25)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
-            }}
           >
             <h3 style={{ marginBottom: '0.75rem', color: 'var(--text-dark)' }}>{project.title}</h3>
 
@@ -86,8 +78,7 @@ export default function ProjectsPage() {
                     fontWeight: 'bold',
                     transition: 'background-color 0.2s',
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--accent)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'var(--secondary)')}
+                  
                 >
                   Repository
                 </a>
@@ -108,8 +99,7 @@ export default function ProjectsPage() {
                     fontWeight: 'bold',
                     transition: 'background-color 0.2s',
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--accent)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'var(--primary)')}
+                  
                 >
                   View Project
                 </a>

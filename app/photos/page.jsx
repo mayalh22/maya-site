@@ -23,7 +23,7 @@ export default function PhotosPage() {
             marginBottom: '2rem',
           }}
         >
-          <div style={{ fontSize: '1.1rem', fontFamily: 'Georgia, serif', fontWeight: 'normal', padding: '0.5rem 0.75rem', marginBottom: '0.75rem', color: 'var(--primary)' }}>
+          <div style={{ fontSize: '1.1rem', fontFamily: 'Inter, sans-serif', fontWeight: 'normal', padding: '0.5rem 0.75rem', marginBottom: '0.75rem', color: 'var(--primary)' }}>
             {category.category}
           </div>
 
@@ -49,11 +49,9 @@ export default function PhotosPage() {
                     minWidth: '130px',
                     backgroundColor: cardColors[idx % cardColors.length],
                     padding: '0.5rem',
-                    textAlign: 'center',
+                    textAlign: 'left',
                     flexShrink: 0,
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--yellow)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = cardColors[idx % cardColors.length])}
                 >
                   <Image
                     src={`/assets/${photo.image}`}

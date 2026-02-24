@@ -1,18 +1,18 @@
 /* ── TYPOGRAPHY ── */
 body {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   letter-spacing: 0.2px;
   font-weight: normal;
 }
 
 h1, h2, h3, h4 {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   letter-spacing: 0.3px;
   font-weight: normal;
 }
 
 p {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: normal;
 }
 
@@ -74,7 +74,7 @@ p {
 .feature-block h3 {
   margin-bottom: 0.75rem;
   color: var(--primary);
-  font-family: Georgia, serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: normal;
   border-bottom: 1px solid var(--accent);
   padding-bottom: 0.4rem;
@@ -129,31 +129,7 @@ ul.star-list li::before {
   padding: 0.15rem 0.4rem;
 }
 
-/* ── GRID CARDS ── */
-.grid-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-
-.grid-cards .card-mini {
-  border: 2px solid var(--primary);
-  padding: 1.25rem;
-  background-color: white;
-}
-
-.grid-cards .card-mini:hover {
-  background-color: var(--mint);
-}
-
-.grid-cards .card-mini h4 {
-  margin-bottom: 0.5rem;
-  color: var(--primary);
-  font-family: Georgia, serif;
-  font-weight: normal;
-  font-size: 1rem;
-}
+/* grid-cards consolidated further down to avoid duplicates */
 
 /* ── LINKS ── */
 .subtle-link {
@@ -176,7 +152,7 @@ ul.star-list li::before {
   border-left: 4px solid var(--olive);
   background-color: var(--mint);
   color: var(--text-dark);
-  font-family: Georgia, serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* ── Section Banner ── */
@@ -187,7 +163,7 @@ ul.star-list li::before {
   color: var(--primary);
   font-weight: normal;
   margin-bottom: 2.5rem;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   letter-spacing: 1px;
   font-size: 0.85rem;
   border-top: 2px solid var(--primary);
@@ -197,7 +173,7 @@ ul.star-list li::before {
 /* ── SECTION WRAPPER ── */
 .section-wrapper h2 {
   margin: 0;
-  font-family: Georgia, serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* ── CARD GRID ── */
@@ -217,17 +193,20 @@ ul.star-list li::before {
   background-color: white;
   color: var(--text-dark) !important;
   border-radius: 0 !important;
-  text-align: center;
+  text-align: left;
 }
 
-.card:hover {
-  background-color: var(--pink);
+/* global card hover disabled; page-specific hover rules can be added where desired */
+
+/* Writing page: allow visible hover change for reading cards */
+.writing .card:hover {
+  background-color: var(--yellow);
 }
 
 .card h3 {
   margin-bottom: 0.4rem;
   color: var(--primary);
-  font-family: Georgia, serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   letter-spacing: 0.3px;
   font-weight: normal;
   font-size: 0.9rem;
@@ -237,21 +216,14 @@ ul.star-list li::before {
   line-height: 1.7;
   margin-bottom: 1.25rem;
   font-size: 0.95rem;
-  font-family: Georgia, serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: normal;
+  text-align: left;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
-/* ── PROJECT IMAGES ── */
-.project-images {
-  margin: 1rem 0;
-}
-
-.project-images img {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  border: 2px solid var(--primary);
-}
+/* project-images defined later (consolidated) */
 
 /* ── PROJECT LINKS ── */
 .project-links {
@@ -268,7 +240,7 @@ ul.star-list li::before {
   background-color: var(--primary);
   color: var(--text-light);
   font-weight: normal;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 0.85rem;
   text-decoration: none;
   letter-spacing: 0.5px;
@@ -309,7 +281,7 @@ ul.star-list li::before {
   font-weight: normal;
   color: var(--primary);
   margin: 0.4rem 0 0.2rem 0;
-  font-family: Georgia, serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 0.85rem;
 }
 
@@ -317,7 +289,7 @@ ul.star-list li::before {
   font-size: 0.75rem;
   color: var(--text-dark);
   margin: 0;
-  font-family: Georgia, serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 @media (max-width: 768px) {
@@ -329,7 +301,7 @@ ul.star-list li::before {
 /* ── ART GALLERY ── */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin: 2rem 0;
   padding: 0 1rem;
@@ -342,12 +314,12 @@ ul.star-list li::before {
 }
 
 .gallery .card:hover {
-  background-color: var(--mint);
+  /* disabled globally */
 }
 
 .gallery .card img {
-  max-width: 100%;
-  height: 100px;
+  width: 100%;
+  height: 160px;
   object-fit: cover;
   border: 1px solid var(--primary);
   margin-bottom: 0.5rem;
@@ -381,8 +353,7 @@ ul.star-list li::before {
 }
 
 .timeline-item:hover {
-  background-color: var(--yellow);
-  padding-left: 1.7rem;
+  /* disabled hover */
 }
 
 .timeline-item::before {
@@ -397,31 +368,31 @@ ul.star-list li::before {
 
 .timeline-date {
   font-weight: normal;
-  color: var(--secondary);
+  color: var(--text-dark);
   margin-bottom: 0.2rem;
   font-size: 0.75rem;
   letter-spacing: 0.5px;
-  font-family: Georgia, serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 .timeline-item h3 {
   color: var(--primary);
   margin-bottom: 0.2rem;
-  font-family: Georgia, serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: normal;
   font-size: 0.95rem;
 }
 
 .timeline-item em {
   color: var(--olive);
-  font-family: Georgia, serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 .timeline-item p {
   line-height: 1.4;
   margin-top: 0.3rem;
   font-size: 0.85rem;
-  font-family: Georgia, serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: normal;
 }
 
@@ -436,7 +407,7 @@ ul.star-list li::before {
   margin-top: 0.5rem;
   letter-spacing: 0.3px;
   border: 2px solid var(--primary);
-  font-family: Georgia, serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 .tag:hover {
@@ -495,8 +466,7 @@ a:hover {
 }
 
 .section-wrapper:hover {
-  background-color: var(--pink);
-  transform: rotate(1.5deg);
+  /* disabled transform/hover */
 }
 
 .section-header {
@@ -508,15 +478,15 @@ a:hover {
   padding: 0.75rem 0.75rem;
   border: 2px solid var(--secondary);
   margin-bottom: 0.75rem;
-  background-color: var(--orange);
+  background-color: var(--light-yellow);
   text-align: center;
   position: relative;
 }
 
 .section-header h2 {
   margin: 0;
-  font-family: Georgia, serif;
-  color: var(--primary);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--dark-blue);
   letter-spacing: 0.5px;
   font-size: 1.2rem;
   font-weight: normal;
@@ -527,7 +497,7 @@ a:hover {
   font-size: 0.8rem;
   display: block;
   margin-top: 0.2rem;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: normal;
 }
 
@@ -597,7 +567,7 @@ h1, h2, h3 {
   text-align: center;
   padding: 1.5rem;
   margin: 2rem auto;
-  font-family: Georgia, serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 .about h1 {

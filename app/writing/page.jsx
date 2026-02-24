@@ -7,7 +7,7 @@ import writingData from '@/lib/content/writing.json';
 
 export default function WritingPage() {
   return (
-    <main className="container">
+    <main className="container writing">
       <div className="about">
         <h1>Writing</h1>
         <p>{writingData.intro}</p>

@@ -14,23 +14,19 @@ export default function TimelinePage() {
         <p>{timelineData.intro}</p>
       </div>
 
-      {timelineData.sections.map((section, index) => {
-        const sectionColors = ['var(--teal)', 'var(--orange)', 'var(--mint)', 'var(--yellow)'];
-        return (
-          <Section key={index} title={`${section.year} — ${section.title}`}>
-            {section.events.map((event, idx) => (
-              <div key={idx} className="timeline-item" style={{ backgroundColor: 'transparent' }}>
-                <div className="timeline-date">{event.date}</div>
-                <h3>
-                  {event.role} {event.organization ? `at ${event.organization}` : ''}
-                </h3>
-                {event.location && <p><em>{event.location}</em></p>}
-                <p>{event.description}</p>
-              </div>
-            ))}
-          </Section>
-        );
-      })}
+      {/* Combined timeline: show all events together, not separated by year */}
+      <Section title="Timeline">
+        {timelineData.sections.flatMap(s => s.events).map((event, idx) => (
+          <div key={idx} className="timeline-item" style={{ backgroundColor: 'transparent' }}>
+            <div className="timeline-date">{event.date}</div>
+            <h3>
+              {event.role} {event.organization ? `at ${event.organization}` : ''}
+            </h3>
+            {event.location && <p><em>{event.location}</em></p>}
+            <p>{event.description}</p>
+          </div>
+        ))}
+      </Section>
 
       <Section title={timelineData.volunteering.title}>
         <div className="card-grid">

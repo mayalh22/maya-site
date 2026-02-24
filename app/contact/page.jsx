@@ -17,12 +17,19 @@ export default function ContactPage() {
       <Section title="Social & Contact" subtitle="Ways to reach me">
         <div className="card-grid">
           {contactData.social.map((link, index) => {
-            const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
+            const baseColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
+            // special colors for Email and Spotify
+            let bg = baseColors[index % baseColors.length];
+            if ((/email/i).test(link.platform)) bg = 'var(--light-yellow)';
+            if ((/spotify/i).test(link.platform)) bg = 'var(--pink)';
+
+            const platformClass = link.platform.toLowerCase().replace(/\s+/g, '-');
+
             return (
-              <div key={index} className="card" style={{ backgroundColor: cardColors[index % cardColors.length] }}>
-                <h3>{link.platform}</h3>
-                <p><strong>{link.username}</strong></p>
-                <p>{link.description}</p>
+              <div key={index} className={`card contact-card ${platformClass}`} style={{ backgroundColor: bg }}>
+                <h3 style={{ marginTop: 0 }}>{link.platform}</h3>
+                <p style={{ margin: '0.25rem 0' }}><strong>{link.username}</strong></p>
+                <p style={{ margin: '0.25rem 0' }}>{link.description}</p>
                 <a
                   href={link.url}
                   className="btn"
