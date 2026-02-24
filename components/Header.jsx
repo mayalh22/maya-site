@@ -1,9 +1,23 @@
 import Link from 'next/link';
 import Image from 'next/image';
- 
+
 export default function Header() {
+  const starCount = 20;
+  const colors = ['var(--orange)', 'var(--olive)', 'var(--yellow)', 'var(--pink)', 'var(--light-yellow)'];
+
   return (
     <header className="site-header">
+      {/* Star container */}
+      <div className="star-container">
+        {Array.from({ length: starCount }).map((_, i) => (
+          <span
+            key={i}
+            className="star"
+            style={{ backgroundColor: colors[i % colors.length] }}
+          />
+        ))}
+      </div>
+
       <Link href="/">
         <Image 
           src="/assets/name-title.png" 
