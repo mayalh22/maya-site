@@ -58,11 +58,18 @@ export default function FavoritesPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', marginTop: '0.75rem' }}>
             {items.map((item, index) => (
               <div key={index} style={{ backgroundColor: cardColors[index % cardColors.length], padding: '0.5rem', textAlign: 'left' }}>
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '6px', display: 'block', marginBottom: '0.5rem' }}
-                />
+<img
+  src={item.image}
+  alt={item.title}
+  style={{
+    width: '100%',
+    aspectRatio: '5 / 6',
+    objectFit: 'cover',
+    borderRadius: '6px',
+    display: 'block',
+    marginBottom: '0.5rem'
+  }}
+/>
                 <h4 style={{ margin: '0.25rem 0', fontSize: '0.85rem', color: 'var(--text-dark)' }}>{item.title}</h4>
                 <p style={{ margin: '0.25rem 0', fontSize: '0.75rem', color: 'var(--text-dark)' }}>{item.subtitle}</p>
                 <span style={{ fontSize: '0.7rem', color: 'var(--text-dark)' }}>{item.type}</span>
