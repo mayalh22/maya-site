@@ -13,7 +13,7 @@ export default function ArtPage() {
       </div>
 
       <section className="art-section section-dark-green">
-        <Grid columns={4} rowHeight="220px">
+        <Grid columns={4} rowHeight="auto">
           {artData.pieces.map((piece, index) => (
             <div
               key={index}
