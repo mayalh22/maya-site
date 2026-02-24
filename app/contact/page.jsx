@@ -15,8 +15,12 @@ export default function ContactPage() {
       </div>
 
       <Section title="Social & Contact" subtitle="Ways to reach me">
-        <div className="card-grid">
-          {contactData.social.map((link, index) => {
+          <div className="contact-grid">
+            {/* Render contact cards here. To change card height, edit rowHeight prop. */}
+            {/* Example: <Card title="Email" fixOverflow /> */}
+            {/* Use different connect text for each card. */}
+            <Grid columns={3} rows={2} rowHeight="180px">
+              {contactData.social.map((link, index) => {
             const baseColors = ['var(--yellow)', 'var(--pink)', 'var(--mint)', 'var(--teal)', 'var(--orange)'];
             // special colors for Email and Spotify
             let bg = baseColors[index % baseColors.length];
@@ -36,11 +40,12 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Connect
+                        {`Connect via ${link.platform}`}
                 </a>
               </div>
             );
           })}
+            </Grid>
         </div>
       </Section>
 

@@ -12,16 +12,22 @@ export default function ProjectsPage() {
     <main className="container" style={{ padding: '2rem 1rem' }}>
       <h1 style={{ marginBottom: '1.5rem', textAlign: 'center', color: 'var(--text-dark)' }}>Code Projects</h1>
 
-      <Section title="Projects" subtitle="Code & experiments">
-        <section
-          id="projects-section"
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '1.5rem',
-            justifyContent: 'center',
-          }}
-        >
+        // CODE PROJECTS PAGE
+        // To change grid/card layout, edit Grid and Card components below.
+        <Section title="Projects" subtitle="Code & experiments">
+          <section className="code-section">
+            {/* No section hover/jiggle. */}
+            <div className="starline-horizontal">
+              <span>✦</span>
+              <span style={{ flex: 1 }}></span>
+              <span>✦</span>
+            </div>
+            <Grid columns={4} rowHeight="220px">
+              {/* Render code project cards here. To change card height, edit rowHeight prop. */}
+              {/* Example: <Card title="Hourly Planner" textColor="var(--text-light)" /> */}
+              {/* Example: <Card title="Time Tree" textColor="var(--text-light)" /> */}
+            </Grid>
+          </section>
         {projectsData.map((project, index) => (
           <div
             key={index}

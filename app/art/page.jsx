@@ -12,7 +12,13 @@ export default function ArtPage() {
         <h1>Art</h1>
       </div>
 
-      <section className="gallery" style={{ backgroundColor: 'transparent', padding: '0.5rem 0' }}>
+      <section className="art-section section-dark-green">
+        {/* Use .section-dark-green for dark backgrounds. */}
+        <Grid columns={4} rowHeight="220px">
+          {/* Render art cards here. To change card height, edit rowHeight prop. */}
+          {/* Example: <Card title="Jellyfish" textColor="var(--text-light)" /> */}
+        </Grid>
+      </section>
         {artData.pieces.map((piece, index) => (
           <div key={index} className="card" style={{ backgroundColor: cardColors[index % cardColors.length], padding: '0.5rem' }}>
             <Image
