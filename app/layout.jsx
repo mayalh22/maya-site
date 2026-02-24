@@ -1,7 +1,7 @@
 // app/layout.jsx
 export const metadata = {
   title: 'Maya Hazarika',
-  description: 'Personal website of Maya Hazarika',
+  description: 'My personal site!',
 };
 
 import '../styles/colors.css';

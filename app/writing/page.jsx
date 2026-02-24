@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Writing - Maya Hazarika',
-  description: 'Writing by Maya Hazarika.',
+  title: 'Writing',
+  description: 'Writing works.',
 };
 
 import writingData from '@/lib/content/writing.json';

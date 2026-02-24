@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Contact - Maya Hazarika',
-  description: 'Maya Hazarika\'s social links and email.',
+  title: 'Contact',
+  description: 'My social links and email.',
 };
 
 import Grid from '../../components/Grid';

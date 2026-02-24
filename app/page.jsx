@@ -3,7 +3,7 @@ import aboutData from '@/lib/content/about.json';
 
 export const metadata = {
   title: 'Maya Hazarika',
-  description: "My personal website.",
+  description: "My personal siteSS.",
 };
 
 export default function Home() {

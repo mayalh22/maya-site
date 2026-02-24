@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Timeline - Maya Hazarika',
-  description: 'Maya Hazarika\'s event history.',
+  title: 'Timeline',
+  description: 'My event history.',
 };
 
 import timelineData from '@/lib/content/timeline.json';
