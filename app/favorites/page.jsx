@@ -33,7 +33,7 @@ export default function FavoritesPage() {
         <section
           key={type}
           style={{
-            backgroundColor: 'var(--pink)',
+            backgroundColor: 'var(--primary)',
             padding: '1rem',
             borderRadius: '0px',
             marginBottom: '2rem',
