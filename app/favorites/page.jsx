@@ -65,7 +65,7 @@ export default function FavoritesPage() {
                 />
                 <h4 style={{ margin: '0.25rem 0', fontSize: '0.85rem', color: 'var(--text-dark)' }}>{item.title}</h4>
                 <p style={{ margin: '0.25rem 0', fontSize: '0.75rem', color: 'var(--text-dark)' }}>{item.subtitle}</p>
-                <span style={{ fontSize: '0.7rem', fontWeight: 'bold', color: 'var(--text-dark)' }}>{item.type}</span>
+                <span style={{ fontSize: '0.7rem', color: 'var(--text-dark)' }}>{item.type}</span>
               </div>
             ))}
           </div>
