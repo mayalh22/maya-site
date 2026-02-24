@@ -15,8 +15,8 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  letter-spacing: 0.3px;
+  font-family: 'VT323', monospace;
+  letter-spacing: 1px;
   font-weight: normal;
 }
 
@@ -230,9 +230,13 @@ ul.star-list li::before {
 }
 
 .btn:hover {
-  background-color: var(--accent);
+  background-color: var(--yellow);
   color: var(--primary);
-  border-color: var(--secondary);
+  border-color: var(--primary);
+  transform: translate(-2px, -2px);
+  transform: rotate(6deg) scale(1.12);
+  border-color: var(--orange);
+  background-color: var(--yellow);
 }
 .photo-item {
   background: white;
@@ -431,7 +435,6 @@ a:hover {
   border: 2px solid var(--primary);
   padding: 1.5rem;
   margin-bottom: 2rem;
-  transition: transform 0.3s ease-out;
 }
 
 
