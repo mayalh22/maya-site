@@ -7,16 +7,17 @@ export default function Header() {
 
   return (
     <header className="site-header">
-      {/* Star container */}
-      <div className="star-container">
-        {Array.from({ length: starCount }).map((_, i) => (
-          <span
-            key={i}
-            className="star"
-            style={{ backgroundColor: colors[i % colors.length] }}
-          />
-        ))}
-      </div>
+<div className="star-container">
+  {Array.from({ length: starCount }).map((_, i) => (
+    <span
+      key={i}
+      className="star"
+      style={{ color: colors[i % colors.length] }}
+    >
+      ★
+    </span>
+  ))}
+</div>
 
       <Link href="/">
         <Image 
