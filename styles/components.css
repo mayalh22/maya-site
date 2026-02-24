@@ -597,24 +597,40 @@ h1, h2, h3 {
   transform: scale(0.95);
 }
 .site-header {
-  position: relative; 
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 120px;
 }
 
-.star-container {
+.logo-wrapper {
+  z-index: 1;
+}
+
+.stars-left,
+.stars-right {
   position: absolute;
   top: 0;
+  bottom: 0;
+  width: 40px; /* space for stars */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stars-left {
   left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+}
+
+.stars-right {
+  right: 0;
 }
 
 .star {
-  position: absolute;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: var(--yellow);
-  animation: spin 2s linear infinite;
+  animation: spin 1s linear infinite;
   transition: transform 0.3s ease;
 }
 
