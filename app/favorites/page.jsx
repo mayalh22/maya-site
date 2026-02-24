@@ -21,7 +21,7 @@ export default function FavoritesPage() {
   const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-yellow)'];
 
   return (
-    <main style={{ padding: '1rem', fontFamily: 'Inter, sans-serif', backgroundColor: 'var(--text-light)' }}>
+    <main style={{ padding: '1rem', fontFamily: 'Inter, sans-serif'}}>
       <div className="about" style={{ textAlign: 'center', marginBottom: '1rem' }}>
         <h1>My Favorites</h1>
         <p>{favoritesData.intro}</p>
