@@ -27,8 +27,8 @@ export default function ArtPage() {
                 src={`/assets/${piece.image}`}
                 alt={piece.title}
                 width={400}
-                height={300}
-                style={{ borderRadius: '0px', display: 'block' }}
+                height={160}
+                style={{ width: '100%', height: '160px', objectFit: 'cover', display: 'block' }}
                 loading="lazy"
               />
               <h4

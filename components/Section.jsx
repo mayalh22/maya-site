@@ -17,7 +17,7 @@ export default function Section({
           <h2>{title}</h2>
           {subtitle && <small>{subtitle}</small>}
         </div>
-        <div className="section-toggle">{open ? '▼' : '►'}</div>
+        <div className="section-toggle">{open ? '[-]' : '[+]'} </div>
       </div>
 
       {open && (

@@ -48,7 +48,7 @@ export default function PhotosPage() {
                 <div
                   key={idx}
                   style={{
-                    minWidth: '130px',
+                    minWidth: '180px',
                     backgroundColor: cardColors[idx % cardColors.length],
                     padding: '0.5rem',
                     textAlign: 'left',
@@ -58,9 +58,9 @@ export default function PhotosPage() {
                   <Image
                     src={`/assets/${photo.image}`}
                     alt={photo.caption}
-                    width={100}
-                    height={100}
-                    style={{ borderRadius: '0px', display: 'block', marginBottom: '0.4rem', width: '100%', height: 'auto' }}
+                    width={200}
+                    height={150}
+                    style={{ width: '100%', height: '130px', objectFit: 'cover', display: 'block', marginBottom: '0.4rem' }}
                     loading="lazy"
                   />
                   <p style={{ margin: '0.2rem 0', fontSize: '0.65rem', color: 'var(--text-dark)' }}>{photo.caption}</p>

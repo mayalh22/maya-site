@@ -1,3 +1,4 @@
+  animation: twinkle 2s infinite;
 
 .profile {
   display: block;
@@ -174,7 +175,10 @@ ul.star-list li::before {
 }
 
 .card {
-  border: 2px solid var(--primary);
+  border-top: 3px solid var(--primary);
+  border-left: 3px solid var(--primary);
+  border-right: 3px dashed var(--primary);
+  border-bottom: 3px dashed var(--primary);
   padding: 0.75rem;
   background-color: white;
   color: var(--text-dark) !important;
@@ -431,8 +435,19 @@ a:hover {
 }
 
 .section-wrapper {
+    background-color: white;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 6px,
+      rgba(212, 216, 93, 0.12) 6px,
+      rgba(212, 216, 93, 0.12) 12px
+    );
   background-color: white;
-  border: 2px solid var(--primary);
+  border-top: 3px solid var(--primary);
+  border-left: 3px solid var(--primary);
+  border-right: 3px dashed var(--primary);
+  border-bottom: 3px dashed var(--primary);
   padding: 1.5rem;
   margin-bottom: 2rem;
 }
@@ -488,8 +503,8 @@ a:hover {
   right: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 0.95rem;
-  font-weight: normal;
+  font-family: 'VT323', monospace;
+  font-size: 1.3rem;
   color: var(--primary);
   padding: 0 0.5rem;
 }

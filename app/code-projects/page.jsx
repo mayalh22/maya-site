@@ -29,10 +29,10 @@ export default function ProjectsPage() {
 
           <div
             style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '1.5rem',
-              justifyContent: 'center',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '1rem',
+              width: '100%',
             }}
           >
             {projectsData.map((project, index) => (
@@ -43,7 +43,6 @@ export default function ProjectsPage() {
                   backgroundColor:
                     cardColors[index % cardColors.length],
                   padding: '1rem',
-                  width: '300px',
                 }}
               >
                 <h3
@@ -67,11 +66,12 @@ export default function ProjectsPage() {
                     <Image
                       src={`/assets/${project.images[0]}`}
                       alt={project.title}
-                      width={400}
-                      height={250}
+                      width={300}
+                      height={160}
                       style={{
                         width: '100%',
-                        height: 'auto',
+                        height: '140px',
+                        objectFit: 'cover',
                         display: 'block',
                       }}
                       loading="lazy"
