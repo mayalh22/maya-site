@@ -17,8 +17,6 @@ body {
   letter-spacing: 0.2px;
   font-weight: normal;
 }
-
-/* ── KEYFRAME ANIMATIONS ── */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -40,7 +38,6 @@ body {
   50% { opacity: 0.85; }
 }
 
-/* ── NAV ── */
 nav {
   background-color: var(--primary);
   padding: 0;
@@ -74,16 +71,14 @@ nav ul li a:hover {
   background-color: var(--accent);
   color: var(--primary);
 }
-}
 
-/* ── CONTAINER ── */
+
 .container {
   max-width: 960px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
-/* ── SECTIONS ── */
 .section {
   margin-bottom: 3rem;
   padding: 2rem 1.5rem;
@@ -119,7 +114,6 @@ nav ul li a:hover {
   color: var(--olive);
 }
 
-/* ── Footer ── */
 footer {
   text-align: center;
   padding: 1.5rem 2rem;
@@ -132,7 +126,6 @@ footer {
   font-weight: normal;
 }
 
-/* ── HEADER / SITE TITLE ── */
 .site-header {
   text-align: center;
   padding: 1.5rem 0 0 0;
@@ -148,7 +141,6 @@ footer {
   margin: 0 auto;
 }
 
-/* ── IMAGE NAV (the icon nav below header) ── */
 .image-nav {
   background-color: var(--orange);
   padding: 0.5rem 0;
@@ -190,9 +182,8 @@ footer {
   border-color: var(--accent);
   background-color: var(--primary);
 }
-}
 
-/* ── IMAGES ── */
+
 img {
   max-width: 100%;
   height: auto;
@@ -220,7 +211,6 @@ img {
   height: auto;
 }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   nav ul {
     gap: 0;
