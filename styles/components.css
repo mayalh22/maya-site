@@ -1,59 +1,4 @@
-/* ── JIGGLE ANIMATION REMOVED ── */
-/* The jiggle animation has been removed to simplify the CSS. */
-/* All references to jiggle animation have been commented out. */
-/* Ensure to check for any other animations that may need removal. */
 
-/* ── JIGGLE ANIMATION REMOVED ── */
-/* The jiggle animation has been removed to simplify the CSS. */
-/* All references to jiggle animation have been commented out. */
-/* Ensure to check for any other animations that may need removal. */
-
-/* ── JIGGLE ANIMATION REMOVED ── */
-/* The jiggle animation has been removed to simplify the CSS. */
-/* All references to jiggle animation have been commented out. */
-/* Ensure to check for any other animations that may need removal. */
-
-/* ── JIGGLE ANIMATION REMOVED ── */
-/* The jiggle animation has been removed to simplify the CSS. */
-/* All references to jiggle animation have been commented out. */
-/* Ensure to check for any other animations that may need removal. */
-
-/* ── JIGGLE ANIMATION REMOVED ── */
-/* The jiggle animation has been removed to simplify the CSS. */
-/* All references to jiggle animation have been commented out. */
-/* Ensure to check for any other animations that may need removal. */
-
-/* ── JIGGLE ANIMATION REMOVED ── */
-/* The jiggle animation has been removed to simplify the CSS. */
-/* All references to jiggle animation have been commented out. */
-/* Ensure to check for any other animations that may need removal. */
-
-/* ── JIGGLE ANIMATION REMOVED ── */
-/* The jiggle animation has been removed to simplify the CSS. */
-/* All references to jiggle animation have been commented out. */
-/* Ensure to check for any other animations that may need removal. */
-
-/* ── JIGGLE ANIMATION REMOVED ── */
-/* The jiggle animation has been removed to simplify the CSS. */
-/* All references to jiggle animation have been commented out. */
-/* Ensure to check for any other animations that may need removal. */
-
-/* ── JIGGLE ANIMATION REMOVED ── */
-/* The jiggle animation has been removed to simplify the CSS. */
-/* All references to jiggle animation have been commented out. */
-/* Ensure to check for any other animations that may need removal. */
-
-/* ── JIGGLE ANIMATION REMOVED ── */
-/* The jiggle animation has been removed to simplify the CSS. */
-/* All references to jiggle animation have been commented out. */
-/* Ensure to check for any other animations that may need removal. */
-
-/* ── JIGGLE ANIMATION REMOVED ── */
-/* The jiggle animation has been removed to simplify the CSS. */
-/* All references to jiggle animation have been commented out. */
-/* Ensure to check for any other animations that may need removal. */
-
-/* ── Profile Image ── */
 .profile {
   display: block;
   margin: 0 auto 1.5rem auto;
@@ -62,7 +7,7 @@
   padding: 0.5rem;
   box-shadow: 0 2px 16px rgba(255,182,230,0.15);
 }
-/* ── TYPOGRAPHY ── */
+
 body {
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   letter-spacing: 0.2px;
@@ -80,7 +25,6 @@ p {
   font-weight: normal;
 }
 
-/* ── DARK GREEN SECTIONS TEXT ── */
 .section-dark-green,
 .section-dark-green h1,
 .section-dark-green h2,
@@ -91,7 +35,7 @@ p {
   color: var(--text-light);
 }
 
-/* ── Starline ── */
+
 .starline {
   text-align: center;
   margin: 2rem 0;
@@ -110,7 +54,6 @@ p {
   display: inline-block;
 }
 
-/* ── Feature Block ── */
 .feature-block {
   border: 2px solid var(--primary);
   padding: 1.5rem;
@@ -119,11 +62,10 @@ p {
   text-align: center;
 }
 
-/* On hover, use accent if yellow is already background */
 .feature-block:hover {
   background-color: var(--accent);
 }
-}
+
 
 .feature-block h3 {
   margin-bottom: 0.75rem;
@@ -140,7 +82,6 @@ p {
   font-size: 0.95rem;
 }
 
-/* ── Star List ── */
 ul.star-list {
   list-style: none;
   padding-left: 0;
@@ -177,15 +118,11 @@ ul.star-list li::before {
   font-size: 0.95rem;
 }
 
-/* ── HIGHLIGHT ── */
 .highlight {
   background-color: var(--yellow);
   padding: 0.15rem 0.4rem;
 }
 
-/* grid-cards consolidated further down to avoid duplicates */
-
-/* ── LINKS ── */
 .subtle-link {
   color: var(--primary);
   text-decoration: underline;
@@ -196,9 +133,7 @@ ul.star-list li::before {
   color: var(--primary);
   background-color: var(--accent);
 }
-}
 
-/* ── QUOTE ── */
 .quote {
   font-style: italic;
   font-size: 1.05rem;
@@ -210,7 +145,6 @@ ul.star-list li::before {
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* ── Section Banner ── */
 .section-banner {
   padding: 0.6rem 0;
   text-align: center;
@@ -225,13 +159,11 @@ ul.star-list li::before {
   border-bottom: 2px solid var(--primary);
 }
 
-/* ── SECTION WRAPPER ── */
 .section-wrapper h2 {
   margin: 0;
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* ── CARD GRID ── */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -241,7 +173,6 @@ ul.star-list li::before {
   padding: 0.5rem;
 }
 
-/* ── Cards ── */
 .card {
   border: 2px solid var(--primary);
   padding: 0.75rem;
@@ -251,9 +182,6 @@ ul.star-list li::before {
   text-align: left;
 }
 
-/* global card hover disabled; page-specific hover rules can be added where desired */
-
-/* Writing page: allow visible hover change for reading cards */
 .writing .card:hover {
   background-color: var(--yellow);
 }
@@ -278,9 +206,6 @@ ul.star-list li::before {
   word-break: break-word;
 }
 
-/* project-images defined later (consolidated) */
-
-/* ── PROJECT LINKS ── */
 .project-links {
   display: flex;
   gap: 0.75rem;
@@ -288,7 +213,6 @@ ul.star-list li::before {
   margin-top: 1.25rem;
 }
 
-/* ── Buttons ── */
 .btn {
   display: inline-block;
   padding: 0.6rem 1.5rem;
@@ -308,11 +232,8 @@ ul.star-list li::before {
 .btn:hover {
   background-color: var(--accent);
   color: var(--primary);
-}
   border-color: var(--secondary);
 }
-
-/* ── Photo Items ── */
 .photo-item {
   background: white;
   border: 2px solid var(--primary);
@@ -325,7 +246,7 @@ ul.star-list li::before {
   background-color: var(--primary);
   color: var(--text-light);
 }
-}
+
 
 .photo-item img {
   width: 100%;
@@ -356,7 +277,6 @@ ul.star-list li::before {
   }
 }
 
-/* ── ART GALLERY ── */
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -369,10 +289,6 @@ ul.star-list li::before {
   padding: 0.75rem;
   border: 2px solid var(--primary);
   background-color: white;
-}
-
-.gallery .card:hover {
-  /* disabled globally */
 }
 
 .gallery .card img {
@@ -400,7 +316,6 @@ ul.star-list li::before {
   font-size: 0.8rem;
 }
 
-/* ── TIMELINE ── */
 .timeline-item {
   border-left: 4px solid var(--secondary);
   padding-left: 1.5rem;
@@ -410,9 +325,6 @@ ul.star-list li::before {
   padding-bottom: 0.25rem;
 }
 
-.timeline-item:hover {
-  /* disabled hover */
-}
 
 .timeline-item::before {
   content: "✦";
@@ -454,7 +366,6 @@ ul.star-list li::before {
   font-weight: normal;
 }
 
-/* ── Tags ── */
 .tag {
   display: inline-block;
   padding: 0.3rem 0.7rem;
@@ -473,9 +384,8 @@ ul.star-list li::before {
   border-color: var(--primary);
   color: var(--text-light);
 }
-}
 
-/* ── GRID CARDS ── */
+
 .grid-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -491,13 +401,11 @@ ul.star-list li::before {
   text-align: center;
 }
 
-/* Removed mint hover and jiggle animation */
 .grid-cards .card-mini:hover {
   background-color: var(--accent);
 }
-}
 
-/* ── LINK STYLES ── */
+
 a {
   color: var(--primary);
 }
@@ -507,9 +415,8 @@ a:hover {
   background-color: var(--primary);
   text-decoration: underline;
 }
-}
 
-/* ── CARD GRID ── */
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -527,9 +434,6 @@ a:hover {
   transition: transform 0.3s ease-out;
 }
 
-.section-wrapper:hover {
-  /* disabled transform/hover */
-}
 
 .section-header {
   cursor: pointer;
@@ -543,7 +447,7 @@ a:hover {
   background-color: var(--light-yellow);
   text-align: center;
   position: relative;
-}
+
 
   margin: 0;
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -592,7 +496,6 @@ a:hover {
   padding: 0.75rem;
 }
 
-/* ── DECORATIVE ELEMENTS ── */
 .star-decoration {
   font-size: 1.5rem;
   color: var(--olive);
@@ -610,7 +513,6 @@ a:hover {
   animation: twinkle 2s infinite;
 }
 
-/* ── SECTION PADDING ── */
 .container {
   padding: 0 1rem !important;
 }
@@ -623,7 +525,6 @@ h1, h2, h3 {
   text-align: center;
 }
 
-/* ── About Section ── */
 .about {
   text-align: center;
   padding: 1.5rem;
@@ -646,7 +547,6 @@ h1, h2, h3 {
   font-weight: normal;
 }
 
-/* ── PROJECT IMAGES ── */
 .project-images {
   margin: 1rem 0;
   text-align: center;
@@ -659,7 +559,6 @@ h1, h2, h3 {
   border: 2px solid var(--primary);
 }
 
-/* ── RESPONSIVE PHOTO GRID ── */
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -668,7 +567,6 @@ h1, h2, h3 {
   padding: 1rem;
 }
 
-/* ── First Card Special Styling (Email) ── */
 .card-grid .card:first-child {
   border: 2px solid var(--primary);
   background-color: var(--yellow);
@@ -679,7 +577,6 @@ h1, h2, h3 {
   border-color: var(--secondary);
 }
 
-/* ── PLAYFUL LINK HOVER ── */
 .btn:active {
   transform: scale(0.95);
 }
