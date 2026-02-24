@@ -18,7 +18,7 @@ export default function ContactPage() {
       <Section title="Social & Contact" subtitle="Ways to reach me">
           <div className="contact-grid">
 
-            <Grid columns={3} rows={2} rowHeight="180px">
+<Grid columns={3} rowHeight="auto">
               {contactData.social.map((link, index) => {
             const baseColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-yellow)'];
             let bg = baseColors[index % baseColors.length];
