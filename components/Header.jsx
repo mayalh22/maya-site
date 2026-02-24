@@ -3,36 +3,23 @@ import Image from 'next/image';
 
 export default function Header() {
   const starCount = 20;
-  const colors = ['var(--orange)', 'var(--olive)', 'var(--yellow)', 'var(--pink)', 'var(--light-yellow)'];
 
   return (
     <header className="site-header">
-  <div className="star-container">
-    {Array.from({ length: starCount }).map((_, i) => (
-      <span
-        key={i}
-        className="star"
-        style={{
-          top: `${i * 10}%`, 
-          left: i % 2 === 0 ? '-20px' : 'calc(100% + 5px)', 
-        }}
-      >
-        ★
-      </span>
-    ))}
-  </div>
-
-  <Link href="/">
-    <Image 
-      src="/assets/name-title.png" 
-      alt="Maya Hazarika" 
-      width={280} 
-      height={80}
-      className="name-title"
-      priority
-    />
-  </Link>
-
+      <div className="star-container">
+        {Array.from({ length: starCount }).map((_, i) => (
+          <span
+            key={i}
+            className="star"
+            style={{
+              top: `${5 + i * 5}%`,
+              left: i % 2 === 0 ? '-20px' : 'calc(100% + 5px)', 
+            }}
+          >
+            ★
+          </span>
+        ))}
+      </div>
 
       <Link href="/">
         <Image 
@@ -44,7 +31,7 @@ export default function Header() {
           priority
         />
       </Link>
-      
+
       <nav className="image-nav">
         <ul>
           <li>
