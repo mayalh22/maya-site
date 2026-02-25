@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <header
       className="site-header"
-      style={{ backgroundColor: 'var(--primary)', position: 'relative', overflow: 'hidden', padding: '2rem 0', minHeight: '200px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
+      style={{ backgroundColor: 'var(--primary)', position: 'relative', overflow: 'hidden', padding: '1rem 0 0.5rem 0', minHeight: '120px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
     >
       {/* Spinning stars */}
       <style>{`
@@ -92,7 +92,7 @@ const topPct = i % 3 === 0 ? 10 : i % 3 === 1 ? 45 : 75;
       </div>
 
       {/* Nav */}
-<nav className="image-nav" style={{ zIndex: 1, width: '100%', paddingBottom: 0, marginBottom: 0 }}>
+  <nav className="image-nav" style={{ zIndex: 1, width: '100%', paddingBottom: 0, marginBottom: 0 }}>
 <ul style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', padding: '0 1rem', margin: 0, listStyle: 'none', boxSizing: 'border-box', gap: '0.5rem', paddingBottom: 0, marginBottom: 0 }}>          {[
             ['Art',      '/art',            '/assets/art-button.png'],
             ['Code',     '/code-projects',  '/assets/code-projects-button.png'],
