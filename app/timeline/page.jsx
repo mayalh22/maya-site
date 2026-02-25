@@ -17,8 +17,8 @@ export default function TimelinePage() {
       <Section title="Timeline">
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: '1rem' }}>
-            <span style={{ fontSize: '1.5rem', color: 'var(--olive)', animation: 'spin 2s linear infinite' }}>✦</span>
-            <span style={{ fontSize: '1.5rem', color: 'var(--olive)', animation: 'spin 2s linear infinite' }}>✦</span>
+            <span style={{ fontSize: '1.5rem', color: 'var(--olive)', animation: 'spin 2s linear infinite' }}>᯽</span>
+            <span style={{ fontSize: '1.5rem', color: 'var(--olive)', animation: 'spin 2s linear infinite' }}>᯽</span>
           </div>
           <div style={{ flex: 1 }}>
             {timelineData.sections.flatMap(s => s.events).map((event, idx) => (
@@ -38,8 +38,8 @@ export default function TimelinePage() {
       <Section title={timelineData.volunteering.title}>
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: '1rem' }}>
-            <span style={{ fontSize: '1.5rem', color: 'var(--olive)', animation: 'spin 2s linear infinite' }}>✦</span>
-            <span style={{ fontSize: '1.5rem', color: 'var(--olive)', animation: 'spin 2s linear infinite' }}>✦</span>
+            <span style={{ fontSize: '1.5rem', color: 'var(--olive)', animation: 'spin 2s linear infinite' }}>᯽</span>
+            <span style={{ fontSize: '1.5rem', color: 'var(--olive)', animation: 'spin 2s linear infinite' }}>᯽</span>
           </div>
           <div style={{ flex: 1 }}>
             <div className="card-grid">

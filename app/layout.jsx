@@ -9,6 +9,9 @@ export const metadata = {
   description: 'My personal site!',
 };
 
+const FOOTER_STAR_COUNT = 12;
+const starColors = ['var(--orange)', 'var(--olive)', 'var(--yellow)', 'var(--pink)'];
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -22,11 +25,50 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-          <ClientEffects />
+        <ClientEffects />
         <Header />
         <main>{children}</main>
-        <footer>
-          <p>&copy; 2026 Maya Hazarika</p>
+        <footer
+          style={{
+            position: 'relative',
+            padding: '2rem 0',
+            backgroundColor: 'var(--primary)',
+            textAlign: 'center',
+          }}
+        >
+          {/* Stars avoiding middle third */}
+          {Array.from({ length: FOOTER_STAR_COUNT }).map((_, i) => {
+            let leftPct;
+            const third = 100 / 3;
+
+            if (i < FOOTER_STAR_COUNT / 2) {
+              // left third
+              leftPct = ((i + 1) / (FOOTER_STAR_COUNT / 2 + 1)) * third;
+            } else {
+              // right third
+              leftPct = 100 - ((FOOTER_STAR_COUNT - i) / (FOOTER_STAR_COUNT / 2 + 1)) * third;
+            }
+
+            const topPct = i % 2 === 0 ? 15 : 40; // alternate vertical position
+            return (
+              <span
+                key={i}
+                style={{
+                  position: 'absolute',
+                  fontSize: '1rem',
+                  color: starColors[i % starColors.length],
+                  top: `${topPct}%`,
+                  left: `${leftPct}%`,
+                }}
+              >
+                ★
+              </span>
+            );
+          })}
+
+          <p style={{ position: 'relative', zIndex: 1 }}>
+            <small>&copy; 2026 Maya Hazarika</small>
+          </p>
         </footer>
       </body>
     </html>

@@ -27,7 +27,7 @@ export default function FavoritesPage() {
         <p>{favoritesData.intro}</p>
       </div>
 
-      <div className="starline" style={{ textAlign: 'center', fontSize: '1.5rem', margin: '1rem 0' }}>✦</div>
+      <div className="starline" style={{ textAlign: 'center', fontSize: '1.5rem', margin: '1rem 0' }}>᯽</div>
 
       {Object.entries(grouped).map(([type, items]) => (
         <section

@@ -72,9 +72,9 @@ p {
 
 .starline::before,
 .starline::after {
-  content: "✦";
-  margin: 0 0.75rem;
-  color: var(--olive);
+  content: "᯽";
+  margin: 0 0.05rem;
+  color: var(--yellow);
   animation: spin 4s linear infinite;
   display: inline-block;
 }
@@ -86,7 +86,7 @@ p {
   width: 40px;
   height: 40px;
   font-size: 2rem;
-  color: var(--olive);
+  color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,7 +154,7 @@ ul.star-list li {
 }
 
 ul.star-list li::before {
-  content: "✦";
+  content: "᯽";
   position: absolute;
   left: 0;
   top: 0;
@@ -382,7 +382,7 @@ transform: translate(-2px, -2px) rotate(6deg) scale(1.12);  border-color: var(--
 
 
 .timeline-item::before {
-  content: "✦";
+  content: "᯽";
   position: absolute;
   left: -0.75rem;
   top: 0;
@@ -523,14 +523,14 @@ a:hover {
 }
 
 .section-header::before {
-  content: "✦ ";
+  content: "᯽ ";
   color: var(--olive);
   font-weight: normal;
   font-size: 1rem;
 }
 
 .section-header::after {
-  content: " ✦";
+  content: " ᯽";
   color: var(--olive);
   font-weight: normal;
   font-size: 1rem;
@@ -553,7 +553,7 @@ a:hover {
 }
 
 .star-decoration {
-font-size: 0.9rem;
+font-size: 0.8rem;
   color: var(--olive);
   animation: spin 3s linear infinite;
   display: inline-block;

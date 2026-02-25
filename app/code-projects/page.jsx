@@ -8,15 +8,11 @@ export default function ProjectsPage() {
 
   return (
     <main className="container" style={{ padding: '2rem 1rem' }}>
-      <h1
-        style={{
-          marginBottom: '1.5rem',
-          textAlign: 'center',
-          color: 'var(--text-dark)',
-        }}
-      >
-        Code Projects
-      </h1>
+<h1 style={{ textAlign: 'center', color: 'var(--text-dark)' }}>
+  <span style={{ fontSize: '1.5rem', color: 'var(--pink)', animation: 'spin 2s linear infinite', marginRight: '0.5rem' }}>᯽</span>
+  Code Projects
+  <span style={{ fontSize: '1.5rem', color: 'var(--pink)', animation: 'spin 2s linear infinite', marginLeft: '0.5rem' }}>᯽</span>
+</h1>
 
       <Section title="Projects" subtitle="Code & experiments">
         <section className="code-section" style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
@@ -31,9 +27,9 @@ export default function ProjectsPage() {
             top: 0,
             bottom: 0,
           }}>
-            <span style={{ fontSize: '1.5rem', color: 'var(--olive)', animation: 'spin 2s linear infinite' }}>✦</span>
-            <span style={{ fontSize: '1.5rem', color: 'var(--olive)', animation: 'spin 2.5s linear infinite' }}>✦</span>
-            <span style={{ fontSize: '1.5rem', color: 'var(--olive)', animation: 'spin 3s linear infinite' }}>✦</span>
+            <span style={{ fontSize: '1.5rem', color: 'var(--yellow)', animation: 'spin 2s linear infinite' }}>᯽</span>
+            <span style={{ fontSize: '1.5rem', color: 'var(--yellow)', animation: 'spin 2.5s linear infinite' }}>᯽</span>
+            <span style={{ fontSize: '1.5rem', color: 'var(--yellow)', animation: 'spin 3s linear infinite' }}>᯽</span>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', width: '100%', maxWidth: '1000px' }}>
@@ -121,9 +117,9 @@ export default function ProjectsPage() {
             top: 0,
             bottom: 0,
           }}>
-            <span style={{ fontSize: '1.5rem', color: 'var(--olive)', animation: 'spin 2.2s linear infinite' }}>✦</span>
-            <span style={{ fontSize: '1.5rem', color: 'var(--olive)', animation: 'spin 2.8s linear infinite' }}>✦</span>
-            <span style={{ fontSize: '1.5rem', color: 'var(--olive)', animation: 'spin 3.5s linear infinite' }}>✦</span>
+            <span style={{ fontSize: '1.5rem', color: 'var(--yellow)', animation: 'spin 2.2s linear infinite' }}>᯽</span>
+            <span style={{ fontSize: '1.5rem', color: 'var(--yellow)', animation: 'spin 2.8s linear infinite' }}>᯽</span>
+            <span style={{ fontSize: '1.5rem', color: 'var(--yellow)', animation: 'spin 3.5s linear infinite' }}>᯽</span>
           </div>
 
         </section>
