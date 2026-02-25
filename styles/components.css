@@ -77,7 +77,6 @@ p {
   display: inline-block;
 }
 
-/* Spinning custom cursor */
 .custom-cursor {
   position: fixed;
   pointer-events: none;
@@ -93,19 +92,25 @@ p {
   will-change: transform;
 }
 
-/* Striped section background */
-.striped-section,
-.about.striped-section,
-.section.striped-section,
-.container.striped-section {
-  background-color: transparent; /* remove all gradients */
-  padding: 2rem 1rem;            /* consistent spacing like Timeline */
+.striped-section {
+  background-image: 
+    repeating-linear-gradient(135deg, var(--text-light) 0 2px, transparent 2px 24px),
+    repeating-linear-gradient(45deg, var(--light-yellow) 0 2px, transparent 2px 24px);
+  background-size: 24px 24px;
+  background-color: var(--text-light);
+  padding: 2rem 1rem;
+}
+
+.timeline-section,
+.section.timeline-section {
+  background-color: transparent;
+  padding: 2rem 1rem;
 }
 
 .feature-block {
   border: 2px solid var(--primary);
   padding: 1.5rem;
-  background-color: white;
+  background-color: var(--text-light);
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -632,16 +637,15 @@ h1, h2, h3 {
 }.site-header {
   position: relative;
   display: flex;
-  flex-direction: column; /* stack logo + nav */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 padding: 1.5rem 0 0 0;
-  background-color: var(--dark-green, #006400); /* dark green background */
+  background-color: var(--primary);
   min-height: 200px;
 }
 
-/* Stars */
 .stars-container {
   position: absolute;
   width: 100%;
@@ -654,31 +658,29 @@ padding: 1.5rem 0 0 0;
 
 .star {
   position: absolute;
-  font-size: 1.5rem; /* all same size */
-  animation: spin 1s linear infinite; /* spin faster clockwise only */
+  font-size: 1.5rem;
+  animation: spin 1s linear infinite;
   transform-origin: center center;
   transition: transform 0.3s ease;
 }
 
 .star:hover {
-  transform: scale(2); /* only grow/shrink on hover */
+  transform: scale(2);
 }
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); } /* clockwise */
+  100% { transform: rotate(360deg); } 
 }
 
-/* Logo */
 .logo-wrapper {
   z-index: 1;
   margin-bottom: 1rem;
 }
 
-/* Nav bar */
 .image-nav ul {
   display: flex;
-  flex-direction: row; /* side by side */
+  flex-direction: row;
 gap: 0;
 justify-content: space-between;
 width: 100%;
@@ -709,5 +711,5 @@ box-sizing: border-box;
 }
 
 .image-nav li:hover img {
-  transform: scale(1.2); /* only grow/shrink on hover */
+  transform: scale(1.2);
 }
