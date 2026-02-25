@@ -2,7 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const starColors = ['var(--orange)', 'var(--olive)', 'var(--yellow)', 'var(--pink)'];
-const STAR_COUNT = 12;
+
+const STAR_COUNT = 24;
 
 export default function Header() {
   return (
@@ -62,9 +63,10 @@ export default function Header() {
       <div className="stars-container" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
         {Array.from({ length: STAR_COUNT }).map((_, i) => {
           // Evenly distribute left-to-right across the full width
-          const leftPct = ((i + 0.5) / STAR_COUNT) * 100;
-          // Alternate top / bottom half so they're not all on one line
-          const topPct = i % 2 === 0 ? 15 : 65;
+const leftPct = i < 12
+  ? ((i + 0.5) / 12) * 40           // left 40% of screen
+  : 60 + ((i - 12 + 0.5) / 12) * 40; // right 40% of screen
+const topPct = i % 3 === 0 ? 10 : i % 3 === 1 ? 45 : 75;
           return (
             <span
               key={i}
@@ -91,8 +93,7 @@ export default function Header() {
 
       {/* Nav */}
 <nav className="image-nav" style={{ zIndex: 1, width: '100%' }}>
-<ul style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', padding: '0 1rem', margin: 0, listStyle: 'none', boxSizing: 'border-box', gap: 0 }}>
-          {[
+<ul style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', padding: '0 1rem', margin: 0, listStyle: 'none', boxSizing: 'border-box', gap: '0.5rem' }}>          {[
             ['Art',      '/art',            '/assets/art-button.png'],
             ['Code',     '/code-projects',  '/assets/code-projects-button.png'],
             ['Contact',  '/contact',        '/assets/contact-button.png'],
