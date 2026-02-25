@@ -188,7 +188,6 @@ ul.star-list li::before {
 }
 
 .quote {
-  font-style: italic;
   font-size: 1.05rem;
   margin: 2rem 0;
   padding: 1rem 1.5rem;
@@ -623,7 +622,6 @@ h1, h2, h3 {
 }
 
 .card-grid .card:first-child {
-  border: 2px solid var(--primary);
   background-color: var(--yellow);
 }
 

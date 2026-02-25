@@ -18,23 +18,22 @@ export default function WritingPage() {
           key={index}
           className="section"
           style={{
-            background: 'repeating-linear-gradient(135deg, var(--yellow) 0 2px, transparent 2px 24px), repeating-linear-gradient(45deg, var(--pink) 0 2px, transparent 2px 24px)',
+            background: 'repeating-linear-gradient(135deg, var(--light-yellow) 0 2px, transparent 2px 24px), repeating-linear-gradient(45deg, var(--text-light) 0 2px, transparent 2px 24px)',
             backgroundSize: '24px 24px',
-            backgroundColor: '#fff',
+            backgroundColor: 'var(--text-light)',
           }}
         >
-          {/* Uniform heading color for all categories */}
-          <h2>{category.category}</h2>
+          <p><em>{category.category}</em></p>
 
           <p><em>{category.description}</em></p>
 
           <div className="card-grid">
             {category.pieces.map((piece, idx) => (
-              <div key={idx} className="card">
-                <h3>{piece.title}</h3>
+<div key={idx} className="card" style={{ backgroundColor: 'var(--text-light)' }} >
+                <p>{piece.title}</p>
                 {piece.publication && <p style={{ fontWeight: 'normal' }}>{piece.publication}</p>}
                 {piece.description && <p>{piece.description}</p>}
-                <p><small>{piece.date}</small></p>
+                <p>{piece.date}</p>
                 {piece.link && piece.link !== '#' && (
                   <a
                     href={piece.link}
