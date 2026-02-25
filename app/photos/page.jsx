@@ -65,8 +65,8 @@ export default function PhotosPage() {
                 <p style={{ margin: '0.2rem 0', fontSize: '0.65rem', color: 'var(--text-dark)' }}>{photo.caption}</p>
                 <p style={{ margin: '0.2rem 0', fontSize: '0.6rem', color: 'var(--text-dark)' }}>{photo.date}</p>
               </div>
-            ))}
-          </div>
+            );
+          })}          </div>
         </section>
       ))}
     </main>
