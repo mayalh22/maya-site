@@ -92,8 +92,8 @@ const topPct = i % 3 === 0 ? 10 : i % 3 === 1 ? 45 : 75;
       </div>
 
       {/* Nav */}
-<nav className="image-nav" style={{ zIndex: 1, width: '100%' }}>
-<ul style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', padding: '0 1rem', margin: 0, listStyle: 'none', boxSizing: 'border-box', gap: '0.5rem' }}>          {[
+<nav className="image-nav" style={{ zIndex: 1, width: '100%', paddingBottom: 0, marginBottom: 0 }}>
+<ul style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', padding: '0 1rem', margin: 0, listStyle: 'none', boxSizing: 'border-box', gap: '0.5rem', paddingBottom: 0, marginBottom: 0 }}>          {[
             ['Art',      '/art',            '/assets/art-button.png'],
             ['Code',     '/code-projects',  '/assets/code-projects-button.png'],
             ['Contact',  '/contact',        '/assets/contact-button.png'],

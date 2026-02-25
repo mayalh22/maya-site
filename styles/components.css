@@ -602,7 +602,7 @@ h1, h2, h3 {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-padding: 2rem 0 0 0;
+padding: '1.5rem 0 0 0';
   background-color: var(--dark-green, #006400); /* dark green background */
   min-height: 200px;
 }
