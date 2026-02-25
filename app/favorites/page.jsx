@@ -46,18 +46,19 @@ export default function FavoritesPage() {
               padding: '0.5rem 1rem',
               display: 'inline-block',
               fontSize: '0.95rem',
-              fontWeight: '600',
+              fontWeight: 'normal',
               marginBottom: '0.75rem',
               border: '2px solid rgba(0,0,0,0.06)',
               letterSpacing: '0.3px',
             }}
           >
-            {type.charAt(0).toUpperCase() + type.slice(1)}s ({items.length})
+            {type.charAt(0).toUpperCase() + type.slice(1)}s
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)',gap: '1rem', marginTop: '0.75rem' }}>
             {items.map((item, index) => (
-              <div key={index} style={{ backgroundColor: cardColors[index % cardColors.length], padding: '0.5rem', textAlign: 'left' }}>
+              <div key={index} style={{ backgroundColor: cardColors[index % cardColors.length], padding: '0.5rem', textAlign: 'left', fontWeight: 'normal' }}>
+                <span style={{ fontSize: '0.95rem', color: 'var(--primary)' }}>{index + 1}. </span>{item.title}
 <img
   src={item.image}
   alt={item.title}

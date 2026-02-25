@@ -14,14 +14,14 @@ export default function WritingPage() {
       </div>
 
       {writingData.categories.map((category, index) => (
-        <div key={index} className="section">
-          <h2>{category.category}</h2>
+        <div key={index} className="section" style={{ background: 'repeating-linear-gradient(135deg, var(--yellow) 0 2px, transparent 2px 24px), repeating-linear-gradient(45deg, var(--pink) 0 2px, transparent 2px 24px)', backgroundSize: '24px 24px', backgroundColor: '#fff' }}>
+          <h2 style={{ color: category.category === 'Medium' || category.category === 'Monsoon Season' ? '#fff' : undefined }}>{category.category}</h2>
           <p><em>{category.description}</em></p>
           <div className="card-grid">
             {category.pieces.map((piece, idx) => (
               <div key={idx} className="card">
                 <h3>{piece.title}</h3>
-                {piece.publication && <p><strong>{piece.publication}</strong></p>}
+                {piece.publication && <p style={{ fontWeight: 'normal' }}>{piece.publication}</p>}
                 {piece.description && <p>{piece.description}</p>}
                 <p><small>{piece.date}</small></p>
                 {piece.link && piece.link !== '#' && (

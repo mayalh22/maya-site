@@ -21,20 +21,19 @@ export default function ProjectsPage() {
 
       <Section title="Projects" subtitle="Code & experiments">
         <section className="code-section">
-          <div className="starline-horizontal">
-            <span>✦</span>
-            <span style={{ flex: 1 }}></span>
-            <span>✦</span>
-          </div>
-
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '1rem',
-              width: '100%',
-            }}
-          >
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: '1rem' }}>
+              <span style={{ fontSize: '1.5rem', color: 'var(--olive)', animation: 'spin 2s linear infinite' }}>✦</span>
+              <span style={{ fontSize: '1.5rem', color: 'var(--olive)', animation: 'spin 2s linear infinite' }}>✦</span>
+            </div>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '1rem',
+                width: '100%',
+              }}
+            >
             {projectsData.map((project, index) => (
               <div
                 key={index}

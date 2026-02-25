@@ -10,7 +10,10 @@
   animation-play-state: running;
   cursor: pointer;
 }
-
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
 @keyframes profile-spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -74,36 +77,49 @@ p {
   display: inline-block;
 }
 
+/* Spinning custom cursor */
+.custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 40px;
+  height: 40px;
+  font-size: 2rem;
+  color: var(--olive);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+/* Striped section background */
+.striped-section {
+  background-image:
+    repeating-linear-gradient(135deg, var(--yellow) 0 2px, transparent 2px 24px),
+    repeating-linear-gradient(45deg, var(--pink) 0 2px, transparent 2px 24px);
+  background-size: 24px 24px;
+  background-color: #fff;
+}
+
+.about.striped-section,
+.section.striped-section,
+.container.striped-section {
+  background-image:
+    repeating-linear-gradient(135deg, var(--yellow) 0 2px, transparent 2px 24px),
+    repeating-linear-gradient(45deg, var(--pink) 0 2px, transparent 2px 24px);
+  background-size: 24px 24px;
+  background-color: #fff;
+}
+
 .feature-block {
-  /* Spinning custom cursor */
-  .custom-cursor {
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    width: 40px;
-    height: 40px;
-    font-size: 2rem;
-    color: var(--olive);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.1s linear;
-    will-change: transform;
-  }
-  /* Striped section background for bio */
-  .striped-section {
-    background-image:
-      repeating-linear-gradient(135deg, var(--yellow) 0 2px, transparent 2px 24px),
-      repeating-linear-gradient(45deg, var(--pink) 0 2px, transparent 2px 24px);
-    background-size: 24px 24px;
-    background-color: #fff;
-  }
   border: 2px solid var(--primary);
   padding: 1.5rem;
   background-color: white;
   margin-bottom: 2rem;
   text-align: center;
 }
+
 
 .feature-block:hover {
   background-color: var(--yellow);
@@ -278,9 +294,7 @@ ul.star-list li::before {
   background-color: var(--yellow);
   color: var(--primary);
   border-color: var(--primary);
-  transform: translate(-2px, -2px);
-  transform: rotate(6deg) scale(1.12);
-  border-color: var(--orange);
+transform: translate(-2px, -2px) rotate(6deg) scale(1.12);  border-color: var(--orange);
   background-color: var(--yellow);
 }
 .photo-item {
@@ -359,10 +373,6 @@ ul.star-list li::before {
   font-size: 0.8rem;
   font-weight: normal;
   color: var(--text-dark);
-}
-
-.gallery .card p {
-  font-size: 0.8rem;
 }
 
 .timeline-item {
@@ -465,15 +475,6 @@ a:hover {
   text-decoration: underline;
 }
 
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 0.75rem;
-  color: var(--text-dark);
-  margin: 1rem 0;
-  padding: 0.5rem;
-}
 
 .section-wrapper {
     background-color: white;
@@ -645,7 +646,7 @@ h1, h2, h3 {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-padding: '1.5rem 0 0 0';
+padding: 1.5rem 0 0 0;
   background-color: var(--dark-green, #006400); /* dark green background */
   min-height: 200px;
 }

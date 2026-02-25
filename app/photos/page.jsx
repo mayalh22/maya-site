@@ -35,16 +35,25 @@ export default function PhotosPage() {
               marginTop: '0.5rem',
             }}
           >
-            {category.photos.map((photo, idx) => (
-              <div
-                key={idx}
-                style={{
-                  width: '180px',
-                  backgroundColor: cardColors[idx % cardColors.length],
-                  padding: '0.5rem',
-                  textAlign: 'left',
-                }}
-              >
+            {category.photos.map((photo, idx) => {
+              let bgColor = cardColors[idx % cardColors.length];
+              // Flowers: 2,6,10,14,18 not pink, make white
+              if (category.category.toLowerCase() === 'flowers' && [1,5,9,13,17].includes(idx)) bgColor = '#fff';
+              // Food: 3,7,11,15,19 not orange, make white
+              if (category.category.toLowerCase() === 'food' && [2,6,10,14,18].includes(idx)) bgColor = '#fff';
+              return (
+                <div
+                  key={idx}
+                  style={{
+                    width: '180px',
+                    backgroundColor: bgColor,
+                    padding: '0.5rem',
+                    textAlign: 'left',
+                    transition: 'background 0.2s',
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--mint)'}
+                  onMouseLeave={e => e.currentTarget.style.backgroundColor = bgColor}
+                >
                 <Image
                   src={`/assets/${photo.image}`}
                   alt={photo.caption}
