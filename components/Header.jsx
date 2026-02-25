@@ -3,21 +3,20 @@ import Image from 'next/image';
 
 export default function Header() {
   const starCount = 12; // total stars
-  const colors = ['#FFD700', '#FF69B4']; // alternate colors: gold & pink
+  const starColors = ['#FFD700', '#FF69B4', '#00FFFF', '#ADFF2F']; // 4 colors: gold, pink, cyan, lime
 
   return (
     <header className="site-header">
-      {/* Stars Container */}
+      {/* Stars */}
       <div className="stars-container">
         {Array.from({ length: starCount }).map((_, i) => (
           <span
             key={i}
             className="star"
             style={{
-              top: `${Math.random() * 80 + 10}%`, // random vertical
-              left: `${i % 2 === 0 ? Math.random() * 20 : 80 + Math.random() * 20}%`, // checker left/right
-              color: colors[i % colors.length], // alternating colors
-              fontSize: `${Math.random() * 1.2 + 0.8}rem`, // random sizes
+              top: `${(i / starCount) * 80 + 10}%`, // evenly spaced vertically
+              left: i % 2 === 0 ? '5%' : '95%', // checkerboard left/right
+              color: starColors[i % starColors.length], // 4 colors alternating
             }}
           >
             ★
@@ -38,7 +37,7 @@ export default function Header() {
         </Link>
       </div>
 
-      {/* Navigation (stacked) */}
+      {/* Navigation (side by side) */}
       <nav className="image-nav">
         <ul>
           {[

@@ -595,53 +595,62 @@ h1, h2, h3 {
 
 .btn:active {
   transform: scale(0.95);
-}
-.site-header {
+}.site-header {
   position: relative;
   display: flex;
   flex-direction: column; /* stack logo + nav */
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* stars won’t bleed */
+  overflow: hidden;
   padding: 2rem 0;
-  background: var(--header-bg, #111);
+  background-color: var(--dark-green, #006400); /* dark green background */
   min-height: 200px;
 }
 
+/* Stars */
 .stars-container {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* don’t block clicks */
+  top: 0;
+  left: 0;
+  pointer-events: none;
   overflow: hidden;
 }
 
 .star {
   position: absolute;
-  animation: twinkle 3s infinite alternate;
+  font-size: 1.5rem; /* all same size */
+  animation: spin 1s linear infinite; /* spin faster clockwise only */
+  transform-origin: center center;
+  transition: transform 0.3s ease;
 }
 
-@keyframes twinkle {
-  0% { opacity: 0.6; transform: scale(0.8) rotate(0deg); }
-  50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
-  100% { opacity: 0.6; transform: scale(0.8) rotate(360deg); }
+.star:hover {
+  transform: scale(2); /* only grow/shrink on hover */
 }
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); } /* clockwise */
+}
+
+/* Logo */
 .logo-wrapper {
   z-index: 1;
   margin-bottom: 1rem;
 }
 
+/* Nav bar */
 .image-nav ul {
   display: flex;
-  flex-direction: column; /* stacked */
-  align-items: center;
-  gap: 0.5rem;
+  flex-direction: row; /* side by side */
+  gap: 1rem;
+  justify-content: center;
   list-style: none;
   padding: 0;
   margin: 0;
+  z-index: 1;
 }
 
 .image-nav li {
@@ -652,7 +661,15 @@ h1, h2, h3 {
 }
 
 .image-nav li span {
-  color: var(--text-light);
+  color: var(--text-light, white);
   font-size: 0.9rem;
   font-family: Inter, sans-serif;
+}
+
+.image-nav li img {
+  transition: transform 0.3s ease;
+}
+
+.image-nav li:hover img {
+  transform: scale(1.2); /* only grow/shrink on hover */
 }
