@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-const starColors = ['#FFD700', '#FF69B4', '#00FFFF', '#ADFF2F'];
+const starColors = ['var(--orange)', 'var(--olive)', 'var(--yellow)', 'var(--pink)'];
 const STAR_COUNT = 12;
 
 export default function Header() {
   return (
     <header
       className="site-header"
-      style={{ backgroundColor: '#2d5016', position: 'relative', overflow: 'hidden', padding: '2rem 0', minHeight: '200px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
+      style={{ backgroundColor: 'var(--primary)', position: 'relative', overflow: 'hidden', padding: '2rem 0', minHeight: '200px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
     >
       {/* Spinning stars */}
       <style>{`
