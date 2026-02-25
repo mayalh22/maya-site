@@ -1,9 +1,10 @@
+'use client';
 import Image from 'next/image';
 import aboutData from '@/lib/content/about.json';
 
 export const metadata = {
   title: 'Maya Hazarika',
-  description: "My personal siteSS.",
+  description: "My personal site.",
 };
 
 export default function Home() {
