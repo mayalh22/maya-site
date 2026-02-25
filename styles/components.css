@@ -94,22 +94,12 @@ p {
 }
 
 /* Striped section background */
-.striped-section {
-  background-image:
-    repeating-linear-gradient(135deg, var(--yellow) 0 2px, transparent 2px 24px),
-    repeating-linear-gradient(45deg, var(--pink) 0 2px, transparent 2px 24px);
-  background-size: 24px 24px;
-  background-color: #fff;
-}
-
+.striped-section,
 .about.striped-section,
 .section.striped-section,
 .container.striped-section {
-  background-image:
-    repeating-linear-gradient(135deg, var(--yellow) 0 2px, transparent 2px 24px),
-    repeating-linear-gradient(45deg, var(--pink) 0 2px, transparent 2px 24px);
-  background-size: 24px 24px;
-  background-color: #fff;
+  background-color: transparent; /* remove all gradients */
+  padding: 2rem 1rem;            /* consistent spacing like Timeline */
 }
 
 .feature-block {
