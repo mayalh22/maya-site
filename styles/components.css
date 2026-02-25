@@ -60,23 +60,22 @@ p {
   color: var(--text-light);
 }
 
-
 .starline {
-  text-align: center;
-  margin: 2rem 0;
+  display: inline-flex;          /* make text + stars inline and flexible */
+  align-items: center;           /* vertically center stars with text */
+  justify-content: center;       /* center the whole thing */
   font-size: 1.2rem;
   color: var(--secondary);
-  letter-spacing: 6px;
-  animation: twinkle 2.5s infinite;
+  letter-spacing: 0.15em;        /* spacing between letters of text */
 }
 
 .starline::before,
 .starline::after {
-  content: "᯽";
-  margin: 0 0.05rem;
+  content: "᯽";                  /* your star symbol */
+  margin: 0 0.5rem;              /* space between star and text */
   color: var(--yellow);
-  animation: spin 4s linear infinite;
   display: inline-block;
+  animation: spin 4s linear infinite; /* optional spin */
 }
 
 .custom-cursor {
