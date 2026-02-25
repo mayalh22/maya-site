@@ -18,7 +18,7 @@ export default function ContactPage() {
       <Section title="Social & Contact" subtitle="Ways to reach me">
           <div className="contact-grid">
 
-<Grid columns={3} rowHeight="auto">
+<Grid columns={2} rowHeight="auto">
               {contactData.social.map((link, index) => {
             const baseColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-yellow)'];
             let bg = baseColors[index % baseColors.length];
@@ -30,7 +30,7 @@ export default function ContactPage() {
             return (
               <div key={index} className={`card contact-card ${platformClass}`} style={{ backgroundColor: bg }}>
                 <h3 style={{ marginTop: 0 }}>{link.platform}</h3>
-                <p style={{ margin: '0.25rem 0' }}><strong>{link.username}</strong></p>
+                <p style={{ margin: '0.6rem 0' }}>{link.username}</p>
                 <p style={{ margin: '0.25rem 0' }}>{link.description}</p>
                 <a
                   href={link.url}
@@ -38,7 +38,7 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                        {`Connect via ${link.platform}`}
+                        {`My ${link.platform}`}
                 </a>
               </div>
             );

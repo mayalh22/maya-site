@@ -32,7 +32,7 @@ export default function Header() {
     }
 
     // Vertical pattern
-    const topPct = i % 3 === 0 ? 10 : i % 3 === 1 ? 45 : 75;
+    const topPct = i % 3 === 0 ? 10 : i % 3 === 1 ? 35 : 75;
 
     return (
       <span
@@ -57,7 +57,7 @@ export default function Header() {
         backgroundColor: 'var(--primary)',
         position: 'relative',
         overflow: 'hidden',
-        padding: '1rem 0 0.5rem 0',
+        padding: '0rem 0 0rem 0',
         minHeight: '120px',
         display: 'flex',
         flexDirection: 'column',
@@ -112,12 +112,14 @@ export default function Header() {
           transform: scale(1.2);
         }
       `}</style>
-
+<div style={{ zIndex: 1, marginBottom: '1rem' }}>
+      </div>
       <div className="stars-container" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
         {stars}
       </div>
+      
 
-      <div className="logo-wrapper" style={{ zIndex: 1, marginBottom: '0rem' }}>
+      <div className="logo-wrapper" style={{ zIndex: 1, marginBottom: '-2.5rem' }}>
         <Link href="/">
           <Image src="/assets/name-title.png" alt="Maya Hazarika" width={280} height={80} priority />
         </Link>

@@ -32,7 +32,7 @@ export default function ProjectsPage() {
             <span style={{ fontSize: '1.5rem', color: 'var(--yellow)', animation: 'spin 3s linear infinite' }}>᯽</span>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', width: '100%', maxWidth: '1000px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', width: '100%', maxWidth: '1000px' }}>
             {projectsData.map((project, index) => (
               <div
                 key={index}
