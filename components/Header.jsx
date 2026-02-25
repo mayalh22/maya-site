@@ -1,17 +1,70 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 const starColors = ['var(--orange)', 'var(--olive)', 'var(--yellow)', 'var(--pink)'];
-
-const STAR_COUNT = 24;
+const STAR_COUNT = 26;
 
 export default function Header() {
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const stars = Array.from({ length: STAR_COUNT }).map((_, i) => {
+    if (windowWidth === 0) return null;
+
+    const half = STAR_COUNT / 2;
+    const gapLeft = (windowWidth / 2 - 140) / (half); // space left half, leaving 140px for logo buffer
+    const gapRight = (windowWidth / 2 - 140) / (half);
+
+    let leftPx;
+    if (i < half) {
+      leftPx = gapLeft * i;
+    } else {
+      leftPx = windowWidth / 2 + 140 + gapRight * (i - half); // start after logo
+    }
+
+    // Vertical pattern
+    const topPct = i % 3 === 0 ? 10 : i % 3 === 1 ? 45 : 75;
+
+    return (
+      <span
+        key={i}
+        className="star-item"
+        style={{
+          top: `${topPct}%`,
+          left: `${leftPx}px`,
+          color: starColors[i % starColors.length],
+          pointerEvents: 'auto',
+        }}
+      >
+        ✬
+      </span>
+    );
+  });
+
   return (
     <header
       className="site-header"
-      style={{ backgroundColor: 'var(--primary)', position: 'relative', overflow: 'hidden', padding: '1rem 0 0.5rem 0', minHeight: '120px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
+      style={{
+        backgroundColor: 'var(--primary)',
+        position: 'relative',
+        overflow: 'hidden',
+        padding: '1rem 0 0.5rem 0',
+        minHeight: '120px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
     >
-      {/* Spinning stars */}
       <style>{`
         @keyframes spinCW {
           from { transform: rotate(0deg); }
@@ -19,12 +72,12 @@ export default function Header() {
         }
         .star-item {
           position: absolute;
-          font-size: 1.5rem;
+          font-size: 1.5em;
           line-height: 1;
           display: inline-block;
-          animation: spinCW 0.8s linear infinite;
+          animation: spinCW 1.5s linear infinite;
           cursor: default;
-          transition: transform 0.2s ease;
+          transition: transform 0.5s ease;
         }
         .star-item:hover {
           animation-play-state: paused;
@@ -61,39 +114,18 @@ export default function Header() {
       `}</style>
 
       <div className="stars-container" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
-        {Array.from({ length: STAR_COUNT }).map((_, i) => {
-          // Evenly distribute left-to-right across the full width
-const leftPct = i < 12
-  ? ((i + 0.5) / 12) * 40           // left 40% of screen
-  : 60 + ((i - 12 + 0.5) / 12) * 40; // right 40% of screen
-const topPct = i % 3 === 0 ? 10 : i % 3 === 1 ? 45 : 75;
-          return (
-            <span
-              key={i}
-              className="star-item"
-              style={{
-                top: `${topPct}%`,
-                left: `${leftPct}%`,
-                color: starColors[i % starColors.length],
-                pointerEvents: 'auto',
-              }}
-            >
-              ★
-            </span>
-          );
-        })}
+        {stars}
       </div>
 
-      {/* Logo */}
-      <div className="logo-wrapper" style={{ zIndex: 1, marginBottom: '1rem' }}>
+      <div className="logo-wrapper" style={{ zIndex: 1, marginBottom: '0rem' }}>
         <Link href="/">
           <Image src="/assets/name-title.png" alt="Maya Hazarika" width={280} height={80} priority />
         </Link>
       </div>
 
-      {/* Nav */}
-  <nav className="image-nav" style={{ zIndex: 1, width: '100%', paddingBottom: 0, marginBottom: 0 }}>
-<ul style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', padding: '0 1rem', margin: 0, listStyle: 'none', boxSizing: 'border-box', gap: '0.5rem', paddingBottom: 0, marginBottom: 0 }}>          {[
+      <nav className="image-nav" style={{ zIndex: 1, width: '100%', paddingBottom: 0, marginBottom: '-0.4rem' }}>
+        <ul style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', padding: '0 1rem', margin: 0, listStyle: 'none', boxSizing: 'border-box', gap: '0.5rem' }}>
+          {[
             ['Art',      '/art',            '/assets/art-button.png'],
             ['Code',     '/code-projects',  '/assets/code-projects-button.png'],
             ['Contact',  '/contact',        '/assets/contact-button.png'],
