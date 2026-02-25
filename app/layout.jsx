@@ -1,4 +1,5 @@
-// app/layout.jsx
+'use client';
+import React from 'react';
 export const metadata = {
   title: 'Maya Hazarika',
   description: 'My personal site!',
