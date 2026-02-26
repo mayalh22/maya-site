@@ -556,7 +556,7 @@ a:hover {
 }
 
 .photo-card {
-  width: clamp(120px, 14vw, 175px);
+  width: clamp(150px, 14vw, 175px);
   padding: var(--space-sm);
   border: var(--border-w) solid var(--primary);
   box-shadow: var(--shadow-sm);
