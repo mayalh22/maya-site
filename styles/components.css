@@ -1,6 +1,3 @@
-/* ============================================================
-   VARIABLES
-   ============================================================ */
 :root {
   --font-heading: Arial, Helvetica, sans-serif;
   --font-body:    Arial, Helvetica, sans-serif;
@@ -50,9 +47,6 @@
     );
 }
 
-/* ============================================================
-   ANIMATIONS
-   ============================================================ */
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
@@ -60,9 +54,6 @@
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.3; }
 }
-/* ============================================================
-   BASE
-   ============================================================ */
 *, *::before, *::after {
   cursor: none !important;
   box-sizing: border-box;
@@ -110,10 +101,6 @@ a:hover {
 }
 
 * { font-weight: normal !important; }
-
-/* ============================================================
-   LAYOUT
-   ============================================================ */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -121,9 +108,6 @@ a:hover {
   padding: 0 var(--space-lg);
 }
 
-/* ============================================================
-   ABOUT BLOCK
-   ============================================================ */
 .about {
   text-align: center;
   padding: var(--space-xl) var(--space-lg);
@@ -146,9 +130,6 @@ a:hover {
   margin: var(--space-sm) auto 0;
 }
 
-/* ============================================================
-   HOME
-   ============================================================ */
 .home-hint {
   color: var(--primary);
   margin-top: var(--space-lg);
@@ -174,9 +155,6 @@ a:hover {
   box-shadow: var(--shadow-md);
 }
 
-/* ============================================================
-   HEADER
-   ============================================================ */
 .site-header {
   position: relative;
   display: flex;
@@ -228,9 +206,6 @@ a:hover {
 }
 .logo-img:hover { opacity: 0.5; }
 
-/* ============================================================
-   NAV
-   ============================================================ */
 .image-nav {
   background-color: var(--secondary);
   width: 100%;
@@ -301,9 +276,7 @@ a:hover {
 }
 .image-nav li:hover .nav-label { color: var(--text-light); }
 
-/* ============================================================
-   CUSTOM CURSOR
-   ============================================================ */
+
 .custom-cursor {
   position: fixed;
   pointer-events: none;
@@ -319,9 +292,6 @@ a:hover {
   filter: drop-shadow(0 0 3px rgba(242,101,34,0.4));
 }
 
-/* ============================================================
-   SECTION WRAPPER
-   ============================================================ */
 .section-wrapper {
   padding: var(--space-xl) var(--space-lg);
   margin-bottom: var(--space-xl);
@@ -386,9 +356,6 @@ a:hover {
   padding: var(--space-sm) 0;
 }
 
-/* ============================================================
-   CARDS
-   ============================================================ */
 .card {
   padding: var(--space-md);
   color: var(--text-dark);
@@ -478,9 +445,6 @@ a:hover {
   text-align: left;
 }
 
-/* ============================================================
-   SPINNING STAR
-   ============================================================ */
 .spinning-star {
   display: inline-block;
   animation: spin var(--spin-duration, 2s) linear infinite;
@@ -492,9 +456,6 @@ a:hover {
   animation-play-state: paused;
 }
 
-/* ============================================================
-   STARLINE
-   ============================================================ */
 .starline {
   display: flex;
   align-items: center;
@@ -506,9 +467,6 @@ a:hover {
   letter-spacing: 4px;
 }
 
-/* ============================================================
-   TIMELINE
-   ============================================================ */
 .timeline-item {
   border-left: 4px solid var(--secondary);
   padding: var(--space-sm) 0 var(--space-sm) var(--space-lg);
@@ -546,9 +504,6 @@ a:hover {
 
 .timeline-item em { color: var(--blue); font-style: normal; }
 
-/* ============================================================
-   PHOTOS
-   ============================================================ */
 .photo-grid {
   display: flex;
   flex-wrap: wrap;
@@ -593,9 +548,6 @@ a:hover {
   margin: 2px 0 0;
 }
 
-/* ============================================================
-   FAVORITES
-   ============================================================ */
 .favorites-section {
   background-color: var(--primary);
   color: var(--text-light);
@@ -680,9 +632,6 @@ a:hover {
 .favorites-card:hover .favorites-title,
 .favorites-card:hover .favorites-sub { color: var(--text-dark); opacity: 1; }
 
-/* ============================================================
-   BUTTONS
-   ============================================================ */
 .btn {
   display: inline-block;
   padding: var(--space-sm) var(--space-lg);
@@ -710,9 +659,6 @@ a:hover {
   box-shadow: 1px 1px 0 var(--dark);
 }
 
-/* ============================================================
-   TAGS
-   ============================================================ */
 .tag {
   display: inline-block;
   padding: 2px var(--space-sm);
@@ -732,9 +678,6 @@ a:hover {
 }
 .tag:active { box-shadow: none; }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
 footer {
   position: relative;
   background-color: var(--primary);
@@ -775,10 +718,6 @@ footer a:hover {
   opacity: 1;
   transform: scale(2);
 }
-
-/* ============================================================
-   CONTACT
-   ============================================================ */
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -786,9 +725,6 @@ footer a:hover {
   padding: var(--space-md) 0;
 }
 
-/* ============================================================
-   PROJECTS
-   ============================================================ */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -804,9 +740,6 @@ footer a:hover {
   margin-top: var(--space-md);
 }
 
-/* ============================================================
-   MEDIA QUERIES
-   ============================================================ */
 @media (max-width: 600px) {
   .site-header     { min-height: 130px; padding-top: var(--space-md); }
   .about           { padding: var(--space-md); margin: var(--space-md) auto; }
