@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import projectsData from '@/lib/content/projects.json';
 import Section from '@/components/Section';
-import { getCardColor } from '@/lib/utils';
+import { getCardColor, getCardClass } from '@/lib/utils';
 
 export const metadata = {
   title: 'Code Projects',
@@ -18,7 +18,7 @@ export default function ProjectsPage() {
       <Section title="Projects" subtitle="Code & experiments">
         <div className="projects-grid">
           {projectsData.map((project, index) => (
-            <div key={index} className="card" style={{ backgroundColor: getCardColor(index) }}>
+<div className={getCardClass(index)} style={{ backgroundColor: getCardColor(index) }}>
               <h3 className="card-title">{project.title}</h3>
 
               {project.images?.length > 0 && (

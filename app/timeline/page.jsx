@@ -1,6 +1,6 @@
 import timelineData from '@/lib/content/timeline.json';
 import Section from '@/components/Section';
-import { getCardColor } from '@/lib/utils';
+import { getCardColor, getCardClass } from '@/lib/utils';
 
 export const metadata = {
   title: 'Timeline',
@@ -29,7 +29,7 @@ export default function TimelinePage() {
       <Section title={timelineData.volunteering.title}>
         <div className="card-grid">
           {timelineData.volunteering.roles.map((role, index) => (
-            <div key={index} className="card" style={{ backgroundColor: getCardColor(index) }}>
+<div className={getCardClass(index)} style={{ backgroundColor: getCardColor(index) }}>
               <h3>{role.role}</h3>
               <p>{role.organization}</p>
               {role.category && <span className="tag">{role.category}</span>}

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import photosData from '@/lib/content/photos.json';
 import Section from '@/components/Section';
-import { getCardColor } from '@/lib/utils';
+import { getCardColor, getCardClass } from '@/lib/utils';
 
 export const metadata = {
   title: 'Photos',
@@ -22,7 +22,7 @@ export default function PhotosPage() {
             {category.photos.map((photo, idx) => (
               <div
                 key={idx}
-                className="photo-card"
+                className={getCardClass(idx)}
                 style={{ backgroundColor: getCardColor(idx) }}
               >
                 <Image

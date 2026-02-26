@@ -244,7 +244,7 @@ a:hover {
   display: block;
   width: 100%;
   text-align: center;
-  color: var(--primary);
+  color: var(--accent);
   font-size: var(--size-xs);
   padding: var(--space-xs) 0;
   margin-top: var(--space-xs);
@@ -278,6 +278,15 @@ a:hover {
   background: var(--accent);
   padding: var(--space-sm);
   animation: spin 8s linear infinite;
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+}
+
+.logo-img {
+  width: 300px;
+  height: auto;
+  object-fit: contain;
 }
 
 /* ============================================================
@@ -334,6 +343,32 @@ a:hover {
 .card {
   padding: var(--space-md);
   color: var(--text-dark);
+}
+
+.card-dark,
+.card-dark h3,
+.card-dark p,
+.card-dark span,
+.card-dark small {
+  color: var(--text-light) !important;
+}
+
+.card-dark .btn {
+  background-color: var(--text-light);
+  color: var(--primary);
+  border-color: var(--text-light);
+}
+
+.card-dark:hover {
+  background-color: var(--accent);
+  color: var(--text-dark) !important;
+}
+
+.card-dark:hover h3,
+.card-dark:hover p,
+.card-dark:hover span,
+.card-dark:hover small {
+  color: var(--text-dark) !important;
 }
 
 .card h3 {

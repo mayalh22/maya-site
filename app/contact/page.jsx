@@ -1,6 +1,6 @@
 import contactData from '@/lib/content/contact.json';
 import Section from '@/components/Section';
-import { getCardColor } from '@/lib/utils';
+import { getCardColor, getCardClass } from '@/lib/utils';
 
 export const metadata = {
   title: 'Contact',
@@ -20,7 +20,7 @@ export default function ContactPage() {
           {contactData.social.map((link, index) => (
             <div
               key={index}
-              className="card"
+              className={getCardClass(index)}
               style={{ backgroundColor: getCardColor(index) }}
             >
               <h3>{link.platform}</h3>

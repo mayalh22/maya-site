@@ -1,5 +1,5 @@
 import favoritesData from '@/lib/content/favorites.json';
-import { getCardColor } from '@/lib/utils';
+import { getCardColor, getCardClass } from '@/lib/utils';
 
 export default function FavoritesPage() {
   const grouped = favoritesData.top.reduce((acc, item) => {
@@ -25,7 +25,7 @@ export default function FavoritesPage() {
 
           <div className="favorites-grid">
             {items.map((item, index) => (
-              <div key={index} className="favorites-card" style={{ backgroundColor: getCardColor(index) }}>
+<div className={getCardClass(index)} style={{ backgroundColor: getCardColor(index) }}>
                 <span className="favorites-rank">{index + 1}.</span>
                 <img src={item.image} alt={item.title} className="favorites-img" />
                 <p className="favorites-title">{item.title}</p>

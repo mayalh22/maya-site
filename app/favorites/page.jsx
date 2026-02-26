@@ -1,6 +1,6 @@
 import favoritesData from '@/lib/content/favorites.json';
 import Section from '@/components/Section';
-import { getCardColor } from '@/lib/utils';
+import { getCardColor, getCardClass } from '@/lib/utils';
 
 export const metadata = {
   title: 'Favorites',
@@ -30,7 +30,7 @@ export default function FavoritesPage() {
             </div>
             <div className="favorites-grid">
               {items.map((item, index) => (
-                <div key={index} className="favorites-card" style={{ backgroundColor: getCardColor(index) }}>
+<div className={getCardClass(index)} style={{ backgroundColor: getCardColor(index) }}>
                   <span className="favorites-rank">{index + 1}.</span>
                   <img src={item.image} alt={item.title} className="favorites-img" />
                   <p className="favorites-title">{item.title}</p>
