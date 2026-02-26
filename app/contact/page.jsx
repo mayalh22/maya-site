@@ -1,11 +1,11 @@
+import contactData from '@/lib/content/contact.json';
+import Section from '@/components/Section';
+import { getCardColor } from '@/lib/utils';
+
 export const metadata = {
   title: 'Contact',
   description: 'My social links and email.',
 };
-
-import Grid from '../../components/Grid';
-import contactData from '@/lib/content/contact.json';
-import Section from '@/components/Section';
 
 export default function ContactPage() {
   return (
@@ -16,34 +16,21 @@ export default function ContactPage() {
       </div>
 
       <Section title="Social & Contact" subtitle="Ways to reach me">
-          <div className="contact-grid">
-
-<Grid columns={2} rowHeight="auto">
-              {contactData.social.map((link, index) => {
-            const baseColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-pink)'];
-            let bg = baseColors[index % baseColors.length];
-            if ((/email/i).test(link.platform)) bg = 'var(--light-pink)';
-            if ((/spotify/i).test(link.platform)) bg = 'var(--pink)';
-
-            const platformClass = link.platform.toLowerCase().replace(/\s+/g, '-');
-
-            return (
-              <div key={index} className={`card contact-card ${platformClass}`} style={{ backgroundColor: bg }}>
-                <h3 style={{ marginTop: 0 }}>{link.platform}</h3>
-                <p style={{ margin: '0.6rem 0' }}>{link.username}</p>
-                <p style={{ margin: '0.25rem 0' }}>{link.description}</p>
-                <a
-                  href={link.url}
-                  className="btn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                        {`My ${link.platform}`}
-                </a>
-              </div>
-            );
-          })}
-            </Grid>
+        <div className="contact-grid">
+          {contactData.social.map((link, index) => (
+            <div
+              key={index}
+              className="card"
+              style={{ backgroundColor: getCardColor(index) }}
+            >
+              <h3>{link.platform}</h3>
+              <p>{link.username}</p>
+              <p>{link.description}</p>
+              <a href={link.url} className="btn" target="_blank" rel="noopener noreferrer">
+                My {link.platform}
+              </a>
+            </div>
+          ))}
         </div>
       </Section>
 

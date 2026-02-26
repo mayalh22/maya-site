@@ -3,29 +3,30 @@ import Image from 'next/image';
 import aboutData from '@/lib/content/about.json';
 
 export default function Home() {
+  const toggleSpin = (e) => {
+    const el = e.target;
+    el.style.animationPlayState =
+      el.style.animationPlayState === 'paused' ? 'running' : 'paused';
+  };
+
   return (
-    <section id="about-section" className="about striped-section">
-      <Image
-        src={`/assets/${aboutData.photo}`}
-        width={280}
-        height={200}
-        alt="Maya"
-        className="profile"
-        onClick={e => {
-          const el = e.target;
-          if (el.style.animationPlayState === 'paused') {
-            el.style.animationPlayState = 'running';
-          } else {
-            el.style.animationPlayState = 'paused';
-          }
-        }}
-      />
-      <h1>{aboutData.name}</h1>
-      <h3>{aboutData.tagline}</h3>
-      <p>{aboutData.bio}</p>
-      <p style={{ marginTop: '1.2rem', color: 'var(--primary)', fontFamily: 'Inter, sans-serif' }}>
-        Click the tabs above to learn more. Also if the spinning fish is too much, click on it to pause it!
-      </p>
-    </section>
+    <main className="container">
+      <div className="about">
+        <Image
+          src={`/assets/${aboutData.photo}`}
+          width={280}
+          height={200}
+          alt="Maya"
+          className="profile"
+          onClick={toggleSpin}
+        />
+        <h1>{aboutData.name}</h1>
+        <h3>{aboutData.tagline}</h3>
+        <p>{aboutData.bio}</p>
+        <p className="home-hint">
+          Click the tabs above to learn more. Click the image to pause it!
+        </p>
+      </div>
+    </main>
   );
 }
