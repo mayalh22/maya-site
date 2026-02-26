@@ -1,4 +1,3 @@
-
 import '../styles/components.css';
 import ClientEffects from './ClientEffects';
 import Header from '@/components/Header';
@@ -56,18 +55,9 @@ export default function RootLayout({ children }) {
               animation-play-state: paused;
               transform: scale(1.5) rotate(0deg);
             }
-          return (
-            <html lang="en">
-              <body>
-                <ClientEffects />
-                <Header />
-                <main>{children}</main>
-                <footer className="site-footer">
-                  {/* ...existing code... */}
-                </footer>
-              </body>
-            </html>
-          );
+          `}</style>
+        </footer>
+      </body>
     </html>
   );
 }
