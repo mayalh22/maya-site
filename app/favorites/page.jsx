@@ -11,7 +11,7 @@ export default function FavoritesPage() {
     return acc;
   }, {});
 
-  const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-yellow)'];
+  const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-pink)'];
 
   return (
     <main style={{ padding: '1rem', fontFamily: 'Inter, sans-serif' }}>

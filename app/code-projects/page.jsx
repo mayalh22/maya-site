@@ -4,7 +4,7 @@ import projectsData from '@/lib/content/projects.json';
 import Section from '@/components/Section';
 
 export default function ProjectsPage() {
-  const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-yellow)'];
+  const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-pink)'];
 
   return (
     <main className="container" style={{ padding: '2rem 1rem' }}>

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import artData from '@/lib/content/art.json';
 
 export default function ArtPage() {
-  const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-yellow)'];
+  const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-pink)'];
 
   return (
     <main style={{ padding: '1rem' }}>

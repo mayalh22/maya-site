@@ -4,8 +4,8 @@ import Image from 'next/image';
 import photosData from '@/lib/content/photos.json';
 
 export default function PhotosPage() {
-  const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-yellow)'];
-  const sectionColors = ['var(--pink)', 'var(--orange)', 'var(--yellow)', 'var(--light-yellow)'];
+  const cardColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-pink)'];
+  const sectionColors = ['var(--pink)', 'var(--orange)', 'var(--yellow)', 'var(--light-pink)'];
 
   return (
     <main style={{ padding: '1rem' }}>

@@ -31,7 +31,6 @@ export default function Header() {
       leftPx = windowWidth / 2 + 140 + gapRight * (i - half); // start after logo
     }
 
-    // Vertical pattern
     const topPct = i % 3 === 0 ? 10 : i % 3 === 1 ? 35 : 75;
 
     return (

@@ -18,7 +18,7 @@ export default function WritingPage() {
           key={index}
           className="section"
           style={{
-            background: 'repeating-linear-gradient(135deg, var(--light-yellow) 0 2px, transparent 2px 24px), repeating-linear-gradient(45deg, var(--text-light) 0 2px, transparent 2px 24px)',
+            background: 'repeating-linear-gradient(135deg, var(--light-pink) 0 2px, transparent 2px 24px), repeating-linear-gradient(45deg, var(--text-light) 0 2px, transparent 2px 24px)',
             backgroundSize: '24px 24px',
             backgroundColor: 'var(--text-light)',
           }}

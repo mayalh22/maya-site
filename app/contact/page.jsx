@@ -20,9 +20,9 @@ export default function ContactPage() {
 
 <Grid columns={2} rowHeight="auto">
               {contactData.social.map((link, index) => {
-            const baseColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-yellow)'];
+            const baseColors = ['var(--yellow)', 'var(--pink)', 'var(--orange)', 'var(--light-pink)'];
             let bg = baseColors[index % baseColors.length];
-            if ((/email/i).test(link.platform)) bg = 'var(--light-yellow)';
+            if ((/email/i).test(link.platform)) bg = 'var(--light-pink)';
             if ((/spotify/i).test(link.platform)) bg = 'var(--pink)';
 
             const platformClass = link.platform.toLowerCase().replace(/\s+/g, '-');
