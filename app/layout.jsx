@@ -56,37 +56,18 @@ export default function RootLayout({ children }) {
               animation-play-state: paused;
               transform: scale(1.5) rotate(0deg);
             }
-          `}</style>
-
-          {Array.from({ length: FOOTER_STAR_COUNT }).map((_, i) => {
-            // spread stars evenly across left & right thirds, avoiding center
-            const third = 100 / 3;
-            const leftPct =
-              i < FOOTER_STAR_COUNT / 2
-                ? ((i + 1) / (FOOTER_STAR_COUNT / 2 + 1)) * third
-                : 100 - ((FOOTER_STAR_COUNT - i) / (FOOTER_STAR_COUNT / 2 + 1)) * third;
-
-            const topPct = i % 2 === 0 ? 15 : 40;
-
-            return (
-              <span
-                key={i}
-                className="footer-star"
-                style={{
-                  top: `${topPct}%`,
-                  left: `${leftPct}%`,
-                  color: starColors[i % starColors.length],
-                }}
-              >
-{STAR_CHARS[i % STAR_CHARS.length]}              </span>
-            );
-          })}
-
-          <p style={{ position: 'relative', zIndex: 1 }}>
-            &copy; 2026 Maya Hazarika
-          </p>
-        </footer>
-      </body>
+          return (
+            <html lang="en">
+              <body>
+                <ClientEffects />
+                <Header />
+                <main>{children}</main>
+                <footer className="site-footer">
+                  {/* ...existing code... */}
+                </footer>
+              </body>
+            </html>
+          );
     </html>
   );
 }

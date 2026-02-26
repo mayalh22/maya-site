@@ -1,13 +1,9 @@
-import React from 'react';
-
 export default function Grid({ columns = 3, rows, rowHeight = '200px', children }) {
-  const gridStyle = {
-    display: 'grid',
+  const gridClass = 'grid';
+  const style = {
     gridTemplateColumns: `repeat(${columns}, 1fr)`,
     gridAutoRows: rowHeight,
-    gap: '1.5rem',
-    width: '100%',
     ...(rows && { gridTemplateRows: `repeat(${rows}, ${rowHeight})` })
   };
-  return <div style={gridStyle}>{children}</div>;
+  return <div className={gridClass} style={style}>{children}</div>;
 }

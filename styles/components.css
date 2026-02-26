@@ -1,18 +1,103 @@
+.favorites-section {
+  background: var(--primary);
+  color: var(--text-light);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+.favorites-type h4 {
+  background: var(--salmon-pink);
+  color: var(--dark);
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: normal;
+  border: 2px solid var(--yellow);
+  letter-spacing: 0.3px;
+  margin-bottom: 0.75rem;
+}
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+.favorites-card {
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: normal;
+  border-radius: 8px;
+}
+.favorites-img {
+  width: 100%;
+  aspect-ratio: 5 / 6;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.favorites-title, .favorites-subtitle {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+.favorites-rank {
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+.starline {
+  text-align: center;
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+.logo-img {
+  width: 300px;
+  height: auto;
+  display: block;
+}
+.nav-img {
+  width: 55px;
+  height: 55px;
+  display: block;
+}
+.card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+.card-title {
+  margin: 0.4rem 0;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  font-weight: normal;
+  text-align: left;
+}
+.card-date {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-dark);
+  text-align: left;
+}
+.section-wrapper {
+  margin-bottom: 2rem;
+}
 /* ============================================================
    VARIABLES
    ============================================================ */
 :root {
-  --orange: #F7B24A;
-  --olive: #93BF47;
-  --yellow: #D4D85D;
-  --pink: #F9AFAB;
-  --light-pink: #ffdef9;
-  --light-yellow: #fdfbe6;
-  --cursor: #ff6f00;
-  --primary: #1a3d2f;
-  --secondary: #F7B24A;
-  --text-dark: #2c3e50;
-  --text-light: #fafafa;
+  --font-heading: serif;
+  --font-body: serif;
+  --orange: #f26522;
+  --yellow: #ffc80b;
+  --green: #00712a;
+  --blue: #005599;
+  --dark: #202221;
+  --salmon-pink: #FA8072;
+  --primary: var(--green);
+  --secondary: var(--orange);
+  --text-dark: var(--dark);
+  --text-light: #fff;
 }
 
 /* ============================================================
@@ -30,12 +115,11 @@
 /* ============================================================
    BASE
    ============================================================ */
-body, body * { cursor: none !important; }
-
+body, * {
+  font-family: var(--font-body);
+}
 body {
-  background-color: var(--light-yellow);
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  letter-spacing: 0.2px;
+  background-color: var(--yellow);
   color: var(--text-dark);
 }
 
@@ -847,7 +931,11 @@ p, .body-text, .small-text,
 /* ============================================================
    LAYOUT
    ============================================================ */
-.container { padding: 0 1rem !important; }
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
 .section   { padding: 2rem 1.5rem !important; }
 
 /* ============================================================
@@ -883,6 +971,7 @@ p, .body-text, .small-text,
 
 .logo-wrapper {
   z-index: 1;
+.about {
   margin-bottom: 1rem;
 }
 

@@ -2,9 +2,10 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import SpinningStar from './SpinningStar';
 
 const STAR_CHARS = ['᯽', '✦', ' ☆'];
-const STAR_COLORS = ['var(--orange)', 'var(--olive)', 'var(--yellow)', 'var(--pink)'];
+const STAR_COLORS = ['var(--orange)', 'var(--salmon-pink)', 'var(--yellow)', 'var(--blue)'];
 // Loose checkerboard — left side + right side, avoid center 320px
 // Each entry: [leftPercent, topPercent]
 const LEFT_STARS = [
@@ -41,17 +42,17 @@ export default function Header() {
       {/* Stars */}
       <div className="stars-container">
         {ALL_STARS.map(([left, top], i) => (
-          <span
+          <SpinningStar
             key={i}
             className="star-item"
             style={{
               top: `${top}%`,
               left: `${left}%`,
               color: STAR_COLORS[i % STAR_COLORS.length],
+              position: 'absolute',
             }}
-          >
-            {STAR_CHARS[i % STAR_CHARS.length]}
-          </span>
+            children={STAR_CHARS[i % STAR_CHARS.length]}
+          />
         ))}
       </div>
 
@@ -63,7 +64,7 @@ export default function Header() {
             alt="Maya Hazarika"
             width={300}
             height={80}
-            style={{ width: '300px', height: 'auto' }}
+            className="logo-img"
             priority
           />
         </Link>
@@ -80,7 +81,7 @@ export default function Header() {
                   alt={name}
                   width={55}
                   height={55}
-                  style={{ width: '55px', height: '55px' }}
+                  className="nav-img"
                 />
                 <span className="nav-label">{name}</span>
               </Link>
