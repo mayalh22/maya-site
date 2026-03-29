@@ -11,3 +11,5 @@ The `app` directory contains all pages and shared components, including the head
 `styles/components.css` has all visual styling stuff, including colors, spacing, fonts, borders, shadows, and animations.
 
 Thanks for reading!! Checkitout on https://mayahazarika.com
+
+[![Athena Award Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Faward.athena.hackclub.com%2Fapi%2Fbadge)](https://award.athena.hackclub.com?utm_source=readme)
