@@ -2,12 +2,12 @@
   --font-heading: Arial, Helvetica, sans-serif;
   --font-body:    Arial, Helvetica, sans-serif;
 
-  --orange: #f26522;
-  --yellow: #ffc80b;
-  --green:  #00712a;
-  --blue:   #005599;
+  --orange: #Ee7302;
+  --yellow: #9abc04;
+  --green:  #19532b;
+  --blue:   #9abc04;
   --dark:   #202221;
-  --salmon: #ff9b90;
+  --salmon: #Ee7302;
 
   --primary:    var(--green);
   --secondary:  var(--orange);
@@ -15,7 +15,7 @@
   --highlight:  var(--salmon);
   --text-dark:  var(--dark);
   --text-light: #fafafa;
-  --bg:         #fdf6e3;
+  --bg:         #f3e8cc;
 
   --cursor-color: var(--orange);
 

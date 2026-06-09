@@ -48,17 +48,18 @@ export default function Header() {
       </div>
 
       <div className="logo-wrapper">
-        <Link href="/">
-          <Image
-            src="/assets/name-title.png"
-            alt="Maya Hazarika"
-            width={300}
-            height={80}
-            className="logo-img"
-            priority
-          />
-        </Link>
-      </div>
+<span
+  style={{
+    fontFamily: 'Times New Roman, serif',
+    fontSize: '50px',
+    color: '#f3e8cc',
+    display: 'inline-block',
+    marginBottom: '40px' // space below the element
+  }}
+>
+  Maya Hazarika
+</span>
+ </div>
 
       <nav className="image-nav">
         <ul>
