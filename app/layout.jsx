@@ -1,20 +1,30 @@
 import '../styles/components.css';
 import ClientEffects from './ClientEffects';
 import Header from '@/components/Header';
+import { getContentDoc } from '@/lib/firestore';
+import { THEME_DOC_PATH, themeToCss } from '@/lib/theme';
 
 export const metadata = {
   title: 'Maya Hazarika',
   description: 'My personal site!',
 };
 
+// Re-fetch site config (theme colors/text size) at most every 5 minutes
+// instead of only baking it in at build time, so admin edits show up
+// without a redeploy.
+export const revalidate = 300;
+
 const STAR_CHARS  = ['᯽', '✦', '☆'];
 const STAR_COLORS = ['var(--orange)', 'var(--salmon)', 'var(--yellow)', 'var(--blue)'];
 const FOOTER_STAR_COUNT = 30;
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const theme = await getContentDoc(THEME_DOC_PATH, null);
+
   return (
     <html lang="en">
       <body>
+        {theme && <style dangerouslySetInnerHTML={{ __html: themeToCss(theme) }} />}
         <ClientEffects />
         <Header />
         {children}

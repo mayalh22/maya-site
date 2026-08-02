@@ -1,14 +1,20 @@
 import Image from 'next/image';
-import projectsData from '@/lib/content/projects.json';
+import projectsFallback from '@/lib/content/projects.json';
 import Section from '@/components/Section';
 import { getCardColor, getCardClass } from '@/lib/utils';
+import { resolveAssetSrc } from '@/lib/images';
+import { getContentDoc } from '@/lib/firestore';
 
 export const metadata = {
   title: 'Code Projects',
   description: 'Code & experiments.',
 };
 
-export default function ProjectsPage() {
+export const revalidate = 300;
+
+export default async function ProjectsPage() {
+  const { items: projectsData } = await getContentDoc('content/projects', { items: projectsFallback });
+
   return (
     <main className="container">
       <div className="about">
@@ -18,12 +24,12 @@ export default function ProjectsPage() {
       <Section title="Projects" subtitle="Code & experiments">
         <div className="projects-grid">
           {projectsData.map((project, index) => (
-<div className={getCardClass(index)} style={{ backgroundColor: getCardColor(index) }}>
+            <div key={project.title} className={getCardClass(index)} style={{ backgroundColor: getCardColor(index) }}>
               <h3 className="card-title">{project.title}</h3>
 
               {project.images?.length > 0 && (
                 <Image
-                  src={`/assets/${project.images[0]}`}
+                  src={resolveAssetSrc(project.images[0])}
                   alt={project.title}
                   width={300}
                   height={160}

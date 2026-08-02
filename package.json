@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/mayalh22/maya-site#readme",
   "dependencies": {
+    "firebase": "^12.17.0",
     "next": "^16.0.8",
     "react": "^19.2.1",
     "react-dom": "^19.2.1"

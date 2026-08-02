@@ -1,0 +1,18 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isOwner() {
+      return request.auth != null
+        && request.auth.token.email == 'maya.l.hazarika@gmail.com'
+        && request.auth.token.email_verified == true;
+    }
+
+    // Uploaded gallery images are publicly readable (they're rendered on
+    // the live site) and only writable/deletable by the signed-in owner.
+    match /{allPaths=**} {
+      allow read: if true;
+      allow write: if isOwner();
+    }
+  }
+}

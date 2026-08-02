@@ -1,10 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { getCardColor, getCardClass } from '@/lib/utils';
+import { resolveAssetSrc } from '@/lib/images';
+import Lightbox from '@/components/Lightbox';
 
 export default function Enlarge({ items }) {
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const selected = selectedIndex !== null ? items[selectedIndex] : null;
 
   return (
     <>
@@ -17,68 +21,25 @@ export default function Enlarge({ items }) {
             onClick={() => setSelectedIndex(index)}
           >
             <span className="favorites-rank">{index + 1}.</span>
-            <img src={item.image} alt={item.title} className="favorites-img" />
+            <Image
+              src={resolveAssetSrc(item.image)}
+              alt={item.title}
+              width={200}
+              height={240}
+              className="favorites-img"
+            />
             <p className="favorites-title">{item.title}</p>
             <p className="favorites-sub">{item.subtitle}</p>
           </div>
         ))}
       </div>
 
-      {selectedIndex !== null && (
-        <div
-          onClick={() => setSelectedIndex(null)}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            background: 'rgba(0,0,0,0.85)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 1000,
-            padding: '100px',
-          }}
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className={getCardClass(selectedIndex)}
-            style={{
-              backgroundColor: getCardColor(selectedIndex),
-              width: '50%',
-              maxWidth: '600px',
-              position: 'relative',
-              textAlign: 'center',
-            }}
-          >
-            <button
-              onClick={() => setSelectedIndex(null)}
-              style={{
-                position: 'absolute',
-                top: 10,
-                right: 12,
-                fontSize: 28,
-                border: 'none',
-                background: 'transparent',
-                cursor: 'pointer',
-              }}
-            >
-              ✕
-            </button>
-
-            <span className="favorites-rank">{selectedIndex + 1}.</span>
-
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <img
-                src={items[selectedIndex].image}
-                alt={items[selectedIndex].title}
-                className="favorites-img"
-              />
-            </div>
-
-            <p className="favorites-title">{items[selectedIndex].title}</p>
-            <p className="favorites-sub">{items[selectedIndex].subtitle}</p>
-          </div>
-        </div>
-      )}
+      <Lightbox
+        item={selected ? { image: resolveAssetSrc(selected.image), title: selected.title, subtitle: selected.subtitle } : null}
+        onClose={() => setSelectedIndex(null)}
+        backgroundColor={selectedIndex !== null ? getCardColor(selectedIndex) : undefined}
+        className={selectedIndex !== null ? getCardClass(selectedIndex) : undefined}
+      />
     </>
   );
 }

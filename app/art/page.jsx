@@ -1,10 +1,18 @@
-import Image from 'next/image';
-import artData from '@/lib/content/art.json';
+import artFallback from '@/lib/content/art.json';
 import Section from '@/components/Section';
-import { getCardColor, getCardClass } from '@/lib/utils';
 import EnlargeArt from './enlarge';
+import { getContentDoc } from '@/lib/firestore';
 
-export default function ArtPage() {
+export const metadata = {
+  title: 'Art',
+  description: 'A gallery of my art projects.',
+};
+
+export const revalidate = 300;
+
+export default async function ArtPage() {
+  const artData = await getContentDoc('content/art', artFallback);
+
   return (
     <main className="container">
       <div className="about">
@@ -13,7 +21,8 @@ export default function ArtPage() {
       </div>
 
       <Section title="Gallery">
-<EnlargeArt pieces={artData.pieces} />      </Section>
+        <EnlargeArt pieces={artData.pieces} />
+      </Section>
     </main>
   );
 }

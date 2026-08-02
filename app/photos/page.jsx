@@ -1,10 +1,17 @@
-import Image from 'next/image';
-import photosData from '@/lib/content/photos.json';
-import Section from '@/components/Section';
-import { getCardColor, getCardClass } from '@/lib/utils';
+import photosFallback from '@/lib/content/photos.json';
 import Enlarge from './enlarge';
+import { getContentDoc } from '@/lib/firestore';
 
-export default function PhotosPage() {
+export const metadata = {
+  title: 'Photos',
+  description: "A collection of photos I've taken.",
+};
+
+export const revalidate = 300;
+
+export default async function PhotosPage() {
+  const photosData = await getContentDoc('content/photos', photosFallback);
+
   return (
     <main className="container">
       <div className="about">
