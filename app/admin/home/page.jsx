@@ -8,7 +8,7 @@ import ImageCropField from '@/components/admin/ImageCropField';
 const DEFAULTS = { name: '', tagline: '', bio: '', photoUrls: [] };
 
 function asPhoto(entry) {
-  return typeof entry === 'string' ? { url: entry, zoom: 1, posX: 50, posY: 50 } : entry;
+  return typeof entry === 'string' ? { url: entry, zoomX: 1, zoomY: 1, posX: 50, posY: 50 } : entry;
 }
 
 export default function HomeAdminPage() {
@@ -26,7 +26,7 @@ export default function HomeAdminPage() {
   function addPhoto() {
     const url = newPhotoUrl.trim();
     if (!url) return;
-    updatePhotos([...photos, { url, zoom: 1, posX: 50, posY: 50 }]);
+    updatePhotos([...photos, { url, zoomX: 1, zoomY: 1, posX: 50, posY: 50 }]);
     setNewPhotoUrl('');
   }
 
@@ -76,6 +76,8 @@ export default function HomeAdminPage() {
                         id={`photo-${index}`}
                         url={photo.url}
                         zoom={photo.zoom}
+                        zoomX={photo.zoomX}
+                        zoomY={photo.zoomY}
                         posX={photo.posX}
                         posY={photo.posY}
                         onChange={(crop) => updatePhotoCrop(index, crop)}

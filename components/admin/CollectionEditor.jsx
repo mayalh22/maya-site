@@ -8,25 +8,41 @@ import AttachmentsField from './AttachmentsField';
 import ImageCropField from './ImageCropField';
 
 function formKeys(fields) {
-  return fields.flatMap((f) => (f.type === 'url' ? [f.key, `${f.key}Zoom`, `${f.key}PosX`, `${f.key}PosY`] : [f.key]));
+  return fields.flatMap((f) =>
+    f.type === 'url' ? [f.key, `${f.key}ZoomX`, `${f.key}ZoomY`, `${f.key}PosX`, `${f.key}PosY`] : [f.key]
+  );
 }
 
 function selectOptions(f) {
   return f.options.map((opt) => (typeof opt === 'string' ? { value: opt, label: opt } : opt));
 }
 
-// Crop companion keys (<key>Zoom / <key>PosX / <key>PosY) aren't in `fields`
-// themselves, so their defaults are inferred from the key's suffix.
+// Crop companion keys (<key>ZoomX / <key>ZoomY / <key>PosX / <key>PosY) aren't in
+// `fields` themselves, so their defaults are inferred from the key's suffix.
 function defaultFor(key, fields) {
   const f = fields.find((field) => field.key === key);
   if (!f) {
-    if (key.endsWith('Zoom')) return 1;
+    if (key.endsWith('ZoomX') || key.endsWith('ZoomY')) return 1;
     if (key.endsWith('PosX') || key.endsWith('PosY')) return 50;
     return '';
   }
   if (f.type === 'select') return selectOptions(f)[0]?.value ?? '';
   if (f.type === 'attachments') return [];
   return '';
+}
+
+// Older items only have the legacy `<key>Zoom` (single uniform zoom), not the
+// newer `<key>ZoomX`/`<key>ZoomY` pair — fall back to it so existing crops don't
+// reset to 100% the first time an old item is opened for editing.
+function legacyZoomKey(key) {
+  return key.endsWith('ZoomX') || key.endsWith('ZoomY') ? key.slice(0, -1) : null;
+}
+
+function valueFor(item, key, fields) {
+  if (item[key] !== undefined) return item[key];
+  const legacy = legacyZoomKey(key);
+  if (legacy && item[legacy] !== undefined) return item[legacy];
+  return defaultFor(key, fields);
 }
 
 function emptyForm(fields) {
@@ -86,7 +102,7 @@ export default function CollectionEditor({
 
   function startEdit(item) {
     setEditingId(item.id);
-    setForm(Object.fromEntries(formKeys(fields).map((key) => [key, item[key] ?? defaultFor(key, fields)])));
+    setForm(Object.fromEntries(formKeys(fields).map((key) => [key, valueFor(item, key, fields)])));
     setStatus(null);
   }
 
@@ -242,11 +258,18 @@ export default function CollectionEditor({
                 <ImageCropField
                   id={`field-${f.key}`}
                   url={form[f.key]}
-                  zoom={form[`${f.key}Zoom`]}
+                  zoomX={form[`${f.key}ZoomX`]}
+                  zoomY={form[`${f.key}ZoomY`]}
                   posX={form[`${f.key}PosX`]}
                   posY={form[`${f.key}PosY`]}
-                  onChange={({ zoom, posX, posY }) =>
-                    setForm((prev) => ({ ...prev, [`${f.key}Zoom`]: zoom, [`${f.key}PosX`]: posX, [`${f.key}PosY`]: posY }))
+                  onChange={({ zoomX, zoomY, posX, posY }) =>
+                    setForm((prev) => ({
+                      ...prev,
+                      [`${f.key}ZoomX`]: zoomX,
+                      [`${f.key}ZoomY`]: zoomY,
+                      [`${f.key}PosX`]: posX,
+                      [`${f.key}PosY`]: posY,
+                    }))
                   }
                 />
               </>

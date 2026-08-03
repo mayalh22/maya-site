@@ -21,6 +21,8 @@ export default function EnlargeArt({ pieces }) {
               className="card-img"
               style={{ cursor: 'pointer' }}
               zoom={piece.imageUrlZoom}
+              zoomX={piece.imageUrlZoomX}
+              zoomY={piece.imageUrlZoomY}
               posX={piece.imageUrlPosX}
               posY={piece.imageUrlPosY}
               onClick={() => setSelectedIndex(index)}

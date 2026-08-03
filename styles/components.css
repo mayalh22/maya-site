@@ -178,6 +178,7 @@ a:hover {
   overflow: hidden;
   margin: 0 auto var(--space-lg);
   border-radius: 50%;
+  clip-path: circle(50%);
   width: clamp(140px, 18vw, 200px);
   height: clamp(140px, 18vw, 200px);
   border: var(--border-width, 1px) solid var(--border);
@@ -201,6 +202,7 @@ a:hover {
   width: clamp(120px, 16vw, 160px);
   height: clamp(120px, 16vw, 160px);
   border-radius: 50%;
+  clip-path: circle(50%);
   border: var(--border-width, 1px) solid var(--border);
   flex: 0 0 auto;
 }
@@ -373,6 +375,7 @@ a:hover {
   aspect-ratio: 4 / 3;
   margin-bottom: var(--space-sm);
   border-radius: calc(var(--radius) - 4px);
+  clip-path: inset(0 round calc(var(--radius) - 4px));
 }
 
 .card-title {
@@ -471,6 +474,7 @@ a:hover {
   aspect-ratio: 4 / 3;
   margin-bottom: var(--space-xs);
   border-radius: var(--radius);
+  clip-path: inset(0 round var(--radius));
   border: var(--border-width, 1px) solid var(--border);
 }
 
@@ -520,6 +524,7 @@ a:hover {
   aspect-ratio: 5 / 6;
   margin-bottom: var(--space-xs);
   border-radius: var(--radius);
+  clip-path: inset(0 round var(--radius));
   border: var(--border-width, 1px) solid var(--border);
 }
 
@@ -997,6 +1002,11 @@ footer p {
 }
 .image-crop-controls label {
   color: var(--muted);
+}
+.image-crop-slider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
 }
 
 .admin-list-thumb {

@@ -27,6 +27,8 @@ export default async function Home() {
                       className="profile-carousel-frame"
                       loading={index < photos.length ? 'eager' : 'lazy'}
                       zoom={photo.zoom}
+                      zoomX={photo.zoomX}
+                      zoomY={photo.zoomY}
                       posX={photo.posX}
                       posY={photo.posY}
                     />
@@ -41,6 +43,8 @@ export default async function Home() {
                   className="profile"
                   loading="eager"
                   zoom={photos[0].zoom}
+                  zoomX={photos[0].zoomX}
+                  zoomY={photos[0].zoomY}
                   posX={photos[0].posX}
                   posY={photos[0].posY}
                 />

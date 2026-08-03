@@ -45,6 +45,8 @@ export default async function ProjectsPage() {
                   alt={project.title}
                   className="card-img"
                   zoom={project.imageUrlZoom}
+                  zoomX={project.imageUrlZoomX}
+                  zoomY={project.imageUrlZoomY}
                   posX={project.imageUrlPosX}
                   posY={project.imageUrlPosY}
                 />

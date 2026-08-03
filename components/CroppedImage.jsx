@@ -2,6 +2,8 @@ export default function CroppedImage({
   src,
   alt,
   zoom,
+  zoomX,
+  zoomY,
   posX,
   posY,
   className,
@@ -11,6 +13,9 @@ export default function CroppedImage({
 }) {
   if (!src) return null;
 
+  const zx = zoomX ?? zoom ?? 1;
+  const zy = zoomY ?? zoom ?? 1;
+
   return (
     <span className={className} style={style} onClick={onClick}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -19,7 +24,7 @@ export default function CroppedImage({
         alt={alt || ''}
         loading={loading}
         style={{
-          transform: `scale(${zoom || 1})`,
+          transform: `scale(${zx}, ${zy})`,
           objectPosition: `${posX ?? 50}% ${posY ?? 50}%`,
         }}
       />

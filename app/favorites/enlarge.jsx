@@ -22,6 +22,8 @@ export default function Enlarge({ items }) {
               className="favorites-img"
               style={{ cursor: 'pointer' }}
               zoom={item.imageUrlZoom}
+              zoomX={item.imageUrlZoomX}
+              zoomY={item.imageUrlZoomY}
               posX={item.imageUrlPosX}
               posY={item.imageUrlPosY}
               onClick={() => setSelectedIndex(index)}

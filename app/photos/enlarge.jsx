@@ -34,6 +34,8 @@ export default function Enlarge({ categories, photos, layout }) {
                     className="photo-img-frame"
                     style={{ cursor: 'pointer' }}
                     zoom={photo.imageUrlZoom}
+                    zoomX={photo.imageUrlZoomX}
+                    zoomY={photo.imageUrlZoomY}
                     posX={photo.imageUrlPosX}
                     posY={photo.imageUrlPosY}
                     onClick={() => setSelectedId(photo.id)}

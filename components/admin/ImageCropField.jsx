@@ -2,17 +2,18 @@
 
 import { useRef } from 'react';
 
-const DEFAULT_CROP = { zoom: 1, posX: 50, posY: 50 };
+const DEFAULT_CROP = { zoomX: 1, zoomY: 1, posX: 50, posY: 50 };
 
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
 
-export default function ImageCropField({ id, url, zoom, posX, posY, onChange }) {
+export default function ImageCropField({ id, url, zoom, zoomX, zoomY, posX, posY, onChange }) {
   const frameRef = useRef(null);
   const dragState = useRef(null);
 
-  const z = zoom || DEFAULT_CROP.zoom;
+  const zx = zoomX ?? zoom ?? DEFAULT_CROP.zoomX;
+  const zy = zoomY ?? zoom ?? DEFAULT_CROP.zoomY;
   const x = posX ?? DEFAULT_CROP.posX;
   const y = posY ?? DEFAULT_CROP.posY;
 
@@ -28,7 +29,8 @@ export default function ImageCropField({ id, url, zoom, posX, posY, onChange }) 
     const dx = ((e.clientX - dragState.current.startX) / rect.width) * 100;
     const dy = ((e.clientY - dragState.current.startY) / rect.height) * 100;
     onChange({
-      zoom: z,
+      zoomX: zx,
+      zoomY: zy,
       posX: clamp(dragState.current.posX - dx, 0, 100),
       posY: clamp(dragState.current.posY - dy, 0, 100),
     });
@@ -57,25 +59,39 @@ export default function ImageCropField({ id, url, zoom, posX, posY, onChange }) 
           src={url}
           alt=""
           draggable={false}
-          style={{ transform: `scale(${z})`, objectPosition: `${x}% ${y}%` }}
+          style={{ transform: `scale(${zx}, ${zy})`, objectPosition: `${x}% ${y}%` }}
         />
       </div>
       <div className="image-crop-controls">
-        <label htmlFor={`${id}-zoom`}>Zoom ({Math.round(z * 100)}%)</label>
-        <input
-          id={`${id}-zoom`}
-          type="range"
-          min="1"
-          max="3"
-          step="0.05"
-          value={z}
-          onChange={(e) => onChange({ zoom: Number(e.target.value), posX: x, posY: y })}
-        />
+        <div className="image-crop-slider">
+          <label htmlFor={`${id}-zoomX`}>Width ({Math.round(zx * 100)}%)</label>
+          <input
+            id={`${id}-zoomX`}
+            type="range"
+            min="1"
+            max="3"
+            step="0.05"
+            value={zx}
+            onChange={(e) => onChange({ zoomX: Number(e.target.value), zoomY: zy, posX: x, posY: y })}
+          />
+        </div>
+        <div className="image-crop-slider">
+          <label htmlFor={`${id}-zoomY`}>Height ({Math.round(zy * 100)}%)</label>
+          <input
+            id={`${id}-zoomY`}
+            type="range"
+            min="1"
+            max="3"
+            step="0.05"
+            value={zy}
+            onChange={(e) => onChange({ zoomX: zx, zoomY: Number(e.target.value), posX: x, posY: y })}
+          />
+        </div>
         <button type="button" className="btn btn-small btn-secondary" onClick={() => onChange({ ...DEFAULT_CROP })}>
           Reset crop
         </button>
       </div>
-      <p className="admin-status">Drag the image to reposition it, use the slider to zoom in.</p>
+      <p className="admin-status">Drag the image to reposition it, use the sliders to adjust width and height independently.</p>
     </div>
   );
 }
