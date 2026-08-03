@@ -12,15 +12,21 @@ const ALLOWED_PATHS = new Set([
 ]);
 
 export async function POST(request) {
-  const { path } = await request.json().catch(() => ({}));
+  const { path, layout } = await request.json().catch(() => ({}));
 
   if (!ALLOWED_PATHS.has(path)) {
     return Response.json({ revalidated: false, error: 'Unknown path' }, { status: 400 });
   }
 
-  revalidatePath(path);
-  if (path === '/blog') {
-    revalidatePath('/blog/[slug]', 'page');
+  if (layout && path === '/') {
+    // Theme is injected in the root layout, which every route shares, so a
+    // theme save needs to invalidate every cached route, not just "/".
+    revalidatePath('/', 'layout');
+  } else {
+    revalidatePath(path);
+    if (path === '/blog') {
+      revalidatePath('/blog/[slug]', 'page');
+    }
   }
 
   return Response.json({ revalidated: true });

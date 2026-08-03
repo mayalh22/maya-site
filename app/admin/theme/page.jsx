@@ -1,7 +1,7 @@
 'use client';
 
 import { useSingletonDoc } from '@/lib/useSingletonDoc';
-import { THEME_DOC_PATH, DEFAULT_THEME } from '@/lib/theme';
+import { THEME_DOC_PATH, DEFAULT_THEME, FONT_OPTIONS } from '@/lib/theme';
 
 const COLOR_FIELDS = [
   ['primary', 'Primary'],
@@ -11,7 +11,9 @@ const COLOR_FIELDS = [
 ];
 
 export default function ThemeAdminPage() {
-  const { data, setField, save, loading, saving, status } = useSingletonDoc(THEME_DOC_PATH, DEFAULT_THEME, '/');
+  const { data, setField, save, loading, saving, status } = useSingletonDoc(THEME_DOC_PATH, DEFAULT_THEME, '/', {
+    layout: true,
+  });
 
   if (loading) return <p className="admin-loading">Loading…</p>;
 
@@ -40,8 +42,11 @@ export default function ThemeAdminPage() {
           <div className="admin-field">
             <label htmlFor="fontChoice">Font</label>
             <select id="fontChoice" value={data.fontChoice} onChange={(e) => setField('fontChoice', e.target.value)}>
-              <option value="sans">Sans serif</option>
-              <option value="serif">Serif</option>
+              {FONT_OPTIONS.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
             </select>
           </div>
 

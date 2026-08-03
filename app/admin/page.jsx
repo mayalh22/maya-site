@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const SECTIONS = [
-  ['Home', '/admin/home', 'Name, tagline, bio, and profile photo.'],
+  ['Home', '/admin/home', 'Name, tagline, bio, and profile photos.'],
   ['Contact', '/admin/contact', 'Contact details and social links.'],
   ['Theme', '/admin/theme', 'Site colors, font, and text size.'],
   ['Projects', '/admin/projects', 'Portfolio and code projects.'],
@@ -17,7 +17,7 @@ export default function AdminDashboard() {
     <div className="section-wrapper">
       <div className="section-header"><h2>Admin Dashboard</h2></div>
       <div className="section-body">
-        <div className="card-grid">
+        <div className="admin-dashboard-grid">
           {SECTIONS.map(([title, href, description]) => (
             <Link key={href} href={href} className="card admin-dashboard-card">
               <h3>{title}</h3>

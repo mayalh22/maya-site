@@ -30,14 +30,16 @@ export default async function TimelinePage() {
             {items.length === 0 ? (
               <p className="empty-state">No entries yet.</p>
             ) : kind === 'experience' ? (
-              items.map((event) => (
-                <div key={event.id} className="timeline-item">
-                  <p className="timeline-date">{event.date}</p>
-                  <h3>{event.title}{event.organization ? ` at ${event.organization}` : ''}</h3>
-                  {event.location && <p><em>{event.location}</em></p>}
-                  {event.description && <p>{event.description}</p>}
-                </div>
-              ))
+              <div className="timeline-track">
+                {items.map((event) => (
+                  <div key={event.id} className="timeline-item">
+                    <p className="timeline-date">{event.date}</p>
+                    <h3>{event.title}{event.organization ? ` at ${event.organization}` : ''}</h3>
+                    {event.location && <p><em>{event.location}</em></p>}
+                    {event.description && <p>{event.description}</p>}
+                  </div>
+                ))}
+              </div>
             ) : (
               <div className="card-grid">
                 {items.map((item) => (

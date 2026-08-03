@@ -1,14 +1,29 @@
 'use client';
 
+import { useState } from 'react';
 import { useSingletonDoc } from '@/lib/useSingletonDoc';
 import ImageUrlField from '@/components/admin/ImageUrlField';
 
-const DEFAULTS = { name: '', tagline: '', bio: '', photoUrl: '' };
+const DEFAULTS = { name: '', tagline: '', bio: '', photoUrls: [] };
 
 export default function HomeAdminPage() {
   const { data, setField, save, loading, saving, status } = useSingletonDoc('siteContent/home', DEFAULTS, '/');
+  const [newPhotoUrl, setNewPhotoUrl] = useState('');
 
   if (loading) return <p className="admin-loading">Loading…</p>;
+
+  const photoUrls = data.photoUrls || [];
+
+  function addPhoto() {
+    const url = newPhotoUrl.trim();
+    if (!url) return;
+    setField('photoUrls', [...photoUrls, url]);
+    setNewPhotoUrl('');
+  }
+
+  function removePhoto(index) {
+    setField('photoUrls', photoUrls.filter((_, i) => i !== index));
+  }
 
   return (
     <div className="section-wrapper">
@@ -35,10 +50,38 @@ export default function HomeAdminPage() {
             <label htmlFor="bio">Bio</label>
             <textarea id="bio" value={data.bio} onChange={(e) => setField('bio', e.target.value)} />
           </div>
+
           <div className="admin-field">
-            <label htmlFor="photoUrl">Photo URL</label>
-            <ImageUrlField id="photoUrl" value={data.photoUrl} onChange={(value) => setField('photoUrl', value)} />
+            <label>Profile photos</label>
+            {photoUrls.length > 0 && (
+              <div className="admin-list">
+                {photoUrls.map((url, index) => (
+                  <div className="admin-list-item" key={`${url}-${index}`}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img className="admin-list-thumb" src={url} alt="" loading="lazy" />
+                    <div className="admin-list-info">
+                      <p className="admin-list-detail">{url}</p>
+                    </div>
+                    <div className="admin-list-actions">
+                      <button type="button" className="btn btn-small btn-danger" onClick={() => removePhoto(index)}>
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+            <ImageUrlField id="newPhotoUrl" value={newPhotoUrl} onChange={setNewPhotoUrl} />
+            <div className="admin-actions">
+              <button type="button" className="btn btn-secondary" onClick={addPhoto}>
+                Add photo
+              </button>
+            </div>
+            {photoUrls.length > 1 && (
+              <p className="admin-status">Two or more photos scroll automatically on the home page.</p>
+            )}
           </div>
+
           <div className="admin-actions">
             <button type="submit" className="btn" disabled={saving}>
               {saving ? 'Saving…' : 'Save'}

@@ -4,15 +4,27 @@ export const revalidate = 300;
 
 export default async function Home() {
   const home = await getSingleton('siteContent/home', null);
+  const photos = home?.photoUrls || [];
 
   return (
     <main className="container">
       <div className="about">
         {home ? (
           <>
-            {home.photoUrl && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={home.photoUrl} alt={home.name || ''} className="profile" loading="eager" />
+            {photos.length > 1 ? (
+              <div className="profile-carousel">
+                <div className="profile-carousel-track">
+                  {[...photos, ...photos].map((url, index) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img key={index} src={url} alt={home.name || ''} loading={index < photos.length ? 'eager' : 'lazy'} />
+                  ))}
+                </div>
+              </div>
+            ) : (
+              photos[0] && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={photos[0]} alt={home.name || ''} className="profile" loading="eager" />
+              )
             )}
             <h1>{home.name || 'Welcome'}</h1>
             {home.tagline && <h3>{home.tagline}</h3>}
