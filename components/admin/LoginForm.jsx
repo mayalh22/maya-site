@@ -21,16 +21,7 @@ export default function LoginForm({ wrongAccountEmail }) {
       }
     } catch (err) {
       if (err?.code !== 'auth/popup-closed-by-user') {
-        // Temporary verbose logging to diagnose sign-in failures; the full
-        // error object often carries detail (e.g. customData) that
-        // err.code/err.message alone don't show.
-        console.error('Google sign-in error:', {
-          code: err?.code,
-          message: err?.message,
-          name: err?.name,
-          customData: err?.customData,
-          error: err,
-        });
+        console.error('Google sign-in error:', err);
         setError('Google sign-in failed. Please try again.');
       }
     } finally {

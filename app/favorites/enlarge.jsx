@@ -1,9 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
-import { getCardColor, getCardClass } from '@/lib/utils';
-import { resolveAssetSrc } from '@/lib/images';
 import Lightbox from '@/components/Lightbox';
 
 export default function Enlarge({ items }) {
@@ -14,31 +11,19 @@ export default function Enlarge({ items }) {
     <>
       <div className="favorites-grid">
         {items.map((item, index) => (
-          <div
-            key={item.title}
-            className={getCardClass(index)}
-            style={{ backgroundColor: getCardColor(index), cursor: 'pointer' }}
-            onClick={() => setSelectedIndex(index)}
-          >
+          <div key={item.id} className="favorites-card" onClick={() => setSelectedIndex(index)}>
             <span className="favorites-rank">{index + 1}.</span>
-            <Image
-              src={resolveAssetSrc(item.image)}
-              alt={item.title}
-              width={200}
-              height={240}
-              className="favorites-img"
-            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={item.imageUrl} alt={item.title} className="favorites-img" loading="lazy" />
             <p className="favorites-title">{item.title}</p>
-            <p className="favorites-sub">{item.subtitle}</p>
+            {item.subtitle && <p className="favorites-sub">{item.subtitle}</p>}
           </div>
         ))}
       </div>
 
       <Lightbox
-        item={selected ? { image: resolveAssetSrc(selected.image), title: selected.title, subtitle: selected.subtitle } : null}
+        item={selected ? { image: selected.imageUrl, title: selected.title, subtitle: selected.subtitle } : null}
         onClose={() => setSelectedIndex(null)}
-        backgroundColor={selectedIndex !== null ? getCardColor(selectedIndex) : undefined}
-        className={selectedIndex !== null ? getCardClass(selectedIndex) : undefined}
       />
     </>
   );

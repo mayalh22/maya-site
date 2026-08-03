@@ -6,13 +6,15 @@ import { useAdminUser } from '@/lib/auth';
 
 const ADMIN_LINKS = [
   ['Dashboard', '/admin'],
+  ['Home', '/admin/home'],
+  ['Contact', '/admin/contact'],
   ['Theme', '/admin/theme'],
+  ['Projects', '/admin/projects'],
+  ['Art', '/admin/art'],
+  ['Photos', '/admin/photos'],
+  ['Favorites', '/admin/favorites'],
   ['Timeline', '/admin/timeline'],
-  ['Writing', '/admin/writing'],
-  ['Art', '/admin/galleries/art'],
-  ['Photos', '/admin/galleries/photos'],
-  ['Favorites', '/admin/galleries/favorites'],
-  ['Projects', '/admin/galleries/projects'],
+  ['Blog', '/admin/blog'],
 ];
 
 export default function AdminNav() {

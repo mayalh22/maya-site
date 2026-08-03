@@ -1,39 +1,39 @@
-import favoritesFallback from '@/lib/content/favorites.json';
 import Section from '@/components/Section';
 import Enlarge from './enlarge';
-import { getContentDoc } from '@/lib/firestore';
+import { listCollection } from '@/lib/db';
 
 export const metadata = {
   title: 'Favorites',
-  description: 'My favorite movies, shows, books, and albums.',
+  description: 'Favorite movies, shows, books, and albums.',
 };
 
 export const revalidate = 300;
 
-export default async function FavoritesPage() {
-  const favoritesData = await getContentDoc('content/favorites', favoritesFallback);
+const TYPES = ['Movie', 'Show', 'Book', 'Album'];
 
-  const grouped = favoritesData.top.reduce((acc, item) => {
-    acc[item.type] = acc[item.type] || [];
-    acc[item.type].push(item);
-    return acc;
-  }, {});
+export default async function FavoritesPage() {
+  const favorites = await listCollection('favorites');
 
   return (
     <main className="container">
       <div className="about">
-        <h1>My Favorites</h1>
-        <p>{favoritesData.intro}</p>
+        <h1>Favorites</h1>
       </div>
-      <Section title="Top Picks">
-        {Object.entries(grouped).map(([type, items]) => (
-          <section key={type} className="favorites-section">
-            <div className="favorites-type-label" style={{ textAlign: 'center', width: '100%' }}>
-              {type.charAt(0).toUpperCase() + type.slice(1)}s
-            </div>
-            <Enlarge items={items} />
-          </section>
-        ))}
+      <Section title="Top picks">
+        {favorites.length === 0 ? (
+          <p className="empty-state">No favorites yet.</p>
+        ) : (
+          TYPES.map((type) => {
+            const items = favorites.filter((item) => item.type === type);
+            if (items.length === 0) return null;
+            return (
+              <section key={type} className="favorites-section">
+                <div className="favorites-type-label">{type}s</div>
+                <Enlarge items={items} />
+              </section>
+            );
+          })
+        )}
       </Section>
     </main>
   );

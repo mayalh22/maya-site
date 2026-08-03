@@ -1,15 +1,27 @@
-import aboutData from '@/lib/content/about.json';
-import HomeAbout from './HomeAbout';
+import { getSingleton } from '@/lib/db';
 
-export const metadata = {
-  title: 'Maya Hazarika',
-  description: aboutData.bio,
-};
+export const revalidate = 300;
 
-export default function Home() {
+export default async function Home() {
+  const home = await getSingleton('siteContent/home', null);
+
   return (
     <main className="container">
-      <HomeAbout aboutData={aboutData} />
+      <div className="about">
+        {home ? (
+          <>
+            {home.photoUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={home.photoUrl} alt={home.name || ''} className="profile" loading="eager" />
+            )}
+            <h1>{home.name || 'Welcome'}</h1>
+            {home.tagline && <h3>{home.tagline}</h3>}
+            {home.bio && <p>{home.bio}</p>}
+          </>
+        ) : (
+          <p className="empty-state">No profile info yet.</p>
+        )}
+      </div>
     </main>
   );
 }

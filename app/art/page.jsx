@@ -1,27 +1,29 @@
-import artFallback from '@/lib/content/art.json';
 import Section from '@/components/Section';
 import EnlargeArt from './enlarge';
-import { getContentDoc } from '@/lib/firestore';
+import { listCollection } from '@/lib/db';
 
 export const metadata = {
   title: 'Art',
-  description: 'A gallery of my art projects.',
+  description: 'A gallery of art.',
 };
 
 export const revalidate = 300;
 
 export default async function ArtPage() {
-  const artData = await getContentDoc('content/art', artFallback);
+  const pieces = await listCollection('art');
 
   return (
     <main className="container">
       <div className="about">
         <h1>Art</h1>
-        <p>{artData.intro}</p>
       </div>
 
       <Section title="Gallery">
-        <EnlargeArt pieces={artData.pieces} />
+        {pieces.length === 0 ? (
+          <p className="empty-state">No art yet.</p>
+        ) : (
+          <EnlargeArt pieces={pieces} />
+        )}
       </Section>
     </main>
   );

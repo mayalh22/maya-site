@@ -1,25 +1,28 @@
-import photosFallback from '@/lib/content/photos.json';
 import Enlarge from './enlarge';
-import { getContentDoc } from '@/lib/firestore';
+import { listCollection } from '@/lib/db';
 
 export const metadata = {
   title: 'Photos',
-  description: "A collection of photos I've taken.",
+  description: 'A photo gallery.',
 };
 
 export const revalidate = 300;
 
 export default async function PhotosPage() {
-  const photosData = await getContentDoc('content/photos', photosFallback);
+  const photos = await listCollection('photos');
+  const categories = Array.from(new Set(photos.map((p) => p.category))).sort();
 
   return (
     <main className="container">
       <div className="about">
         <h1>Photos</h1>
-        <p>{photosData.intro}</p>
       </div>
 
-      <Enlarge categories={photosData.categories} />
+      {photos.length === 0 ? (
+        <p className="empty-state">No photos yet.</p>
+      ) : (
+        <Enlarge categories={categories} photos={photos} />
+      )}
     </main>
   );
 }

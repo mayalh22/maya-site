@@ -1,48 +1,35 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
-import { getCardColor, getCardClass } from '@/lib/utils';
-import { resolveAssetSrc } from '@/lib/images';
 import Lightbox from '@/components/Lightbox';
 
-export default function Enlarge({ categories }) {
-  const [selected, setSelected] = useState(null); // { categoryIndex, photoIndex }
-
-  const selectedPhoto = selected
-    ? categories[selected.categoryIndex].photos[selected.photoIndex]
-    : null;
+export default function Enlarge({ categories, photos }) {
+  const [selectedId, setSelectedId] = useState(null);
+  const selected = photos.find((p) => p.id === selectedId) || null;
 
   return (
     <>
-      {categories.map((category, catIdx) => (
-        <div key={category.category} className="photo-grid">
-          {category.photos.map((photo, idx) => (
-            <div
-              key={photo.image}
-              className={getCardClass(idx)}
-              style={{ backgroundColor: getCardColor(idx), cursor: 'pointer' }}
-              onClick={() => setSelected({ categoryIndex: catIdx, photoIndex: idx })}
-            >
-              <Image
-                src={resolveAssetSrc(photo.image)}
-                alt={photo.caption}
-                width={200}
-                height={150}
-                loading="lazy"
-              />
-              <p className="photo-caption">{photo.caption}</p>
-              <p className="photo-date">{photo.date}</p>
-            </div>
-          ))}
+      {categories.map((category) => (
+        <div key={category} className="photo-category">
+          <h3 className="photo-category-title">{category}</h3>
+          <div className="photo-grid">
+            {photos
+              .filter((photo) => photo.category === category)
+              .map((photo) => (
+                <div key={photo.id} className="photo-card" onClick={() => setSelectedId(photo.id)}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={photo.imageUrl} alt={photo.caption} loading="lazy" />
+                  <p className="photo-caption">{photo.caption}</p>
+                  {photo.date && <p className="photo-date">{photo.date}</p>}
+                </div>
+              ))}
+          </div>
         </div>
       ))}
 
       <Lightbox
-        item={selectedPhoto ? { image: resolveAssetSrc(selectedPhoto.image), title: selectedPhoto.caption, subtitle: selectedPhoto.date } : null}
-        onClose={() => setSelected(null)}
-        backgroundColor={selected ? getCardColor(selected.photoIndex) : undefined}
-        className={selected ? getCardClass(selected.photoIndex) : undefined}
+        item={selected ? { image: selected.imageUrl, title: selected.caption, subtitle: selected.date } : null}
+        onClose={() => setSelectedId(null)}
       />
     </>
   );
