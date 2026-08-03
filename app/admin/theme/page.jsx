@@ -77,7 +77,7 @@ export default function ThemeAdminPage() {
               value={data.borderWidth}
               onChange={(e) => setField('borderWidth', Number(e.target.value))}
             />
-            <p className="admin-status">Controls every border/line on the site — card outlines, dividers, item boxes and triangles.</p>
+            <p className="admin-status">Controls every border/line on the site: card outlines, dividers, item boxes and triangles.</p>
           </div>
 
           <div className="admin-field">

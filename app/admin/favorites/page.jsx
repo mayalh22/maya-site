@@ -23,7 +23,7 @@ export default function FavoritesAdminPage() {
           <h2>Favorites</h2>
         </div>
         <div className="section-body">
-          <p className="admin-status">Drag to reorder within a type — rank numbers on the public page follow this order.</p>
+          <p className="admin-status">Drag to reorder within a type: rank numbers on the public page follow this order.</p>
           <CollectionEditor
             collectionName="favorites"
             fields={FIELDS}

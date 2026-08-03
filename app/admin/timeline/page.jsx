@@ -41,7 +41,7 @@ export default function TimelineAdminPage() {
         </div>
         <div className="section-body">
           <p className="admin-status">
-            Entries are ordered automatically by date started — leave "Date ended" blank for an ongoing entry.
+            Entries are ordered automatically by date started: leave "Date ended" blank for an ongoing entry.
           </p>
           <CollectionEditor
             collectionName="timeline"
