@@ -7,6 +7,9 @@
   --border: color-mix(in srgb, var(--text) 16%, transparent);
   --muted:  color-mix(in srgb, var(--text) 60%, transparent);
 
+  --field-bg:   #ffffff;
+  --field-text: #202221;
+
   --font-heading: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
   --font-body: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
 
@@ -785,8 +788,8 @@ footer p {
   padding: var(--space-sm);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background-color: #fff;
-  color: var(--text);
+  background-color: var(--field-bg);
+  color: var(--field-text);
 }
 .admin-field textarea {
   min-height: 140px;
@@ -885,12 +888,6 @@ footer p {
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
-}
-.image-url-field input {
-  font: inherit;
-  padding: var(--space-sm);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
 }
 .image-url-preview {
   width: 100%;

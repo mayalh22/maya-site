@@ -8,6 +8,8 @@ const COLOR_FIELDS = [
   ['accent', 'Accent'],
   ['background', 'Background'],
   ['text', 'Text'],
+  ['fieldBackground', 'Text box background'],
+  ['fieldText', 'Text box text'],
 ];
 
 export default function ThemeAdminPage() {
@@ -38,6 +40,7 @@ export default function ThemeAdminPage() {
               </div>
             ))}
           </div>
+          <p className="admin-status">Text box colors apply to the input and textarea boxes here in the admin dashboard.</p>
 
           <div className="admin-field">
             <label htmlFor="fontChoice">Font</label>
