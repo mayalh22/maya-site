@@ -26,6 +26,9 @@
   --size-xs: 0.8rem;
 
   --radius: 10px;
+
+  --border-width: 1px;
+  --spin-speed: 1;
 }
 
 [data-font='serif'] {
@@ -72,10 +75,6 @@ body.custom-cursor-active * {
 
 @keyframes spin {
   to { transform: rotate(360deg); }
-}
-@keyframes twinkle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
 }
 @keyframes marquee {
   from { transform: translateX(0); }
@@ -152,7 +151,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: spin 6s linear infinite;
+  animation: spin calc(6s / var(--spin-speed, 1)) linear infinite;
 }
 
 /* About / hero */
@@ -181,7 +180,7 @@ a:hover {
   width: clamp(140px, 18vw, 200px);
   height: clamp(140px, 18vw, 200px);
   object-fit: cover;
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
 }
 
 .profile-carousel {
@@ -201,7 +200,7 @@ a:hover {
   height: clamp(120px, 16vw, 160px);
   object-fit: cover;
   border-radius: 50%;
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   flex: 0 0 auto;
 }
 
@@ -210,7 +209,7 @@ a:hover {
 .site-header {
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid var(--border);
+  border-bottom: var(--border-width, 1px) solid var(--border);
   background-color: var(--bg);
 }
 
@@ -224,7 +223,7 @@ a:hover {
   font-size: 1.1rem;
   color: var(--accent);
   opacity: 0.6;
-  animation: spin 5s linear infinite;
+  animation: spin calc(5s / var(--spin-speed, 1)) linear infinite;
 }
 
 .site-header-bar {
@@ -250,7 +249,7 @@ a:hover {
 .wordmark-spin {
   display: inline-block;
   color: var(--accent);
-  animation: spin 4s linear infinite;
+  animation: spin calc(4s / var(--spin-speed, 1)) linear infinite;
 }
 
 .site-nav {
@@ -272,7 +271,7 @@ a:hover {
   color: var(--text);
   letter-spacing: 0.01em;
   padding: var(--space-xs) 0;
-  border-bottom: 2px solid transparent;
+  border-bottom: calc(var(--border-width, 1px) * 2) solid transparent;
 }
 .nav-link:hover {
   color: var(--primary);
@@ -287,7 +286,7 @@ a:hover {
 .section-wrapper {
   padding: var(--space-lg) 0;
   margin-bottom: var(--space-lg);
-  border-bottom: 1px solid var(--border);
+  border-bottom: var(--border-width, 1px) solid var(--border);
 }
 .section-wrapper:last-child {
   border-bottom: none;
@@ -311,7 +310,6 @@ a:hover {
   content: '᯽ ';
   color: var(--accent);
   display: inline-block;
-  animation: twinkle 2s infinite;
 }
 
 .section-header small {
@@ -352,7 +350,7 @@ a:hover {
   scroll-snap-align: start;
   padding: var(--space-md);
   color: var(--text);
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: var(--radius);
 }
 
@@ -456,7 +454,7 @@ a:hover {
 .timeline-item {
   flex: 0 0 var(--item-width, 260px);
   scroll-snap-align: start;
-  border-top: 2px solid var(--accent);
+  border-top: calc(var(--border-width, 1px) * 2) solid var(--accent);
   padding: var(--space-sm) 0 0;
 }
 
@@ -517,7 +515,7 @@ a:hover {
   display: block;
   margin-bottom: var(--space-xs);
   border-radius: var(--radius);
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
 }
 
 .photo-caption {
@@ -566,7 +564,7 @@ a:hover {
   display: block;
   margin-bottom: var(--space-xs);
   border-radius: var(--radius);
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
 }
 
 .favorites-rank {
@@ -593,7 +591,7 @@ a:hover {
   background-color: var(--primary);
   color: #fff;
   font-size: var(--size-sm);
-  border: 1px solid var(--primary);
+  border: var(--border-width, 1px) solid var(--primary);
   border-radius: var(--radius);
   margin: var(--space-xs) var(--space-xs) var(--space-xs) 0;
   transition: background-color 0.15s ease, border-color 0.15s ease;
@@ -646,7 +644,7 @@ a:hover {
 footer {
   position: relative;
   overflow: hidden;
-  border-top: 1px solid var(--border);
+  border-top: var(--border-width, 1px) solid var(--border);
   padding: var(--space-lg) 0;
   text-align: center;
 }
@@ -669,7 +667,7 @@ footer p {
   font-size: 1rem;
   color: var(--accent);
   opacity: 0.5;
-  animation: spin 4s linear infinite;
+  animation: spin calc(4s / var(--spin-speed, 1)) linear infinite;
 }
 
 .project-links {
@@ -693,7 +691,7 @@ footer p {
   align-items: center;
   gap: var(--space-xs);
   padding: var(--space-xs) var(--space-sm);
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: var(--radius);
   font-size: var(--size-xs);
   color: var(--text);
@@ -743,7 +741,7 @@ footer p {
   overflow: hidden;
   padding: var(--space-lg);
   border-radius: var(--radius);
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
 }
 
 .lightbox-close {
@@ -796,7 +794,7 @@ footer p {
   gap: var(--space-md);
   padding: var(--space-md);
   margin-bottom: var(--space-lg);
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: var(--radius);
 }
 
@@ -874,7 +872,7 @@ footer p {
 .admin-field select {
   font: inherit;
   padding: var(--space-sm);
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: var(--radius);
   background-color: var(--field-bg);
   color: var(--field-text);
@@ -903,7 +901,7 @@ footer p {
   width: 40px;
   height: 32px;
   padding: 0;
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: var(--radius);
   cursor: pointer;
 }
@@ -925,7 +923,7 @@ footer p {
   align-items: center;
   gap: var(--space-md);
   padding: var(--space-sm) var(--space-md);
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: var(--radius);
 }
 
@@ -976,7 +974,7 @@ footer p {
   width: 80px;
   font: inherit;
   padding: var(--space-xs) var(--space-sm);
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: var(--radius);
   background-color: var(--field-bg);
   color: var(--field-text);
@@ -1036,7 +1034,7 @@ footer p {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: var(--radius);
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
 }
 .image-url-error {
   font-size: var(--size-xs);
@@ -1060,7 +1058,7 @@ footer p {
 .layout-editor-toggle {
   font-size: var(--size-xs);
   padding: var(--space-xs) var(--space-sm);
-  border: 1px dashed var(--accent);
+  border: var(--border-width, 1px) dashed var(--accent);
   border-radius: var(--radius);
   background-color: color-mix(in srgb, var(--bg) 85%, var(--accent) 15%);
   color: var(--accent);
@@ -1076,7 +1074,7 @@ footer p {
   gap: var(--space-sm);
   min-width: 180px;
   padding: var(--space-sm) var(--space-md);
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: var(--radius);
   background-color: var(--field-bg);
   color: var(--field-text);

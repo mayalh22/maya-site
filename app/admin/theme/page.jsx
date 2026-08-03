@@ -66,6 +66,34 @@ export default function ThemeAdminPage() {
             />
           </div>
 
+          <div className="admin-field">
+            <label htmlFor="borderWidth">Line thickness ({data.borderWidth}px)</label>
+            <input
+              id="borderWidth"
+              type="range"
+              min="0"
+              max="6"
+              step="1"
+              value={data.borderWidth}
+              onChange={(e) => setField('borderWidth', Number(e.target.value))}
+            />
+            <p className="admin-status">Controls every border/line on the site — card outlines, dividers, item boxes and triangles.</p>
+          </div>
+
+          <div className="admin-field">
+            <label htmlFor="spinSpeed">Spin speed ({data.spinSpeed}×)</label>
+            <input
+              id="spinSpeed"
+              type="range"
+              min="0.25"
+              max="3"
+              step="0.25"
+              value={data.spinSpeed}
+              onChange={(e) => setField('spinSpeed', Number(e.target.value))}
+            />
+            <p className="admin-status">Speeds up or slows down every spinning decoration (cursor, wordmark, header/footer stars).</p>
+          </div>
+
           <div className="admin-actions">
             <button type="submit" className="btn" disabled={saving}>
               {saving ? 'Saving…' : 'Save'}
