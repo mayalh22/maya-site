@@ -10,6 +10,7 @@ const COLOR_FIELDS = [
   ['text', 'Text'],
   ['fieldBackground', 'Text box background'],
   ['fieldText', 'Text box text'],
+  ['borderColor', 'Line color'],
 ];
 
 export default function ThemeAdminPage() {
@@ -43,14 +44,24 @@ export default function ThemeAdminPage() {
           <p className="admin-status">Text box colors apply to the input and textarea boxes here in the admin dashboard.</p>
 
           <div className="admin-field">
-            <label htmlFor="fontChoice">Font</label>
-            <select id="fontChoice" value={data.fontChoice} onChange={(e) => setField('fontChoice', e.target.value)}>
+            <label>Font</label>
+            <div className="font-option-grid">
               {FONT_OPTIONS.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
+                <button
+                  type="button"
+                  key={option.value}
+                  className={
+                    data.fontChoice === option.value ? 'font-option font-option-active' : 'font-option'
+                  }
+                  style={{ fontFamily: option.fontFamily }}
+                  aria-pressed={data.fontChoice === option.value}
+                  onClick={() => setField('fontChoice', option.value)}
+                >
+                  <span className="font-option-sample">Aa Bb Cc</span>
+                  <span className="font-option-label">{option.label}</span>
+                </button>
               ))}
-            </select>
+            </div>
           </div>
 
           <div className="admin-field">

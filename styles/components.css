@@ -4,7 +4,7 @@
   --bg:         #f3e8cc;
   --text:       #202221;
 
-  --border: color-mix(in srgb, var(--text) 16%, transparent);
+  --border: #d1c8b1;
   --muted:  color-mix(in srgb, var(--text) 60%, transparent);
 
   --field-bg:   #ffffff;
@@ -175,11 +175,11 @@ a:hover {
 
 .profile {
   display: block;
+  overflow: hidden;
   margin: 0 auto var(--space-lg);
   border-radius: 50%;
   width: clamp(140px, 18vw, 200px);
   height: clamp(140px, 18vw, 200px);
-  object-fit: cover;
   border: var(--border-width, 1px) solid var(--border);
 }
 
@@ -195,10 +195,11 @@ a:hover {
   width: max-content;
   animation: marquee 16s linear infinite;
 }
-.profile-carousel-track img {
+.profile-carousel-frame {
+  display: block;
+  overflow: hidden;
   width: clamp(120px, 16vw, 160px);
   height: clamp(120px, 16vw, 160px);
-  object-fit: cover;
   border-radius: 50%;
   border: var(--border-width, 1px) solid var(--border);
   flex: 0 0 auto;
@@ -366,10 +367,10 @@ a:hover {
 }
 
 .card-img {
+  display: block;
+  overflow: hidden;
   width: 100%;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
-  display: block;
   margin-bottom: var(--space-sm);
   border-radius: calc(var(--radius) - 4px);
 }
@@ -392,51 +393,6 @@ a:hover {
 }
 .contact-grid .card {
   flex-basis: var(--item-width, 240px);
-}
-
-/* Shapes (admin-selectable per item) */
-
-.shape-circle {
-  border-radius: 50%;
-  text-align: center;
-  aspect-ratio: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.shape-circle img,
-.shape-circle .card-img {
-  border-radius: 50%;
-  aspect-ratio: 1;
-}
-.shape-circle h3,
-.shape-circle .card-title,
-.shape-circle p {
-  text-align: center;
-}
-
-.shape-triangle-up,
-.shape-triangle-down {
-  text-align: center;
-  padding: var(--space-xl) var(--space-md) var(--space-md);
-  overflow: hidden;
-}
-.shape-triangle-up {
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-}
-.shape-triangle-down {
-  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
-  padding: var(--space-md) var(--space-md) var(--space-xl);
-}
-.shape-triangle-up h3,
-.shape-triangle-down h3,
-.shape-triangle-up .card-title,
-.shape-triangle-down .card-title,
-.shape-triangle-up p,
-.shape-triangle-down p {
-  text-align: center;
 }
 
 /* Timeline */
@@ -508,11 +464,11 @@ a:hover {
   cursor: pointer;
 }
 
-.photo-card img {
+.photo-img-frame {
+  display: block;
+  overflow: hidden;
   width: 100%;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
-  display: block;
   margin-bottom: var(--space-xs);
   border-radius: var(--radius);
   border: var(--border-width, 1px) solid var(--border);
@@ -558,13 +514,28 @@ a:hover {
 }
 
 .favorites-img {
+  display: block;
+  overflow: hidden;
   width: 100%;
   aspect-ratio: 5 / 6;
-  object-fit: cover;
-  display: block;
   margin-bottom: var(--space-xs);
   border-radius: var(--radius);
   border: var(--border-width, 1px) solid var(--border);
+}
+
+/* Cropped image frames: the frame element (above) sets the box and aspect
+   ratio; the image inside always fills it, with per-item pan/zoom applied
+   via inline style (transform + object-position) so it's never a fixed
+   pixel size — it stays responsive to whatever the frame's size is. */
+.card-img img,
+.photo-img-frame img,
+.favorites-img img,
+.profile img,
+.profile-carousel-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .favorites-rank {
@@ -906,6 +877,36 @@ footer p {
   cursor: pointer;
 }
 
+.font-option-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: var(--space-sm);
+}
+.font-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  border: var(--border-width, 1px) solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--field-bg);
+  color: var(--field-text);
+  cursor: pointer;
+  text-align: left;
+}
+.font-option-active {
+  border-color: var(--accent);
+}
+.font-option-sample {
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+.font-option-label {
+  font-size: var(--size-xs);
+  color: var(--muted);
+}
+
 .admin-actions {
   display: flex;
   gap: var(--space-sm);
@@ -1084,6 +1085,42 @@ footer p {
   flex-direction: column;
   gap: 2px;
   font-size: var(--size-xs);
+}
+
+/* Shapes (admin-selectable per item) — the shape only ever clips the
+   item's own image, never its text/buttons/attachments, so nothing is
+   ever cropped out of view. Kept last in the stylesheet so it reliably
+   wins over the per-collection image rules (.card-img, .photo-card img,
+   .favorites-img) it needs to override. */
+
+.shape-circle::before,
+.shape-triangle-up::before,
+.shape-triangle-down::before {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: var(--space-xs);
+}
+.shape-circle::before { content: '●'; }
+.shape-triangle-up::before { content: '▲'; }
+.shape-triangle-down::before { content: '▼'; }
+
+.shape-circle img {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.shape-triangle-up img,
+.shape-triangle-down img {
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+.shape-triangle-up img {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.shape-triangle-down img {
+  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
 }
 
 @media (max-width: 600px) {

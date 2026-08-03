@@ -5,25 +5,32 @@ import { listCollection, listOrdered, addItem, updateItem, removeItem } from '@/
 import { revalidatePublicPath } from '@/lib/revalidate';
 import ImageUrlField from './ImageUrlField';
 import AttachmentsField from './AttachmentsField';
+import ImageCropField from './ImageCropField';
 
 function formKeys(fields) {
-  return fields.flatMap((f) => (f.type === 'url' ? [f.key, `${f.key}Width`, `${f.key}Height`] : [f.key]));
+  return fields.flatMap((f) => (f.type === 'url' ? [f.key, `${f.key}Zoom`, `${f.key}PosX`, `${f.key}PosY`] : [f.key]));
 }
 
 function selectOptions(f) {
   return f.options.map((opt) => (typeof opt === 'string' ? { value: opt, label: opt } : opt));
 }
 
+// Crop companion keys (<key>Zoom / <key>PosX / <key>PosY) aren't in `fields`
+// themselves, so their defaults are inferred from the key's suffix.
+function defaultFor(key, fields) {
+  const f = fields.find((field) => field.key === key);
+  if (!f) {
+    if (key.endsWith('Zoom')) return 1;
+    if (key.endsWith('PosX') || key.endsWith('PosY')) return 50;
+    return '';
+  }
+  if (f.type === 'select') return selectOptions(f)[0]?.value ?? '';
+  if (f.type === 'attachments') return [];
+  return '';
+}
+
 function emptyForm(fields) {
-  return Object.fromEntries(
-    formKeys(fields).map((key) => {
-      const f = fields.find((field) => field.key === key);
-      if (!f) return [key, '']; // width/height companion keys
-      if (f.type === 'select') return [key, selectOptions(f)[0]?.value ?? ''];
-      if (f.type === 'attachments') return [key, []];
-      return [key, ''];
-    })
-  );
+  return Object.fromEntries(formKeys(fields).map((key) => [key, defaultFor(key, fields)]));
 }
 
 function isValid(form, fields) {
@@ -79,7 +86,7 @@ export default function CollectionEditor({
 
   function startEdit(item) {
     setEditingId(item.id);
-    setForm(Object.fromEntries(formKeys(fields).map((key) => [key, item[key] ?? (fields.find((f) => f.key === key)?.type === 'attachments' ? [] : '')])));
+    setForm(Object.fromEntries(formKeys(fields).map((key) => [key, item[key] ?? defaultFor(key, fields)])));
     setStatus(null);
   }
 
@@ -232,30 +239,16 @@ export default function CollectionEditor({
                   value={form[f.key] || ''}
                   onChange={(value) => setForm((prev) => ({ ...prev, [f.key]: value }))}
                 />
-                <div className="image-dimension-row">
-                  <label htmlFor={`field-${f.key}Width`}>Width (px)</label>
-                  <input
-                    id={`field-${f.key}Width`}
-                    type="number"
-                    min="0"
-                    placeholder="auto"
-                    value={form[`${f.key}Width`] || ''}
-                    onChange={(e) =>
-                      setForm((prev) => ({ ...prev, [`${f.key}Width`]: e.target.value === '' ? '' : Number(e.target.value) }))
-                    }
-                  />
-                  <label htmlFor={`field-${f.key}Height`}>Height (px)</label>
-                  <input
-                    id={`field-${f.key}Height`}
-                    type="number"
-                    min="0"
-                    placeholder="auto"
-                    value={form[`${f.key}Height`] || ''}
-                    onChange={(e) =>
-                      setForm((prev) => ({ ...prev, [`${f.key}Height`]: e.target.value === '' ? '' : Number(e.target.value) }))
-                    }
-                  />
-                </div>
+                <ImageCropField
+                  id={`field-${f.key}`}
+                  url={form[f.key]}
+                  zoom={form[`${f.key}Zoom`]}
+                  posX={form[`${f.key}PosX`]}
+                  posY={form[`${f.key}PosY`]}
+                  onChange={({ zoom, posX, posY }) =>
+                    setForm((prev) => ({ ...prev, [`${f.key}Zoom`]: zoom, [`${f.key}PosX`]: posX, [`${f.key}PosY`]: posY }))
+                  }
+                />
               </>
             ) : f.type === 'attachments' ? (
               <AttachmentsField
