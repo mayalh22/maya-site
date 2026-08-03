@@ -1090,8 +1090,8 @@ footer p {
 /* Shapes (admin-selectable per item) — the shape only ever clips the
    item's own image, never its text/buttons/attachments, so nothing is
    ever cropped out of view. Kept last in the stylesheet so it reliably
-   wins over the per-collection image rules (.card-img, .photo-card img,
-   .favorites-img) it needs to override. */
+   wins over the per-collection image frame rules (.card-img,
+   .photo-img-frame, .favorites-img) it needs to override. */
 
 .shape-circle::before,
 .shape-triangle-up::before,
@@ -1105,17 +1105,22 @@ footer p {
 .shape-triangle-up::before { content: '▲'; }
 .shape-triangle-down::before { content: '▼'; }
 
-.shape-circle img {
-  border-radius: 50%;
+.shape-circle .card-img,
+.shape-circle .photo-img-frame,
+.shape-circle .favorites-img,
+.shape-triangle-up .card-img,
+.shape-triangle-up .photo-img-frame,
+.shape-triangle-up .favorites-img,
+.shape-triangle-down .card-img,
+.shape-triangle-down .photo-img-frame,
+.shape-triangle-down .favorites-img {
   aspect-ratio: 1;
-  object-fit: cover;
 }
 
-.shape-triangle-up img,
-.shape-triangle-down img {
-  aspect-ratio: 1;
-  object-fit: cover;
+.shape-circle img {
+  border-radius: 50%;
 }
+
 .shape-triangle-up img {
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
