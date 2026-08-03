@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Lightbox from '@/components/Lightbox';
 import AttachmentList from '@/components/AttachmentList';
+import CroppedImage from '@/components/CroppedImage';
 import { shapeClassName } from '@/lib/shape';
 
 export default function Enlarge({ items }) {
@@ -15,18 +16,15 @@ export default function Enlarge({ items }) {
         {items.map((item, index) => (
           <div key={item.id} className={`favorites-card ${shapeClassName(item.shape, index)}`.trim()}>
             <span className="favorites-rank">{index + 1}.</span>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <CroppedImage
               src={item.imageUrl}
               alt={item.title}
               className="favorites-img"
-              loading="lazy"
+              style={{ cursor: 'pointer' }}
+              zoom={item.imageUrlZoom}
+              posX={item.imageUrlPosX}
+              posY={item.imageUrlPosY}
               onClick={() => setSelectedIndex(index)}
-              style={{
-                cursor: 'pointer',
-                ...(item.imageUrlWidth ? { width: item.imageUrlWidth } : {}),
-                ...(item.imageUrlHeight ? { height: item.imageUrlHeight } : {}),
-              }}
             />
             <p className="favorites-title">{item.title}</p>
             {item.subtitle && <p className="favorites-sub">{item.subtitle}</p>}

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Lightbox from '@/components/Lightbox';
 import AttachmentList from '@/components/AttachmentList';
+import CroppedImage from '@/components/CroppedImage';
 import GridLayoutEditor from '@/components/admin/GridLayoutEditor';
 import { shapeClassName } from '@/lib/shape';
 
@@ -27,17 +28,15 @@ export default function Enlarge({ categories, photos, layout }) {
               .filter((photo) => photo.category === category)
               .map((photo, index) => (
                 <div key={photo.id} className={`photo-card ${shapeClassName(photo.shape, index)}`.trim()}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <CroppedImage
                     src={photo.imageUrl}
                     alt={photo.caption}
-                    loading="lazy"
+                    className="photo-img-frame"
+                    style={{ cursor: 'pointer' }}
+                    zoom={photo.imageUrlZoom}
+                    posX={photo.imageUrlPosX}
+                    posY={photo.imageUrlPosY}
                     onClick={() => setSelectedId(photo.id)}
-                    style={{
-                      cursor: 'pointer',
-                      ...(photo.imageUrlWidth ? { width: photo.imageUrlWidth } : {}),
-                      ...(photo.imageUrlHeight ? { height: photo.imageUrlHeight } : {}),
-                    }}
                   />
                   <p className="photo-caption">{photo.caption}</p>
                   {photo.date && <p className="photo-date">{photo.date}</p>}

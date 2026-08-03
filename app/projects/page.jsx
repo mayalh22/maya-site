@@ -2,6 +2,7 @@ import Section from '@/components/Section';
 import { getSingleton, listOrdered } from '@/lib/db';
 import { shapeClassName } from '@/lib/shape';
 import AttachmentList from '@/components/AttachmentList';
+import CroppedImage from '@/components/CroppedImage';
 import GridLayoutEditor from '@/components/admin/GridLayoutEditor';
 
 export const metadata = {
@@ -39,19 +40,14 @@ export default async function ProjectsPage() {
           <div className="projects-grid">
             {projects.map((project, index) => (
               <div key={project.id} className={`card ${shapeClassName(project.shape, index)}`.trim()}>
-                {project.imageUrl && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={project.imageUrl}
-                    alt={project.title}
-                    className="card-img"
-                    loading="lazy"
-                    style={{
-                      ...(project.imageUrlWidth ? { width: project.imageUrlWidth } : {}),
-                      ...(project.imageUrlHeight ? { height: project.imageUrlHeight } : {}),
-                    }}
-                  />
-                )}
+                <CroppedImage
+                  src={project.imageUrl}
+                  alt={project.title}
+                  className="card-img"
+                  zoom={project.imageUrlZoom}
+                  posX={project.imageUrlPosX}
+                  posY={project.imageUrlPosY}
+                />
                 <h3 className="card-title">{project.title}</h3>
                 {project.description && <p>{project.description}</p>}
                 {(project.repoUrl || project.liveUrl) && (

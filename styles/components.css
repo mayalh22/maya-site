@@ -961,24 +961,42 @@ footer p {
   font-size: var(--size-sm);
 }
 
-.image-dimension-row {
+.image-crop-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  max-width: 280px;
+}
+.image-crop-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: var(--border-width, 1px) solid var(--border);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.image-crop-frame:active {
+  cursor: grabbing;
+}
+.image-crop-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+.image-crop-controls {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-sm);
   flex-wrap: wrap;
   font-size: var(--size-xs);
 }
-.image-dimension-row label {
+.image-crop-controls label {
   color: var(--muted);
-}
-.image-dimension-row input[type='number'] {
-  width: 80px;
-  font: inherit;
-  padding: var(--space-xs) var(--space-sm);
-  border: var(--border-width, 1px) solid var(--border);
-  border-radius: var(--radius);
-  background-color: var(--field-bg);
-  color: var(--field-text);
 }
 
 .admin-list-thumb {

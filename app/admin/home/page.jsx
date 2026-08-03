@@ -3,11 +3,12 @@
 import { useState } from 'react';
 import { useSingletonDoc } from '@/lib/useSingletonDoc';
 import ImageUrlField from '@/components/admin/ImageUrlField';
+import ImageCropField from '@/components/admin/ImageCropField';
 
 const DEFAULTS = { name: '', tagline: '', bio: '', photoUrls: [] };
 
 function asPhoto(entry) {
-  return typeof entry === 'string' ? { url: entry, width: '', height: '' } : entry;
+  return typeof entry === 'string' ? { url: entry, zoom: 1, posX: 50, posY: 50 } : entry;
 }
 
 export default function HomeAdminPage() {
@@ -25,7 +26,7 @@ export default function HomeAdminPage() {
   function addPhoto() {
     const url = newPhotoUrl.trim();
     if (!url) return;
-    updatePhotos([...photos, { url, width: '', height: '' }]);
+    updatePhotos([...photos, { url, zoom: 1, posX: 50, posY: 50 }]);
     setNewPhotoUrl('');
   }
 
@@ -33,8 +34,8 @@ export default function HomeAdminPage() {
     updatePhotos(photos.filter((_, i) => i !== index));
   }
 
-  function updatePhotoDimension(index, key, value) {
-    updatePhotos(photos.map((p, i) => (i === index ? { ...p, [key]: value === '' ? '' : Number(value) } : p)));
+  function updatePhotoCrop(index, crop) {
+    updatePhotos(photos.map((p, i) => (i === index ? { ...p, ...crop } : p)));
   }
 
   return (
@@ -69,30 +70,16 @@ export default function HomeAdminPage() {
               <div className="admin-list">
                 {photos.map((photo, index) => (
                   <div className="admin-list-item" key={`${photo.url}-${index}`}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img className="admin-list-thumb" src={photo.url} alt="" loading="lazy" />
                     <div className="admin-list-info">
                       <p className="admin-list-detail">{photo.url}</p>
-                      <div className="image-dimension-row">
-                        <label htmlFor={`photo-${index}-width`}>Width (px)</label>
-                        <input
-                          id={`photo-${index}-width`}
-                          type="number"
-                          min="0"
-                          placeholder="auto"
-                          value={photo.width || ''}
-                          onChange={(e) => updatePhotoDimension(index, 'width', e.target.value)}
-                        />
-                        <label htmlFor={`photo-${index}-height`}>Height (px)</label>
-                        <input
-                          id={`photo-${index}-height`}
-                          type="number"
-                          min="0"
-                          placeholder="auto"
-                          value={photo.height || ''}
-                          onChange={(e) => updatePhotoDimension(index, 'height', e.target.value)}
-                        />
-                      </div>
+                      <ImageCropField
+                        id={`photo-${index}`}
+                        url={photo.url}
+                        zoom={photo.zoom}
+                        posX={photo.posX}
+                        posY={photo.posY}
+                        onChange={(crop) => updatePhotoCrop(index, crop)}
+                      />
                     </div>
                     <div className="admin-list-actions">
                       <button type="button" className="btn btn-small btn-danger" onClick={() => removePhoto(index)}>

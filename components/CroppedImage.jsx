@@ -5,13 +5,14 @@ export default function CroppedImage({
   posX,
   posY,
   className,
+  style,
   onClick,
   loading = 'lazy',
 }) {
   if (!src) return null;
 
   return (
-    <span className={className} onClick={onClick}>
+    <span className={className} style={style} onClick={onClick}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}

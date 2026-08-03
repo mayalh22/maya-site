@@ -1,4 +1,5 @@
 import { getSingleton } from '@/lib/db';
+import CroppedImage from '@/components/CroppedImage';
 
 export const revalidate = 300;
 
@@ -19,32 +20,29 @@ export default async function Home() {
               <div className="profile-carousel">
                 <div className="profile-carousel-track">
                   {[...photos, ...photos].map((photo, index) => (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
+                    <CroppedImage
                       key={index}
                       src={photo.url}
                       alt={home.name || ''}
+                      className="profile-carousel-frame"
                       loading={index < photos.length ? 'eager' : 'lazy'}
-                      style={{
-                        ...(photo.width ? { width: photo.width } : {}),
-                        ...(photo.height ? { height: photo.height } : {}),
-                      }}
+                      zoom={photo.zoom}
+                      posX={photo.posX}
+                      posY={photo.posY}
                     />
                   ))}
                 </div>
               </div>
             ) : (
               photos[0] && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
+                <CroppedImage
                   src={photos[0].url}
                   alt={home.name || ''}
                   className="profile"
                   loading="eager"
-                  style={{
-                    ...(photos[0].width ? { width: photos[0].width } : {}),
-                    ...(photos[0].height ? { height: photos[0].height } : {}),
-                  }}
+                  zoom={photos[0].zoom}
+                  posX={photos[0].posX}
+                  posY={photos[0].posY}
                 />
               )
             )}
