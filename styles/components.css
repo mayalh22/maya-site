@@ -185,9 +185,8 @@ a:hover {
 }
 
 .profile-carousel {
-  overflow: hidden;
   width: 100%;
-  max-width: 420px;
+  max-width: 100px;
   margin: 0 auto var(--space-lg);
 }
 .profile-carousel-track {
