@@ -1,19 +1,39 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { listCollection, addItem, updateItem, removeItem } from '@/lib/db';
+import { listCollection, listOrdered, addItem, updateItem, removeItem } from '@/lib/db';
 import { revalidatePublicPath } from '@/lib/revalidate';
 import ImageUrlField from './ImageUrlField';
+import AttachmentsField from './AttachmentsField';
+
+function formKeys(fields) {
+  return fields.flatMap((f) => (f.type === 'url' ? [f.key, `${f.key}Width`, `${f.key}Height`] : [f.key]));
+}
+
+function selectOptions(f) {
+  return f.options.map((opt) => (typeof opt === 'string' ? { value: opt, label: opt } : opt));
+}
 
 function emptyForm(fields) {
-  return Object.fromEntries(fields.map((f) => [f.key, f.type === 'select' ? (f.options?.[0] ?? '') : '']));
+  return Object.fromEntries(
+    formKeys(fields).map((key) => {
+      const f = fields.find((field) => field.key === key);
+      if (!f) return [key, '']; // width/height companion keys
+      if (f.type === 'select') return [key, selectOptions(f)[0]?.value ?? ''];
+      if (f.type === 'attachments') return [key, []];
+      return [key, ''];
+    })
+  );
 }
 
 function isValid(form, fields) {
   return fields.every((f) => {
+    if (f.type === 'attachments') {
+      return !f.required || (Array.isArray(form[f.key]) && form[f.key].length > 0);
+    }
     const value = String(form[f.key] || '').trim();
     if (f.required && !value) return false;
-    if (f.type === 'url' && value) {
+    if ((f.type === 'url' || f.type === 'link') && value) {
       try {
         new URL(value);
       } catch {
@@ -34,17 +54,21 @@ export default function CollectionEditor({
   direction = 'desc',
   deriveId,
   revalidatePath: revalidateTarget,
+  reorderable = false,
 }) {
   const [items, setItems] = useState(null);
   const [form, setForm] = useState(() => emptyForm(fields));
   const [editingId, setEditingId] = useState(null);
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState(null);
+  const [dragIndex, setDragIndex] = useState(null);
 
   const imageField = fields.find((f) => f.type === 'url');
 
   async function load() {
-    const list = await listCollection(collectionName, { orderByField, direction });
+    const list = reorderable
+      ? await listOrdered(collectionName)
+      : await listCollection(collectionName, { orderByField, direction });
     setItems(list);
   }
 
@@ -55,7 +79,7 @@ export default function CollectionEditor({
 
   function startEdit(item) {
     setEditingId(item.id);
-    setForm(Object.fromEntries(fields.map((f) => [f.key, item[f.key] ?? ''])));
+    setForm(Object.fromEntries(formKeys(fields).map((key) => [key, item[key] ?? (fields.find((f) => f.key === key)?.type === 'attachments' ? [] : '')])));
     setStatus(null);
   }
 
@@ -78,7 +102,8 @@ export default function CollectionEditor({
         await updateItem(collectionName, editingId, form);
       } else {
         const id = deriveId ? await deriveId(form) : null;
-        await addItem(collectionName, form, id);
+        const payload = reorderable ? { ...form, order: items?.length ?? 0 } : form;
+        await addItem(collectionName, payload, id);
       }
       await revalidatePublicPath(revalidateTarget);
       await load();
@@ -107,14 +132,48 @@ export default function CollectionEditor({
     }
   }
 
+  async function persistOrder(list) {
+    setBusy(true);
+    try {
+      await Promise.all(list.map((item, i) => updateItem(collectionName, item.id, { order: i })));
+      await revalidatePublicPath(revalidateTarget);
+    } catch (err) {
+      setStatus({ type: 'error', message: `Reorder failed: ${err.message}` });
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  function handleDrop(index) {
+    if (dragIndex === null || dragIndex === index) {
+      setDragIndex(null);
+      return;
+    }
+    const reordered = [...items];
+    const [moved] = reordered.splice(dragIndex, 1);
+    reordered.splice(index, 0, moved);
+    setItems(reordered);
+    setDragIndex(null);
+    persistOrder(reordered);
+  }
+
   if (items === null) return <p className="admin-loading">Loading…</p>;
 
   return (
     <>
       <div className="admin-list">
         {items.length === 0 && <p className="admin-empty">{emptyMessage}</p>}
-        {items.map((item) => (
-          <div className="admin-list-item" key={item.id}>
+        {items.map((item, index) => (
+          <div
+            className={reorderable ? 'admin-list-item admin-list-item-draggable' : 'admin-list-item'}
+            key={item.id}
+            draggable={reorderable}
+            onDragStart={() => setDragIndex(index)}
+            onDragOver={(e) => reorderable && e.preventDefault()}
+            onDrop={() => reorderable && handleDrop(index)}
+            onDragEnd={() => setDragIndex(null)}
+          >
+            {reorderable && <span className="admin-drag-handle" aria-hidden="true">⠿</span>}
             {imageField && item[imageField.key] && (
               // eslint-disable-next-line @next/next/no-img-element
               <img className="admin-list-thumb" src={item[imageField.key]} alt="" loading="lazy" />
@@ -160,17 +219,51 @@ export default function CollectionEditor({
                 value={form[f.key] || ''}
                 onChange={(e) => setForm((prev) => ({ ...prev, [f.key]: e.target.value }))}
               >
-                {f.options.map((opt) => (
-                  <option key={opt} value={opt}>
-                    {opt}
+                {selectOptions(f).map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
                   </option>
                 ))}
               </select>
             ) : f.type === 'url' ? (
-              <ImageUrlField
+              <>
+                <ImageUrlField
+                  id={`field-${f.key}`}
+                  value={form[f.key] || ''}
+                  onChange={(value) => setForm((prev) => ({ ...prev, [f.key]: value }))}
+                />
+                <div className="image-dimension-row">
+                  <label htmlFor={`field-${f.key}Width`}>Width (px)</label>
+                  <input
+                    id={`field-${f.key}Width`}
+                    type="number"
+                    min="0"
+                    placeholder="auto"
+                    value={form[`${f.key}Width`] || ''}
+                    onChange={(e) =>
+                      setForm((prev) => ({ ...prev, [`${f.key}Width`]: e.target.value === '' ? '' : Number(e.target.value) }))
+                    }
+                  />
+                  <label htmlFor={`field-${f.key}Height`}>Height (px)</label>
+                  <input
+                    id={`field-${f.key}Height`}
+                    type="number"
+                    min="0"
+                    placeholder="auto"
+                    value={form[`${f.key}Height`] || ''}
+                    onChange={(e) =>
+                      setForm((prev) => ({ ...prev, [`${f.key}Height`]: e.target.value === '' ? '' : Number(e.target.value) }))
+                    }
+                  />
+                </div>
+              </>
+            ) : f.type === 'attachments' ? (
+              <AttachmentsField
                 id={`field-${f.key}`}
-                value={form[f.key] || ''}
+                value={form[f.key] || []}
                 onChange={(value) => setForm((prev) => ({ ...prev, [f.key]: value }))}
+                collectionName={collectionName}
+                itemId={editingId}
               />
             ) : f.type === 'datalist' ? (
               <>
@@ -190,7 +283,7 @@ export default function CollectionEditor({
             ) : (
               <input
                 id={`field-${f.key}`}
-                type={f.type === 'month' ? 'month' : 'text'}
+                type={f.type === 'month' ? 'month' : f.type === 'link' ? 'url' : 'text'}
                 value={form[f.key] || ''}
                 onChange={(e) => setForm((prev) => ({ ...prev, [f.key]: e.target.value }))}
               />

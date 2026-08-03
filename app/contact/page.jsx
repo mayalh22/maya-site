@@ -1,5 +1,8 @@
 import Section from '@/components/Section';
-import { getSingleton, listCollection } from '@/lib/db';
+import AttachmentList from '@/components/AttachmentList';
+import { getSingleton, listOrdered } from '@/lib/db';
+import { shapeClassName } from '@/lib/shape';
+import GridLayoutEditor from '@/components/admin/GridLayoutEditor';
 
 export const metadata = {
   title: 'Contact',
@@ -9,9 +12,10 @@ export const metadata = {
 export const revalidate = 300;
 
 export default async function ContactPage() {
-  const [contact, social] = await Promise.all([
+  const [contact, social, layout] = await Promise.all([
     getSingleton('siteContent/contact', null),
-    listCollection('social'),
+    listOrdered('social'),
+    getSingleton('settings/layout', {}),
   ]);
 
   return (
@@ -30,18 +34,27 @@ export default async function ContactPage() {
         {social.length === 0 ? (
           <p className="empty-state">No social links yet.</p>
         ) : (
-          <div className="contact-grid">
-            {social.map((link) => (
-              <div key={link.id} className="card">
-                <h3>{link.platform}</h3>
-                {link.username && <p>{link.username}</p>}
-                {link.description && <p>{link.description}</p>}
-                <a href={link.url} className="btn" target="_blank" rel="noopener noreferrer">
-                  {link.platform}
-                </a>
-              </div>
-            ))}
-          </div>
+          <GridLayoutEditor
+            sectionKey="social"
+            defaultGap={16}
+            defaultItemWidth={240}
+            initial={layout?.social}
+            revalidateTarget="/contact"
+          >
+            <div className="contact-grid">
+              {social.map((link, index) => (
+                <div key={link.id} className={`card ${shapeClassName(link.shape, index)}`.trim()}>
+                  <h3>{link.platform}</h3>
+                  {link.username && <p>{link.username}</p>}
+                  {link.description && <p>{link.description}</p>}
+                  <a href={link.url} className="btn" target="_blank" rel="noopener noreferrer">
+                    {link.platform}
+                  </a>
+                  <AttachmentList attachments={link.attachments} />
+                </div>
+              ))}
+            </div>
+          </GridLayoutEditor>
         )}
       </Section>
 

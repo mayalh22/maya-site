@@ -6,23 +6,35 @@ import ImageUrlField from '@/components/admin/ImageUrlField';
 
 const DEFAULTS = { name: '', tagline: '', bio: '', photoUrls: [] };
 
+function asPhoto(entry) {
+  return typeof entry === 'string' ? { url: entry, width: '', height: '' } : entry;
+}
+
 export default function HomeAdminPage() {
   const { data, setField, save, loading, saving, status } = useSingletonDoc('siteContent/home', DEFAULTS, '/');
   const [newPhotoUrl, setNewPhotoUrl] = useState('');
 
   if (loading) return <p className="admin-loading">Loading…</p>;
 
-  const photoUrls = data.photoUrls || [];
+  const photos = (data.photoUrls || []).map(asPhoto);
+
+  function updatePhotos(next) {
+    setField('photoUrls', next);
+  }
 
   function addPhoto() {
     const url = newPhotoUrl.trim();
     if (!url) return;
-    setField('photoUrls', [...photoUrls, url]);
+    updatePhotos([...photos, { url, width: '', height: '' }]);
     setNewPhotoUrl('');
   }
 
   function removePhoto(index) {
-    setField('photoUrls', photoUrls.filter((_, i) => i !== index));
+    updatePhotos(photos.filter((_, i) => i !== index));
+  }
+
+  function updatePhotoDimension(index, key, value) {
+    updatePhotos(photos.map((p, i) => (i === index ? { ...p, [key]: value === '' ? '' : Number(value) } : p)));
   }
 
   return (
@@ -53,14 +65,34 @@ export default function HomeAdminPage() {
 
           <div className="admin-field">
             <label>Profile photos</label>
-            {photoUrls.length > 0 && (
+            {photos.length > 0 && (
               <div className="admin-list">
-                {photoUrls.map((url, index) => (
-                  <div className="admin-list-item" key={`${url}-${index}`}>
+                {photos.map((photo, index) => (
+                  <div className="admin-list-item" key={`${photo.url}-${index}`}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img className="admin-list-thumb" src={url} alt="" loading="lazy" />
+                    <img className="admin-list-thumb" src={photo.url} alt="" loading="lazy" />
                     <div className="admin-list-info">
-                      <p className="admin-list-detail">{url}</p>
+                      <p className="admin-list-detail">{photo.url}</p>
+                      <div className="image-dimension-row">
+                        <label htmlFor={`photo-${index}-width`}>Width (px)</label>
+                        <input
+                          id={`photo-${index}-width`}
+                          type="number"
+                          min="0"
+                          placeholder="auto"
+                          value={photo.width || ''}
+                          onChange={(e) => updatePhotoDimension(index, 'width', e.target.value)}
+                        />
+                        <label htmlFor={`photo-${index}-height`}>Height (px)</label>
+                        <input
+                          id={`photo-${index}-height`}
+                          type="number"
+                          min="0"
+                          placeholder="auto"
+                          value={photo.height || ''}
+                          onChange={(e) => updatePhotoDimension(index, 'height', e.target.value)}
+                        />
+                      </div>
                     </div>
                     <div className="admin-list-actions">
                       <button type="button" className="btn btn-small btn-danger" onClick={() => removePhoto(index)}>
@@ -77,7 +109,7 @@ export default function HomeAdminPage() {
                 Add photo
               </button>
             </div>
-            {photoUrls.length > 1 && (
+            {photos.length > 1 && (
               <p className="admin-status">Two or more photos scroll automatically on the home page.</p>
             )}
           </div>

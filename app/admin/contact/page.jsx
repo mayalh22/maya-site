@@ -2,6 +2,7 @@
 
 import { useSingletonDoc } from '@/lib/useSingletonDoc';
 import CollectionEditor from '@/components/admin/CollectionEditor';
+import { SHAPE_FIELD } from '@/lib/shape';
 
 const DEFAULTS = { email: '', message: '', closingMessage: '' };
 
@@ -10,6 +11,8 @@ const SOCIAL_FIELDS = [
   { key: 'username', label: 'Username' },
   { key: 'url', label: 'URL', type: 'text', required: true },
   { key: 'description', label: 'Description' },
+  { key: 'attachments', label: 'Attachments', type: 'attachments' },
+  SHAPE_FIELD,
 ];
 
 export default function ContactAdminPage() {
@@ -77,6 +80,7 @@ export default function ContactAdminPage() {
             itemDetail={(item) => item.username}
             emptyMessage="No social links yet."
             revalidatePath="/contact"
+            reorderable
           />
         </div>
       </div>

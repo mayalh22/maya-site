@@ -1,5 +1,8 @@
 import Section from '@/components/Section';
-import { listCollection } from '@/lib/db';
+import { getSingleton, listOrdered } from '@/lib/db';
+import { shapeClassName } from '@/lib/shape';
+import AttachmentList from '@/components/AttachmentList';
+import GridLayoutEditor from '@/components/admin/GridLayoutEditor';
 
 export const metadata = {
   title: 'Projects',
@@ -9,24 +12,45 @@ export const metadata = {
 export const revalidate = 300;
 
 export default async function ProjectsPage() {
-  const projects = await listCollection('projects');
+  const [projects, content, layout] = await Promise.all([
+    listOrdered('projects'),
+    getSingleton('siteContent/projects', null),
+    getSingleton('settings/layout', {}),
+  ]);
 
   return (
     <main className="container">
       <div className="about">
         <h1>Projects</h1>
+        {content?.message && <p>{content.message}</p>}
       </div>
 
       <Section title="Projects">
         {projects.length === 0 ? (
           <p className="empty-state">No projects yet.</p>
         ) : (
+          <GridLayoutEditor
+            sectionKey="projects"
+            defaultGap={16}
+            defaultItemWidth={300}
+            initial={layout?.projects}
+            revalidateTarget="/projects"
+          >
           <div className="projects-grid">
-            {projects.map((project) => (
-              <div key={project.id} className="card">
+            {projects.map((project, index) => (
+              <div key={project.id} className={`card ${shapeClassName(project.shape, index)}`.trim()}>
                 {project.imageUrl && (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={project.imageUrl} alt={project.title} className="card-img" loading="lazy" />
+                  <img
+                    src={project.imageUrl}
+                    alt={project.title}
+                    className="card-img"
+                    loading="lazy"
+                    style={{
+                      ...(project.imageUrlWidth ? { width: project.imageUrlWidth } : {}),
+                      ...(project.imageUrlHeight ? { height: project.imageUrlHeight } : {}),
+                    }}
+                  />
                 )}
                 <h3 className="card-title">{project.title}</h3>
                 {project.description && <p>{project.description}</p>}
@@ -44,11 +68,19 @@ export default async function ProjectsPage() {
                     )}
                   </div>
                 )}
+                <AttachmentList attachments={project.attachments} />
               </div>
             ))}
           </div>
+          </GridLayoutEditor>
         )}
       </Section>
+
+      {content?.closingMessage && (
+        <div className="about">
+          <p>{content.closingMessage}</p>
+        </div>
+      )}
     </main>
   );
 }
