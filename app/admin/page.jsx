@@ -1,31 +1,34 @@
-import Link from 'next/link';
+'use client';
 
-const SECTIONS = [
-  ['Home', '/admin/home', 'Name, tagline, bio, and profile photos.'],
-  ['Contact', '/admin/contact', 'Contact details and social links.'],
-  ['Theme', '/admin/theme', 'Site colors, font, and text size.'],
-  ['Projects', '/admin/projects', 'Portfolio and code projects.'],
-  ['Art', '/admin/art', 'Art gallery.'],
-  ['Photos', '/admin/photos', 'Photo gallery, grouped by category.'],
-  ['Favorites', '/admin/favorites', 'Favorite movies, shows, books, and albums.'],
-  ['Timeline', '/admin/timeline', 'Experience, volunteering, and honors.'],
-  ['Blog', '/admin/blog', 'Blog posts.'],
-];
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAdminUser } from '@/lib/auth';
+import LoginForm from '@/components/admin/LoginForm';
 
-export default function AdminDashboard() {
-  return (
-    <div className="section-wrapper">
-      <div className="section-header"><h2>Admin Dashboard</h2></div>
-      <div className="section-body">
-        <div className="admin-dashboard-grid">
-          {SECTIONS.map(([title, href, description]) => (
-            <Link key={href} href={href} className="card admin-dashboard-card">
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </Link>
-          ))}
+// The admin dashboard and its per-collection CRUD forms are gone — editing
+// now happens directly on the live pages (see components/editing/). This is
+// just the sign-in gateway; once signed in as owner it bounces back to /.
+export default function AdminSignInPage() {
+  const { user, loading, isOwner } = useAdminUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isOwner) router.replace('/');
+  }, [isOwner, router]);
+
+  if (loading || isOwner) {
+    return (
+      <main className="container">
+        <div className="about">
+          <p>Loading…</p>
         </div>
-      </div>
-    </div>
+      </main>
+    );
+  }
+
+  return (
+    <main className="container">
+      <LoginForm wrongAccountEmail={user ? user.email : null} />
+    </main>
   );
 }

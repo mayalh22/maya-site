@@ -3,42 +3,121 @@
 import { useState } from 'react';
 import Lightbox from '@/components/Lightbox';
 import AttachmentList from '@/components/AttachmentList';
-import CroppedImage from '@/components/CroppedImage';
-import { shapeClassName } from '@/lib/shape';
+import EditableImage from '@/components/editing/EditableImage';
+import EditableText from '@/components/editing/EditableText';
+import ItemEditPanel from '@/components/editing/ItemEditPanel';
+import { useAdminUser } from '@/lib/auth';
+import { useOwnerCollection } from '@/lib/useOwnerCollection';
+import { shapeClassName, SHAPE_FIELD } from '@/lib/shape';
 
-export default function EnlargeArt({ pieces }) {
+const CREATE_FIELDS = [
+  { key: 'title', label: 'Title', required: true },
+  { key: 'description', label: 'Description', type: 'textarea' },
+  { key: 'date', label: 'Date' },
+  { key: 'imageUrl', label: 'Image URL', type: 'url', required: true },
+  { key: 'siteUrl', label: 'Site', type: 'link' },
+  { key: 'attachments', label: 'Attachments', type: 'attachments' },
+  SHAPE_FIELD,
+];
+
+const EXTRA_FIELDS = [
+  { key: 'description', label: 'Description', type: 'textarea' },
+  { key: 'siteUrl', label: 'Site', type: 'link' },
+  { key: 'attachments', label: 'Attachments', type: 'attachments' },
+  SHAPE_FIELD,
+];
+
+export default function EnlargeArt({ pieces: initialPieces }) {
+  const { isOwner } = useAdminUser();
+  const { items, patchItem, createItem, deleteItem } = useOwnerCollection('art', {
+    initialItems: initialPieces,
+    reorderable: true,
+    revalidateTarget: '/art',
+  });
   const [selectedIndex, setSelectedIndex] = useState(null);
-  const selected = selectedIndex !== null ? pieces[selectedIndex] : null;
+  const list = items || [];
+  const selected = selectedIndex !== null ? list[selectedIndex] : null;
+
+  if (list.length === 0 && !isOwner) {
+    return <p className="empty-state">No art yet.</p>;
+  }
 
   return (
     <>
       <div className="card-grid">
-        {pieces.map((piece, index) => (
-          <div key={piece.id} className={`card ${shapeClassName(piece.shape, index)}`.trim()}>
-            <CroppedImage
-              src={piece.imageUrl}
-              alt={piece.title}
-              className="card-img"
-              style={{ cursor: 'pointer' }}
-              zoom={piece.imageUrlZoom}
-              zoomX={piece.imageUrlZoomX}
-              zoomY={piece.imageUrlZoomY}
-              posX={piece.imageUrlPosX}
-              posY={piece.imageUrlPosY}
-              sizeW={piece.imageUrlSizeW}
-              sizeH={piece.imageUrlSizeH}
-              onClick={() => setSelectedIndex(index)}
+        {list.map((piece, index) => {
+          const target = { type: 'item', collection: 'art', id: piece.id };
+          return (
+            <div key={piece.id} className={`card ${shapeClassName(piece.shape, index)}`.trim()}>
+              <EditableImage
+                src={piece.imageUrl}
+                alt={piece.title}
+                className="card-img"
+                style={{ cursor: 'pointer' }}
+                zoomX={piece.imageUrlZoomX ?? piece.imageUrlZoom}
+                zoomY={piece.imageUrlZoomY ?? piece.imageUrlZoom}
+                posX={piece.imageUrlPosX}
+                posY={piece.imageUrlPosY}
+                sizeW={piece.imageUrlSizeW}
+                sizeH={piece.imageUrlSizeH}
+                cropKeyPrefix="imageUrl"
+                target={target}
+                revalidateTarget="/art"
+                onClick={() => setSelectedIndex(index)}
+              />
+              <EditableText
+                as="h4"
+                className="card-title"
+                value={piece.title}
+                font={piece.titleFont}
+                fieldKey="title"
+                target={target}
+                revalidateTarget="/art"
+                placeholder="Title"
+              />
+              <EditableText
+                as="p"
+                className="card-date"
+                value={piece.date}
+                fieldKey="date"
+                target={target}
+                revalidateTarget="/art"
+                placeholder="Add a date…"
+                allowFont={false}
+              />
+              {piece.siteUrl && (
+                <a href={piece.siteUrl} className="btn btn-small" target="_blank" rel="noopener noreferrer">
+                  Visit site
+                </a>
+              )}
+              <AttachmentList attachments={piece.attachments} />
+              {isOwner && (
+                <ItemEditPanel
+                  fields={EXTRA_FIELDS}
+                  initial={piece}
+                  collectionName="art"
+                  itemId={piece.id}
+                  triggerLabel="✎ More fields"
+                  onSubmit={(form) => patchItem(piece.id, form)}
+                  onDelete={() => deleteItem(piece.id)}
+                />
+              )}
+            </div>
+          );
+        })}
+        {isOwner && (
+          <div className="card add-item-card">
+            <ItemEditPanel
+              fields={CREATE_FIELDS}
+              initial={{}}
+              collectionName="art"
+              triggerLabel="+ Add art"
+              triggerClassName="btn"
+              submitLabel="Add"
+              onSubmit={(form) => createItem(form)}
             />
-            <h4 className="card-title">{piece.title}</h4>
-            {piece.date && <p className="card-date">{piece.date}</p>}
-            {piece.siteUrl && (
-              <a href={piece.siteUrl} className="btn btn-small" target="_blank" rel="noopener noreferrer">
-                Visit site
-              </a>
-            )}
-            <AttachmentList attachments={piece.attachments} />
           </div>
-        ))}
+        )}
       </div>
 
       <Lightbox

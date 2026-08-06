@@ -1,8 +1,10 @@
 import Section from '@/components/Section';
-import AttachmentList from '@/components/AttachmentList';
 import { getSingleton, listOrdered } from '@/lib/db';
-import { shapeClassName } from '@/lib/shape';
 import GridLayoutEditor from '@/components/admin/GridLayoutEditor';
+import EditableText from '@/components/editing/EditableText';
+import OptionalSection from '@/components/editing/OptionalSection';
+import ContactEmail from './ContactEmail';
+import SocialGrid from './SocialGrid';
 
 export const metadata = {
   title: 'Contact',
@@ -11,9 +13,11 @@ export const metadata = {
 
 export const revalidate = 300;
 
+const CONTENT_PATH = 'siteContent/contact';
+
 export default async function ContactPage() {
   const [contact, social, layout] = await Promise.all([
-    getSingleton('siteContent/contact', null),
+    getSingleton(CONTENT_PATH, null),
     listOrdered('social'),
     getSingleton('settings/layout', {}),
   ]);
@@ -22,47 +26,39 @@ export default async function ContactPage() {
     <main className="container">
       <div className="about">
         <h1>Contact</h1>
-        {contact?.message && <p>{contact.message}</p>}
-        {contact?.email && (
-          <p>
-            <a href={`mailto:${contact.email}`}>{contact.email}</a>
-          </p>
-        )}
+        <EditableText
+          value={contact?.message}
+          font={contact?.messageFont}
+          fieldKey="message"
+          target={{ type: 'singleton', path: CONTENT_PATH }}
+          revalidateTarget="/contact"
+          placeholder="Add an intro message…"
+        />
+        <ContactEmail email={contact?.email} />
       </div>
 
       <Section title="Social">
-        {social.length === 0 ? (
-          <p className="empty-state">No social links yet.</p>
-        ) : (
-          <GridLayoutEditor
-            sectionKey="social"
-            defaultGap={16}
-            defaultItemWidth={240}
-            initial={layout?.social}
-            revalidateTarget="/contact"
-          >
-            <div className="contact-grid">
-              {social.map((link, index) => (
-                <div key={link.id} className={`card ${shapeClassName(link.shape, index)}`.trim()}>
-                  <h3>{link.platform}</h3>
-                  {link.username && <p>{link.username}</p>}
-                  {link.description && <p>{link.description}</p>}
-                  <a href={link.url} className="btn" target="_blank" rel="noopener noreferrer">
-                    {link.platform}
-                  </a>
-                  <AttachmentList attachments={link.attachments} />
-                </div>
-              ))}
-            </div>
-          </GridLayoutEditor>
-        )}
+        <GridLayoutEditor
+          sectionKey="social"
+          defaultGap={16}
+          defaultItemWidth={240}
+          initial={layout?.social}
+          revalidateTarget="/contact"
+        >
+          <SocialGrid social={social} />
+        </GridLayoutEditor>
       </Section>
 
-      {contact?.closingMessage && (
-        <div className="about">
-          <p>{contact.closingMessage}</p>
-        </div>
-      )}
+      <OptionalSection className="about" value={contact?.closingMessage}>
+        <EditableText
+          value={contact?.closingMessage}
+          font={contact?.closingMessageFont}
+          fieldKey="closingMessage"
+          target={{ type: 'singleton', path: CONTENT_PATH }}
+          revalidateTarget="/contact"
+          placeholder="Add a closing message…"
+        />
+      </OptionalSection>
     </main>
   );
 }

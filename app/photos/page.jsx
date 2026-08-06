@@ -1,5 +1,7 @@
 import Enlarge from './enlarge';
 import { getSingleton, listOrdered } from '@/lib/db';
+import EditableText from '@/components/editing/EditableText';
+import OptionalSection from '@/components/editing/OptionalSection';
 
 export const metadata = {
   title: 'Photos',
@@ -8,32 +10,41 @@ export const metadata = {
 
 export const revalidate = 300;
 
+const CONTENT_PATH = 'siteContent/photos';
+
 export default async function PhotosPage() {
   const [photos, content, layout] = await Promise.all([
     listOrdered('photos'),
-    getSingleton('siteContent/photos', null),
+    getSingleton(CONTENT_PATH, null),
     getSingleton('settings/layout', {}),
   ]);
-  const categories = Array.from(new Set(photos.map((p) => p.category))).sort();
 
   return (
     <main className="container">
       <div className="about">
         <h1>Photos</h1>
-        {content?.message && <p>{content.message}</p>}
+        <EditableText
+          value={content?.message}
+          font={content?.messageFont}
+          fieldKey="message"
+          target={{ type: 'singleton', path: CONTENT_PATH }}
+          revalidateTarget="/photos"
+          placeholder="Add an intro message…"
+        />
       </div>
 
-      {photos.length === 0 ? (
-        <p className="empty-state">No photos yet.</p>
-      ) : (
-        <Enlarge categories={categories} photos={photos} layout={layout} />
-      )}
+      <Enlarge photos={photos} layout={layout} />
 
-      {content?.closingMessage && (
-        <div className="about">
-          <p>{content.closingMessage}</p>
-        </div>
-      )}
+      <OptionalSection className="about" value={content?.closingMessage}>
+        <EditableText
+          value={content?.closingMessage}
+          font={content?.closingMessageFont}
+          fieldKey="closingMessage"
+          target={{ type: 'singleton', path: CONTENT_PATH }}
+          revalidateTarget="/photos"
+          placeholder="Add a closing message…"
+        />
+      </OptionalSection>
     </main>
   );
 }

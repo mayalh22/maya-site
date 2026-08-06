@@ -2,6 +2,8 @@ import Section from '@/components/Section';
 import EnlargeArt from './enlarge';
 import { getSingleton, listOrdered } from '@/lib/db';
 import GridLayoutEditor from '@/components/admin/GridLayoutEditor';
+import EditableText from '@/components/editing/EditableText';
+import OptionalSection from '@/components/editing/OptionalSection';
 
 export const metadata = {
   title: 'Art',
@@ -10,10 +12,12 @@ export const metadata = {
 
 export const revalidate = 300;
 
+const CONTENT_PATH = 'siteContent/art';
+
 export default async function ArtPage() {
   const [pieces, content, layout] = await Promise.all([
     listOrdered('art'),
-    getSingleton('siteContent/art', null),
+    getSingleton(CONTENT_PATH, null),
     getSingleton('settings/layout', {}),
   ]);
 
@@ -21,30 +25,38 @@ export default async function ArtPage() {
     <main className="container">
       <div className="about">
         <h1>Art</h1>
-        {content?.message && <p>{content.message}</p>}
+        <EditableText
+          value={content?.message}
+          font={content?.messageFont}
+          fieldKey="message"
+          target={{ type: 'singleton', path: CONTENT_PATH }}
+          revalidateTarget="/art"
+          placeholder="Add an intro message…"
+        />
       </div>
 
       <Section title="Gallery">
-        {pieces.length === 0 ? (
-          <p className="empty-state">No art yet.</p>
-        ) : (
-          <GridLayoutEditor
-            sectionKey="art"
-            defaultGap={16}
-            defaultItemWidth={240}
-            initial={layout?.art}
-            revalidateTarget="/art"
-          >
-            <EnlargeArt pieces={pieces} />
-          </GridLayoutEditor>
-        )}
+        <GridLayoutEditor
+          sectionKey="art"
+          defaultGap={16}
+          defaultItemWidth={240}
+          initial={layout?.art}
+          revalidateTarget="/art"
+        >
+          <EnlargeArt pieces={pieces} />
+        </GridLayoutEditor>
       </Section>
 
-      {content?.closingMessage && (
-        <div className="about">
-          <p>{content.closingMessage}</p>
-        </div>
-      )}
+      <OptionalSection className="about" value={content?.closingMessage}>
+        <EditableText
+          value={content?.closingMessage}
+          font={content?.closingMessageFont}
+          fieldKey="closingMessage"
+          target={{ type: 'singleton', path: CONTENT_PATH }}
+          revalidateTarget="/art"
+          placeholder="Add a closing message…"
+        />
+      </OptionalSection>
     </main>
   );
 }

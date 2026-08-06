@@ -2,6 +2,8 @@ import { Inter, Lora, Space_Grotesk, Playfair_Display, Caveat, JetBrains_Mono } 
 import '../styles/components.css';
 import Header from '@/components/Header';
 import CustomCursor from '@/components/CustomCursor';
+import OwnerStrip from '@/components/editing/OwnerStrip';
+import SiteThemeWidget from '@/components/editing/SiteThemeWidget';
 import { getSingleton } from '@/lib/db';
 import { THEME_DOC_PATH, themeToCss } from '@/lib/theme';
 
@@ -32,8 +34,10 @@ export default async function RootLayout({ children }) {
       <body>
         {theme && <style dangerouslySetInnerHTML={{ __html: themeToCss(theme) }} />}
         <CustomCursor />
+        <OwnerStrip />
         <Header />
         {children}
+        <SiteThemeWidget />
         <footer>
           <div className="footer-stars" aria-hidden="true">
             {Array.from({ length: FOOTER_STAR_COUNT }).map((_, i) => (

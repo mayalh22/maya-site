@@ -1,9 +1,9 @@
 import Section from '@/components/Section';
 import { getSingleton, listOrdered } from '@/lib/db';
-import { shapeClassName } from '@/lib/shape';
-import AttachmentList from '@/components/AttachmentList';
-import CroppedImage from '@/components/CroppedImage';
 import GridLayoutEditor from '@/components/admin/GridLayoutEditor';
+import EditableText from '@/components/editing/EditableText';
+import OptionalSection from '@/components/editing/OptionalSection';
+import ProjectsGrid from './ProjectsGrid';
 
 export const metadata = {
   title: 'Projects',
@@ -12,10 +12,12 @@ export const metadata = {
 
 export const revalidate = 300;
 
+const CONTENT_PATH = 'siteContent/projects';
+
 export default async function ProjectsPage() {
   const [projects, content, layout] = await Promise.all([
     listOrdered('projects'),
-    getSingleton('siteContent/projects', null),
+    getSingleton(CONTENT_PATH, null),
     getSingleton('settings/layout', {}),
   ]);
 
@@ -23,64 +25,38 @@ export default async function ProjectsPage() {
     <main className="container">
       <div className="about">
         <h1>Projects</h1>
-        {content?.message && <p>{content.message}</p>}
+        <EditableText
+          value={content?.message}
+          font={content?.messageFont}
+          fieldKey="message"
+          target={{ type: 'singleton', path: CONTENT_PATH }}
+          revalidateTarget="/projects"
+          placeholder="Add an intro message…"
+        />
       </div>
 
       <Section title="Projects">
-        {projects.length === 0 ? (
-          <p className="empty-state">No projects yet.</p>
-        ) : (
-          <GridLayoutEditor
-            sectionKey="projects"
-            defaultGap={16}
-            defaultItemWidth={300}
-            initial={layout?.projects}
-            revalidateTarget="/projects"
-          >
-          <div className="projects-grid">
-            {projects.map((project, index) => (
-              <div key={project.id} className={`card ${shapeClassName(project.shape, index)}`.trim()}>
-                <CroppedImage
-                  src={project.imageUrl}
-                  alt={project.title}
-                  className="card-img"
-                  zoom={project.imageUrlZoom}
-                  zoomX={project.imageUrlZoomX}
-                  zoomY={project.imageUrlZoomY}
-                  posX={project.imageUrlPosX}
-                  posY={project.imageUrlPosY}
-                  sizeW={project.imageUrlSizeW}
-                  sizeH={project.imageUrlSizeH}
-                />
-                <h3 className="card-title">{project.title}</h3>
-                {project.description && <p>{project.description}</p>}
-                {(project.repoUrl || project.liveUrl) && (
-                  <div className="project-links">
-                    {project.repoUrl && (
-                      <a href={project.repoUrl} className="btn" target="_blank" rel="noopener noreferrer">
-                        Repository
-                      </a>
-                    )}
-                    {project.liveUrl && (
-                      <a href={project.liveUrl} className="btn" target="_blank" rel="noopener noreferrer">
-                        View project
-                      </a>
-                    )}
-                  </div>
-                )}
-                <AttachmentList attachments={project.attachments} />
-              </div>
-            ))}
-          </div>
-          </GridLayoutEditor>
-        )}
+        <GridLayoutEditor
+          sectionKey="projects"
+          defaultGap={16}
+          defaultItemWidth={300}
+          initial={layout?.projects}
+          revalidateTarget="/projects"
+        >
+          <ProjectsGrid projects={projects} />
+        </GridLayoutEditor>
       </Section>
 
-      {content?.closingMessage && (
-        <div className="about">
-          <p>{content.closingMessage}</p>
-        </div>
-      )}
+      <OptionalSection className="about" value={content?.closingMessage}>
+        <EditableText
+          value={content?.closingMessage}
+          font={content?.closingMessageFont}
+          fieldKey="closingMessage"
+          target={{ type: 'singleton', path: CONTENT_PATH }}
+          revalidateTarget="/projects"
+          placeholder="Add a closing message…"
+        />
+      </OptionalSection>
     </main>
   );
 }

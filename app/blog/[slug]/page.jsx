@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPostBySlug } from '@/lib/posts';
+import EditableText from '@/components/editing/EditableText';
 
 export const revalidate = 300;
 
@@ -16,22 +17,63 @@ export default async function BlogPostPage({ params }) {
   const post = await getPostBySlug(slug);
   if (!post) notFound();
 
+  const target = { type: 'item', collection: 'posts', id: slug };
+
   return (
     <main className="container">
       <div className="about">
-        <h1>{post.title}</h1>
-        {post.category && <h3>{post.category}</h3>}
-        {post.date && <p className="card-date">{post.date}</p>}
+        <EditableText
+          as="h1"
+          value={post.title}
+          font={post.titleFont}
+          fieldKey="title"
+          target={target}
+          revalidateTarget="/blog"
+          placeholder="Title"
+        />
+        <EditableText
+          as="h3"
+          value={post.category}
+          font={post.categoryFont}
+          fieldKey="category"
+          target={target}
+          revalidateTarget="/blog"
+          placeholder="Add a category…"
+        />
+        <EditableText
+          as="p"
+          className="card-date"
+          value={post.date}
+          fieldKey="date"
+          target={target}
+          revalidateTarget="/blog"
+          placeholder="Add a date…"
+          allowFont={false}
+        />
       </div>
 
       <div className="section-wrapper">
         <div className="section-body post-body">
-          {post.body.split('\n').map((paragraph, index) => (paragraph.trim() ? <p key={index}>{paragraph}</p> : null))}
+          <EditableText
+            as="div"
+            value={post.body}
+            font={post.bodyFont}
+            fieldKey="body"
+            multiline
+            target={target}
+            revalidateTarget="/blog"
+            placeholder="Write the post body…"
+            formatDisplay={(v) =>
+              (v || '').split('\n').map((paragraph, index) => (paragraph.trim() ? <p key={index}>{paragraph}</p> : null))
+            }
+          />
         </div>
       </div>
 
       <div className="about">
-        <Link href="/blog" className="btn">Back to blog</Link>
+        <Link href="/blog" className="btn">
+          Back to blog
+        </Link>
       </div>
     </main>
   );

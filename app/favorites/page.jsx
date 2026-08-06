@@ -1,6 +1,7 @@
 import Enlarge from './enlarge';
 import { getSingleton, listOrdered } from '@/lib/db';
-import GridLayoutEditor from '@/components/admin/GridLayoutEditor';
+import EditableText from '@/components/editing/EditableText';
+import OptionalSection from '@/components/editing/OptionalSection';
 
 export const metadata = {
   title: 'Favorites',
@@ -9,12 +10,12 @@ export const metadata = {
 
 export const revalidate = 300;
 
-const TYPES = ['Movie', 'Show', 'Book', 'Album'];
+const CONTENT_PATH = 'siteContent/favorites';
 
 export default async function FavoritesPage() {
   const [favorites, content, layout] = await Promise.all([
     listOrdered('favorites'),
-    getSingleton('siteContent/favorites', null),
+    getSingleton(CONTENT_PATH, null),
     getSingleton('settings/layout', {}),
   ]);
 
@@ -22,36 +23,28 @@ export default async function FavoritesPage() {
     <main className="container">
       <div className="about">
         <h1>Favorites</h1>
-        {content?.message && <p>{content.message}</p>}
+        <EditableText
+          value={content?.message}
+          font={content?.messageFont}
+          fieldKey="message"
+          target={{ type: 'singleton', path: CONTENT_PATH }}
+          revalidateTarget="/favorites"
+          placeholder="Add an intro message…"
+        />
       </div>
-      {favorites.length === 0 ? (
-        <p className="empty-state">No favorites yet.</p>
-      ) : (
-        TYPES.map((type) => {
-          const items = favorites.filter((item) => item.type === type);
-          if (items.length === 0) return null;
-          return (
-            <section key={type} className="favorites-section">
-              <div className="favorites-type-label">{type}s</div>
-              <GridLayoutEditor
-                sectionKey={`favorites-${type}`}
-                defaultGap={16}
-                defaultItemWidth={140}
-                initial={layout?.[`favorites-${type}`]}
-                revalidateTarget="/favorites"
-              >
-                <Enlarge items={items} />
-              </GridLayoutEditor>
-            </section>
-          );
-        })
-      )}
 
-      {content?.closingMessage && (
-        <div className="about">
-          <p>{content.closingMessage}</p>
-        </div>
-      )}
+      <Enlarge favorites={favorites} layout={layout} />
+
+      <OptionalSection className="about" value={content?.closingMessage}>
+        <EditableText
+          value={content?.closingMessage}
+          font={content?.closingMessageFont}
+          fieldKey="closingMessage"
+          target={{ type: 'singleton', path: CONTENT_PATH }}
+          revalidateTarget="/favorites"
+          placeholder="Add a closing message…"
+        />
+      </OptionalSection>
     </main>
   );
 }

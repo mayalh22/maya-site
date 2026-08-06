@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { getAllPosts } from '@/lib/posts';
+import BlogList from './BlogList';
 
 export const metadata = {
   title: 'Blog',
@@ -17,19 +17,7 @@ export default async function BlogPage() {
         <h1>Blog</h1>
       </div>
 
-      {posts.length === 0 ? (
-        <p className="empty-state">No posts yet.</p>
-      ) : (
-        <div className="card-grid">
-          {posts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="card">
-              <h3 className="card-title">{post.title}</h3>
-              {post.description && <p>{post.description}</p>}
-              {post.date && <p className="card-date">{post.date}</p>}
-            </Link>
-          ))}
-        </div>
-      )}
+      <BlogList posts={posts} />
     </main>
   );
 }
