@@ -696,12 +696,16 @@ a:hover {
 .favorites-img {
   display: block;
   overflow: hidden;
-  width: 100%;
+
+  width: 140px;
+  max-width: 100%;
+
   aspect-ratio: calc(5 * var(--dim-w, 1)) / calc(6 * var(--dim-h, 1));
-  margin-bottom: var(--space-xs);
-  border-radius: calc(var(--radius) - 4px);
+
+margin: 0 auto var(--space-xs);  border-radius: calc(var(--radius) - 4px);
   clip-path: inset(0 round calc(var(--radius) - 4px));
-  border: var(--border-width, 1px) dashed color-mix(in srgb, var(--text) 35%, var(--border));
+  border: var(--border-width, 1px) dashed
+    color-mix(in srgb, var(--text) 35%, var(--border));
 }
 
 /* Cropped image frames: the frame element (above) sets the box and aspect
