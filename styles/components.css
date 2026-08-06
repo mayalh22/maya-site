@@ -43,10 +43,6 @@
   --font-heading: var(--font-elegant, Georgia, serif);
   --font-body: var(--font-elegant, Georgia, serif);
 }
-[data-font='handwritten'] {
-  --font-heading: var(--font-handwritten, cursive);
-  --font-body: var(--font-handwritten, cursive);
-}
 [data-font='mono'] {
   --font-heading: var(--font-mono, monospace);
   --font-body: var(--font-mono, monospace);
@@ -220,7 +216,6 @@ a:hover {
 
 .about h3 {
   display: inline-block;
-  font-family: var(--font-handwritten, cursive);
   font-size: 1.4rem;
   font-weight: normal;
   color: var(--text);
@@ -524,7 +519,6 @@ a:hover {
 
 .card-date {
   margin: 0;
-  font-family: var(--font-handwritten, cursive);
   font-size: 1.05rem;
   color: var(--accent);
   text-align: left;
@@ -578,7 +572,6 @@ a:hover {
 
 .timeline-date {
   display: inline-block;
-  font-family: var(--font-handwritten, cursive);
   color: var(--accent);
   font-size: 1.1rem;
   letter-spacing: 0.02em;
@@ -647,14 +640,12 @@ a:hover {
 }
 
 .photo-caption {
-  font-family: var(--font-handwritten, cursive);
   font-size: 1.15rem;
   color: var(--text);
   margin: 0;
 }
 
 .photo-date {
-  font-family: var(--font-handwritten, cursive);
   font-size: 1rem;
   color: var(--accent);
   margin: 2px 0 0;
@@ -738,7 +729,6 @@ a:hover {
   justify-content: center;
   width: 26px;
   height: 26px;
-  font-family: var(--font-handwritten, cursive);
   font-size: 1.1rem;
   color: var(--bg);
   background-color: var(--accent);
@@ -751,7 +741,6 @@ a:hover {
 }
 
 .favorites-sub {
-  font-family: var(--font-handwritten, cursive);
   font-size: 1rem;
   color: var(--accent);
   margin: 2px 0 0;
