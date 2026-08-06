@@ -26,6 +26,8 @@ export default function Enlarge({ items }) {
               zoomY={item.imageUrlZoomY}
               posX={item.imageUrlPosX}
               posY={item.imageUrlPosY}
+              sizeW={item.imageUrlSizeW}
+              sizeH={item.imageUrlSizeH}
               onClick={() => setSelectedIndex(index)}
             />
             <p className="favorites-title">{item.title}</p>

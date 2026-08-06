@@ -37,17 +37,19 @@ export default async function Home() {
               </div>
             ) : (
               photos[0] && (
-                <CroppedImage
-                  src={photos[0].url}
-                  alt={home.name || ''}
-                  className="profile"
-                  loading="eager"
-                  zoom={photos[0].zoom}
-                  zoomX={photos[0].zoomX}
-                  zoomY={photos[0].zoomY}
-                  posX={photos[0].posX}
-                  posY={photos[0].posY}
-                />
+                <div className="profile-frame">
+                  <CroppedImage
+                    src={photos[0].url}
+                    alt={home.name || ''}
+                    className="profile"
+                    loading="eager"
+                    zoom={photos[0].zoom}
+                    zoomX={photos[0].zoomX}
+                    zoomY={photos[0].zoomY}
+                    posX={photos[0].posX}
+                    posY={photos[0].posY}
+                  />
+                </div>
               )
             )}
             <h1>{home.name || 'Welcome'}</h1>

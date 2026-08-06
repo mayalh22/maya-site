@@ -10,7 +10,7 @@ export default function CustomCursor() {
 
     const cursor = document.createElement('div');
     cursor.className = 'custom-cursor';
-    cursor.innerText = '᯽';
+    cursor.innerHTML = '<span class="custom-cursor-ring"></span><span class="custom-cursor-star">᯽</span>';
     document.body.appendChild(cursor);
 
     let x = window.innerWidth / 2;
@@ -32,11 +32,27 @@ export default function CustomCursor() {
       frame = requestAnimationFrame(tick);
     };
 
+    const isPressable = (el) =>
+      el.closest('a, button, input, textarea, select, .card, .photo-card, .favorites-card, .timeline-item, [role="button"]');
+
+    const onOver = (e) => {
+      if (isPressable(e.target)) cursor.classList.add('is-active');
+    };
+    const onOut = (e) => {
+      if (isPressable(e.target) && !(e.relatedTarget && isPressable(e.relatedTarget))) {
+        cursor.classList.remove('is-active');
+      }
+    };
+
     window.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseover', onOver);
+    document.addEventListener('mouseout', onOut);
     frame = requestAnimationFrame(tick);
 
     return () => {
       window.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseover', onOver);
+      document.removeEventListener('mouseout', onOut);
       cancelAnimationFrame(frame);
       document.body.removeChild(cursor);
       document.body.classList.remove('custom-cursor-active');

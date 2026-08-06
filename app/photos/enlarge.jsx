@@ -38,6 +38,8 @@ export default function Enlarge({ categories, photos, layout }) {
                     zoomY={photo.imageUrlZoomY}
                     posX={photo.imageUrlPosX}
                     posY={photo.imageUrlPosY}
+                    sizeW={photo.imageUrlSizeW}
+                    sizeH={photo.imageUrlSizeH}
                     onClick={() => setSelectedId(photo.id)}
                   />
                   <p className="photo-caption">{photo.caption}</p>

@@ -25,6 +25,8 @@ export default function EnlargeArt({ pieces }) {
               zoomY={piece.imageUrlZoomY}
               posX={piece.imageUrlPosX}
               posY={piece.imageUrlPosY}
+              sizeW={piece.imageUrlSizeW}
+              sizeH={piece.imageUrlSizeH}
               onClick={() => setSelectedIndex(index)}
             />
             <h4 className="card-title">{piece.title}</h4>

@@ -9,7 +9,9 @@ import ImageCropField from './ImageCropField';
 
 function formKeys(fields) {
   return fields.flatMap((f) =>
-    f.type === 'url' ? [f.key, `${f.key}ZoomX`, `${f.key}ZoomY`, `${f.key}PosX`, `${f.key}PosY`] : [f.key]
+    f.type === 'url'
+      ? [f.key, `${f.key}ZoomX`, `${f.key}ZoomY`, `${f.key}PosX`, `${f.key}PosY`, `${f.key}SizeW`, `${f.key}SizeH`]
+      : [f.key]
   );
 }
 
@@ -22,7 +24,7 @@ function selectOptions(f) {
 function defaultFor(key, fields) {
   const f = fields.find((field) => field.key === key);
   if (!f) {
-    if (key.endsWith('ZoomX') || key.endsWith('ZoomY')) return 1;
+    if (key.endsWith('ZoomX') || key.endsWith('ZoomY') || key.endsWith('SizeW') || key.endsWith('SizeH')) return 1;
     if (key.endsWith('PosX') || key.endsWith('PosY')) return 50;
     return '';
   }
@@ -262,13 +264,17 @@ export default function CollectionEditor({
                   zoomY={form[`${f.key}ZoomY`]}
                   posX={form[`${f.key}PosX`]}
                   posY={form[`${f.key}PosY`]}
-                  onChange={({ zoomX, zoomY, posX, posY }) =>
+                  sizeW={form[`${f.key}SizeW`]}
+                  sizeH={form[`${f.key}SizeH`]}
+                  onChange={({ zoomX, zoomY, posX, posY, sizeW, sizeH }) =>
                     setForm((prev) => ({
                       ...prev,
                       [`${f.key}ZoomX`]: zoomX,
                       [`${f.key}ZoomY`]: zoomY,
                       [`${f.key}PosX`]: posX,
                       [`${f.key}PosY`]: posY,
+                      [`${f.key}SizeW`]: sizeW,
+                      [`${f.key}SizeH`]: sizeH,
                     }))
                   }
                 />

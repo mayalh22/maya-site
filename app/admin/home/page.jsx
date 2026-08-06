@@ -80,6 +80,7 @@ export default function HomeAdminPage() {
                         zoomY={photo.zoomY}
                         posX={photo.posX}
                         posY={photo.posY}
+                        allowResize={false}
                         onChange={(crop) => updatePhotoCrop(index, crop)}
                       />
                     </div>

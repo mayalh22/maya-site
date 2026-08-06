@@ -2,13 +2,27 @@
 
 import { useRef } from 'react';
 
-const DEFAULT_CROP = { zoomX: 1, zoomY: 1, posX: 50, posY: 50 };
+const DEFAULT_CROP = { zoomX: 1, zoomY: 1, posX: 50, posY: 50, sizeW: 1, sizeH: 1 };
+const FRAME_RATIO_W = 4;
+const FRAME_RATIO_H = 3;
 
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
 
-export default function ImageCropField({ id, url, zoom, zoomX, zoomY, posX, posY, onChange }) {
+export default function ImageCropField({
+  id,
+  url,
+  zoom,
+  zoomX,
+  zoomY,
+  posX,
+  posY,
+  sizeW,
+  sizeH,
+  allowResize = true,
+  onChange,
+}) {
   const frameRef = useRef(null);
   const dragState = useRef(null);
 
@@ -16,6 +30,8 @@ export default function ImageCropField({ id, url, zoom, zoomX, zoomY, posX, posY
   const zy = zoomY ?? zoom ?? DEFAULT_CROP.zoomY;
   const x = posX ?? DEFAULT_CROP.posX;
   const y = posY ?? DEFAULT_CROP.posY;
+  const sw = sizeW ?? DEFAULT_CROP.sizeW;
+  const sh = sizeH ?? DEFAULT_CROP.sizeH;
 
   function handlePointerDown(e) {
     if (!url) return;
@@ -33,6 +49,8 @@ export default function ImageCropField({ id, url, zoom, zoomX, zoomY, posX, posY
       zoomY: zy,
       posX: clamp(dragState.current.posX - dx, 0, 100),
       posY: clamp(dragState.current.posY - dy, 0, 100),
+      sizeW: sw,
+      sizeH: sh,
     });
   }
 
@@ -49,6 +67,7 @@ export default function ImageCropField({ id, url, zoom, zoomX, zoomY, posX, posY
       <div
         className="image-crop-frame"
         ref={frameRef}
+        style={allowResize ? { aspectRatio: `${FRAME_RATIO_W * sw} / ${FRAME_RATIO_H * sh}` } : undefined}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
@@ -63,8 +82,40 @@ export default function ImageCropField({ id, url, zoom, zoomX, zoomY, posX, posY
         />
       </div>
       <div className="image-crop-controls">
+        {allowResize && (
+          <>
+            <div className="image-crop-slider">
+              <label htmlFor={`${id}-sizeW`}>Frame width ({Math.round(sw * 100)}%)</label>
+              <input
+                id={`${id}-sizeW`}
+                type="range"
+                min="0.5"
+                max="2"
+                step="0.05"
+                value={sw}
+                onChange={(e) =>
+                  onChange({ zoomX: zx, zoomY: zy, posX: x, posY: y, sizeW: Number(e.target.value), sizeH: sh })
+                }
+              />
+            </div>
+            <div className="image-crop-slider">
+              <label htmlFor={`${id}-sizeH`}>Frame height ({Math.round(sh * 100)}%)</label>
+              <input
+                id={`${id}-sizeH`}
+                type="range"
+                min="0.5"
+                max="2"
+                step="0.05"
+                value={sh}
+                onChange={(e) =>
+                  onChange({ zoomX: zx, zoomY: zy, posX: x, posY: y, sizeW: sw, sizeH: Number(e.target.value) })
+                }
+              />
+            </div>
+          </>
+        )}
         <div className="image-crop-slider">
-          <label htmlFor={`${id}-zoomX`}>Width ({Math.round(zx * 100)}%)</label>
+          <label htmlFor={`${id}-zoomX`}>Stretch width ({Math.round(zx * 100)}%)</label>
           <input
             id={`${id}-zoomX`}
             type="range"
@@ -72,11 +123,13 @@ export default function ImageCropField({ id, url, zoom, zoomX, zoomY, posX, posY
             max="3"
             step="0.05"
             value={zx}
-            onChange={(e) => onChange({ zoomX: Number(e.target.value), zoomY: zy, posX: x, posY: y })}
+            onChange={(e) =>
+              onChange({ zoomX: Number(e.target.value), zoomY: zy, posX: x, posY: y, sizeW: sw, sizeH: sh })
+            }
           />
         </div>
         <div className="image-crop-slider">
-          <label htmlFor={`${id}-zoomY`}>Height ({Math.round(zy * 100)}%)</label>
+          <label htmlFor={`${id}-zoomY`}>Stretch height ({Math.round(zy * 100)}%)</label>
           <input
             id={`${id}-zoomY`}
             type="range"
@@ -84,14 +137,20 @@ export default function ImageCropField({ id, url, zoom, zoomX, zoomY, posX, posY
             max="3"
             step="0.05"
             value={zy}
-            onChange={(e) => onChange({ zoomX: zx, zoomY: Number(e.target.value), posX: x, posY: y })}
+            onChange={(e) =>
+              onChange({ zoomX: zx, zoomY: Number(e.target.value), posX: x, posY: y, sizeW: sw, sizeH: sh })
+            }
           />
         </div>
         <button type="button" className="btn btn-small btn-secondary" onClick={() => onChange({ ...DEFAULT_CROP })}>
           Reset crop
         </button>
       </div>
-      <p className="admin-status">Drag the image to reposition it, use the sliders to adjust width and height independently.</p>
+      <p className="admin-status">
+        {allowResize
+          ? 'Drag the image to reposition it. Frame width/height reshapes the box itself; stretch width/height scales the image inside it.'
+          : 'Drag the image to reposition it, use the sliders to adjust width and height independently.'}
+      </p>
     </div>
   );
 }

@@ -6,6 +6,8 @@ export default function CroppedImage({
   zoomY,
   posX,
   posY,
+  sizeW,
+  sizeH,
   className,
   style,
   onClick,
@@ -17,7 +19,11 @@ export default function CroppedImage({
   const zy = zoomY ?? zoom ?? 1;
 
   return (
-    <span className={className} style={style} onClick={onClick}>
+    <span
+      className={className}
+      style={{ '--dim-w': sizeW ?? 1, '--dim-h': sizeH ?? 1, ...style }}
+      onClick={onClick}
+    >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}

@@ -49,6 +49,8 @@ export default async function ProjectsPage() {
                   zoomY={project.imageUrlZoomY}
                   posX={project.imageUrlPosX}
                   posY={project.imageUrlPosY}
+                  sizeW={project.imageUrlSizeW}
+                  sizeH={project.imageUrlSizeH}
                 />
                 <h3 className="card-title">{project.title}</h3>
                 {project.description && <p>{project.description}</p>}
