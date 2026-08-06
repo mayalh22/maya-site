@@ -114,42 +114,14 @@ export default function ImageCropField({
             </div>
           </>
         )}
-        <div className="image-crop-slider">
-          <label htmlFor={`${id}-zoomX`}>Stretch width ({Math.round(zx * 100)}%)</label>
-          <input
-            id={`${id}-zoomX`}
-            type="range"
-            min="1"
-            max="3"
-            step="0.05"
-            value={zx}
-            onChange={(e) =>
-              onChange({ zoomX: Number(e.target.value), zoomY: zy, posX: x, posY: y, sizeW: sw, sizeH: sh })
-            }
-          />
-        </div>
-        <div className="image-crop-slider">
-          <label htmlFor={`${id}-zoomY`}>Stretch height ({Math.round(zy * 100)}%)</label>
-          <input
-            id={`${id}-zoomY`}
-            type="range"
-            min="1"
-            max="3"
-            step="0.05"
-            value={zy}
-            onChange={(e) =>
-              onChange({ zoomX: zx, zoomY: Number(e.target.value), posX: x, posY: y, sizeW: sw, sizeH: sh })
-            }
-          />
-        </div>
         <button type="button" className="btn btn-small btn-secondary" onClick={() => onChange({ ...DEFAULT_CROP })}>
           Reset crop
         </button>
       </div>
       <p className="admin-status">
         {allowResize
-          ? 'Drag the image to reposition it. Frame width/height reshapes the box itself; stretch width/height scales the image inside it.'
-          : 'Drag the image to reposition it, use the sliders to adjust width and height independently.'}
+          ? 'Drag the image to reposition it. Frame width/height reshapes the box itself.'
+          : 'Drag the image to reposition it.'}
       </p>
     </div>
   );
