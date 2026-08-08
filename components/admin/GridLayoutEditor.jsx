@@ -7,10 +7,20 @@ import { revalidatePublicPath } from '@/lib/revalidate';
 
 const LAYOUT_DOC = 'settings/layout';
 
-// Lets the signed-in owner nudge a grid's gap/item-width while looking at
-// the real public page. Initial values come from the server (siblings to
-// siteContent messages) so there's no client fetch and no flash on load;
-// edits are only ever performed and visible to the owner.
+const MIN_GAP = 0;
+const MAX_GAP = 48;
+const MIN_ITEM_WIDTH = 100;
+const MAX_ITEM_WIDTH = 480;
+
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
+// Lets the signed-in owner drag a grid's gap/item-width directly on the real
+// public page — same direct-manipulation feel as EditableImage's crop
+// handles, instead of a slider panel. Initial values come from the server
+// (siblings to siteContent messages) so there's no client fetch and no
+// flash on load; edits are only ever performed and visible to the owner.
 export default function GridLayoutEditor({
   sectionKey,
   defaultGap = 16,
@@ -24,6 +34,7 @@ export default function GridLayoutEditor({
   const [gap, setGap] = useState(initial?.gap ?? defaultGap);
   const [itemWidth, setItemWidth] = useState(initial?.itemWidth ?? defaultItemWidth);
   const saveTimer = useRef(null);
+  const dragState = useRef(null);
 
   function persist(nextGap, nextItemWidth) {
     if (saveTimer.current) clearTimeout(saveTimer.current);
@@ -34,14 +45,29 @@ export default function GridLayoutEditor({
     }, 500);
   }
 
-  function handleGap(value) {
-    setGap(value);
-    persist(value, itemWidth);
+  function update(nextGap, nextItemWidth) {
+    setGap(nextGap);
+    setItemWidth(nextItemWidth);
+    persist(nextGap, nextItemWidth);
   }
 
-  function handleItemWidth(value) {
-    setItemWidth(value);
-    persist(gap, value);
+  function handlePointerDown(kind, e) {
+    e.stopPropagation();
+    dragState.current = { kind, startX: e.clientX, gap, itemWidth };
+    e.currentTarget.setPointerCapture(e.pointerId);
+  }
+  function handlePointerMove(e) {
+    const state = dragState.current;
+    if (!state) return;
+    const dx = e.clientX - state.startX;
+    if (state.kind === 'gap') {
+      update(clamp(Math.round(state.gap + dx), MIN_GAP, MAX_GAP), itemWidth);
+    } else {
+      update(gap, clamp(Math.round(state.itemWidth + dx), MIN_ITEM_WIDTH, MAX_ITEM_WIDTH));
+    }
+  }
+  function handlePointerUp() {
+    dragState.current = null;
   }
 
   const style = { '--grid-gap': `${gap}px`, '--item-width': `${itemWidth}px` };
@@ -55,21 +81,27 @@ export default function GridLayoutEditor({
             {editing ? 'Done spacing' : 'Edit spacing'}
           </button>
           {editing && (
-            <div className="layout-editor-controls">
-              <label>
-                Gap
-                <input type="range" min="0" max="48" value={gap} onChange={(e) => handleGap(Number(e.target.value))} />
-              </label>
-              <label>
-                Item width
-                <input
-                  type="range"
-                  min="100"
-                  max="480"
-                  value={itemWidth}
-                  onChange={(e) => handleItemWidth(Number(e.target.value))}
-                />
-              </label>
+            <div className="layout-editor-handles">
+              <span
+                className="layout-handle"
+                title={`Item width: ${itemWidth}px — drag to resize`}
+                onPointerDown={(e) => handlePointerDown('width', e)}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerCancel={handlePointerUp}
+              >
+                ↔ Width
+              </span>
+              <span
+                className="layout-handle"
+                title={`Gap: ${gap}px — drag to resize`}
+                onPointerDown={(e) => handlePointerDown('gap', e)}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerCancel={handlePointerUp}
+              >
+                ↔ Gap
+              </span>
             </div>
           )}
         </div>

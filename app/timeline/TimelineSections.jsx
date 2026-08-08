@@ -47,6 +47,16 @@ function sortKey(entry) {
   return entry.startDate || entry.date || '';
 }
 
+function formatMonth(value) {
+  if (!value) return value;
+  const [year, month] = value.split('-');
+  if (!year || !month) return value;
+  return new Date(Number(year), Number(month) - 1, 1).toLocaleDateString('en-US', {
+    month: 'short',
+    year: 'numeric',
+  });
+}
+
 function DateRange({ event, target, isOwner }) {
   return (
     <>
@@ -59,6 +69,7 @@ function DateRange({ event, target, isOwner }) {
         revalidateTarget="/timeline"
         allowFont={false}
         placeholder="Start date"
+        formatDisplay={formatMonth}
       />
       {' – '}
       {isOwner ? (
@@ -71,9 +82,10 @@ function DateRange({ event, target, isOwner }) {
           revalidateTarget="/timeline"
           allowFont={false}
           placeholder="Present"
+          formatDisplay={formatMonth}
         />
       ) : (
-        <span>{event.endDate || 'Present'}</span>
+        <span>{event.endDate ? formatMonth(event.endDate) : 'Present'}</span>
       )}
     </>
   );
@@ -160,24 +172,26 @@ export default function TimelineSections({ entries: initialEntries, layout }) {
                             revalidateTarget="/timeline"
                             placeholder="Add a description…"
                           />
-                          {event.siteUrl && (
-                            <a href={event.siteUrl} className="btn btn-small" target="_blank" rel="noopener noreferrer">
-                              Visit site
-                            </a>
-                          )}
-                          <AttachmentList attachments={event.attachments} />
-                          {isOwner && (
-                            <ItemEditPanel
-                              fields={EXTRA_FIELDS}
-                              initial={event}
-                              collectionName="timeline"
-                              itemId={event.id}
-                              triggerLabel="✎ More fields"
-                              triggerClassName="btn-more-fields"
-                              onSubmit={(form) => patchItem(event.id, form)}
-                              onDelete={() => deleteItem(event.id)}
-                            />
-                          )}
+                          <div className="timeline-actions">
+                            {event.siteUrl && (
+                              <a href={event.siteUrl} className="btn btn-small" target="_blank" rel="noopener noreferrer">
+                                Visit site
+                              </a>
+                            )}
+                            <AttachmentList attachments={event.attachments} />
+                            {isOwner && (
+                              <ItemEditPanel
+                                fields={EXTRA_FIELDS}
+                                initial={event}
+                                collectionName="timeline"
+                                itemId={event.id}
+                                triggerLabel="✎ More fields"
+                                triggerClassName="btn-more-fields"
+                                onSubmit={(form) => patchItem(event.id, form)}
+                                onDelete={() => deleteItem(event.id)}
+                              />
+                            )}
+                          </div>
                         </div>
                         {index < kindItems.length - 1 && (
                           <span className="timeline-arrow" aria-hidden="true">→</span>
@@ -231,24 +245,26 @@ export default function TimelineSections({ entries: initialEntries, layout }) {
                           revalidateTarget="/timeline"
                           placeholder="Add a description…"
                         />
-                        {item.siteUrl && (
-                          <a href={item.siteUrl} className="btn btn-small" target="_blank" rel="noopener noreferrer">
-                            Visit site
-                          </a>
-                        )}
-                        <AttachmentList attachments={item.attachments} />
-                        {isOwner && (
-                          <ItemEditPanel
-                            fields={EXTRA_FIELDS}
-                            initial={item}
-                            collectionName="timeline"
-                            itemId={item.id}
-                            triggerLabel="✎ More fields"
-                            triggerClassName="btn-more-fields"
-                            onSubmit={(form) => patchItem(item.id, form)}
-                            onDelete={() => deleteItem(item.id)}
-                          />
-                        )}
+                        <div className="timeline-actions">
+                          {item.siteUrl && (
+                            <a href={item.siteUrl} className="btn btn-small" target="_blank" rel="noopener noreferrer">
+                              Visit site
+                            </a>
+                          )}
+                          <AttachmentList attachments={item.attachments} />
+                          {isOwner && (
+                            <ItemEditPanel
+                              fields={EXTRA_FIELDS}
+                              initial={item}
+                              collectionName="timeline"
+                              itemId={item.id}
+                              triggerLabel="✎ More fields"
+                              triggerClassName="btn-more-fields"
+                              onSubmit={(form) => patchItem(item.id, form)}
+                              onDelete={() => deleteItem(item.id)}
+                            />
+                          )}
+                        </div>
                       </div>
                     );
                   })}
