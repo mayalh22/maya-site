@@ -121,6 +121,7 @@ export default function Enlarge({ favorites: initialFavorites, layout }) {
                           collectionName="favorites"
                           itemId={item.id}
                           triggerLabel="✎ More fields"
+                          triggerClassName="btn-more-fields"
                           onSubmit={(form) => patchItem(item.id, form)}
                           onDelete={() => deleteItem(item.id)}
                         />

@@ -210,7 +210,6 @@ export default function EditableImage({
       </button>
       {editing && (
         <span className="editable-image-toolbar">
-          <span className="admin-status">Drag to reposition. Drag a handle to crop. Scroll to zoom.</span>
           <span className="editable-image-actions">
             <button type="button" className="btn btn-small btn-secondary" onClick={resetCrop}>
               Reset

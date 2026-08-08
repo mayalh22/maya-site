@@ -173,6 +173,7 @@ export default function TimelineSections({ entries: initialEntries, layout }) {
                               collectionName="timeline"
                               itemId={event.id}
                               triggerLabel="✎ More fields"
+                              triggerClassName="btn-more-fields"
                               onSubmit={(form) => patchItem(event.id, form)}
                               onDelete={() => deleteItem(event.id)}
                             />
@@ -243,6 +244,7 @@ export default function TimelineSections({ entries: initialEntries, layout }) {
                             collectionName="timeline"
                             itemId={item.id}
                             triggerLabel="✎ More fields"
+                            triggerClassName="btn-more-fields"
                             onSubmit={(form) => patchItem(item.id, form)}
                             onDelete={() => deleteItem(item.id)}
                           />

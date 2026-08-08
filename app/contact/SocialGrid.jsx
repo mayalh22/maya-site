@@ -81,6 +81,7 @@ export default function SocialGrid({ social: initialSocial }) {
                 collectionName="social"
                 itemId={link.id}
                 triggerLabel="✎ More fields"
+                triggerClassName="btn-more-fields"
                 onSubmit={(form) => patchItem(link.id, form)}
                 onDelete={() => deleteItem(link.id)}
               />

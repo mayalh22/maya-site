@@ -29,7 +29,7 @@ export default async function RootLayout({ children }) {
   const theme = await getSingleton(THEME_DOC_PATH, null);
 
   return (
-    <html lang="en" data-font={theme?.fontChoice || 'sans'} className={FONT_VARS}>
+    <html lang="en" className={FONT_VARS}>
       <body>
         {theme && <style dangerouslySetInnerHTML={{ __html: themeToCss(theme) }} />}
         <CustomCursor />

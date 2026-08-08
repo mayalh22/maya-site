@@ -98,6 +98,7 @@ export default function EnlargeArt({ pieces: initialPieces }) {
                   collectionName="art"
                   itemId={piece.id}
                   triggerLabel="✎ More fields"
+                  triggerClassName="btn-more-fields"
                   onSubmit={(form) => patchItem(piece.id, form)}
                   onDelete={() => deleteItem(piece.id)}
                 />

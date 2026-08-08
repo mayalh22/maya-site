@@ -100,6 +100,7 @@ export default function ProjectsGrid({ projects: initialProjects }) {
                 collectionName="projects"
                 itemId={project.id}
                 triggerLabel="✎ More fields"
+                triggerClassName="btn-more-fields"
                 onSubmit={(form) => patchItem(project.id, form)}
                 onDelete={() => deleteItem(project.id)}
               />

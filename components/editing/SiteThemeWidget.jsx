@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useAdminUser } from '@/lib/auth';
 import { useSingletonDoc } from '@/lib/useSingletonDoc';
-import { THEME_DOC_PATH, DEFAULT_THEME, FONT_OPTIONS } from '@/lib/theme';
+import { THEME_DOC_PATH, DEFAULT_THEME, FONT_OPTIONS, themeToCss } from '@/lib/theme';
 
 const COLOR_FIELDS = [
   ['primary', 'Primary'],
@@ -29,6 +29,7 @@ export default function SiteThemeWidget() {
 
   return (
     <>
+      {open && !loading && <style dangerouslySetInnerHTML={{ __html: themeToCss(data) }} />}
       <button type="button" className="site-theme-toggle" onClick={() => setOpen((v) => !v)} title="Site theme">
         Theme
       </button>

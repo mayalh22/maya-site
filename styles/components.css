@@ -28,23 +28,6 @@
   --spin-speed: 1;
 }
 
-[data-font='serif'] {
-  --font-heading: var(--font-serif, Georgia, 'Times New Roman', serif);
-  --font-body: var(--font-serif, Georgia, 'Times New Roman', serif);
-}
-[data-font='display'] {
-  --font-heading: var(--font-display, sans-serif);
-  --font-body: var(--font-display, sans-serif);
-}
-[data-font='elegant'] {
-  --font-heading: var(--font-elegant, Georgia, serif);
-  --font-body: var(--font-elegant, Georgia, serif);
-}
-[data-font='mono'] {
-  --font-heading: var(--font-mono, monospace);
-  --font-body: var(--font-mono, monospace);
-}
-
 * {
   box-sizing: border-box;
 }
@@ -507,8 +490,12 @@ a:hover {
 
 .card-title {
   margin: var(--space-xs) 0;
-  font-size: var(--size-heading);
+  font-size: var(--size-body);
   text-align: left;
+}
+
+.card-title.lightbox-title {
+  font-size: var(--size-heading);
 }
 
 .card-date {
@@ -788,6 +775,21 @@ margin: 0 auto var(--space-xs);  border-radius: calc(var(--radius) - 4px);
   background-color: #b3261e;
   border-color: #b3261e;
   color: #fff;
+}
+
+.btn-more-fields {
+  background: none;
+  border-color: transparent;
+  color: #d6336c;
+  outline: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+.btn-more-fields:hover {
+  background: none;
+  border-color: transparent;
+  color: #d6336c;
+  text-decoration: underline;
 }
 
 .tag {
