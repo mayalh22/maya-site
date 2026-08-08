@@ -4,7 +4,6 @@ import MobileNav from './MobileNav';
 const NAV_ITEMS = [
   ['Projects', '/projects'],
   ['Art', '/art'],
-  ['Photos', '/photos'],
   ['Favorites', '/favorites'],
   ['Timeline', '/timeline'],
   ['Blog', '/blog'],

@@ -1,4 +1,4 @@
-import { Inter, Lora, Space_Grotesk, Playfair_Display, Caveat, JetBrains_Mono } from 'next/font/google';
+import { Inter, Lora, Space_Grotesk, Playfair_Display, JetBrains_Mono } from 'next/font/google';
 import '../styles/components.css';
 import Header from '@/components/Header';
 import CustomCursor from '@/components/CustomCursor';
@@ -11,10 +11,9 @@ const sans = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap
 const serif = Lora({ subsets: ['latin'], variable: '--font-serif', display: 'swap' });
 const display = Space_Grotesk({ subsets: ['latin'], variable: '--font-display', display: 'swap' });
 const elegant = Playfair_Display({ subsets: ['latin'], variable: '--font-elegant', display: 'swap' });
-const handwritten = Caveat({ subsets: ['latin'], variable: '--font-handwritten', display: 'swap' });
 const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' });
 
-const FONT_VARS = [sans, serif, display, elegant, handwritten, mono].map((f) => f.variable).join(' ');
+const FONT_VARS = [sans, serif, display, elegant, mono].map((f) => f.variable).join(' ');
 
 const STAR_CHARS = ['᯽', '✦', '☆'];
 const FOOTER_STAR_COUNT = 24;

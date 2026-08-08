@@ -6,15 +6,34 @@ import { persistPatch } from '@/lib/editingPersist';
 import CroppedImage from '@/components/CroppedImage';
 
 const DEFAULT_CROP = { zoomX: 1, zoomY: 1, posX: 50, posY: 50, sizeW: 1, sizeH: 1 };
+const MIN_ZOOM = 0.5;
+const MAX_ZOOM = 3;
+const MIN_SIZE = 0.5;
+const MAX_SIZE = 2;
 
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
 
-// Supersedes the old admin-only ImageCropField for live use: drag-to-reposition
-// happens on the real image, and (unlike ImageCropField, which only exposed
-// size sliders + a reset button) this adds real zoom X/Y sliders so shrinking
-// and zooming are both actually reachable.
+// Corner/edge handles: id, CSS position, cursor, and which axes + direction
+// each one drags. dxSign/dySign are +1 when dragging away from the frame
+// center grows that axis, -1 when dragging away shrinks it.
+const HANDLES = [
+  { id: 'nw', top: 0, left: 0, cursor: 'nwse-resize', dxSign: -1, dySign: -1 },
+  { id: 'n', top: 0, left: 50, cursor: 'ns-resize', dySign: -1 },
+  { id: 'ne', top: 0, left: 100, cursor: 'nesw-resize', dxSign: 1, dySign: -1 },
+  { id: 'e', top: 50, left: 100, cursor: 'ew-resize', dxSign: 1 },
+  { id: 'se', top: 100, left: 100, cursor: 'nwse-resize', dxSign: 1, dySign: 1 },
+  { id: 's', top: 100, left: 50, cursor: 'ns-resize', dySign: 1 },
+  { id: 'sw', top: 100, left: 0, cursor: 'nesw-resize', dxSign: -1, dySign: 1 },
+  { id: 'w', top: 50, left: 0, cursor: 'ew-resize', dxSign: -1 },
+];
+
+// Supersedes the old slider-panel crop editor: dragging the image
+// repositions it, dragging the frame's corner/edge handles crops it larger
+// or smaller, and scrolling over it zooms — all directly on the image
+// itself, the way Google Docs' image crop works, instead of through
+// separate numeric controls.
 export default function EditableImage({
   src,
   alt,
@@ -45,7 +64,9 @@ export default function EditableImage({
     sizeH: sizeH ?? DEFAULT_CROP.sizeH,
   });
   const [urlDraft, setUrlDraft] = useState(src || '');
+  const [showUrlField, setShowUrlField] = useState(false);
   const dragState = useRef(null);
+  const resizeState = useRef(null);
   const frameRef = useRef(null);
   const saveTimer = useRef(null);
   const uKey = urlKey || cropKeyPrefix || 'imageUrl';
@@ -110,6 +131,49 @@ export default function EditableImage({
     dragState.current = null;
   }
 
+  function handleWheel(e) {
+    if (!editing) return;
+    e.preventDefault();
+    const delta = -e.deltaY * 0.0015;
+    update({
+      zoomX: clamp(crop.zoomX + delta, MIN_ZOOM, MAX_ZOOM),
+      zoomY: clamp(crop.zoomY + delta, MIN_ZOOM, MAX_ZOOM),
+    });
+  }
+
+  function handleHandlePointerDown(handle, e) {
+    e.stopPropagation();
+    if (!frameRef.current) return;
+    const rect = frameRef.current.getBoundingClientRect();
+    resizeState.current = {
+      handle,
+      startX: e.clientX,
+      startY: e.clientY,
+      sizeW: crop.sizeW,
+      sizeH: crop.sizeH,
+      unitW: rect.width / crop.sizeW,
+      unitH: rect.height / crop.sizeH,
+    };
+    e.currentTarget.setPointerCapture(e.pointerId);
+  }
+  function handleHandlePointerMove(e) {
+    const state = resizeState.current;
+    if (!state) return;
+    const dx = e.clientX - state.startX;
+    const dy = e.clientY - state.startY;
+    const patch = {};
+    if (state.handle.dxSign) {
+      patch.sizeW = clamp(state.sizeW + (dx * state.handle.dxSign) / state.unitW, MIN_SIZE, MAX_SIZE);
+    }
+    if (state.handle.dySign) {
+      patch.sizeH = clamp(state.sizeH + (dy * state.handle.dySign) / state.unitH, MIN_SIZE, MAX_SIZE);
+    }
+    update(patch);
+  }
+  function handleHandlePointerUp() {
+    resizeState.current = null;
+  }
+
   function resetCrop() {
     update({ ...DEFAULT_CROP });
   }
@@ -125,45 +189,34 @@ export default function EditableImage({
         ref={frameRef}
         className={editing ? 'editable-image-frame editable-image-frame-active' : 'editable-image-frame'}
         onPointerDown={editing ? handlePointerDown : undefined}
-        onPointerMove={editing ? handlePointerMove : undefined}
-        onPointerUp={editing ? handlePointerUp : undefined}
-        onPointerCancel={editing ? handlePointerUp : undefined}
+        onPointerMove={editing ? (e) => { handlePointerMove(e); handleHandlePointerMove(e); } : undefined}
+        onPointerUp={editing ? (e) => { handlePointerUp(e); handleHandlePointerUp(e); } : undefined}
+        onPointerCancel={editing ? (e) => { handlePointerUp(e); handleHandlePointerUp(e); } : undefined}
+        onWheel={editing ? handleWheel : undefined}
       >
         <CroppedImage src={src} alt={alt} className={className} loading={loading} onClick={editing ? undefined : onClick} {...crop} />
+        {editing &&
+          HANDLES.map((handle) => (
+            <span
+              key={handle.id}
+              className="crop-handle"
+              style={{ top: `${handle.top}%`, left: `${handle.left}%`, cursor: handle.cursor }}
+              onPointerDown={(e) => handleHandlePointerDown(handle, e)}
+            />
+          ))}
       </span>
       <button type="button" className="editable-image-toggle" onClick={() => setEditing((v) => !v)}>
-        {editing ? 'Done' : '✎ Edit image'}
+        {editing ? 'Done' : 'Edit image'}
       </button>
       {editing && (
-        <span className="editable-image-panel">
-          <label>
-            Zoom X ({Math.round(crop.zoomX * 100)}%)
-            <input type="range" min="0.5" max="3" step="0.05" value={crop.zoomX} onChange={(e) => update({ zoomX: Number(e.target.value) })} />
-          </label>
-          <label>
-            Zoom Y ({Math.round(crop.zoomY * 100)}%)
-            <input type="range" min="0.5" max="3" step="0.05" value={crop.zoomY} onChange={(e) => update({ zoomY: Number(e.target.value) })} />
-          </label>
-          <label>
-            Frame width ({Math.round(crop.sizeW * 100)}%)
-            <input type="range" min="0.5" max="2" step="0.05" value={crop.sizeW} onChange={(e) => update({ sizeW: Number(e.target.value) })} />
-          </label>
-          <label>
-            Frame height ({Math.round(crop.sizeH * 100)}%)
-            <input type="range" min="0.5" max="2" step="0.05" value={crop.sizeH} onChange={(e) => update({ sizeH: Number(e.target.value) })} />
-          </label>
-          <label>
-            Image URL
-            <input
-              type="url"
-              value={urlDraft}
-              onChange={(e) => setUrlDraft(e.target.value)}
-              onBlur={commitUrl}
-            />
-          </label>
+        <span className="editable-image-toolbar">
+          <span className="admin-status">Drag to reposition. Drag a handle to crop. Scroll to zoom.</span>
           <span className="editable-image-actions">
             <button type="button" className="btn btn-small btn-secondary" onClick={resetCrop}>
               Reset
+            </button>
+            <button type="button" className="btn btn-small btn-secondary" onClick={() => setShowUrlField((v) => !v)}>
+              Change URL
             </button>
             {allowRemove && (
               <button type="button" className="btn btn-small btn-danger" onClick={handleRemove}>
@@ -171,7 +224,16 @@ export default function EditableImage({
               </button>
             )}
           </span>
-          <span className="admin-status">Drag the image to reposition it.</span>
+          {showUrlField && (
+            <input
+              type="url"
+              className="editable-image-url-input"
+              value={urlDraft}
+              onChange={(e) => setUrlDraft(e.target.value)}
+              onBlur={commitUrl}
+              placeholder="Image URL"
+            />
+          )}
         </span>
       )}
     </span>

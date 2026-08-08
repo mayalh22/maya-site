@@ -4,7 +4,6 @@ const ALLOWED_PATHS = new Set([
   '/',
   '/projects',
   '/art',
-  '/photos',
   '/favorites',
   '/timeline',
   '/blog',

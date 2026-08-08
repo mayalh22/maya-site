@@ -47,7 +47,7 @@ export default function AttachmentsField({ id, value, onChange, collectionName, 
                 // eslint-disable-next-line @next/next/no-img-element
                 <img className="admin-list-thumb" src={att.url} alt="" loading="lazy" />
               ) : (
-                <span className="attachment-file-icon" aria-hidden="true">📎</span>
+                <span className="attachment-file-icon" aria-hidden="true">FILE</span>
               )}
               <div className="admin-list-info">
                 <p className="admin-list-detail">{att.name}</p>

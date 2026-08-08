@@ -30,7 +30,7 @@ export default function SiteThemeWidget() {
   return (
     <>
       <button type="button" className="site-theme-toggle" onClick={() => setOpen((v) => !v)} title="Site theme">
-        🎨
+        Theme
       </button>
       {open && (
         <div className="site-theme-panel">

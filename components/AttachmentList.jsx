@@ -17,7 +17,7 @@ export default function AttachmentList({ attachments }) {
           </a>
         ) : (
           <a key={`${att.url}-${index}`} href={att.url} target="_blank" rel="noopener noreferrer" className="attachment-chip">
-            📎 {att.name || 'Attachment'}
+            {att.name || 'Attachment'}
           </a>
         )
       )}
