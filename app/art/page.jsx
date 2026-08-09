@@ -39,7 +39,7 @@ export default async function ArtPage() {
         <GridLayoutEditor
           sectionKey="art"
           defaultGap={16}
-          defaultItemWidth={240}
+          defaultItemsPerRow={4}
           initial={layout?.art}
           revalidateTarget="/art"
         >

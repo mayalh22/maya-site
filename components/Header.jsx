@@ -6,7 +6,6 @@ const NAV_ITEMS = [
   ['Art', '/art'],
   ['Favorites', '/favorites'],
   ['Timeline', '/timeline'],
-  ['Blog', '/blog'],
   ['Contact', '/contact'],
 ];
 

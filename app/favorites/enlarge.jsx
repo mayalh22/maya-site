@@ -11,7 +11,7 @@ import { useAdminUser } from '@/lib/auth';
 import { useOwnerCollection } from '@/lib/useOwnerCollection';
 import { shapeClassName, SHAPE_FIELD } from '@/lib/shape';
 
-const TYPES = ['Movie', 'Show', 'Book', 'Album'];
+const TYPES = ['Movie', 'Show', 'Book'];
 
 const CREATE_FIELDS = [
   { key: 'title', label: 'Title', required: true },
@@ -56,7 +56,7 @@ export default function Enlarge({ favorites: initialFavorites, layout }) {
             <GridLayoutEditor
               sectionKey={`favorites-${type}`}
               defaultGap={16}
-              defaultItemWidth={140}
+              defaultItemsPerRow={7}
               initial={layout?.[`favorites-${type}`]}
               revalidateTarget="/favorites"
             >

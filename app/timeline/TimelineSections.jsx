@@ -125,7 +125,7 @@ export default function TimelineSections({ entries: initialEntries, layout }) {
               <GridLayoutEditor
                 sectionKey={`timeline-${kind}`}
                 defaultGap={24}
-                defaultItemWidth={260}
+                defaultItemsPerRow={4}
                 initial={layout?.[`timeline-${kind}`]}
                 revalidateTarget="/timeline"
               >
@@ -203,7 +203,7 @@ export default function TimelineSections({ entries: initialEntries, layout }) {
               <GridLayoutEditor
                 sectionKey={`timeline-${kind}`}
                 defaultGap={16}
-                defaultItemWidth={240}
+                defaultItemsPerRow={4}
                 initial={layout?.[`timeline-${kind}`]}
                 revalidateTarget="/timeline"
               >

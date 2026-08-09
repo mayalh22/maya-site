@@ -41,7 +41,7 @@ export default async function ContactPage() {
         <GridLayoutEditor
           sectionKey="social"
           defaultGap={16}
-          defaultItemWidth={240}
+          defaultItemsPerRow={4}
           initial={layout?.social}
           revalidateTarget="/contact"
         >

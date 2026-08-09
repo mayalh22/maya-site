@@ -39,7 +39,7 @@ export default async function ProjectsPage() {
         <GridLayoutEditor
           sectionKey="projects"
           defaultGap={16}
-          defaultItemWidth={300}
+          defaultItemsPerRow={3}
           initial={layout?.projects}
           revalidateTarget="/projects"
         >

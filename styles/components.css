@@ -683,8 +683,7 @@ a:hover {
   display: block;
   overflow: hidden;
 
-  width: 140px;
-  max-width: 100%;
+  width: 100%;
 
   aspect-ratio: calc(5 * var(--dim-w, 1)) / calc(6 * var(--dim-h, 1));
 
@@ -890,10 +889,6 @@ footer p {
   height: 40px;
   object-fit: cover;
   display: block;
-}
-
-.post-body p {
-  text-align: left;
 }
 
 /* Lightbox */
@@ -1380,6 +1375,33 @@ footer p {
 }
 .layout-handle:hover {
   background-color: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.layout-stepper {
+  gap: var(--space-xs);
+  cursor: default;
+}
+.layout-stepper button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4em;
+  height: 1.4em;
+  padding: 0;
+  font-size: inherit;
+  line-height: 1;
+  border: var(--border-width, 1px) dashed var(--accent);
+  border-radius: var(--radius);
+  background-color: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent);
+  cursor: pointer;
+}
+.layout-stepper button:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.layout-stepper button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 /* Shapes (admin-selectable per item) — the shape only ever clips the

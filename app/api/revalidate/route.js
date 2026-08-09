@@ -6,7 +6,6 @@ const ALLOWED_PATHS = new Set([
   '/art',
   '/favorites',
   '/timeline',
-  '/blog',
   '/contact',
 ]);
 
@@ -23,9 +22,6 @@ export async function POST(request) {
     revalidatePath('/', 'layout');
   } else {
     revalidatePath(path);
-    if (path === '/blog') {
-      revalidatePath('/blog/[slug]', 'page');
-    }
   }
 
   return Response.json({ revalidated: true });

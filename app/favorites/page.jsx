@@ -5,7 +5,7 @@ import OptionalSection from '@/components/editing/OptionalSection';
 
 export const metadata = {
   title: 'Favorites',
-  description: 'Favorite movies, shows, books, and albums.',
+  description: 'Favorite movies, shows, and books.',
 };
 
 export const revalidate = 300;
