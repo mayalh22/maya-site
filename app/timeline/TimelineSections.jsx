@@ -67,7 +67,6 @@ function DateRange({ event, target, isOwner }) {
         type="month"
         target={target}
         revalidateTarget="/timeline"
-        allowFont={false}
         placeholder="Start date"
         formatDisplay={formatMonth}
       />
@@ -80,7 +79,6 @@ function DateRange({ event, target, isOwner }) {
           type="month"
           target={target}
           revalidateTarget="/timeline"
-          allowFont={false}
           placeholder="Present"
           formatDisplay={formatMonth}
         />
@@ -144,7 +142,7 @@ export default function TimelineSections({ entries: initialEntries, layout }) {
                             <EditableText
                               as="span"
                               value={event.title}
-                              font={event.titleFont}
+                              align={event.titleAlign}
                               fieldKey="title"
                               target={target}
                               revalidateTarget="/timeline"
@@ -154,7 +152,7 @@ export default function TimelineSections({ entries: initialEntries, layout }) {
                             <EditableText
                               as="span"
                               value={event.organization}
-                              font={event.organizationFont}
+                              align={event.organizationAlign}
                               fieldKey="organization"
                               target={target}
                               revalidateTarget="/timeline"
@@ -165,7 +163,7 @@ export default function TimelineSections({ entries: initialEntries, layout }) {
                           <EditableText
                             as="p"
                             value={event.description}
-                            font={event.descriptionFont}
+                            align={event.descriptionAlign}
                             fieldKey="description"
                             multiline
                             target={target}
@@ -217,7 +215,7 @@ export default function TimelineSections({ entries: initialEntries, layout }) {
                         <EditableText
                           as="h3"
                           value={item.title}
-                          font={item.titleFont}
+                          align={item.titleAlign}
                           fieldKey="title"
                           target={target}
                           revalidateTarget="/timeline"
@@ -226,7 +224,7 @@ export default function TimelineSections({ entries: initialEntries, layout }) {
                         <EditableText
                           as="p"
                           value={item.organization}
-                          font={item.organizationFont}
+                          align={item.organizationAlign}
                           fieldKey="organization"
                           target={target}
                           revalidateTarget="/timeline"
@@ -238,7 +236,7 @@ export default function TimelineSections({ entries: initialEntries, layout }) {
                         <EditableText
                           as="p"
                           value={item.description}
-                          font={item.descriptionFont}
+                          align={item.descriptionAlign}
                           fieldKey="description"
                           multiline
                           target={target}

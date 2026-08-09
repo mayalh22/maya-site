@@ -71,6 +71,7 @@ export default function Enlarge({ favorites: initialFavorites, layout }) {
                         alt={item.title}
                         className="favorites-img"
                         style={{ cursor: 'pointer' }}
+                        sizes="140px"
                         zoomX={item.imageUrlZoomX ?? item.imageUrlZoom}
                         zoomY={item.imageUrlZoomY ?? item.imageUrlZoom}
                         posX={item.imageUrlPosX}
@@ -86,7 +87,7 @@ export default function Enlarge({ favorites: initialFavorites, layout }) {
                         as="p"
                         className="favorites-title"
                         value={item.title}
-                        font={item.titleFont}
+                        align={item.titleAlign}
                         fieldKey="title"
                         target={target}
                         revalidateTarget="/favorites"
@@ -96,7 +97,7 @@ export default function Enlarge({ favorites: initialFavorites, layout }) {
                         as="p"
                         className="favorites-sub"
                         value={item.subtitle}
-                        font={item.subtitleFont}
+                        align={item.subtitleAlign}
                         fieldKey="subtitle"
                         target={target}
                         revalidateTarget="/favorites"

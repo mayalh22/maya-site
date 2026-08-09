@@ -61,7 +61,12 @@ export default function AttachmentsField({ id, value, onChange, collectionName, 
           ))}
         </div>
       )}
-      <input id={id} type="file" multiple onChange={handleFiles} disabled={uploading} />
+      <div className="file-input">
+        <input id={id} className="file-input-native" type="file" multiple onChange={handleFiles} disabled={uploading} />
+        <label htmlFor={id} className="btn btn-small btn-secondary file-input-label">
+          {uploading ? 'Uploading…' : 'Choose files'}
+        </label>
+      </div>
       {uploading && <p className="admin-status">Uploading…</p>}
       {error && <p className="admin-status admin-status-error">{error}</p>}
     </div>

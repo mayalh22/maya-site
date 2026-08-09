@@ -55,7 +55,8 @@ export default function HomeProfile({ home }) {
                 src={photo.url}
                 alt={name || ''}
                 className="profile-carousel-frame"
-                loading={index < photos.length ? 'eager' : 'lazy'}
+                priority={index < photos.length}
+                sizes="160px"
                 zoomX={photo.zoomX ?? photo.zoom}
                 zoomY={photo.zoomY ?? photo.zoom}
                 posX={photo.posX}
@@ -77,7 +78,8 @@ export default function HomeProfile({ home }) {
               src={photos[0].url}
               alt={name || ''}
               className="profile"
-              loading="eager"
+              priority
+              sizes="200px"
               zoomX={photos[0].zoomX ?? photos[0].zoom}
               zoomY={photos[0].zoomY ?? photos[0].zoom}
               posX={photos[0].posX}
@@ -106,7 +108,7 @@ export default function HomeProfile({ home }) {
         <EditableText
           as="h1"
           value={name}
-          font={home?.nameFont}
+          align={home?.nameAlign}
           fieldKey="name"
           target={{ type: 'singleton', path: CONTENT_PATH }}
           revalidateTarget="/"
@@ -118,7 +120,7 @@ export default function HomeProfile({ home }) {
       <EditableText
         as="h3"
         value={home?.tagline}
-        font={home?.taglineFont}
+        align={home?.taglineAlign}
         fieldKey="tagline"
         target={{ type: 'singleton', path: CONTENT_PATH }}
         revalidateTarget="/"
@@ -127,7 +129,7 @@ export default function HomeProfile({ home }) {
       <EditableText
         as="p"
         value={home?.bio}
-        font={home?.bioFont}
+        align={home?.bioAlign}
         fieldKey="bio"
         multiline
         target={{ type: 'singleton', path: CONTENT_PATH }}

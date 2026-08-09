@@ -34,7 +34,7 @@ export default function Lightbox({ item, onClose }) {
 
         <div className="lightbox-image-wrap">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={item.image} alt={item.title || ''} className="lightbox-image" />
+          <img src={item.image} alt={item.title || ''} className="lightbox-image" loading="lazy" />
         </div>
 
         {item.title && <h4 className="card-title lightbox-title">{item.title}</h4>}

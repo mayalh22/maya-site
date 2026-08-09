@@ -27,7 +27,7 @@ export default async function ProjectsPage() {
         <h1>Projects</h1>
         <EditableText
           value={content?.message}
-          font={content?.messageFont}
+          align={content?.messageAlign}
           fieldKey="message"
           target={{ type: 'singleton', path: CONTENT_PATH }}
           revalidateTarget="/projects"
@@ -50,7 +50,7 @@ export default async function ProjectsPage() {
       <OptionalSection className="about" value={content?.closingMessage}>
         <EditableText
           value={content?.closingMessage}
-          font={content?.closingMessageFont}
+          align={content?.closingMessageAlign}
           fieldKey="closingMessage"
           target={{ type: 'singleton', path: CONTENT_PATH }}
           revalidateTarget="/projects"

@@ -27,7 +27,7 @@ export default async function ArtPage() {
         <h1>Art</h1>
         <EditableText
           value={content?.message}
-          font={content?.messageFont}
+          align={content?.messageAlign}
           fieldKey="message"
           target={{ type: 'singleton', path: CONTENT_PATH }}
           revalidateTarget="/art"
@@ -50,7 +50,7 @@ export default async function ArtPage() {
       <OptionalSection className="about" value={content?.closingMessage}>
         <EditableText
           value={content?.closingMessage}
-          font={content?.closingMessageFont}
+          align={content?.closingMessageAlign}
           fieldKey="closingMessage"
           target={{ type: 'singleton', path: CONTENT_PATH }}
           revalidateTarget="/art"

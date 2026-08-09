@@ -48,6 +48,7 @@ export default function ProjectsGrid({ projects: initialProjects }) {
               src={project.imageUrl}
               alt={project.title}
               className="card-img"
+              sizes="(max-width: 768px) 45vw, 300px"
               zoomX={project.imageUrlZoomX ?? project.imageUrlZoom}
               zoomY={project.imageUrlZoomY ?? project.imageUrlZoom}
               posX={project.imageUrlPosX}
@@ -62,7 +63,7 @@ export default function ProjectsGrid({ projects: initialProjects }) {
               as="h3"
               className="card-title"
               value={project.title}
-              font={project.titleFont}
+              align={project.titleAlign}
               fieldKey="title"
               target={target}
               revalidateTarget="/projects"
@@ -71,7 +72,7 @@ export default function ProjectsGrid({ projects: initialProjects }) {
             <EditableText
               as="p"
               value={project.description}
-              font={project.descriptionFont}
+              align={project.descriptionAlign}
               fieldKey="description"
               multiline
               target={target}

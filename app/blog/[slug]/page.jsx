@@ -25,7 +25,7 @@ export default async function BlogPostPage({ params }) {
         <EditableText
           as="h1"
           value={post.title}
-          font={post.titleFont}
+          align={post.titleAlign}
           fieldKey="title"
           target={target}
           revalidateTarget="/blog"
@@ -34,7 +34,7 @@ export default async function BlogPostPage({ params }) {
         <EditableText
           as="h3"
           value={post.category}
-          font={post.categoryFont}
+          align={post.categoryAlign}
           fieldKey="category"
           target={target}
           revalidateTarget="/blog"
@@ -48,7 +48,6 @@ export default async function BlogPostPage({ params }) {
           target={target}
           revalidateTarget="/blog"
           placeholder="Add a date…"
-          allowFont={false}
         />
       </div>
 
@@ -57,7 +56,7 @@ export default async function BlogPostPage({ params }) {
           <EditableText
             as="div"
             value={post.body}
-            font={post.bodyFont}
+            align={post.bodyAlign}
             fieldKey="body"
             multiline
             target={target}

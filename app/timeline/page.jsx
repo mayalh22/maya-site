@@ -25,7 +25,7 @@ export default async function TimelinePage() {
         <h1>Timeline</h1>
         <EditableText
           value={content?.message}
-          font={content?.messageFont}
+          align={content?.messageAlign}
           fieldKey="message"
           target={{ type: 'singleton', path: CONTENT_PATH }}
           revalidateTarget="/timeline"
@@ -38,7 +38,7 @@ export default async function TimelinePage() {
       <OptionalSection className="about" value={content?.closingMessage}>
         <EditableText
           value={content?.closingMessage}
-          font={content?.closingMessageFont}
+          align={content?.closingMessageAlign}
           fieldKey="closingMessage"
           target={{ type: 'singleton', path: CONTENT_PATH }}
           revalidateTarget="/timeline"

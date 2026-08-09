@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useAdminUser } from '@/lib/auth';
 import { useSingletonDoc } from '@/lib/useSingletonDoc';
-import { THEME_DOC_PATH, DEFAULT_THEME, FONT_OPTIONS, themeToCss } from '@/lib/theme';
+import { THEME_DOC_PATH, DEFAULT_THEME, FONT_OPTIONS, MIN_FONT_SIZE, MAX_FONT_SIZE, themeToCss } from '@/lib/theme';
 
 const COLOR_FIELDS = [
   ['primary', 'Primary'],
@@ -78,17 +78,19 @@ export default function SiteThemeWidget() {
                 </div>
               </div>
 
-              <div className="admin-field">
-                <label htmlFor="theme-textScale">Text size ({data.textScale}%)</label>
+              <div className="admin-field-row">
+                <label htmlFor="theme-fontSize">Text size</label>
                 <input
-                  id="theme-textScale"
-                  type="range"
-                  min="85"
-                  max="125"
-                  step="5"
-                  value={data.textScale}
-                  onChange={(e) => setField('textScale', Number(e.target.value))}
+                  id="theme-fontSize"
+                  className="admin-number-input"
+                  type="number"
+                  min={MIN_FONT_SIZE}
+                  max={MAX_FONT_SIZE}
+                  step="1"
+                  value={data.fontSize}
+                  onChange={(e) => setField('fontSize', Number(e.target.value))}
                 />
+                <span className="admin-field-unit">px</span>
               </div>
 
               <div className="admin-field">

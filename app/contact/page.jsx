@@ -28,7 +28,7 @@ export default async function ContactPage() {
         <h1>Contact</h1>
         <EditableText
           value={contact?.message}
-          font={contact?.messageFont}
+          align={contact?.messageAlign}
           fieldKey="message"
           target={{ type: 'singleton', path: CONTENT_PATH }}
           revalidateTarget="/contact"
@@ -52,7 +52,7 @@ export default async function ContactPage() {
       <OptionalSection className="about" value={contact?.closingMessage}>
         <EditableText
           value={contact?.closingMessage}
-          font={contact?.closingMessageFont}
+          align={contact?.closingMessageAlign}
           fieldKey="closingMessage"
           target={{ type: 'singleton', path: CONTENT_PATH }}
           revalidateTarget="/contact"

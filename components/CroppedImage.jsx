@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function CroppedImage({
   src,
   alt,
@@ -12,6 +14,8 @@ export default function CroppedImage({
   style,
   onClick,
   loading = 'lazy',
+  priority = false,
+  sizes = '(max-width: 768px) 45vw, 320px',
 }) {
   if (!src) return null;
 
@@ -21,14 +25,16 @@ export default function CroppedImage({
   return (
     <span
       className={className}
-      style={{ '--dim-w': sizeW ?? 1, '--dim-h': sizeH ?? 1, ...style }}
+      style={{ position: 'relative', '--dim-w': sizeW ?? 1, '--dim-h': sizeH ?? 1, ...style }}
       onClick={onClick}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Image
         src={src}
         alt={alt || ''}
-        loading={loading}
+        fill
+        sizes={sizes}
+        loading={priority ? undefined : loading}
+        priority={priority}
         style={{
           transform: `scale(${zx}, ${zy})`,
           objectPosition: `${posX ?? 50}% ${posY ?? 50}%`,

@@ -44,7 +44,7 @@ export default function BlogList({ posts: initialPosts }) {
               as="h3"
               className="card-title"
               value={post.title}
-              font={post.titleFont}
+              align={post.titleAlign}
               fieldKey="title"
               target={target}
               revalidateTarget="/blog"
@@ -53,7 +53,7 @@ export default function BlogList({ posts: initialPosts }) {
             <EditableText
               as="p"
               value={post.description}
-              font={post.descriptionFont}
+              align={post.descriptionAlign}
               fieldKey="description"
               multiline
               target={target}
@@ -68,7 +68,6 @@ export default function BlogList({ posts: initialPosts }) {
               target={target}
               revalidateTarget="/blog"
               placeholder="Add a date…"
-              allowFont={false}
             />
           </>
         );

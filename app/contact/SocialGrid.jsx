@@ -44,7 +44,7 @@ export default function SocialGrid({ social: initialSocial }) {
             <EditableText
               as="h3"
               value={link.platform}
-              font={link.platformFont}
+              align={link.platformAlign}
               fieldKey="platform"
               target={target}
               revalidateTarget="/contact"
@@ -53,7 +53,7 @@ export default function SocialGrid({ social: initialSocial }) {
             <EditableText
               as="p"
               value={link.username}
-              font={link.usernameFont}
+              align={link.usernameAlign}
               fieldKey="username"
               target={target}
               revalidateTarget="/contact"
@@ -62,7 +62,7 @@ export default function SocialGrid({ social: initialSocial }) {
             <EditableText
               as="p"
               value={link.description}
-              font={link.descriptionFont}
+              align={link.descriptionAlign}
               fieldKey="description"
               target={target}
               revalidateTarget="/contact"

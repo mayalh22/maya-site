@@ -54,6 +54,7 @@ export default function EnlargeArt({ pieces: initialPieces }) {
                 alt={piece.title}
                 className="card-img"
                 style={{ cursor: 'pointer' }}
+                sizes="(max-width: 768px) 45vw, 300px"
                 zoomX={piece.imageUrlZoomX ?? piece.imageUrlZoom}
                 zoomY={piece.imageUrlZoomY ?? piece.imageUrlZoom}
                 posX={piece.imageUrlPosX}
@@ -69,7 +70,7 @@ export default function EnlargeArt({ pieces: initialPieces }) {
                 as="h4"
                 className="card-title"
                 value={piece.title}
-                font={piece.titleFont}
+                align={piece.titleAlign}
                 fieldKey="title"
                 target={target}
                 revalidateTarget="/art"
@@ -83,7 +84,6 @@ export default function EnlargeArt({ pieces: initialPieces }) {
                 target={target}
                 revalidateTarget="/art"
                 placeholder="Add a date…"
-                allowFont={false}
               />
               {piece.siteUrl && (
                 <a href={piece.siteUrl} className="btn btn-small" target="_blank" rel="noopener noreferrer">

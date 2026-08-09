@@ -3,48 +3,54 @@
 import { useEffect, useRef, useState } from 'react';
 import { useAdminUser } from '@/lib/auth';
 import { persistPatch } from '@/lib/editingPersist';
-import { FONT_OPTIONS, fontFamilyFor } from '@/lib/theme';
+
+const ALIGN_OPTIONS = [
+  { value: 'left', label: 'Align left', glyph: '⟸' },
+  { value: 'center', label: 'Align center', glyph: '≡' },
+  { value: 'right', label: 'Align right', glyph: '⟹' },
+];
 
 // Click-to-edit text for the live/preview pages. Non-owners (and the brief
 // pre-hydration window before auth resolves) get exactly the plain tag they'd
 // have gotten before this component existed, so there's no layout shift or
 // hydration mismatch — same guarantee GridLayoutEditor already relies on.
+// Typography (font family) is theme-controlled only; the one per-element
+// override this component owns is text alignment.
 export default function EditableText({
   value,
-  font,
+  align,
   target,
   fieldKey,
-  fontKey,
+  alignKey,
   revalidateTarget,
   as: Tag = 'p',
   multiline = false,
   type = 'text',
   placeholder = 'Click to add text…',
   className,
-  allowFont = true,
   formatDisplay,
 }) {
   const { isOwner } = useAdminUser();
   const [editing, setEditing] = useState(false);
   const [draftValue, setDraftValue] = useState(value || '');
-  const [draftFont, setDraftFont] = useState(font || '');
+  const [draftAlign, setDraftAlign] = useState(align || '');
   const [saving, setSaving] = useState(false);
   const containerRef = useRef(null);
   const inputRef = useRef(null);
-  const fKey = fontKey || `${fieldKey}Font`;
+  const aKey = alignKey || `${fieldKey}Align`;
 
   useEffect(() => {
     if (editing) return;
     setDraftValue(value || '');
-    setDraftFont(font || '');
-  }, [value, font, editing]);
+    setDraftAlign(align || '');
+  }, [value, align, editing]);
 
   useEffect(() => {
     if (editing) inputRef.current?.focus();
   }, [editing]);
 
   const display = formatDisplay ? formatDisplay(value) : value;
-  const style = fontFamilyFor(font) ? { fontFamily: fontFamilyFor(font) } : undefined;
+  const style = align ? { textAlign: align } : undefined;
 
   if (!isOwner) {
     if (!value) return null;
@@ -57,10 +63,10 @@ export default function EditableText({
 
   async function commit() {
     setEditing(false);
-    if (draftValue === (value || '') && draftFont === (font || '')) return;
+    if (draftValue === (value || '') && draftAlign === (align || '')) return;
     setSaving(true);
     try {
-      await persistPatch(target, { [fieldKey]: draftValue, [fKey]: draftFont || '' }, revalidateTarget);
+      await persistPatch(target, { [fieldKey]: draftValue, [aKey]: draftAlign || '' }, revalidateTarget);
     } finally {
       setSaving(false);
     }
@@ -68,7 +74,7 @@ export default function EditableText({
 
   function cancel() {
     setDraftValue(value || '');
-    setDraftFont(font || '');
+    setDraftAlign(align || '');
     setEditing(false);
   }
 
@@ -117,7 +123,7 @@ export default function EditableText({
           placeholder={placeholder}
           onChange={(e) => setDraftValue(e.target.value)}
           onKeyDown={handleKeyDown}
-          style={fontFamilyFor(draftFont) ? { fontFamily: fontFamilyFor(draftFont) } : undefined}
+          style={style}
         />
       ) : (
         <input
@@ -127,32 +133,24 @@ export default function EditableText({
           placeholder={placeholder}
           onChange={(e) => setDraftValue(e.target.value)}
           onKeyDown={handleKeyDown}
-          style={fontFamilyFor(draftFont) ? { fontFamily: fontFamilyFor(draftFont) } : undefined}
+          style={style}
         />
       )}
-      {allowFont && (
-        <span className="editable-text-fonts">
+      <span className="editable-text-align" role="group" aria-label="Text alignment">
+        {ALIGN_OPTIONS.map((opt) => (
           <button
             type="button"
-            className={!draftFont ? 'font-chip font-chip-active' : 'font-chip'}
-            onClick={() => setDraftFont('')}
+            key={opt.value}
+            className={draftAlign === opt.value ? 'align-chip align-chip-active' : 'align-chip'}
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={() => setDraftAlign(draftAlign === opt.value ? '' : opt.value)}
+            title={opt.label}
+            aria-pressed={draftAlign === opt.value}
           >
-            Site default
+            {opt.glyph}
           </button>
-          {FONT_OPTIONS.map((opt) => (
-            <button
-              type="button"
-              key={opt.value}
-              className={draftFont === opt.value ? 'font-chip font-chip-active' : 'font-chip'}
-              style={{ fontFamily: opt.fontFamily }}
-              onClick={() => setDraftFont(opt.value)}
-              title={opt.label}
-            >
-              Aa
-            </button>
-          ))}
-        </span>
-      )}
+        ))}
+      </span>
       <span className="editable-text-actions">
         <button type="button" className="btn btn-small" onMouseDown={(e) => e.preventDefault()} onClick={commit} disabled={saving}>
           {saving ? 'Saving…' : 'Done'}

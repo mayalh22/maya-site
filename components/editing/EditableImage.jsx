@@ -41,6 +41,8 @@ export default function EditableImage({
   style,
   onClick,
   loading = 'lazy',
+  priority = false,
+  sizes,
   zoomX,
   zoomY,
   posX,
@@ -86,7 +88,19 @@ export default function EditableImage({
   }, [zoomX, zoomY, posX, posY, sizeW, sizeH, src, editing]);
 
   if (!isOwner) {
-    return <CroppedImage src={src} alt={alt} className={className} style={style} onClick={onClick} loading={loading} {...crop} />;
+    return (
+      <CroppedImage
+        src={src}
+        alt={alt}
+        className={className}
+        style={style}
+        onClick={onClick}
+        loading={loading}
+        priority={priority}
+        sizes={sizes}
+        {...crop}
+      />
+    );
   }
 
   function keysFor(patch) {
@@ -194,7 +208,16 @@ export default function EditableImage({
         onPointerCancel={editing ? (e) => { handlePointerUp(e); handleHandlePointerUp(e); } : undefined}
         onWheel={editing ? handleWheel : undefined}
       >
-        <CroppedImage src={src} alt={alt} className={className} loading={loading} onClick={editing ? undefined : onClick} {...crop} />
+        <CroppedImage
+          src={src}
+          alt={alt}
+          className={className}
+          loading={loading}
+          priority={priority}
+          sizes={sizes}
+          onClick={editing ? undefined : onClick}
+          {...crop}
+        />
         {editing &&
           HANDLES.map((handle) => (
             <span

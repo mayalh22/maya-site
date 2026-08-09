@@ -11,7 +11,6 @@
   --field-text: #202221;
 
   --danger:    #b3261e;
-  --highlight: #d6336c;
   --on-color:  #fff;
   --overlay:   color-mix(in srgb, var(--text) 80%, transparent);
 
@@ -21,13 +20,13 @@
   --font-heading: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
   --font-body: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
 
-  --space-xs: 1rem;
-  --space-sm: 1rem;
-  --space-md: 1rem;
-  --space-lg: 1rem;
-  --space-xl: 1rem;
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 0.75rem;
+  --space-lg: 1.25rem;
+  --space-xl: 2rem;
 
-  --size-heading: clamp(1.4rem, 2.5vw, 1.75rem);
+  --size-heading: clamp(1.15rem, 2vw, 1.4rem);
   --size-body: 1rem;
 
   --radius: 0px;
@@ -327,7 +326,7 @@ a:hover {
   overflow-y: visible;
   -webkit-overflow-scrolling: touch;
   max-width: 100%;
-  padding-top: 8px;
+  padding-top: var(--space-sm);
 }
 .site-nav ul {
   display: flex;
@@ -335,7 +334,7 @@ a:hover {
   gap: var(--space-xs);
   list-style: none;
   margin: 0;
-  padding: 8px 2px var(--space-xs);
+  padding: var(--space-sm) var(--space-xs) var(--space-xs);
   white-space: nowrap;
 }
 .nav-link {
@@ -425,7 +424,7 @@ a:hover {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding: 1.4rem var(--space-xs) var(--space-md);
+  padding: var(--space-lg) var(--space-xs) var(--space-md);
   scrollbar-width: thin;
   scrollbar-color: var(--accent) transparent;
 }
@@ -653,7 +652,7 @@ a:hover {
 .photo-date {
   font-size: var(--size-body);
   color: var(--accent);
-  margin: 2px 0 0;
+  margin: var(--space-xs) 0 0;
 }
 
 /* Favorites */
@@ -712,8 +711,8 @@ margin: 0 auto var(--space-xs);  border-radius: calc(var(--radius) - 4px);
 
 .favorites-rank {
   position: absolute;
-  top: 4px;
-  left: 4px;
+  top: var(--space-xs);
+  left: var(--space-xs);
   z-index: 3;
   display: flex;
   align-items: center;
@@ -734,7 +733,7 @@ margin: 0 auto var(--space-xs);  border-radius: calc(var(--radius) - 4px);
 .favorites-sub {
   font-size: var(--size-body);
   color: var(--accent);
-  margin: 2px 0 0;
+  margin: var(--space-xs) 0 0;
 }
 
 /* Buttons and tags */
@@ -786,7 +785,7 @@ margin: 0 auto var(--space-xs);  border-radius: calc(var(--radius) - 4px);
 .btn-more-fields {
   background: none;
   border-color: transparent;
-  color: var(--highlight);
+  color: var(--primary);
   outline: none;
   padding-left: 0;
   padding-right: 0;
@@ -794,7 +793,7 @@ margin: 0 auto var(--space-xs);  border-radius: calc(var(--radius) - 4px);
 .btn-more-fields:hover {
   background: none;
   border-color: transparent;
-  color: var(--highlight);
+  color: var(--primary);
   text-decoration: underline;
 }
 
@@ -887,8 +886,8 @@ footer p {
   border-radius: calc(var(--radius) - 4px);
 }
 .attachment-chip-image img {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
   display: block;
 }
@@ -1056,10 +1055,39 @@ footer p {
   background-color: var(--field-bg);
   color: var(--field-text);
 }
+.admin-field select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: calc(var(--space-lg) + var(--space-sm));
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-sm) center;
+  background-size: 0.7em;
+}
 .admin-field textarea {
   min-height: 140px;
   resize: vertical;
   white-space: normal;
+}
+
+.admin-field-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  text-align: left;
+}
+.admin-number-input {
+  width: 4ch;
+  font: inherit;
+  padding: 2px var(--space-xs);
+  border: var(--border-width, 1px) solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--field-bg);
+  color: var(--field-text);
+}
+.admin-field-unit {
+  font-size: var(--size-body);
+  color: var(--muted);
 }
 
 .admin-color-grid {
@@ -1077,8 +1105,8 @@ footer p {
   font-size: var(--size-body);
 }
 .admin-color-row input[type='color'] {
-  width: 40px;
-  height: 32px;
+  width: 32px;
+  height: 28px;
   padding: 0;
   border: var(--border-width, 1px) solid var(--border);
   border-radius: var(--radius);
@@ -1154,8 +1182,8 @@ footer p {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
   font-size: var(--size-body);
 }
@@ -1165,8 +1193,33 @@ footer p {
   flex-direction: column;
   gap: var(--space-sm);
 }
-.attachments-field input[type='file'] {
-  font-size: var(--size-body);
+
+.file-input {
+  position: relative;
+  display: inline-block;
+}
+.file-input-native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.file-input-label {
+  margin: 0;
+  cursor: pointer;
+}
+.file-input-native:focus-visible + .file-input-label {
+  outline: var(--border-width, 1px) solid var(--accent);
+  outline-offset: 2px;
+}
+.file-input-native:disabled + .file-input-label {
+  opacity: 0.6;
+  cursor: default;
 }
 
 .image-crop-field {
@@ -1213,8 +1266,8 @@ footer p {
 }
 
 .admin-list-thumb {
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   object-fit: cover;
   border-radius: calc(var(--radius) - 4px);
   flex-shrink: 0;
@@ -1282,7 +1335,7 @@ footer p {
 
 .layout-editor {
   position: absolute;
-  top: -2.75rem;
+  top: -2rem;
   right: 0;
   z-index: 5;
 }
@@ -1299,11 +1352,11 @@ footer p {
 
 .layout-editor-handles {
   position: absolute;
-  top: 2.25rem;
+  top: 1.75rem;
   right: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--space-xs);
   min-width: 120px;
   padding: var(--space-sm) var(--space-md);
   border: var(--border-width, 1px) solid var(--border);
@@ -1425,7 +1478,7 @@ footer p {
   color: var(--field-text);
 }
 .editable-text-editing .btn-secondary,
-.editable-text-editing .font-chip,
+.editable-text-editing .align-chip,
 .editable-image-toolbar .btn-secondary {
   color: var(--field-text);
 }
@@ -1451,22 +1504,22 @@ footer p {
   min-height: 5em;
   resize: vertical;
 }
-.editable-text-fonts {
+.editable-text-align {
   display: flex;
-  flex-wrap: wrap;
   gap: var(--space-xs);
   margin-bottom: var(--space-xs);
 }
-.font-chip {
+.align-chip {
   padding: 2px var(--space-sm);
   font-size: var(--size-body);
+  line-height: 1;
   border: var(--border-width, 1px) solid var(--border);
   border-radius: var(--radius);
   background: transparent;
   color: var(--text);
   cursor: pointer;
 }
-.font-chip-active {
+.align-chip-active {
   border-color: var(--accent);
   color: var(--accent);
   background-color: color-mix(in srgb, var(--accent) 12%, transparent);
@@ -1522,19 +1575,16 @@ footer p {
 }
 
 .editable-image-toolbar {
-  position: absolute;
-  left: var(--space-xs);
-  bottom: var(--space-xs);
-  z-index: 6;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
-  max-width: calc(100% - 2 * var(--space-xs));
+  gap: var(--space-xs);
+  margin-top: var(--space-xs);
   padding: var(--space-xs) var(--space-sm);
   background-color: color-mix(in srgb, var(--field-bg) 92%, transparent);
   color: var(--field-text);
   font-size: var(--size-body);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: var(--radius);
 }
 .editable-image-url-input {
@@ -1611,7 +1661,7 @@ footer p {
 .site-theme-panel {
   position: fixed;
   right: var(--space-md);
-  bottom: calc(var(--space-md) + 3.25rem);
+  bottom: calc(var(--space-md) + 2.5rem);
   z-index: 40;
   width: min(320px, calc(100vw - 2 * var(--space-md)));
   max-height: 70vh;
@@ -1621,4 +1671,83 @@ footer p {
   border-radius: var(--radius);
   background-color: var(--bg);
   color: var(--text);
+}
+
+/* Freeform canvas (foundation — see components/canvas/*.jsx). The whole
+   canvas scales via pure CSS (no JS measurement) to fit the visitor's
+   viewport width, so authored positions render identically for SSR and
+   CSR. Desktop/mobile are two independently authored layouts switched by
+   the media query below, matching CanvasElement's variable pairs. */
+
+.canvas-viewport {
+  position: relative;
+  width: 100%;
+  height: calc(var(--canvas-desktop-height) * 100vw / var(--canvas-desktop-width));
+  overflow: hidden;
+}
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--canvas-desktop-width);
+  height: var(--canvas-desktop-height);
+  transform: scale(calc(100vw / var(--canvas-desktop-width)));
+  transform-origin: top left;
+}
+
+.canvas-element {
+  position: absolute;
+  left: var(--el-x-d);
+  top: var(--el-y-d);
+  width: var(--el-w-d);
+  height: var(--el-h-d);
+  z-index: var(--el-z-d);
+}
+
+@media (max-width: 767px) {
+  .canvas-viewport {
+    height: calc(var(--canvas-mobile-height) * 100vw / var(--canvas-mobile-width));
+  }
+  .canvas {
+    width: var(--canvas-mobile-width);
+    height: var(--canvas-mobile-height);
+    transform: scale(calc(100vw / var(--canvas-mobile-width)));
+  }
+  .canvas-element {
+    left: var(--el-x-m);
+    top: var(--el-y-m);
+    width: var(--el-w-m);
+    height: var(--el-h-m);
+    z-index: var(--el-z-m);
+  }
+}
+
+/* Dev-only fixture boxes for app/_canvas-sandbox — not used by real pages. */
+.canvas-sandbox-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: var(--space-sm);
+  text-align: center;
+  font-size: var(--size-body);
+  border: var(--border-width, 1px) dashed var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+}
+.canvas-sandbox-primary {
+  background-color: color-mix(in srgb, var(--primary) 15%, var(--card-bg));
+  border-color: var(--primary);
+}
+.canvas-sandbox-accent {
+  background-color: color-mix(in srgb, var(--accent) 15%, var(--card-bg));
+  border-color: var(--accent);
+}
+.canvas-sandbox-card {
+  background-color: var(--card-bg);
+}
+.canvas-sandbox-overlap {
+  background-color: color-mix(in srgb, var(--danger) 15%, var(--card-bg));
+  border-color: var(--danger);
 }

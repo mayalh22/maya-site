@@ -25,7 +25,7 @@ export default async function FavoritesPage() {
         <h1>Favorites</h1>
         <EditableText
           value={content?.message}
-          font={content?.messageFont}
+          align={content?.messageAlign}
           fieldKey="message"
           target={{ type: 'singleton', path: CONTENT_PATH }}
           revalidateTarget="/favorites"
@@ -38,7 +38,7 @@ export default async function FavoritesPage() {
       <OptionalSection className="about" value={content?.closingMessage}>
         <EditableText
           value={content?.closingMessage}
-          font={content?.closingMessageFont}
+          align={content?.closingMessageAlign}
           fieldKey="closingMessage"
           target={{ type: 'singleton', path: CONTENT_PATH }}
           revalidateTarget="/favorites"
