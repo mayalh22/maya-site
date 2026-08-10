@@ -7,6 +7,7 @@ import ItemEditPanel from '@/components/editing/ItemEditPanel';
 import { useAdminUser } from '@/lib/auth';
 import { useOwnerCollection } from '@/lib/useOwnerCollection';
 import { useDragReorder } from '@/lib/useDragReorder';
+import OwnerControlsPortal from '@/components/admin/OwnerControlsPortal';
 import { shapeClassName, SHAPE_FIELD } from '@/lib/shape';
 
 const CREATE_FIELDS = [
@@ -42,11 +43,13 @@ export default function SocialGrid({ social: initialSocial }) {
   return (
     <>
       {isOwner && list.length > 1 && (
-        <div className="rearrange-row">
-          <button type="button" className="layout-editor-toggle" onClick={() => setRearranging((v) => !v)}>
-            {rearranging ? 'Done rearranging' : 'Rearrange'}
-          </button>
-        </div>
+        <OwnerControlsPortal>
+          <div className="rearrange-row">
+            <button type="button" className="layout-editor-toggle" onClick={() => setRearranging((v) => !v)}>
+              {rearranging ? 'Done rearranging' : 'Rearrange'}
+            </button>
+          </div>
+        </OwnerControlsPortal>
       )}
       <div className="contact-grid">
         {list.map((link, index) => {

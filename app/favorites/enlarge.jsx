@@ -7,6 +7,7 @@ import EditableImage from '@/components/editing/EditableImage';
 import EditableText from '@/components/editing/EditableText';
 import ItemEditPanel from '@/components/editing/ItemEditPanel';
 import GridLayoutEditor from '@/components/admin/GridLayoutEditor';
+import OwnerControlsPortal from '@/components/admin/OwnerControlsPortal';
 import { useAdminUser } from '@/lib/auth';
 import { useOwnerCollection } from '@/lib/useOwnerCollection';
 import { useDragReorder, reorderSubset } from '@/lib/useDragReorder';
@@ -41,14 +42,17 @@ function FavoritesTypeSection({ type, typeItems, list, reorder, layout, isOwner,
     <section className="favorites-section">
       <div className="favorites-type-label">{type}s</div>
       {isOwner && typeItems.length > 1 && (
-        <div className="rearrange-row">
-          <button type="button" className="layout-editor-toggle" onClick={() => setRearranging((v) => !v)}>
-            {rearranging ? 'Done rearranging' : 'Rearrange'}
-          </button>
-        </div>
+        <OwnerControlsPortal>
+          <div className="rearrange-row">
+            <button type="button" className="layout-editor-toggle" onClick={() => setRearranging((v) => !v)}>
+              {rearranging ? 'Done rearranging' : 'Rearrange'} — {type}s
+            </button>
+          </div>
+        </OwnerControlsPortal>
       )}
       <GridLayoutEditor
         sectionKey={`favorites-${type}`}
+        label={`${type}s`}
         defaultGap={16}
         defaultItemsPerRow={7}
         defaultWidth={140}

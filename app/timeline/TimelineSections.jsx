@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Section from '@/components/Section';
 import AttachmentList from '@/components/AttachmentList';
 import GridLayoutEditor from '@/components/admin/GridLayoutEditor';
+import OwnerControlsPortal from '@/components/admin/OwnerControlsPortal';
 import EditableText from '@/components/editing/EditableText';
 import ItemEditPanel from '@/components/editing/ItemEditPanel';
 import { useAdminUser } from '@/lib/auth';
@@ -86,7 +87,7 @@ function DateRange({ event, target, isOwner }) {
   );
 }
 
-function TimelineKindSection({ kind, kindItems, list, reorder, layout, isOwner, patchItem, deleteItem }) {
+function TimelineKindSection({ kind, title, kindItems, list, reorder, layout, isOwner, patchItem, deleteItem }) {
   const [rearranging, setRearranging] = useState(false);
   const { dragHandlers, dragIndex } = useDragReorder(kindItems, (nextKindItems) => {
     reorder(reorderSubset(list, (entry) => entry.kind === kind, nextKindItems));
@@ -95,14 +96,17 @@ function TimelineKindSection({ kind, kindItems, list, reorder, layout, isOwner, 
   return (
     <>
       {isOwner && kindItems.length > 1 && (
-        <div className="rearrange-row">
-          <button type="button" className="layout-editor-toggle" onClick={() => setRearranging((v) => !v)}>
-            {rearranging ? 'Done rearranging' : 'Rearrange'}
-          </button>
-        </div>
+        <OwnerControlsPortal>
+          <div className="rearrange-row">
+            <button type="button" className="layout-editor-toggle" onClick={() => setRearranging((v) => !v)}>
+              {rearranging ? 'Done rearranging' : 'Rearrange'} — {title}
+            </button>
+          </div>
+        </OwnerControlsPortal>
       )}
       <GridLayoutEditor
         sectionKey={`timeline-${kind}`}
+        label={title}
         defaultGap={16}
         defaultItemsPerRow={4}
         defaultWidth={240}
@@ -255,6 +259,7 @@ export default function TimelineSections({ entries: initialEntries, layout }) {
             ) : (
               <TimelineKindSection
                 kind={kind}
+                title={title}
                 kindItems={kindItems}
                 list={list}
                 reorder={reorder}

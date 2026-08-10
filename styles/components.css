@@ -1266,17 +1266,25 @@ footer p {
   margin: 0;
 }
 
-/* Owner-only "view as visitor" spacing editor */
+/* Owner-only editing controls, stacked in a fixed panel at the top-left of
+   the viewport (see #owner-controls-stack in app/layout.jsx) so they're
+   always reachable without scrolling to whatever section they control. */
+
+.owner-controls-stack {
+  position: fixed;
+  top: var(--space-md);
+  left: var(--space-md);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  max-height: calc(100vh - 2 * var(--space-md));
+  overflow-y: auto;
+}
 
 .layout-editable {
   position: relative;
-}
-
-.layout-editor {
-  position: absolute;
-  top: -2rem;
-  right: 0;
-  z-index: 5;
 }
 
 .layout-editor-toggle {
@@ -1290,9 +1298,6 @@ footer p {
 }
 
 .layout-editor-handles {
-  position: absolute;
-  top: 1.75rem;
-  right: 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
@@ -1353,8 +1358,6 @@ footer p {
 
 .rearrange-row {
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: var(--space-xs);
 }
 
 .card[draggable='true'],

@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { useAdminUser } from '@/lib/auth';
 import { getSingleton, setSingleton } from '@/lib/db';
 import { revalidatePublicPath } from '@/lib/revalidate';
+import OwnerControlsPortal from '@/components/admin/OwnerControlsPortal';
 
 const LAYOUT_DOC = 'settings/layout';
 
@@ -28,6 +29,7 @@ function clamp(value, min, max) {
 // size --item-width and --grid-gap.
 export default function GridLayoutEditor({
   sectionKey,
+  label,
   defaultGap = 16,
   defaultItemsPerRow = 4,
   defaultWidth = 240,
@@ -95,54 +97,57 @@ export default function GridLayoutEditor({
     <div className="layout-editable" style={style}>
       {children}
       {isOwner && (
-        <div className="layout-editor">
-          <button type="button" className="layout-editor-toggle" onClick={() => setEditing((v) => !v)}>
-            {editing ? 'Done spacing' : 'Edit spacing'}
-          </button>
-          {editing && (
-            <div className="layout-editor-handles">
-              <span className="layout-handle layout-stepper" title="Items before a new row starts">
-                <button
-                  type="button"
-                  onClick={() => changeItemsPerRow(-1)}
-                  disabled={itemsPerRow <= MIN_ITEMS_PER_ROW}
-                  aria-label="Fewer items per row"
+        <OwnerControlsPortal>
+          <div className="layout-editor">
+            <button type="button" className="layout-editor-toggle" onClick={() => setEditing((v) => !v)}>
+              {editing ? 'Done spacing' : 'Edit spacing'}
+              {label ? ` — ${label}` : ''}
+            </button>
+            {editing && (
+              <div className="layout-editor-handles">
+                <span className="layout-handle layout-stepper" title="Items before a new row starts">
+                  <button
+                    type="button"
+                    onClick={() => changeItemsPerRow(-1)}
+                    disabled={itemsPerRow <= MIN_ITEMS_PER_ROW}
+                    aria-label="Fewer items per row"
+                  >
+                    −
+                  </button>
+                  {itemsPerRow} per row
+                  <button
+                    type="button"
+                    onClick={() => changeItemsPerRow(1)}
+                    disabled={itemsPerRow >= MAX_ITEMS_PER_ROW}
+                    aria-label="More items per row"
+                  >
+                    +
+                  </button>
+                </span>
+                <span
+                  className="layout-handle"
+                  title={`Width: ${width}px — drag to resize`}
+                  onPointerDown={(e) => handlePointerDown('width', e)}
+                  onPointerMove={handlePointerMove}
+                  onPointerUp={handlePointerUp}
+                  onPointerCancel={handlePointerUp}
                 >
-                  −
-                </button>
-                {itemsPerRow} per row
-                <button
-                  type="button"
-                  onClick={() => changeItemsPerRow(1)}
-                  disabled={itemsPerRow >= MAX_ITEMS_PER_ROW}
-                  aria-label="More items per row"
+                  ↔ Width
+                </span>
+                <span
+                  className="layout-handle"
+                  title={`Gap: ${gap}px — drag to resize`}
+                  onPointerDown={(e) => handlePointerDown('gap', e)}
+                  onPointerMove={handlePointerMove}
+                  onPointerUp={handlePointerUp}
+                  onPointerCancel={handlePointerUp}
                 >
-                  +
-                </button>
-              </span>
-              <span
-                className="layout-handle"
-                title={`Width: ${width}px — drag to resize`}
-                onPointerDown={(e) => handlePointerDown('width', e)}
-                onPointerMove={handlePointerMove}
-                onPointerUp={handlePointerUp}
-                onPointerCancel={handlePointerUp}
-              >
-                ↔ Width
-              </span>
-              <span
-                className="layout-handle"
-                title={`Gap: ${gap}px — drag to resize`}
-                onPointerDown={(e) => handlePointerDown('gap', e)}
-                onPointerMove={handlePointerMove}
-                onPointerUp={handlePointerUp}
-                onPointerCancel={handlePointerUp}
-              >
-                ↔ Gap
-              </span>
-            </div>
-          )}
-        </div>
+                  ↔ Gap
+                </span>
+              </div>
+            )}
+          </div>
+        </OwnerControlsPortal>
       )}
     </div>
   );

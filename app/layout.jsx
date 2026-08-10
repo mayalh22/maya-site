@@ -35,6 +35,7 @@ export default async function RootLayout({ children }) {
         <CustomCursor />
         <OwnerStrip />
         <Header />
+        <div id="owner-controls-stack" className="owner-controls-stack" />
         {children}
         <SiteThemeWidget />
         <footer>
