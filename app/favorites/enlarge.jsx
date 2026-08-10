@@ -9,6 +9,7 @@ import ItemEditPanel from '@/components/editing/ItemEditPanel';
 import GridLayoutEditor from '@/components/admin/GridLayoutEditor';
 import { useAdminUser } from '@/lib/auth';
 import { useOwnerCollection } from '@/lib/useOwnerCollection';
+import { useDragReorder, reorderSubset } from '@/lib/useDragReorder';
 import { shapeClassName, SHAPE_FIELD } from '@/lib/shape';
 
 const TYPES = ['Movie', 'Show', 'Book'];
@@ -30,9 +31,113 @@ const EXTRA_FIELDS = [
   SHAPE_FIELD,
 ];
 
+function FavoritesTypeSection({ type, typeItems, list, reorder, layout, isOwner, patchItem, deleteItem, onSelect }) {
+  const [rearranging, setRearranging] = useState(false);
+  const { dragHandlers, dragIndex } = useDragReorder(typeItems, (nextTypeItems) => {
+    reorder(reorderSubset(list, (item) => item.type === type, nextTypeItems));
+  });
+
+  return (
+    <section className="favorites-section">
+      <div className="favorites-type-label">{type}s</div>
+      {isOwner && typeItems.length > 1 && (
+        <div className="rearrange-row">
+          <button type="button" className="layout-editor-toggle" onClick={() => setRearranging((v) => !v)}>
+            {rearranging ? 'Done rearranging' : 'Rearrange'}
+          </button>
+        </div>
+      )}
+      <GridLayoutEditor
+        sectionKey={`favorites-${type}`}
+        defaultGap={16}
+        defaultItemsPerRow={7}
+        defaultWidth={140}
+        initial={layout?.[`favorites-${type}`]}
+        revalidateTarget="/favorites"
+      >
+        <div className="favorites-grid">
+          {typeItems.map((item, index) => {
+            const target = { type: 'item', collection: 'favorites', id: item.id };
+            return (
+              <div
+                key={item.id}
+                className={`favorites-card ${shapeClassName(item.shape, index)} ${dragIndex === index ? 'dragging' : ''}`.trim()}
+                {...(rearranging ? dragHandlers(index) : {})}
+              >
+                <span className="favorites-rank">{index + 1}.</span>
+                <EditableImage
+                  src={item.imageUrl}
+                  alt={item.title}
+                  className="favorites-img"
+                  style={{ cursor: 'pointer' }}
+                  sizes="140px"
+                  zoomX={item.imageUrlZoomX ?? item.imageUrlZoom}
+                  zoomY={item.imageUrlZoomY ?? item.imageUrlZoom}
+                  posX={item.imageUrlPosX}
+                  posY={item.imageUrlPosY}
+                  sizeW={item.imageUrlSizeW}
+                  sizeH={item.imageUrlSizeH}
+                  cropKeyPrefix="imageUrl"
+                  target={target}
+                  revalidateTarget="/favorites"
+                  onClick={() => onSelect(item.id)}
+                />
+                <EditableText
+                  as="p"
+                  className="favorites-title"
+                  value={item.title}
+                  align={item.titleAlign}
+                  fieldKey="title"
+                  target={target}
+                  revalidateTarget="/favorites"
+                  placeholder="Title"
+                />
+                <EditableText
+                  as="p"
+                  className="favorites-sub"
+                  value={item.subtitle}
+                  align={item.subtitleAlign}
+                  fieldKey="subtitle"
+                  target={target}
+                  revalidateTarget="/favorites"
+                  placeholder="Add a subtitle…"
+                />
+                {item.siteUrl && (
+                  <a
+                    href={item.siteUrl}
+                    className="btn btn-small"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Visit site
+                  </a>
+                )}
+                <AttachmentList attachments={item.attachments} />
+                {isOwner && (
+                  <ItemEditPanel
+                    fields={EXTRA_FIELDS}
+                    initial={item}
+                    collectionName="favorites"
+                    itemId={item.id}
+                    triggerLabel="✎ More fields"
+                    triggerClassName="btn-more-fields"
+                    onSubmit={(form) => patchItem(item.id, form)}
+                    onDelete={() => deleteItem(item.id)}
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </GridLayoutEditor>
+    </section>
+  );
+}
+
 export default function Enlarge({ favorites: initialFavorites, layout }) {
   const { isOwner } = useAdminUser();
-  const { items, patchItem, createItem, deleteItem } = useOwnerCollection('favorites', {
+  const { items, patchItem, createItem, deleteItem, reorder } = useOwnerCollection('favorites', {
     initialItems: initialFavorites,
     reorderable: true,
     revalidateTarget: '/favorites',
@@ -51,89 +156,18 @@ export default function Enlarge({ favorites: initialFavorites, layout }) {
         const typeItems = list.filter((item) => item.type === type);
         if (typeItems.length === 0 && !isOwner) return null;
         return (
-          <section key={type} className="favorites-section">
-            <div className="favorites-type-label">{type}s</div>
-            <GridLayoutEditor
-              sectionKey={`favorites-${type}`}
-              defaultGap={16}
-              defaultItemsPerRow={7}
-              defaultWidth={140}
-              initial={layout?.[`favorites-${type}`]}
-              revalidateTarget="/favorites"
-            >
-              <div className="favorites-grid">
-                {typeItems.map((item, index) => {
-                  const target = { type: 'item', collection: 'favorites', id: item.id };
-                  return (
-                    <div key={item.id} className={`favorites-card ${shapeClassName(item.shape, index)}`.trim()}>
-                      <span className="favorites-rank">{index + 1}.</span>
-                      <EditableImage
-                        src={item.imageUrl}
-                        alt={item.title}
-                        className="favorites-img"
-                        style={{ cursor: 'pointer' }}
-                        sizes="140px"
-                        zoomX={item.imageUrlZoomX ?? item.imageUrlZoom}
-                        zoomY={item.imageUrlZoomY ?? item.imageUrlZoom}
-                        posX={item.imageUrlPosX}
-                        posY={item.imageUrlPosY}
-                        sizeW={item.imageUrlSizeW}
-                        sizeH={item.imageUrlSizeH}
-                        cropKeyPrefix="imageUrl"
-                        target={target}
-                        revalidateTarget="/favorites"
-                        onClick={() => setSelectedId(item.id)}
-                      />
-                      <EditableText
-                        as="p"
-                        className="favorites-title"
-                        value={item.title}
-                        align={item.titleAlign}
-                        fieldKey="title"
-                        target={target}
-                        revalidateTarget="/favorites"
-                        placeholder="Title"
-                      />
-                      <EditableText
-                        as="p"
-                        className="favorites-sub"
-                        value={item.subtitle}
-                        align={item.subtitleAlign}
-                        fieldKey="subtitle"
-                        target={target}
-                        revalidateTarget="/favorites"
-                        placeholder="Add a subtitle…"
-                      />
-                      {item.siteUrl && (
-                        <a
-                          href={item.siteUrl}
-                          className="btn btn-small"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          Visit site
-                        </a>
-                      )}
-                      <AttachmentList attachments={item.attachments} />
-                      {isOwner && (
-                        <ItemEditPanel
-                          fields={EXTRA_FIELDS}
-                          initial={item}
-                          collectionName="favorites"
-                          itemId={item.id}
-                          triggerLabel="✎ More fields"
-                          triggerClassName="btn-more-fields"
-                          onSubmit={(form) => patchItem(item.id, form)}
-                          onDelete={() => deleteItem(item.id)}
-                        />
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </GridLayoutEditor>
-          </section>
+          <FavoritesTypeSection
+            key={type}
+            type={type}
+            typeItems={typeItems}
+            list={list}
+            reorder={reorder}
+            layout={layout}
+            isOwner={isOwner}
+            patchItem={patchItem}
+            deleteItem={deleteItem}
+            onSelect={setSelectedId}
+          />
         );
       })}
 

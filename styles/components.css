@@ -420,8 +420,7 @@ a:hover {
 .projects-grid,
 .contact-grid,
 .photo-grid,
-.favorites-grid,
-.timeline-track {
+.favorites-grid {
   display: grid;
   grid-template-columns: repeat(var(--items-per-row, 4), var(--item-width, 240px));
   gap: var(--grid-gap, var(--space-md));
@@ -434,16 +433,14 @@ a:hover {
 .projects-grid::-webkit-scrollbar,
 .contact-grid::-webkit-scrollbar,
 .photo-grid::-webkit-scrollbar,
-.favorites-grid::-webkit-scrollbar,
-.timeline-track::-webkit-scrollbar {
+.favorites-grid::-webkit-scrollbar {
   height: 6px;
 }
 .card-grid::-webkit-scrollbar-thumb,
 .projects-grid::-webkit-scrollbar-thumb,
 .contact-grid::-webkit-scrollbar-thumb,
 .photo-grid::-webkit-scrollbar-thumb,
-.favorites-grid::-webkit-scrollbar-thumb,
-.timeline-track::-webkit-scrollbar-thumb {
+.favorites-grid::-webkit-scrollbar-thumb {
   background-color: color-mix(in srgb, var(--accent) 55%, transparent);
   border-radius: var(--radius);
 }
@@ -464,9 +461,7 @@ a:hover {
 .photo-card:hover,
 .photo-card:focus-within,
 .favorites-card:hover,
-.favorites-card:focus-within,
-.timeline-item:hover,
-.timeline-item:focus-within {
+.favorites-card:focus-within {
   background-color: color-mix(in srgb, var(--accent) 15%, var(--card-bg));
   z-index: 3;
 }
@@ -474,8 +469,7 @@ a:hover {
 @supports (animation-timeline: view()) {
   .card,
   .photo-card,
-  .favorites-card,
-  .timeline-item {
+  .favorites-card {
     animation: paper-fade-in linear both;
     animation-timeline: view();
     animation-range: entry 0% cover 25%;
@@ -534,51 +528,6 @@ a:hover {
 
 /* Timeline */
 
-.timeline-track {
-  align-items: flex-start;
-  grid-template-columns: repeat(var(--items-per-row, 4), var(--item-width, 260px));
-  gap: var(--grid-gap, var(--space-lg));
-}
-
-.timeline-item {
-  position: relative;
-  background-color: var(--card-bg);
-  border-top: calc(var(--border-width, 1px) * 3) solid var(--accent);
-  border-radius: 0 0 var(--radius) var(--radius);
-  padding: var(--space-sm) var(--space-md) var(--space-md);
-  transition: background-color 0.2s ease, z-index 0.25s ease;
-}
-
-.timeline-arrow {
-  align-self: center;
-  justify-self: center;
-  color: var(--accent);
-  font-size: 2rem;
-  font-weight: bold;
-  transform: scale(0.6);
-  opacity: 0.55;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-@supports (animation-timeline: view()) {
-  .timeline-arrow {
-    animation: timeline-arrow-pulse linear both;
-    animation-timeline: view(inline);
-    animation-range: cover;
-  }
-}
-@keyframes timeline-arrow-pulse {
-  0%,
-  100% {
-    transform: scale(0.6);
-    opacity: 0.55;
-  }
-  50% {
-    transform: scale(1.4);
-    opacity: 1;
-  }
-}
-
 .timeline-date {
   display: inline-block;
   color: var(--accent);
@@ -587,12 +536,7 @@ a:hover {
   margin-bottom: var(--space-xs);
 }
 
-.timeline-item h3 {
-  text-align: left;
-  margin-bottom: var(--space-xs);
-}
-
-.timeline-item em {
+.card em {
   color: var(--muted);
   font-style: normal;
 }
@@ -1404,6 +1348,28 @@ footer p {
   cursor: not-allowed;
 }
 
+/* Owner-only drag-to-reorder toggle, gated behind a click so dragging never
+   hijacks normal scroll/clicks (see lib/useDragReorder.js). */
+
+.rearrange-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--space-xs);
+}
+
+.card[draggable='true'],
+.favorites-card[draggable='true'] {
+  cursor: grab;
+}
+.card[draggable='true']:active,
+.favorites-card[draggable='true']:active {
+  cursor: grabbing;
+}
+.card.dragging,
+.favorites-card.dragging {
+  opacity: 0.4;
+}
+
 /* Shapes (admin-selectable per item) — the shape only ever clips the
    item's own image, never its text/buttons/attachments, so nothing is
    ever cropped out of view. Kept last in the stylesheet so it reliably
@@ -1449,7 +1415,6 @@ footer p {
   .card,
   .photo-card,
   .favorites-card,
-  .timeline-item,
   .wordmark-spin,
   .header-star,
   .footer-star,

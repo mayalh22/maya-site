@@ -1,4 +1,4 @@
-import { getSingleton, listCollection } from '@/lib/db';
+import { getSingleton, listOrdered } from '@/lib/db';
 import EditableText from '@/components/editing/EditableText';
 import OptionalSection from '@/components/editing/OptionalSection';
 import TimelineSections from './TimelineSections';
@@ -14,7 +14,7 @@ const CONTENT_PATH = 'siteContent/timeline';
 
 export default async function TimelinePage() {
   const [entries, content, layout] = await Promise.all([
-    listCollection('timeline'),
+    listOrdered('timeline'),
     getSingleton(CONTENT_PATH, null),
     getSingleton('settings/layout', {}),
   ]);

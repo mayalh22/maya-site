@@ -8,6 +8,7 @@ import EditableText from '@/components/editing/EditableText';
 import ItemEditPanel from '@/components/editing/ItemEditPanel';
 import { useAdminUser } from '@/lib/auth';
 import { useOwnerCollection } from '@/lib/useOwnerCollection';
+import { useDragReorder } from '@/lib/useDragReorder';
 import { shapeClassName, SHAPE_FIELD } from '@/lib/shape';
 
 const CREATE_FIELDS = [
@@ -29,14 +30,16 @@ const EXTRA_FIELDS = [
 
 export default function EnlargeArt({ pieces: initialPieces }) {
   const { isOwner } = useAdminUser();
-  const { items, patchItem, createItem, deleteItem } = useOwnerCollection('art', {
+  const { items, patchItem, createItem, deleteItem, reorder } = useOwnerCollection('art', {
     initialItems: initialPieces,
     reorderable: true,
     revalidateTarget: '/art',
   });
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const [rearranging, setRearranging] = useState(false);
   const list = items || [];
   const selected = selectedIndex !== null ? list[selectedIndex] : null;
+  const { dragHandlers, dragIndex } = useDragReorder(list, reorder);
 
   if (list.length === 0 && !isOwner) {
     return <p className="empty-state">No art yet.</p>;
@@ -44,11 +47,22 @@ export default function EnlargeArt({ pieces: initialPieces }) {
 
   return (
     <>
+      {isOwner && list.length > 1 && (
+        <div className="rearrange-row">
+          <button type="button" className="layout-editor-toggle" onClick={() => setRearranging((v) => !v)}>
+            {rearranging ? 'Done rearranging' : 'Rearrange'}
+          </button>
+        </div>
+      )}
       <div className="card-grid">
         {list.map((piece, index) => {
           const target = { type: 'item', collection: 'art', id: piece.id };
           return (
-            <div key={piece.id} className={`card ${shapeClassName(piece.shape, index)}`.trim()}>
+            <div
+              key={piece.id}
+              className={`card ${shapeClassName(piece.shape, index)} ${dragIndex === index ? 'dragging' : ''}`.trim()}
+              {...(rearranging ? dragHandlers(index) : {})}
+            >
               <EditableImage
                 src={piece.imageUrl}
                 alt={piece.title}
