@@ -40,6 +40,7 @@ export default async function ProjectsPage() {
           sectionKey="projects"
           defaultGap={16}
           defaultItemsPerRow={3}
+          defaultWidth={300}
           initial={layout?.projects}
           revalidateTarget="/projects"
         >

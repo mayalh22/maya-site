@@ -57,6 +57,7 @@ export default function Enlarge({ favorites: initialFavorites, layout }) {
               sectionKey={`favorites-${type}`}
               defaultGap={16}
               defaultItemsPerRow={7}
+              defaultWidth={140}
               initial={layout?.[`favorites-${type}`]}
               revalidateTarget="/favorites"
             >

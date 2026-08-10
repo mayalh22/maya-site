@@ -42,6 +42,7 @@ export default async function ContactPage() {
           sectionKey="social"
           defaultGap={16}
           defaultItemsPerRow={4}
+          defaultWidth={240}
           initial={layout?.social}
           revalidateTarget="/contact"
         >

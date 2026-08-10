@@ -40,6 +40,7 @@ export default async function ArtPage() {
           sectionKey="art"
           defaultGap={16}
           defaultItemsPerRow={4}
+          defaultWidth={240}
           initial={layout?.art}
           revalidateTarget="/art"
         >

@@ -411,7 +411,10 @@ a:hover {
   margin-top: var(--space-md);
 }
 
-/* Horizontal scroll strips (cards, photos, favorites, projects, contact, timeline) */
+/* Wrapping grids (cards, photos, favorites, projects, contact, timeline) —
+   grid-template-columns' column count comes from --items-per-row, so a new
+   row starts every --items-per-row items; --item-width and --grid-gap size
+   the columns and gutters independently. */
 
 .card-grid,
 .projects-grid,
@@ -419,11 +422,10 @@ a:hover {
 .photo-grid,
 .favorites-grid,
 .timeline-track {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(var(--items-per-row, 4), var(--item-width, 240px));
   gap: var(--grid-gap, var(--space-md));
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
   padding: var(--space-lg) var(--space-xs) var(--space-md);
   scrollbar-width: thin;
   scrollbar-color: var(--accent) transparent;
@@ -449,8 +451,6 @@ a:hover {
 .card {
   position: relative;
   display: block;
-  flex: 0 0 var(--item-width, 240px);
-  scroll-snap-align: start;
   padding: var(--space-md);
   color: var(--text);
   background-color: var(--card-bg);
@@ -528,24 +528,20 @@ a:hover {
   text-align: left;
 }
 
-.projects-grid .card {
-  flex-basis: var(--item-width, 300px);
-}
-.contact-grid .card {
-  flex-basis: var(--item-width, 240px);
+.projects-grid {
+  grid-template-columns: repeat(var(--items-per-row, 3), var(--item-width, 300px));
 }
 
 /* Timeline */
 
 .timeline-track {
   align-items: flex-start;
+  grid-template-columns: repeat(var(--items-per-row, 4), var(--item-width, 260px));
   gap: var(--grid-gap, var(--space-lg));
 }
 
 .timeline-item {
   position: relative;
-  flex: 0 0 var(--item-width, 260px);
-  scroll-snap-align: start;
   background-color: var(--card-bg);
   border-top: calc(var(--border-width, 1px) * 3) solid var(--accent);
   border-radius: 0 0 var(--radius) var(--radius);
@@ -554,8 +550,8 @@ a:hover {
 }
 
 .timeline-arrow {
-  flex: 0 0 auto;
   align-self: center;
+  justify-self: center;
   color: var(--accent);
   font-size: 2rem;
   font-weight: bold;
@@ -621,10 +617,12 @@ a:hover {
   margin-bottom: var(--space-md);
 }
 
+.photo-grid {
+  grid-template-columns: repeat(var(--items-per-row, 4), var(--item-width, clamp(140px, 16vw, 180px)));
+}
+
 .photo-card {
   position: relative;
-  flex: 0 0 var(--item-width, clamp(140px, 16vw, 180px));
-  scroll-snap-align: start;
   cursor: pointer;
   padding: var(--space-sm);
   background-color: var(--card-bg);
@@ -668,10 +666,12 @@ a:hover {
   text-align: left;
 }
 
+.favorites-grid {
+  grid-template-columns: repeat(var(--items-per-row, 7), var(--item-width, 140px));
+}
+
 .favorites-card {
   position: relative;
-  flex: 0 0 var(--item-width, 140px);
-  scroll-snap-align: start;
   cursor: pointer;
   padding: var(--space-sm);
   background-color: var(--card-bg);

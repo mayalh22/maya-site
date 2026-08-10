@@ -126,6 +126,7 @@ export default function TimelineSections({ entries: initialEntries, layout }) {
                 sectionKey={`timeline-${kind}`}
                 defaultGap={24}
                 defaultItemsPerRow={4}
+                defaultWidth={260}
                 initial={layout?.[`timeline-${kind}`]}
                 revalidateTarget="/timeline"
               >
@@ -204,6 +205,7 @@ export default function TimelineSections({ entries: initialEntries, layout }) {
                 sectionKey={`timeline-${kind}`}
                 defaultGap={16}
                 defaultItemsPerRow={4}
+                defaultWidth={240}
                 initial={layout?.[`timeline-${kind}`]}
                 revalidateTarget="/timeline"
               >
